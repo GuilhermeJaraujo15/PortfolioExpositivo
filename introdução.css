@@ -1,0 +1,276 @@
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body,
+    html {
+      height: 100%;
+      font-family: 'Jura', sans-serif;
+      overflow: hidden;
+    }
+
+    .intro-page {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('./img/códigos-tela\ de\ fundo.png');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    .intro-page::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 0;
+    }
+
+    .intro-text {
+      text-align: center;
+      max-width: 600px;
+      padding: 20px;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
+      animation-delay: 0.6s;
+    }
+
+    .curso {
+      font-style: italic;
+      color: #4fc3f7;
+      font-weight: 600;
+    }
+
+    /* Animações */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+      }
+    }
+
+
+    /* ANIMAÇÕES (mantidas as existentes) */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* BOTÃO VOLTAR */
+    .btn-voltar {
+      /* ... outros estilos ... */
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
+      animation-delay: 0.4s;
+      /* 1º a aparecer */
+    }
+
+    /* TEXTO PRINCIPAL */
+    .intro-text {
+      /* ... outros estilos ... */
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
+      animation-delay: 0.8s;
+      /* 2º a aparecer */
+    }
+
+    .intro-text span {
+      opacity: 0;
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .intro-text span:nth-child(1) {
+      animation-delay: 0.8s;
+    }
+
+    .intro-text span:nth-child(2) {
+      animation-delay: 1s;
+    }
+
+    /* BOTÃO AVANÇAR */
+    .btn-avancar {
+      /* ... outros estilos ... */
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
+      animation-delay: 1.5s;
+      /* Último a aparecer */
+    }
+
+    /* Botão Voltar (←) - Estilo original */
+    .btn-voltar {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      z-index: 2;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
+      animation-delay: 0.4s;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .btn-voltar:hover {
+      color: #4fc3f7;
+      transform: translateX(-5px);
+    }
+
+    /* Botão Avançar (→) - Igual ao primeiro código */
+    .btn-avancar {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      z-index: 2;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
+      animation-delay: 1.5s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.5s ease;
+    }
+
+
+    .btn-avancar:hover {
+      color: #4fc3f7;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      50% {
+        transform: translateX(3px);
+      }
+    }
+
+    .btn-avancar .seta-icone {
+      animation: pulse 2s infinite;
+    }
+
+    /* Transições entre páginas */
+    html.is-changing .intro-page {
+      transition: opacity 0.8s ease;
+    }
+
+    html.is-animating .intro-page {
+      opacity: 0;
+    }
+
+    /* Tablets e telas médias */
+    @media (max-width: 1024px) {
+      .intro-text {
+        max-width: 90%;
+        font-size: 20px;
+        padding: 15px;
+      }
+
+      .btn-voltar {
+        font-size: 1.1rem;
+        top: 15px;
+        left: 15px;
+      }
+
+      .btn-avancar {
+        font-size: 1.1rem;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+
+    /* Smartphones maiores e paisagem */
+    @media (max-width: 768px) {
+      .intro-text {
+        font-size: 18px;
+        padding: 10px;
+      }
+
+      .btn-voltar {
+        font-size: 1rem;
+        top: 12px;
+        left: 12px;
+      }
+
+      .btn-avancar {
+        font-size: 1rem;
+        bottom: 18px;
+        right: 18px;
+      }
+    }
+
+    /* Smartphones pequenos e retrato */
+    @media (max-width: 480px) {
+      .intro-text {
+        font-size: 16px;
+        max-width: 90%;
+        padding: 8px;
+      }
+
+      .btn-voltar {
+        font-size: 0.9rem;
+        top: 10px;
+        left: 10px;
+      }
+
+      .btn-avancar {
+        font-size: 0.9rem;
+        bottom: 15px;
+        right: 15px;
+      }
+    }

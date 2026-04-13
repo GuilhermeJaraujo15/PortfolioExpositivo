@@ -1,0 +1,231 @@
+ /* Reset e base */
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ }
+
+ body,
+ html {
+   height: 100%;
+   font-family: 'Segoe UI', sans-serif;
+   overflow: hidden;
+ }
+
+ /* Fundo com sobreposição escura */
+ .overlay {
+   background-image: url('./img/tela inicial.webp');
+   background-size: cover;
+   background-position: center;
+   position: relative;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+ }
+
+ .overlay::before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.6);
+   z-index: 0;
+ }
+
+ /* Conteúdo centralizado */
+ .conteudo {
+   color: white;
+   position: relative;
+   z-index: 1;
+ }
+
+ /* Títulos com animação individual */
+ .linha1,
+ .linha2 {
+   font-size: 2.8rem;
+   font-weight: 300;
+   letter-spacing: 1.5px;
+   margin: 0;
+   opacity: 0;
+   animation: fadeInUp 1s ease-out forwards;
+ }
+
+ .linha1 {
+   margin-bottom: 0.1em;
+   animation-delay: 0.2s;
+ }
+
+ .linha2 {
+   margin-bottom: 0.5em;
+   animation-delay: 0.4s;
+ }
+
+ /* Subtítulo */
+ .conteudo p {
+   font-size: 1.1rem;
+   font-weight: 200;
+   letter-spacing: 1px;
+   opacity: 0;
+   animation: fadeInUp 1s ease-out forwards;
+   animation-delay: 0.6s;
+ }
+
+ /* Botão Avançar - NOVO ESTILO */
+ .btn-avancar {
+   position: absolute;
+   bottom: 30px;
+   right: 30px;
+   color: white;
+   text-decoration: none;
+   font-size: 1.2rem;
+   z-index: 2;
+   opacity: 0;
+   animation: fadeInUp 1s ease-out forwards;
+   animation-delay: 1.5s;
+   display: inline-flex;
+   align-items: center;
+   gap: 8px;
+   transition: all 0.5s ease;
+ }
+
+ .btn-avancar .seta-icone {
+   font-size: 1.4em;
+   display: inline-block;
+   transition: transform 0.3s ease;
+ }
+
+ /* Efeitos do botão */
+ .btn-avancar:hover {
+   color: #4fc3f7;
+ }
+
+ .btn-avancar:hover .seta-icone {
+   transform: translateX(5px) scale(1.2);
+ }
+
+ .btn-avancar:active .seta-icone {
+   transform: translateX(2px) scale(0.9);
+ }
+
+ /* Animação de entrada */
+ @keyframes fadeInUp {
+   0% {
+     opacity: 0;
+     transform: translateY(20px);
+   }
+
+   100% {
+     opacity: 1;
+     transform: translateY(0);
+   }
+ }
+
+ /* Transição de saída */
+ .overlay.fade-out {
+   animation: fadeOut 0.8s ease-out forwards;
+ }
+
+ @keyframes fadeOut {
+   0% {
+     opacity: 1;
+   }
+
+   100% {
+     opacity: 0;
+   }
+ }
+
+  @keyframes pulse {
+
+   0%,
+   100% {
+     transform: translateX(0);
+   }
+
+   50% {
+     transform: translateX(3px);
+   }
+ }
+
+ .btn-avancar .seta-icone {
+   animation: pulse 2s infinite;
+ }
+
+ /* Efeito de transição entre páginas */
+ html.is-changing .overlay {
+   transition: opacity 0.8s ease;
+ }
+
+ html.is-animating .overlay {
+   opacity: 0;
+ }
+
+ /* Tablets e telas médias */
+@media (max-width: 1024px) {
+  .linha1, .linha2 {
+    font-size: 2.2rem;
+  }
+  
+  .conteudo p {
+    font-size: 1rem;
+  }
+  
+  .btn-avancar {
+    font-size: 1.1rem;
+    bottom: 25px;
+    right: 25px;
+  }
+
+  .btn-avancar .seta-icone {
+    font-size: 1.2em;
+  }
+}
+
+/* Smartphones maiores e paisagem */
+@media (max-width: 768px) {
+  .linha1, .linha2 {
+    font-size: 1.8rem;
+  }
+  
+  .conteudo p {
+    font-size: 0.9rem;
+  }
+  
+  .btn-avancar {
+    font-size: 1rem;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .btn-avancar .seta-icone {
+    font-size: 1.1em;
+  }
+}
+
+/* Smartphones pequenos e retrato */
+@media (max-width: 480px) {
+  .linha1, .linha2 {
+    font-size: 1.5rem;
+  }
+  
+  .conteudo p {
+    font-size: 0.8rem;
+  }
+  
+  .btn-avancar {
+    font-size: 0.9rem;
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .btn-avancar .seta-icone {
+    font-size: 1em;
+  }
+}
+
+ 

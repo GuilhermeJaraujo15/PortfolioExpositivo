@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfólio Expositivo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Conteúdo principal com classe para animação -->
+    <div class="overlay" id="main-content">
+        <div class="conteudo">
+            <h1 class="linha1">PORTFÓLIO</h1>
+            <h1 class="linha2">EXPOSITIVO</h1>
+            <p>Por Guilherme Jorge de Araujo</p>
+        </div>
+
+        <!-- Botão Avançar atualizado -->
+        <a href="introdução.html" class="btn-avancar" aria-label="Avançar para introdução">
+            Avançar <span class="seta-icone">→</span>
+        </a>
+    </div>
+
+    <!-- Script para transição suave -->
+    <script>
+        document.querySelector('.btn-avancar').addEventListener('click', function (e) {
+            e.preventDefault();
+            document.documentElement.classList.add('is-changing', 'is-animating');
+            document.getElementById('main-content').classList.add('fade-out');
+            setTimeout(function () {
+                window.location.href = "introdução.html";
+            }, 800);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introdução ao Portfólio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="introdução.css">
+</head>
+
+<body>
+    <!-- Botão Voltar -->
+    <a href="index.html" class="btn-voltar" aria-label="Voltar">
+        <span class="voltar-icone">←</span> Voltar
+    </a>
+
+    <div class="intro-page">
+        <div class="intro-text">
+            Aqui, você verá um pouco do meu aprendizado durante o primeiro semestre do curso sobre <span
+                class="curso">"Desenvolvimento de Sistemas"!
+        </div>
+
+        <!-- Botão Avançar -->
+        <a href="portfólio.html" class="btn-avancar" aria-label="Avançar">
+            Avançar <span class="seta-icone">→</span>
+        </a>
+    </div>
+
+    <!-- Script para transições -->
+    <script>
+        // Transição ao avançar
+        document.querySelector('.btn-avancar')?.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.documentElement.classList.add('is-changing', 'is-animating');
+            document.querySelector('.intro-page').style.animation = 'fadeOut 0.8s ease-out forwards';
+            setTimeout(() => {
+                window.location.href = this.getAttribute('href');
+            }, 800);
+        });
+
+        // Transição ao voltar
+        document.querySelector('.btn-voltar')?.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.documentElement.classList.add('is-changing', 'is-animating');
+            document.querySelector('.intro-page').style.animation = 'fadeOut 0.8s ease-out forwards';
+            setTimeout(() => {
+                window.location.href = this.getAttribute('href');
+            }, 800);
+        });
+    </script>
+</body>
+
+</html>
