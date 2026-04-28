@@ -2,7 +2,7 @@ Portfólio Expositivo
 
 Este projeto consiste em um portfólio Web desenvolvido com o objetivo de apresentar os conceitos que aprendi, e evolução na área de Desenvolvimento de Sistemas.
 
-A aplicação foi construída utilizando HTML, CSS e JavaScript. O projeto busca aplicar conceitos fundamentais de Desenvolvimento Front-end, como organização estrutural, estilização hodierna e experiência do usuário.
+A aplicação foi construída utilizando HTML e CSS. O projeto busca aplicar conceitos fundamentais de Desenvolvimento Front-end, como organização estrutural, estilização hodierna e experiência do usuário.
 
 Objetivos do projeto:
 
