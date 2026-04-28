@@ -1,54 +1,159 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seleção de Semestres | Portfólio</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introdução ao Portfólio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="introdução.css">
-</head>
+    <!-- Pré-carrega a fonte para evitar FOIT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="introdução.css" />
+  </head>
 
-<body>
-    <!-- Botão Voltar -->
-    <a href="index.html" class="btn-voltar" aria-label="Voltar">
-        <span class="voltar-icone">←</span> Voltar
-    </a>
+  <body>
+    <!-- Navegação fixa no topo -->
+    <header class="nav-top">
+      <a
+        href="index.html"
+        class="nav-top__back"
+        aria-label="Voltar para a página inicial"
+      >
+        <span class="nav-top__arrow" aria-hidden="true">←</span>
+        <span class="nav-top__label">Voltar</span>
+      </a>
+    </header>
 
-    <div class="intro-page">
-        <div class="intro-text">
-            Aqui, você verá um pouco do meu aprendizado durante o primeiro semestre do curso sobre <span
-                class="curso">"Desenvolvimento de Sistemas"!
-        </div>
+    <!-- Conteúdo central -->
+    <main class="hub">
+      <div class="hub__header">
+        <h1 class="hub__title">Selecione o Semestre</h1>
+        <p class="hub__subtitle">
+          Explore a evolução técnica através de animações interativas
+        </p>
+      </div>
 
-        <!-- Botão Avançar -->
-        <a href="portfólio.html" class="btn-avancar" aria-label="Avançar">
-            Avançar <span class="seta-icone">→</span>
+      <nav class="hub__grid" aria-label="Navegação por semestres">
+        <!-- 1º Semestre — Front-end -->
+        <a
+          href="portfólio.html"
+          class="semestre-card semestre-card--frontend"
+          aria-label="Ver 1º Semestre — Front-end"
+        >
+          <div class="semestre-card__circle">
+            <video
+              class="semestre-card__video"
+              src="mp4/sem1.mp4"
+              muted
+              loop
+              playsinline
+              preload="none"
+            ></video>
+          </div>
+          <div class="semestre-card__content">
+            <span class="semestre-card__label">1º Semestre</span>
+            <span class="semestre-card__tag">Front-end</span>
+          </div>
         </a>
-    </div>
 
-    <!-- Script para transições -->
+        <!-- 2º Semestre — JavaScript / Lógica -->
+        <a
+          href="#"
+          class="semestre-card semestre-card--javascript"
+          aria-label="Ver 2º Semestre — JavaScript"
+        >
+          <div class="semestre-card__circle">
+            <video
+              class="semestre-card__video"
+              src="./videos/js-logic-motion.mp4"
+              muted
+              loop
+              playsinline
+              preload="none"
+            ></video>
+          </div>
+          <div class="semestre-card__content">
+            <span class="semestre-card__label">2º Semestre</span>
+            <span class="semestre-card__tag">JavaScript</span>
+          </div>
+        </a>
+
+        <!-- 3º Semestre — Banco de Dados -->
+        <a
+          href="#"
+          class="semestre-card semestre-card--database"
+          aria-label="Ver 3º Semestre — Banco de Dados"
+        >
+          <div class="semestre-card__circle">
+            <video
+              class="semestre-card__video"
+              src="./videos/database-structure.mp4"
+              muted
+              loop
+              playsinline
+              preload="none"
+            ></video>
+          </div>
+          <div class="semestre-card__content">
+            <span class="semestre-card__label">3º Semestre</span>
+            <span class="semestre-card__tag">Database</span>
+          </div>
+        </a>
+
+        <!-- 4º Semestre — Python -->
+        <a
+          href="#"
+          class="semestre-card semestre-card--python"
+          aria-label="Ver 4º Semestre — Python"
+        >
+          <div class="semestre-card__circle">
+            <video
+              class="semestre-card__video"
+              src="./videos/python-ai-motion.mp4"
+              muted
+              loop
+              playsinline
+              preload="none"
+            ></video>
+          </div>
+          <div class="semestre-card__content">
+            <span class="semestre-card__label">4º Semestre</span>
+            <span class="semestre-card__tag">Python</span>
+          </div>
+        </a>
+      </nav>
+    </main>
+
+    <!-- Controle de hover com JavaScript para vídeos -->
     <script>
-        // Transição ao avançar
-        document.querySelector('.btn-avancar')?.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.documentElement.classList.add('is-changing', 'is-animating');
-            document.querySelector('.intro-page').style.animation = 'fadeOut 0.8s ease-out forwards';
-            setTimeout(() => {
-                window.location.href = this.getAttribute('href');
-            }, 800);
-        });
+      (function () {
+        const cards = document.querySelectorAll(".semestre-card");
 
-        // Transição ao voltar
-        document.querySelector('.btn-voltar')?.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.documentElement.classList.add('is-changing', 'is-animating');
-            document.querySelector('.intro-page').style.animation = 'fadeOut 0.8s ease-out forwards';
-            setTimeout(() => {
-                window.location.href = this.getAttribute('href');
-            }, 800);
+        cards.forEach(function (card) {
+          const video = card.querySelector(".semestre-card__video");
+
+          if (!video) return;
+
+          card.addEventListener("mouseenter", function () {
+            video.play().catch(function () {});
+          });
+
+          card.addEventListener("mouseleave", function () {
+            video.pause();
+            video.currentTime = 0;
+          });
+
+          // Pausa também quando o foco sai (acessibilidade)
+          card.addEventListener("focusout", function () {
+            video.pause();
+            video.currentTime = 0;
+          });
         });
+      })();
     </script>
-</body>
-
+  </body>
 </html>
