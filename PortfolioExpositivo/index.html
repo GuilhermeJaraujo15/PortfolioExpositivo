@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfólio Expositivo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="language-switcher" role="group" aria-label="Seletor de idioma">
+        <div class="language-pill">
+            <span id="language-current-flag" class="language-flag" aria-hidden="true">🇧🇷</span>
+            <span id="language-current-label" class="language-label">Português</span>
+            <button id="language-menu-toggle" class="language-caret-btn" type="button" aria-label="Abrir seleção de idioma"
+                aria-expanded="false">⌄</button>
+        </div>
+        <div id="language-dropdown" class="language-dropdown" role="menu" aria-label="Escolher idioma">
+            <button id="language-alt-option" class="language-option-item" type="button" role="menuitem">
+                <span id="language-alt-flag" class="language-flag" aria-hidden="true">🇺🇸</span>
+                <span id="language-alt-label">English</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Conteúdo principal com classe para animação -->
+    <div class="overlay" id="main-content">
+        <div class="conteudo">
+            <h1 class="linha1" data-i18n="index.hero.line1">PORTFÓLIO</h1>
+            <h1 class="linha2" data-i18n="index.hero.line2">EXPOSITIVO</h1>
+            <p data-i18n="index.hero.author">Por Guilherme Jorge de Araujo</p>
+        </div>
+
+        <!-- Botão Avançar atualizado -->
+        <a href="portfólio.html" class="btn-avancar" aria-label="Avançar para introdução" data-i18n-aria="index.advanceAria">
+            <span data-i18n="index.advance">Avançar</span> <span class="seta-icone">→</span>
+        </a>
+    </div>
+
+    <!-- Script para transição suave -->
+    <script>
+        document.querySelector('.btn-avancar').addEventListener('click', function (e) {
+            e.preventDefault();
+            document.documentElement.classList.add('is-changing', 'is-animating');
+            document.getElementById('main-content').classList.add('fade-out');
+            setTimeout(function () {
+                window.location.href = "portfólio.html";
+            }, 800);
+        });
+    </script>
+    <script src="i18n.js" defer></script>
+</body>
+
+</html>
