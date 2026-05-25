@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Página de seleção de semestres do portfólio de Guilherme" />
+    <title>Seleção de Semestres | Portfólio</title>
+
+    <!-- Pré-carrega a fonte para evitar FOIT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="introdução.css" />
+  </head>
+
+  <body>
+    <div class="language-switcher" role="group" aria-label="Seletor de idioma">
+      <div class="language-pill">
+        <span id="language-current-flag" class="language-flag" aria-hidden="true">🇧🇷</span>
+        <span id="language-current-label" class="language-label">Português</span>
+        <button
+          id="language-menu-toggle"
+          class="language-caret-btn"
+          type="button"
+          aria-label="Abrir seleção de idioma"
+          aria-expanded="false"
+        ></button>
+      </div>
+
+      <div id="language-dropdown" class="language-dropdown" role="menu" aria-label="Escolher idioma">
+        <button id="language-alt-option" class="language-option-item" type="button" role="menuitem">
+          <span id="language-alt-flag" class="language-flag" aria-hidden="true">🇺🇸</span>
+          <span id="language-alt-label">English</span>
+        </button>
+      </div>
+    </div>
+
+    <header class="nav-top">
+      <a
+        href="index.html"
+        class="nav-top__back"
+        data-i18n-aria="intro.backAria"
+      >
+        <span class="nav-top__arrow" aria-hidden="true">←</span>
+        <span class="nav-top__label" data-i18n="intro.back">Voltar</span>
+      </a>
+    </header>
+
+    <!-- Conteúdo central -->
+    <main class="hub">
+      <div class="hub__header">
+        <h1 class="hub__title" data-i18n="intro.title">Selecione o Semestre</h1>
+        <p class="hub__subtitle">
+          <span class="hub__subtitle-desktop" data-i18n="intro.subtitleDesktop">
+            Explore technical evolution through interactive animations
+          </span>
+          <span class="hub__subtitle-mobile" data-i18n="intro.subtitleMobile">
+            Tap once to preview the animation. Tap the same semester again to access the portfolio.
+          </span>
+        </p>
+      </div>
+
+      <nav class="hub__grid" aria-label="Navegação por semestres" data-i18n-aria="intro.navAria">
+        <!-- 1º Semestre — Front-end -->
+        <a
+          href="portfólio.html"
+          class="semestre-card semestre-card--frontend"
+          data-i18n-aria="intro.semesters.s1.aria"
+        >
+          <div class="semestre-card__circle">
+            <video
+              class="semestre-card__video"
+              src="./mp4/sem1.mp4"
+              muted
+              loop
+              playsinline
+              preload="none"
+            ></video>
+          </div>
+          <div class="semestre-card__content">
+            <span class="semestre-card__label" data-i18n="intro.semesters.s1.label">1º Semestre</span>
+          </div>
+        </a>
+
+        <!-- 2º Semestre — JavaScript / Lógica -->
+        <a
+          href="portfóliodois.html"
+          class="semestre-card semestre-card--javascript"
+          data-i18n-aria="intro.semesters.s2.aria"
+        >
+          <div class="semestre-card__circle">
+            <video
+              class="semestre-card__video"
+              src="./videos/js-logic-motion.mp4"
+              muted
+              loop
+              playsinline
+              preload="none"
+            ></video>
+          </div>
+
+          <div class="semestre-card__content">
+            <span class="semestre-card__label" data-i18n="intro.semesters.s2.label">2º Semestre</span>
+          </div>
+
+        </a>
+
+        <!-- 3º Semestre — Banco de Dados -->
+        <a
+          href="#"
+          class="semestre-card semestre-card--database"
+          data-i18n-aria="intro.semesters.s3.aria"
+        >
+          <div class="semestre-card__circle">
+            <video
+              class="semestre-card__video"
+              src="./videos/database-structure.mp4"
+              muted
+              loop
+              playsinline
+              preload="none"
+            ></video>
+          </div>
+          <div class="semestre-card__content">
+            <span class="semestre-card__label" data-i18n="intro.semesters.s3.label">3º Semestre</span>
+          </div>
+
+        </a>
+
+        <!-- 4º Semestre — Python -->
+        <a
+          href="#"
+          class="semestre-card semestre-card--python"
+          data-i18n-aria="intro.semesters.s4.aria"
+        >
+          <div class="semestre-card__circle">
+            <video
+              class="semestre-card__video"
+              src="./videos/python-ai-motion.mp4"
+              muted
+              loop
+              playsinline
+              preload="none"
+            ></video>
+          </div>
+
+          <div class="semestre-card__content">
+            <span class="semestre-card__label" data-i18n="intro.semesters.s4.label">4º Semestre</span>
+          </div> 
+          
+        </a>
+      </nav>
+    </main>
+
+    <!-- Controle de hover com JavaScript para vídeos e suporte a toque mobile -->
+    <script>
+      (function () {
+        const cards = document.querySelectorAll(".semestre-card");
+        const touchMediaQuery = window.matchMedia("(hover: none), (pointer: coarse)");
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        let activeTouchCard = null;
+        let isPortfolioTransitioning = false;
+
+        function isTouchLikeDevice() {
+          return touchMediaQuery.matches;
+        }
+
+        function getVideo(card) {
+          return card.querySelector(".semestre-card__video");
+        }
+
+        function resetCard(card) {
+          const video = getVideo(card);
+
+          card.classList.remove("is-touch-preview");
+
+          if (video) {
+            video.pause();
+            video.currentTime = 0;
+          }
+        }
+
+        function resetOtherCards(currentCard) {
+          cards.forEach(function (card) {
+            if (card !== currentCard) {
+              resetCard(card);
+            }
+          });
+        }
+
+        function activateTouchPreview(card) {
+          const video = getVideo(card);
+
+          resetOtherCards(card);
+
+          activeTouchCard = card;
+          card.classList.add("is-touch-preview");
+
+          if (video) {
+            video.play().catch(function () {});
+          }
+        }
+
+        function startPortfolioTransition(targetUrl) {
+          if (isPortfolioTransitioning) return;
+          isPortfolioTransitioning = true;
+
+          const main = document.querySelector(".hub");
+          sessionStorage.setItem("portfolioEntryAnimation", "semester-entry");
+
+          if (main && !prefersReducedMotion) {
+            main.classList.add("is-transitioning-out");
+
+            setTimeout(function () {
+              window.location.href = targetUrl;
+            }, 600);
+
+            return;
+          }
+
+          window.location.href = targetUrl;
+        }
+
+        cards.forEach(function (card) {
+          const video = getVideo(card);
+
+          if (!video) return;
+
+          // Desktop: preserves the original mouse behavior.
+          card.addEventListener("mouseenter", function () {
+            if (isTouchLikeDevice()) return;
+
+            video.play().catch(function () {});
+          });
+
+          card.addEventListener("mouseleave", function () {
+            if (isTouchLikeDevice()) return;
+
+            video.pause();
+            video.currentTime = 0;
+          });
+
+          card.addEventListener("focusout", function () {
+            if (isTouchLikeDevice()) return;
+
+            video.pause();
+            video.currentTime = 0;
+          });
+
+          // Mobile/touch: 1st tap previews; 2nd tap on the same card navigates.
+          card.addEventListener("click", function (event) {
+            const href = (card.getAttribute("href") || "").trim();
+            const hasValidHref = href && href !== "#";
+
+            if (isTouchLikeDevice()) {
+              if (activeTouchCard === card) {
+                if (hasValidHref) {
+                  event.preventDefault();
+                  startPortfolioTransition(href);
+                  return;
+                }
+                event.preventDefault();
+                return;
+              }
+
+              event.preventDefault();
+              activateTouchPreview(card);
+              return;
+            }
+
+            if (!hasValidHref) {
+              event.preventDefault();
+              return;
+            }
+
+            event.preventDefault();
+            startPortfolioTransition(href);
+          });
+        });
+
+        // On mobile, tapping outside the cards resets the active card.
+        document.addEventListener("click", function (event) {
+          if (!isTouchLikeDevice()) return;
+
+          const clickedCard = event.target.closest(".semestre-card");
+
+          if (!clickedCard && activeTouchCard) {
+            resetCard(activeTouchCard);
+            activeTouchCard = null;
+          }
+        });
+      })();
+    </script>
+
+    <script src="i18n.js" defer></script>
+  </body>
+</html>

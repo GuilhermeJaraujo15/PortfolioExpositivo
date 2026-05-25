@@ -1,0 +1,518 @@
+ /* Reset e base */
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ }
+
+ body,
+ html {
+   height: 100%;
+   font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+ }
+
+ /* Fundo com sobreposição escura */
+ .overlay {
+   background-image: url('./img/tela inicial.webp');
+   background-size: cover;
+   background-position: center;
+   position: relative;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+  text-align: center;
+ }
+
+/* i18n switcher - Keyframes */
+@keyframes languageGlowPulse {
+  0%, 100% {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), 0 0 12px rgba(100, 255, 218, 0.1);
+  }
+  50% {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), 0 0 20px rgba(100, 255, 218, 0.2);
+  }
+}
+
+@keyframes languageScan {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes languageDropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scaleY(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+@keyframes languageSwitchPop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* i18n switcher */
+.language-switcher {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+
+.language-pill {
+  position: relative;
+  width: 140px;
+  height: 44px;
+  border-radius: 999px;
+  background: rgba(5, 12, 24, 0.5);
+  border: 1px solid rgba(100, 255, 218, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 0;
+  color: #fff;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  font-size: 0.95rem;
+  cursor: pointer;
+  animation: languageGlowPulse 3s ease-in-out infinite;
+  overflow: hidden;
+}
+
+.language-pill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.3), transparent);
+  pointer-events: none;
+  transition: left 0.5s ease;
+}
+
+.language-flag {
+  display: none;
+}
+
+.language-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  position: relative;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.language-caret-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  z-index: 10;
+}
+
+.language-pill:hover::before {
+  animation: languageScan 0.6s ease-in-out;
+}
+
+.language-pill:hover {
+  background: rgba(5, 12, 24, 0.64);
+  border-color: rgba(100, 255, 218, 0.45);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3), 0 0 16px rgba(100, 255, 218, 0.12);
+}
+
+.language-switcher.is-open .language-pill {
+  border-color: rgba(100, 255, 218, 0.6);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), 0 0 20px rgba(100, 255, 218, 0.25);
+  background: rgba(5, 12, 24, 0.7);
+  animation: languageGlowPulse 2s ease-in-out infinite;
+}
+
+.language-caret-btn:focus-visible {
+  border-color: rgba(100, 255, 218, 0.5);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3), 0 0 0 2px rgba(100, 255, 218, 0.14);
+  outline: none;
+}
+
+.language-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-12px) scaleY(0.95);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: top center;
+}
+
+.language-switcher.is-open .language-dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scaleY(1);
+  animation: languageDropdownIn 0.3s ease-out;
+}
+
+.language-option-item {
+  width: 140px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(100, 255, 218, 0.28);
+  background: rgba(5, 12, 24, 0.5);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 0;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.language-option-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.2), transparent);
+  pointer-events: none;
+  transition: left 0.5s ease;
+}
+
+.language-option-item:hover::before,
+.language-option-item:focus-visible::before {
+  animation: languageScan 0.6s ease-in-out;
+}
+
+.language-option-item:hover,
+.language-option-item:focus-visible {
+  background: rgba(5, 12, 24, 0.64);
+  border-color: rgba(100, 255, 218, 0.45);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3), 0 0 16px rgba(100, 255, 218, 0.12);
+  outline: none;
+}
+
+ .overlay::before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.6);
+   z-index: 0;
+ }
+
+ /* Conteúdo centralizado */
+ .conteudo {
+   color: white;
+   position: relative;
+   z-index: 1;
+ }
+
+ /* Títulos com animação individual */
+ .linha1,
+ .linha2 {
+   font-size: 2.8rem;
+   font-weight: 300;
+   letter-spacing: 1.5px;
+   margin: 0;
+   opacity: 0;
+   animation: fadeInUp 1s ease-out forwards;
+ }
+
+ .linha1 {
+   margin-bottom: 0.1em;
+   animation-delay: 0.2s;
+ }
+
+ .linha2 {
+   margin-bottom: 0.5em;
+   animation-delay: 0.4s;
+ }
+
+ /* Subtítulo */
+ .conteudo p {
+   font-size: 1.1rem;
+   font-weight: 200;
+   letter-spacing: 1px;
+   opacity: 0;
+   animation: fadeInUp 1s ease-out forwards;
+   animation-delay: 0.6s;
+ }
+
+
+ /* Botão Avançar - NOVO ESTILO */
+ .btn-avancar {
+   position: absolute;
+   bottom: 30px;
+   right: 30px;
+   color: white;
+   text-decoration: none;
+   font-size: 1.2rem;
+   z-index: 2;
+   opacity: 0;
+   animation: fadeInUp 1s ease-out forwards;
+   animation-delay: 1.5s;
+   display: inline-flex;
+   align-items: center;
+   gap: 8px;
+   transition: all 0.5s ease;
+ }
+
+ .btn-avancar .seta-icone {
+   font-size: 1.4em;
+   display: inline-block;
+   transition: transform 0.3s ease;
+ }
+
+ /* Efeitos do botão */
+ .btn-avancar:hover {
+   color: #4fc3f7;
+ }
+
+ .btn-avancar:hover .seta-icone {
+   transform: translateX(5px) scale(1.2);
+ }
+
+ .btn-avancar:active .seta-icone {
+   transform: translateX(2px) scale(0.9);
+ }
+
+ /* Animação de entrada */
+ @keyframes fadeInUp {
+   0% {
+     opacity: 0;
+     transform: translateY(20px);
+   }
+
+   100% {
+     opacity: 1;
+     transform: translateY(0);
+   }
+ }
+
+ /* Transição de saída */
+ .overlay.fade-out {
+   animation: fadeOut 0.8s ease-out forwards;
+ }
+
+ @keyframes fadeOut {
+   0% {
+     opacity: 1;
+   }
+
+   100% {
+     opacity: 0;
+   }
+ }
+
+  @keyframes pulse {
+
+   0%,
+   100% {
+     transform: translateX(0);
+   }
+
+   50% {
+     transform: translateX(3px);
+   }
+ }
+
+ .btn-avancar .seta-icone {
+   animation: pulse 2s infinite;
+ }
+
+ /* Efeito de transição entre páginas */
+ html.is-changing .overlay {
+   transition: opacity 0.8s ease;
+ }
+
+ html.is-animating .overlay {
+   opacity: 0;
+ }
+
+ /* Tablets e telas médias */
+@media (max-width: 1024px) {
+  .linha1, .linha2 {
+    font-size: 2.2rem;
+  }
+  
+  .conteudo p {
+    font-size: 1rem;
+  }
+  
+  .btn-avancar {
+    font-size: 1.1rem;
+    bottom: 25px;
+    right: 25px;
+  }
+
+  .btn-avancar .seta-icone {
+    font-size: 1.2em;
+  }
+}
+
+/* Smartphones maiores e paisagem */
+@media (max-width: 768px) {
+  .linha1, .linha2 {
+    font-size: 1.8rem;
+  }
+
+  .conteudo p {
+    font-size: 0.9rem;
+  }
+
+  .btn-avancar {
+    font-size: 1rem;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .btn-avancar .seta-icone {
+    font-size: 1.1em;
+  }
+
+  .language-switcher {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+
+  .language-pill,
+  .language-option-item {
+    width: 120px;
+    height: 40px;
+    font-size: 0.85rem;
+  }
+
+  .language-flag {
+    display: none;
+  }
+
+  .language-label {
+    font-size: 0.85rem;
+  }
+}
+
+/* Smartphones pequenos e retrato */
+@media (max-width: 480px) {
+  .linha1, .linha2 {
+    font-size: 1.5rem;
+  }
+
+  .conteudo p {
+    font-size: 0.8rem;
+  }
+
+  .btn-avancar {
+    font-size: 0.9rem;
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .btn-avancar .seta-icone {
+    font-size: 1em;
+  }
+
+  .language-switcher {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
+  .language-pill,
+  .language-option-item {
+    width: 110px;
+    height: 36px;
+    font-size: 0.8rem;
+  }
+
+  .language-flag {
+    display: none;
+  }
+
+  .language-label {
+    font-size: 0.8rem;
+  }
+}
+
+/* Microinteração ao trocar idioma */
+.language-switcher.is-switching-language .language-pill {
+  animation: languageSwitchPop 0.4s ease-out !important;
+}
+
+.language-switcher.is-switching-language .language-pill {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), 0 0 24px rgba(100, 255, 218, 0.35);
+}
+
+/* Redução de movimento */
+@media (prefers-reduced-motion: reduce) {
+  .language-pill {
+    animation: none;
+  }
+
+  .language-pill::before {
+    animation: none !important;
+  }
+
+  .language-option-item::before {
+    animation: none !important;
+  }
+
+  .language-dropdown {
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+  }
+
+  .language-switcher.is-open .language-dropdown {
+    animation: none;
+  }
+
+  .language-pill:hover,
+  .language-switcher.is-open .language-pill {
+    animation: none;
+  }
+}
+
+ 
