@@ -86,74 +86,194 @@ button:disabled,
 }
 
 /* -------------------- LANGUAGE SWITCHER -------------------- */
+@keyframes languageGlowPulse {
+  0%, 100% {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), 0 0 12px rgba(247, 223, 30, 0.1);
+  }
+  50% {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), 0 0 20px rgba(247, 223, 30, 0.18);
+  }
+}
+
+@keyframes languageScan {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes languageDropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scaleY(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
 .language-switcher {
   position: fixed;
-  top: 1rem;
+  /* slightly lower to visually align with the centered nav */
+  top: 1.25rem;
   right: 1rem;
   z-index: 2000;
 }
 
 .language-pill {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  min-width: 132px;
-  padding: 0.9rem 1rem;
+  width: 140px;
+  height: 44px;
   border-radius: 999px;
-  background: rgba(17, 17, 17, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: var(--text-main);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
+  background: rgba(5, 5, 5, 0.88);
+  border: 1px solid rgba(247, 223, 30, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 0;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.25s ease;
+  font-size: 0.95rem;
+  cursor: pointer;
+  animation: languageGlowPulse 3s ease-in-out infinite;
+  overflow: hidden;
+}
+
+.language-pill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(247, 223, 30, 0.3), transparent);
+  pointer-events: none;
+  transition: left 0.5s ease;
+}
+
+.language-flag {
+  display: none;
 }
 
 .language-label {
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  position: relative;
+  z-index: 5;
+  pointer-events: none;
 }
 
 .language-caret-btn {
   position: absolute;
-  inset: 0;
-  background: transparent;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  z-index: 10;
+}
+
+.language-pill:hover::before {
+  animation: languageScan 0.6s ease-in-out;
+}
+
+.language-pill:hover {
+  background: rgba(5, 5, 5, 0.94);
+  border-color: rgba(247, 223, 30, 0.45);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25), 0 0 16px rgba(247, 223, 30, 0.12);
+}
+
+.language-switcher.is-open .language-pill {
+  border-color: rgba(247, 223, 30, 0.6);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), 0 0 20px rgba(247, 223, 30, 0.25);
+  background: rgba(5, 5, 5, 0.92);
+  animation: languageGlowPulse 2s ease-in-out infinite;
+}
+
+.language-switcher.is-switching-language .language-pill {
+  animation: languageSwitchPop 0.4s ease-out !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), 0 0 24px rgba(247, 223, 30, 0.35);
+}
+
+.language-caret-btn:focus-visible {
+  border-color: rgba(247, 223, 30, 0.5);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3), 0 0 0 2px rgba(247, 223, 30, 0.14);
+  outline: none;
 }
 
 .language-dropdown {
   position: absolute;
-  top: calc(100% + 0.85rem);
-  right: 0;
-  width: 180px;
-  padding: 0.5rem;
-  border-radius: 18px;
-  backdrop-filter: blur(16px);
-  background: rgba(5, 5, 5, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+  top: calc(100% + 0.5rem);
+  left: 0;
+  width: 140px;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-10px);
-  transition: opacity 0.22s ease, transform 0.22s ease;
+  pointer-events: none;
+  transform: translateY(-12px) scaleY(0.95);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: top center;
 }
 
 .language-switcher.is-open .language-dropdown {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  pointer-events: auto;
+  transform: translateY(0) scaleY(1);
+  animation: languageDropdownIn 0.3s ease-out;
 }
 
 .language-option-item {
   width: 100%;
+  min-width: 140px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   padding: 0.9rem 1rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--text-main);
-  transition: background var(--transition-base);
+  border: 1px solid rgba(247, 223, 30, 0.28);
+  background: rgba(5, 5, 5, 0.5);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.language-option-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(247, 223, 30, 0.2), transparent);
+  pointer-events: none;
+  transition: left 0.5s ease;
+}
+
+.language-option-item:hover::before,
+.language-option-item:focus-visible::before {
+  animation: languageScan 0.6s ease-in-out;
 }
 
 .language-option-item:hover,
@@ -166,14 +286,27 @@ button:disabled,
   position: sticky;
   top: 0;
   z-index: 1000;
-  display: flex;
+  display: grid;
+  /* column 1: brand, column 2: back-button, column 3: centered nav */
+  grid-template-columns: auto auto 1fr;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1.5rem 1.5rem 1rem;
+  gap: 0.75rem;
+  padding: 1rem clamp(1rem, 3vw, 2rem) 0.9rem;
   backdrop-filter: blur(20px);
-  background: rgba(5, 5, 5, 0.8);
+  background: rgba(5, 5, 5, 0.88);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.page-header nav {
+  grid-column: 3;
+  justify-self: center;
+}
+
+.back-button {
+  /* place the back button next to the brand on the left */
+  grid-column: 2;
+  justify-self: start;
+  margin-left: 0.75rem;
 }
 
 .page-brand {
@@ -214,7 +347,7 @@ button:disabled,
 .page-nav ul {
   position: relative;
   display: flex;
-  gap: 1rem;
+  gap: 0.8rem;
   flex-wrap: nowrap;
   list-style: none;
   margin: 0;
@@ -268,9 +401,9 @@ button:disabled,
 }
 
 .page-main {
-  width: min(1120px, calc(100% - 2rem));
+  width: min(1120px, calc(100% - 3rem));
   margin: 0 auto;
-  padding: 1.5rem 0 4rem;
+  padding: 2rem 0 4rem;
 }
 
 .btn {
@@ -309,6 +442,12 @@ button:disabled,
 .btn-ghost:focus-visible {
   background: rgba(247, 223, 30, 0.08);
   border-color: rgba(247, 223, 30, 0.32);
+}
+
+.back-button {
+  position: relative;
+  flex-shrink: 0;
+  margin-left: 0.75rem;
 }
 
 .section-block {
@@ -380,264 +519,15 @@ button:disabled,
   margin-bottom: 2rem;
 }
 
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.hero-visual {
-  display: grid;
-  gap: 1.2rem;
-}
-
-.hero-card {
-  position: relative;
-  border-radius: 30px;
-  padding: 1.6rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: var(--shadow-soft);
-  overflow: hidden;
-}
-
-.js-card {
-  padding: 2rem;
-  min-height: 320px;
-}
-
-.js-card__badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 74px;
-  height: 74px;
-  border-radius: 22px;
-  background: rgba(247, 223, 30, 0.18);
-  color: #050505;
-  font-size: 1.85rem;
-  font-weight: 800;
-  margin-bottom: 1.5rem;
-}
-
-.js-card__window {
-  border-radius: 24px;
-  overflow: hidden;
-  background: rgba(10, 10, 10, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.js-card__toolbar {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.95rem 1rem;
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.js-card__toolbar span {
-  width: 0.9rem;
-  height: 0.9rem;
-  border-radius: 50%;
-  background: #ff5f56;
-}
-
-.js-card__toolbar span:nth-child(2) {
-  background: #ffbd2e;
-}
-
-.js-card__toolbar span:nth-child(3) {
-  background: #27c93f;
-}
-
-.js-card__code {
-  padding: 1.4rem 1.2rem 1.2rem;
-  display: grid;
-  gap: 0.75rem;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.95rem;
-  color: #dbe2ff;
-  background: linear-gradient(180deg, rgba(11, 11, 11, 0.98), rgba(8, 8, 8, 0.98));
-}
-
-.code-line {
-  display: block;
-}
-
-.code-key {
-  color: #f7df1e;
-}
-
-.code-string {
-  color: #7dd3fc;
-}
-
-.indent {
-  padding-left: 1.4rem;
-}
-
-.terminal-card {
-  background: rgba(11, 11, 11, 0.96);
-  padding: 1.4rem 1.3rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.terminal-card__header {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  margin-bottom: 1rem;
-}
-
-.terminal-card__header span {
-  width: 0.8rem;
-  height: 0.8rem;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.terminal-label {
-  margin-left: auto;
-  color: var(--text-muted);
-  font-size: 0.85rem;
-}
-
-.terminal-card__body {
-  display: grid;
-  gap: 0.7rem;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.95rem;
-}
-
-.terminal-line {
-  color: rgba(255, 255, 255, 0.78);
-}
+/* Removed unused hero subcomponents and terminal/project grids to simplify layout.
+   These styles were part of earlier iterations (cards, terminal, timeline)
+   and are not referenced by the current HTML for the 2nd semester page.
+   Keeping the file lean improves loading and maintainability. */
 
 /* -------------------- SECTIONS -------------------- */
-.learning-grid,
-.project-grid,
-.course-grid,
-.skills-grid {
-  display: grid;
-  gap: 1.4rem;
-}
-
-.learning-grid {
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-}
-
-.feature-card,
-.project-card,
-.course-card,
-.skill-panel,
-.contact-panel {
-  background: var(--bg-card);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: var(--radius);
-  padding: 1.6rem;
-  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.16);
-}
-
-.feature-card h3,
-.project-card h3,
-.course-card h3,
-.skill-panel h3 {
-  margin-bottom: 0.85rem;
-  font-size: 1.05rem;
-}
-
-.feature-card p,
-.project-card p,
-.course-card p,
-.skill-panel p {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-}
-
-.project-card {
-  display: grid;
-  gap: 1rem;
-}
-
-.project-card__meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  color: var(--js-yellow);
-  font-size: 0.86rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.project-card__tech {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-}
-
-.project-card button {
-  width: max-content;
-}
-
-.course-grid {
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
-
-.course-card--placeholder {
-  grid-column: span 2;
-  text-align: center;
-}
-
-.course-status {
-  display: inline-flex;
-  margin-top: 0.95rem;
-  padding: 0.45rem 0.85rem;
-  border-radius: 999px;
-  background: rgba(247, 223, 30, 0.12);
-  color: var(--js-yellow);
-  font-size: 0.82rem;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-}
-
-.skill-panel ul {
-  list-style: none;
-  margin-top: 1rem;
-  display: grid;
-  gap: 0.75rem;
-  color: var(--text-muted);
-}
-
-.skill-panel li::before {
-  content: '▹';
-  color: var(--js-yellow);
-  margin-right: 0.7rem;
-}
-
-.skills-grid {
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-}
-
-.timeline {
-  display: grid;
-  gap: 1.2rem;
-}
-
-.timeline-item {
-  padding: 1.4rem 1.6rem;
-  border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.timeline-item strong {
-  display: block;
-  margin-bottom: 0.6rem;
-  color: var(--js-yellow);
-}
-
-.timeline-item p {
-  color: var(--text-muted);
-}
+/* Removed unused section grids and cards (projects/courses/skills/timeline)
+   Those sections are no longer part of this page; styles removed to reduce
+   bundle size. */
 
 .roadmap-list {
   list-style: none;
@@ -715,6 +605,165 @@ button:disabled,
   margin-top: 0.5rem;
 }
 
+/* ===================== LIGHTNING BOLT (versão original adaptada) ===================== */
+.hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 520px;
+  min-height: 420px;
+}
+
+.raio-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 60px rgba(247, 223, 30, 0.6));
+}
+
+/* Raio principal */
+.raio-principal {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  animation: boltFlicker 0.08s infinite alternate ease-in-out;
+  filter:
+    drop-shadow(0 0 20px #f7df1e)
+    drop-shadow(0 0 40px #ff9800)
+    drop-shadow(0 0 80px #ff5722);
+}
+
+/* ===================== FAÍSCAS (agora como vaga-lumes) ===================== */
+.faisca {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #f7df1e;
+  border-radius: 50%;
+  box-shadow:
+    0 0 12px #f7df1e,
+    0 0 24px #ff9800;
+  z-index: 2;
+  opacity: 0.7;
+}
+
+/* Vaga-lume 1 - movimento suave e flutuante */
+.f-1 {
+  top: 20%;
+  left: 25%;
+  animation: vagaLume1 5.2s ease-in-out infinite alternate;
+}
+
+/* Vaga-lume 2 - trajetória diferente */
+.f-2 {
+  top: 38%;
+  left: 70%;
+  animation: vagaLume2 6.1s ease-in-out infinite alternate;
+  animation-delay: 1.2s;
+}
+
+/* Vaga-lume 3 - outra rota */
+.f-3 {
+  top: 58%;
+  left: 20%;
+  animation: vagaLume3 4.8s ease-in-out infinite alternate;
+  animation-delay: 2.4s;
+}
+
+/* Animações dos vaga-lumes (movimento orgânico) */
+@keyframes vagaLume1 {
+  0%   { transform: translate(0, 0) scale(0.6); opacity: 0.5; }
+  25%  { transform: translate(18px, -22px) scale(1.1); opacity: 1; }
+  50%  { transform: translate(-14px, 16px) scale(0.7); opacity: 0.75; }
+  75%  { transform: translate(12px, -9px) scale(1); opacity: 0.95; }
+  100% { transform: translate(0, 0) scale(0.6); opacity: 0.5; }
+}
+
+@keyframes vagaLume2 {
+  0%   { transform: translate(0, 0) scale(0.55); opacity: 0.6; }
+  30%  { transform: translate(-16px, 14px) scale(1); opacity: 1; }
+  55%  { transform: translate(11px, -18px) scale(0.65); opacity: 0.7; }
+  80%  { transform: translate(-8px, 10px) scale(1.05); opacity: 0.95; }
+  100% { transform: translate(0, 0) scale(0.55); opacity: 0.6; }
+}
+
+@keyframes vagaLume3 {
+  0%   { transform: translate(0, 0) scale(0.65); opacity: 0.55; }
+  20%  { transform: translate(14px, -15px) scale(1.1); opacity: 1; }
+  45%  { transform: translate(-12px, 19px) scale(0.6); opacity: 0.8; }
+  70%  { transform: translate(9px, -7px) scale(0.95); opacity: 1; }
+  100% { transform: translate(0, 0) scale(0.65); opacity: 0.55; }
+}
+
+@keyframes vagaLume3 {
+  0%   { transform: translate(0, 0) scale(0.65); opacity: 0.55; }
+  20%  { transform: translate(14px, -15px) scale(1.1); opacity: 1; }
+  45%  { transform: translate(-12px, 19px) scale(0.6); opacity: 0.8; }
+  70%  { transform: translate(9px, -7px) scale(0.95); opacity: 1; }
+  100% { transform: translate(0, 0) scale(0.65); opacity: 0.55; }
+}
+
+.f-1 { top: 20%; left: 25%; animation-delay: 0s; }
+.f-2 { top: 38%; left: 70%; animation-delay: 1s; }
+.f-3 { top: 58%; left: 20%; animation-delay: 2s; }
+
+/* Animação de cintilação do raio */
+@keyframes boltFlicker {
+  0%   { opacity: 0.92; filter: brightness(1) drop-shadow(0 0 30px #f7df1e); }
+  50%  { opacity: 1;    filter: brightness(1.15) drop-shadow(0 0 70px #ffeb3b); }
+  100% { opacity: 0.95; filter: brightness(1.05) drop-shadow(0 0 45px #ff9800); }
+}
+
+/* Animação das faíscas */
+@keyframes sparkBurst {
+  0%, 100% {
+    transform: scale(0.4) translate(0, 0);
+    opacity: 0;
+  }
+  20% {
+    transform: scale(1.4) translate(-12px, -25px);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(0.8) translate(18px, 15px);
+    opacity: 0.7;
+  }
+  80% {
+    transform: scale(1.1) translate(-8px, -18px);
+    opacity: 0.85;
+  }
+}
+
+/* Névoa elétrica de fundo (agora em .raio-container) */
+.raio-container::before {
+  content: '';
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle at 50% 40%, rgba(255, 152, 0, 0.25), transparent 70%);
+  filter: blur(60px);
+  z-index: -1;
+  animation: electricHaze 4s ease-in-out infinite alternate;
+}
+
+@keyframes electricHaze {
+  0%   { opacity: 0.6; transform: scale(0.95); }
+  100% { opacity: 0.85; transform: scale(1.05); }
+}
+
+/* Responsivo */
+@media (max-width: 960px) {
+  .hero-visual {
+    height: 380px;
+  }
+  .raio-principal {
+    max-width: 320px;
+  }
+}
+
 /* -------------------- ANIMATIONS -------------------- */
 @keyframes floatCard {
   0%, 100% {
@@ -744,6 +793,11 @@ button:disabled,
   .page-header {
     flex-direction: column;
     align-items: flex-start;
+
+  /* raise the navigation slightly for typographic balance */
+  .page-nav {
+    transform: translateY(-8px);
+  }
   }
 
   .page-nav ul {

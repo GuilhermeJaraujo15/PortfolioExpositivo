@@ -711,32 +711,12 @@
       }
     });
 
-    projectKeys.forEach((key, index) => {
-      const item = t.projects[key];
-      const cardIndex = index + 1;
-      setDateWithIcon(`#Projetos .timeline-item:nth-of-type(${cardIndex}) .timeline-date`, item.date);
-      setAttr(`#Projetos .timeline-item:nth-of-type(${cardIndex}) .timeline-link`, "aria-label", item.aria);
-    });
-
-    document.querySelectorAll("#Projetos .timeline-link").forEach((link) => {
-      link.setAttribute("data-tooltip", t.projects.tooltip);
-    });
-
-    setAllText(".timeline-link .sr-only", t.projects.openWindow);
-    setAllText(".prototype-content .proto-link span", t.prototypes.access);
-
-    setAttr('#prototype-low .proto-link', "aria-label", t.prototypes.low.aria);
-    setAttr('#prototype-high .proto-link', "aria-label", t.prototypes.high.aria);
-    setAttr('#prototype-low .close-prototype', "aria-label", t.prototypes.closeAria);
-    setAttr('#prototype-high .close-prototype', "aria-label", t.prototypes.closeAria);
-    setAttr(".tech-email-icon", "aria-label", t.footer.copyEmail);
-    setAttr(".footer-icon-left i", "aria-label", t.footer.openLow);
-    setAttr(".footer-icon-right i", "aria-label", t.footer.openHigh);
-
-    const treeLines = document.querySelectorAll("#tree-branches .typewriter-line");
-    treeLines.forEach((line, idx) => {
-      if (t.skills.lines[idx]) line.textContent = t.skills.lines[idx];
-    });
+    // The following dynamic mappings were removed because the related
+    // DOM structures (projects timeline, prototype widgets and footer
+    // prototype icons) are not present in the current portfóliodois.html.
+    // Keeping this code would attempt to access non-existent elements and
+    // add unnecessary complexity. If these components are reintroduced,
+    // restore the mapping logic below.
 
     const nextStepItems = document.querySelectorAll("[id='Próximos Passos'] ol li");
     nextStepItems.forEach((item, idx) => {
@@ -793,6 +773,9 @@
     const initialLang = getInitialLanguage();
     applyLanguage(initialLang);
     updateLanguageMenu(initialLang);
+    // Ensure UI components that depend on layout (nav indicator) recalculate
+    // after initial language application
+    setTimeout(() => window.dispatchEvent(new Event('resize')), 60);
 
     menuToggle.addEventListener("click", (event) => {
       event.stopPropagation();
@@ -812,6 +795,12 @@
       updateLanguageMenu(nextLang);
       closeLanguageMenu();
       
+      // Force a resize event shortly after language swap so components
+      // that measure text (like the nav active indicator) recalc widths.
+      setTimeout(() => {
+        window.dispatchEvent(new Event('resize'));
+      }, 80);
+
       // Remover classe de animação após 450ms
       setTimeout(() => {
         switcher.classList.remove("is-switching-language");

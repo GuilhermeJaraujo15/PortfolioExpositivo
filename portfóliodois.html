@@ -1,436 +1,453 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfólio do 2º semestre focado em JavaScript e interfaces interativas"
+    />
+    <title>Portfólio 2º Semestre | JavaScript</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfólio do 2º semestre focado em JavaScript e interfaces interativas" />
-  <title>Portfólio 2º Semestre | JavaScript</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Jura:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="portfóliodois.css" />
+  </head>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Jura:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="portfóliodois.css" />
-</head>
-
-<body data-page="portfolio-two">
-  <div class="language-switcher" role="group" aria-label="Seletor de idioma">
-    <div class="language-pill">
-      <span id="language-current-flag" class="language-flag" aria-hidden="true">🇧🇷</span>
-      <span id="language-current-label" class="language-label">Português</span>
-      <button id="language-menu-toggle" class="language-caret-btn" type="button" aria-label="Abrir seleção de idioma" aria-expanded="false"></button>
+  <body data-page="portfolio-two">
+    <div class="language-switcher" role="group" aria-label="Seletor de idioma">
+      <div class="language-pill">
+        <span
+          id="language-current-flag"
+          class="language-flag"
+          aria-hidden="true"
+          ></span
+        >
+        <span id="language-current-label" class="language-label"
+          >Português</span
+        >
+        <button
+          id="language-menu-toggle"
+          class="language-caret-btn"
+          type="button"
+          aria-label="Abrir seleção de idioma"
+          aria-expanded="false"
+        ></button>
+      </div>
+      <div
+        id="language-dropdown"
+        class="language-dropdown"
+        role="menu"
+        aria-label="Escolher idioma"
+      >
+        <button
+          id="language-alt-option"
+          class="language-option-item"
+          type="button"
+          role="menuitem"
+        >
+          <span id="language-alt-flag" class="language-flag" aria-hidden="true"
+            ></span
+          >
+          <span id="language-alt-label">English</span>
+        </button>
+      </div>
     </div>
-    <div id="language-dropdown" class="language-dropdown" role="menu" aria-label="Escolher idioma">
-      <button id="language-alt-option" class="language-option-item" type="button" role="menuitem">
-        <span id="language-alt-flag" class="language-flag" aria-hidden="true">🇺🇸</span>
-        <span id="language-alt-label">English</span>
-      </button>
-    </div>
-  </div>
 
-  <header class="page-header">
-    <div class="page-brand logo" aria-label="Logo guilherme_Araujo">guilherme_Araujo</div>
-    <nav class="page-nav" aria-label="Navegação principal">
-      <div class="nav-shell">
-        <span class="nav-active-indicator" aria-hidden="true"></span>
-        <ul>
-          <li><a href="#aprendizado" aria-current="page" data-i18n="semester2.nav.aprendizado">Aprendizado</a></li>
-          <li><a href="#projetos" data-i18n="semester2.nav.projetos">Projetos</a></li>
-          <li><a href="#cursos" data-i18n="semester2.nav.cursos">Cursos</a></li>
-          <li><a href="#habilidades" data-i18n="semester2.nav.habilidades">Habilidades</a></li>
-          <li><a href="#evolucao-tecnica" data-i18n="semester2.nav.evolucao">Evolução Técnica</a></li>
-          <li><a href="#proximos-passos" data-i18n="semester2.nav.nextSteps">Próximos Passos</a></li>
-          <li><a href="#contato" data-i18n="semester2.nav.contato">Contato</a></li>
+    <header class="page-header">
+      <div class="page-brand logo" aria-label="Logo guilherme_Araujo">
+        guilherme_Araujo
+      </div>
+      <a
+        href="introdução.html"
+        class="btn btn-ghost back-button"
+        aria-label="Voltar para seleção de semestres"
+        >← Voltar</a
+      >
+      <nav class="page-nav" aria-label="Navegação principal">
+        <div class="nav-shell">
+          <span class="nav-active-indicator" aria-hidden="true"></span>
+          <ul>
+            <li>
+              <a
+                href="#aprendizado"
+                aria-current="page"
+                data-i18n="semester2.nav.aprendizado"
+                >Aprendizado</a
+              >
+            </li>
+            <li>
+              <a href="#proximos-passos" data-i18n="semester2.nav.nextSteps"
+                >Próximos Passos</a
+              >
+            </li>
+
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="page-main">
+      <section class="hero-panel" id="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <span class="eyebrow" data-i18n="semester2.hero.pretitle"
+            >2º Semestre • JavaScript</span
+          >
+          <h1 id="hero-title" data-i18n="semester2.hero.headline">
+            JavaScript Developer
+          </h1>
+          <p class="hero-text" data-i18n="semester2.hero.subtitle">
+            Este semestre foi dedicado à lógica, interação e interfaces
+            dinâmicas usando DOM, eventos e comportamento web.
+          </p>
+        </div>
+
+        <div class="hero-visual">
+          <div class="raio-container">
+            <!-- Névoa de energia de fundo -->
+            <div class="raio-glow"></div>
+
+            <!-- Faíscas -->
+            <div class="faisca f-1"></div>
+            <div class="faisca f-2"></div>
+            <div class="faisca f-3"></div>
+
+
+            <!-- RAIO 3D PROFISSIONAL (único SVG com camadas) -->
+            <svg
+              class="raio-principal"
+              viewBox="0 0 100 160"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <defs>
+                <linearGradient
+                  id="gradiente-js-eletrico"
+                  x1="38%"
+                  y1="0%"
+                  x2="62%"
+                  y2="100%"
+                >
+                  <stop offset="0%" stop-color="#fffb00" />
+                  <stop offset="32%" stop-color="#ffcc00" />
+                  <stop offset="55%" stop-color="#ff9800" />
+                  <stop offset="78%" stop-color="#f57c00" />
+                  <stop offset="100%" stop-color="#e65100" />
+                </linearGradient>
+              </defs>
+
+              <!-- 1. Sombra de profundidade (camada mais atrás) -->
+              <path
+                d="M70 5 L18 82 L50 82 L15 158 L88 68 L48 68 Z"
+                fill="#9c4a00"
+                transform="translate(5.5 7.5)"
+              />
+
+              <!-- 2. Raio principal (corpo volumétrico) -->
+              <path
+                d="M70 5 L18 82 L50 82 L15 158 L88 68 L48 68 Z"
+                fill="url(#gradiente-js-eletrico)"
+                stroke="#fff59d"
+                stroke-width="2.2"
+                stroke-linejoin="round"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="aprendizado"
+        class="section-block"
+        aria-labelledby="aprendizado-title"
+      >
+        <div class="section-header">
+          <div>
+            <h2
+              class="section-eyebrow"
+              id="aprendizado-title"
+              data-i18n="semester2.learning.title"
+            >
+              O que aprendi neste 2º Semestre
+            </h2>
+            <p class="section-copy" data-i18n="semester2.learning.description">
+              Conhecimentos e práticas que evoluíram o desenvolvimento de
+              interfaces mais interativas.
+            </p>
+          </div>
+        </div>
+        <div class="cards-grid learning-grid">
+          <article class="feature-card">
+            <h3 data-i18n="semester2.learning.item1.title">
+              Fundamentos da linguagem JavaScript
+            </h3>
+            <p data-i18n="semester2.learning.item1.desc">
+              Sintaxe, variáveis e controle de fluxo para raciocínio lógico.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3 data-i18n="semester2.learning.item2.title">
+              Variáveis, tipos de dados e operadores
+            </h3>
+            <p data-i18n="semester2.learning.item2.desc">
+              Uso de valores, operadores e expressão de resultados no navegador.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3 data-i18n="semester2.learning.item3.title">
+              Condicionais e estruturas de repetição
+            </h3>
+            <p data-i18n="semester2.learning.item3.desc">
+              Fluxo de decisão e repetição para comportamento mais inteligente.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3 data-i18n="semester2.learning.item4.title">
+              Funções e organização de lógica
+            </h3>
+            <p data-i18n="semester2.learning.item4.desc">
+              Blocos reutilizáveis que tornam o JavaScript mais legível e
+              modular.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3 data-i18n="semester2.learning.item5.title">Arrays e objetos</h3>
+            <p data-i18n="semester2.learning.item5.desc">
+              Estruturas para organizar dados e estados de aplicações.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3 data-i18n="semester2.learning.item6.title">
+              Manipulação do DOM
+            </h3>
+            <p data-i18n="semester2.learning.item6.desc">
+              Atualização de conteúdo, classes e estrutura a partir de código.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3 data-i18n="semester2.learning.item7.title">
+              Eventos e interatividade
+            </h3>
+            <p data-i18n="semester2.learning.item7.desc">
+              Ações do usuário transformadas em resposta e feedback visual.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3 data-i18n="semester2.learning.item8.title">
+              Validação de formulários
+            </h3>
+            <p data-i18n="semester2.learning.item8.desc">
+              Verificação de dados e orientações antes do envio.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3 data-i18n="semester2.learning.item9.title">
+              LocalStorage e armazenamento
+            </h3>
+            <p data-i18n="semester2.learning.item9.desc">
+              Persistência simples de dados no navegador para experiências
+              contínuas.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3 data-i18n="semester2.learning.item10.title">
+              Lógica aplicada a interfaces web
+            </h3>
+            <p data-i18n="semester2.learning.item10.desc">
+              Construção de páginas que reagem e se adaptam ao usuário.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section
+        id="proximos-passos"
+        class="section-block"
+        aria-labelledby="next-title"
+      >
+        <div class="section-header">
+          <div>
+            <h2
+              class="section-eyebrow"
+              id="next-title"
+              data-i18n="semester2.nextSteps.title"
+            >
+              Próximos Passos
+            </h2>
+            <p class="section-copy" data-i18n="semester2.nextSteps.intro">
+              Planejamento para os próximos semestres com foco em código mais
+              organizado e integração.
+            </p>
+          </div>
+        </div>
+        <ul class="roadmap-list">
+          <li data-i18n="semester2.nextSteps.item1">
+            Aprofundar JavaScript moderno.
+          </li>
+          <li data-i18n="semester2.nextSteps.item2">
+            Estudar APIs e consumo de dados.
+          </li>
+          <li data-i18n="semester2.nextSteps.item3">
+            Evoluir para frameworks como React.
+          </li>
+          <li data-i18n="semester2.nextSteps.item4">
+            Integrar front-end com back-end.
+          </li>
+          <li data-i18n="semester2.nextSteps.item5">
+            Iniciar banco de dados com mais profundidade.
+          </li>
+          <li data-i18n="semester2.nextSteps.item6">
+            Melhorar organização de código e boas práticas.
+          </li>
         </ul>
-      </div>
-    </nav>
-    <a href="introdução.html" class="btn btn-ghost" data-i18n="semester2.nav.back">Voltar ao Hub</a>
-  </header>
+      </section>
 
-  <main class="page-main">
-    <section class="hero-panel" id="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <span class="eyebrow" data-i18n="semester2.hero.pretitle">2º Semestre • JavaScript</span>
-        <h1 id="hero-title" data-i18n="semester2.hero.headline">JavaScript Developer</h1>
-        <p class="hero-text" data-i18n="semester2.hero.subtitle">Este semestre foi dedicado à lógica, interação e interfaces dinâmicas usando DOM, eventos e comportamento web.</p>
-        <div class="hero-actions">
-          <a href="#projetos" class="btn btn-primary" data-i18n="semester2.hero.ctaProjects">Ver Projetos</a>
-          <a href="#habilidades" class="btn btn-secondary" data-i18n="semester2.hero.ctaSkills">Ver Habilidades</a>
-        </div>
-      </div>
-
-      <div class="hero-visual" aria-hidden="true">
-        <div class="hero-card js-card">
-          <div class="js-card__badge">JS</div>
-          <div class="js-card__window">
-            <div class="js-card__toolbar">
-              <span></span><span></span><span></span>
-            </div>
-            <div class="js-card__code">
-              <span class="code-line"><span class="code-key">const</span> app = {'{'} </span>
-              <span class="code-line indent"><span class="code-key">theme</span>: <span class="code-string">'javascript'</span>,</span>
-              <span class="code-line indent"><span class="code-key">state</span>: <span class="code-string">'interactive'</span>,</span>
-              <span class="code-line indent"><span class="code-key">events</span>: ['click', 'input', 'submit']</span>
-              <span class="code-line">{'}'};</span>
-            </div>
+      <section
+        id="contato"
+        class="section-block contact-block"
+        aria-labelledby="contact-title"
+      >
+        <div class="section-header">
+          <div>
+            <h2 class="section-eyebrow" id="contact-title">Contato</h2>
+            <p class="section-copy">
+              Interessado em ver os próximos passos ou colaborar em projetos de
+              estudo? Vamos conversar.
+            </p>
           </div>
         </div>
-        <div class="hero-card terminal-card">
-          <div class="terminal-card__header">
-            <span></span><span></span><span></span>
-            <span class="terminal-label">Console</span>
-          </div>
-          <div class="terminal-card__body">
-            <span class="terminal-line">> init.js loaded</span>
-            <span class="terminal-line">> DOM events connected</span>
-            <span class="terminal-line">> component render: success</span>
-          </div>
+        <div class="contact-panel">
+          <p class="contact-label">E-mail</p>
+          <p class="contact-value">contato@portfolio.dev</p>
+          <a href="#hero" class="btn btn-primary">Voltar ao topo</a>
         </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <p class="footer-copy" data-i18n="semester2.footer.copyright">
+          2025 • Guilherme Jorge de Araujo
+        </p>
+        <p class="footer-email" data-i18n="semester2.footer.email">
+          contato@portfolio.dev
+        </p>
       </div>
-    </section>
-
-    <section id="aprendizado" class="section-block" aria-labelledby="aprendizado-title">
-      <div class="section-header">
-        <div>
-          <h2 class="section-eyebrow" id="aprendizado-title" data-i18n="semester2.learning.title">O que aprendi neste 2º Semestre</h2>
-          <p class="section-copy" data-i18n="semester2.learning.description">Conhecimentos e práticas que evoluíram o desenvolvimento de interfaces mais interativas.</p>
-        </div>
+      <div class="footer-links">
       </div>
-      <div class="cards-grid learning-grid">
-        <article class="feature-card">
-          <h3 data-i18n="semester2.learning.item1.title">Fundamentos da linguagem JavaScript</h3>
-          <p data-i18n="semester2.learning.item1.desc">Sintaxe, variáveis e controle de fluxo para raciocínio lógico.</p>
-        </article>
-        <article class="feature-card">
-          <h3 data-i18n="semester2.learning.item2.title">Variáveis, tipos de dados e operadores</h3>
-          <p data-i18n="semester2.learning.item2.desc">Uso de valores, operadores e expressão de resultados no navegador.</p>
-        </article>
-        <article class="feature-card">
-          <h3 data-i18n="semester2.learning.item3.title">Condicionais e estruturas de repetição</h3>
-          <p data-i18n="semester2.learning.item3.desc">Fluxo de decisão e repetição para comportamento mais inteligente.</p>
-        </article>
-        <article class="feature-card">
-          <h3 data-i18n="semester2.learning.item4.title">Funções e organização de lógica</h3>
-          <p data-i18n="semester2.learning.item4.desc">Blocos reutilizáveis que tornam o JavaScript mais legível e modular.</p>
-        </article>
-        <article class="feature-card">
-          <h3 data-i18n="semester2.learning.item5.title">Arrays e objetos</h3>
-          <p data-i18n="semester2.learning.item5.desc">Estruturas para organizar dados e estados de aplicações.</p>
-        </article>
-        <article class="feature-card">
-          <h3 data-i18n="semester2.learning.item6.title">Manipulação do DOM</h3>
-          <p data-i18n="semester2.learning.item6.desc">Atualização de conteúdo, classes e estrutura a partir de código.</p>
-        </article>
-        <article class="feature-card">
-          <h3 data-i18n="semester2.learning.item7.title">Eventos e interatividade</h3>
-          <p data-i18n="semester2.learning.item7.desc">Ações do usuário transformadas em resposta e feedback visual.</p>
-        </article>
-        <article class="feature-card">
-          <h3 data-i18n="semester2.learning.item8.title">Validação de formulários</h3>
-          <p data-i18n="semester2.learning.item8.desc">Verificação de dados e orientações antes do envio.</p>
-        </article>
-        <article class="feature-card">
-          <h3 data-i18n="semester2.learning.item9.title">LocalStorage e armazenamento</h3>
-          <p data-i18n="semester2.learning.item9.desc">Persistência simples de dados no navegador para experiências contínuas.</p>
-        </article>
-        <article class="feature-card">
-          <h3 data-i18n="semester2.learning.item10.title">Lógica aplicada a interfaces web</h3>
-          <p data-i18n="semester2.learning.item10.desc">Construção de páginas que reagem e se adaptam ao usuário.</p>
-        </article>
-      </div>
-    </section>
+    </footer>
 
-    <section id="projetos" class="section-block" aria-labelledby="projetos-title">
-      <div class="section-header">
-        <div>
-          <h2 class="section-eyebrow" id="projetos-title" data-i18n="semester2.projects.title">Projetos</h2>
-          <p class="section-copy" data-i18n="semester2.projects.intro">Estudos e protótipos que reforçam a prática em JavaScript e interação.</p>
-        </div>
-      </div>
-      <div class="cards-grid project-grid">
-        <article class="project-card">
-          <div class="project-card__meta">
-            <span data-i18n="semester2.projects.card1.status">Em desenvolvimento</span>
-            <span>•</span>
-            <span data-i18n="semester2.projects.card1.date">2º Semestre</span>
-          </div>
-          <h3 data-i18n="semester2.projects.card1.title">Projeto de Manipulação do DOM</h3>
-          <p data-i18n="semester2.projects.card1.desc">Exercício para atualizar elementos e estado visual com JavaScript.</p>
-          <p class="project-card__tech" data-i18n="semester2.projects.card1.tech">HTML, CSS, JavaScript</p>
-          <button class="btn btn-secondary btn-disabled" disabled data-i18n="semester2.projects.card1.cta">Ver detalhes</button>
-        </article>
+    <script>
+      (function () {
+        const navShell = document.querySelector(".page-nav .nav-shell");
+        const navLinks = Array.from(
+          document.querySelectorAll('.page-nav a[href^="#"]'),
+        );
+        if (!navShell || navLinks.length === 0) return;
 
-        <article class="project-card">
-          <div class="project-card__meta">
-            <span data-i18n="semester2.projects.card2.status">Protótipo</span>
-            <span>•</span>
-            <span data-i18n="semester2.projects.card2.date">2º Semestre</span>
-          </div>
-          <h3 data-i18n="semester2.projects.card2.title">Validador de Formulários</h3>
-          <p data-i18n="semester2.projects.card2.desc">Formulário com validação e retorno em tempo real.</p>
-          <p class="project-card__tech" data-i18n="semester2.projects.card2.tech">HTML, CSS, JavaScript</p>
-          <button class="btn btn-secondary btn-disabled" disabled data-i18n="semester2.projects.card2.cta">Em breve</button>
-        </article>
+        const activeIndicator = navShell.querySelector(".nav-active-indicator");
+        let activeLink =
+          navLinks.find((link) => link.hasAttribute("aria-current")) ||
+          navLinks[0];
+        let observerLocked = false;
 
-        <article class="project-card">
-          <div class="project-card__meta">
-            <span data-i18n="semester2.projects.card3.status">Em criação</span>
-            <span>•</span>
-            <span data-i18n="semester2.projects.card3.date">2º Semestre</span>
-          </div>
-          <h3 data-i18n="semester2.projects.card3.title">Mini Sistema Interativo</h3>
-          <p data-i18n="semester2.projects.card3.desc">Interface com filtros, listas e respostas do usuário em tempo real.</p>
-          <p class="project-card__tech" data-i18n="semester2.projects.card3.tech">JavaScript, DOM, Eventos</p>
-          <button class="btn btn-secondary btn-disabled" disabled data-i18n="semester2.projects.card3.cta">Em breve</button>
-        </article>
+        function moveIndicator(link, instant) {
+          if (!link || !activeIndicator) return;
 
-        <article class="project-card">
-          <div class="project-card__meta">
-            <span data-i18n="semester2.projects.card4.status">Planejado</span>
-            <span>•</span>
-            <span data-i18n="semester2.projects.card4.date">2º Semestre</span>
-          </div>
-          <h3 data-i18n="semester2.projects.card4.title">Projeto Final do 2º Semestre</h3>
-          <p data-i18n="semester2.projects.card4.desc">Integração de lógica e estrutura para uma experiência mais robusta.</p>
-          <p class="project-card__tech" data-i18n="semester2.projects.card4.tech">JavaScript, LocalStorage, DOM</p>
-          <button class="btn btn-secondary btn-disabled" disabled data-i18n="semester2.projects.card4.cta">Em breve</button>
-        </article>
-      </div>
-    </section>
+          const offsetLeft = link.offsetLeft - 3;
+          const width = link.offsetWidth + 6;
 
-    <section id="cursos" class="section-block" aria-labelledby="cursos-title">
-      <div class="section-header">
-        <div>
-          <h2 class="section-eyebrow" id="cursos-title" data-i18n="semester2.courses.title">Cursos</h2>
-          <p class="section-copy" data-i18n="semester2.courses.intro">Formação e aprendizado que complementam a jornada em JavaScript.</p>
-        </div>
-      </div>
-      <div class="cards-grid course-grid">
-        <article class="course-card">
-          <h3 data-i18n="semester2.courses.card1.title">Curso de JavaScript Básico</h3>
-          <p class="course-org" data-i18n="semester2.courses.card1.org">Plataforma de Estudo</p>
-          <p class="course-date" data-i18n="semester2.courses.card1.date">2025</p>
-          <span class="course-status" data-i18n="semester2.courses.card1.status">Concluído</span>
-          <button class="btn btn-secondary btn-disabled" disabled data-i18n="semester2.courses.card1.aria">Ver detalhes</button>
-        </article>
-        <article class="course-card">
-          <h3 data-i18n="semester2.courses.card2.title">Fundamentos de DOM</h3>
-          <p class="course-org" data-i18n="semester2.courses.card2.org">Curso Interno</p>
-          <p class="course-date" data-i18n="semester2.courses.card2.date">2025</p>
-          <span class="course-status" data-i18n="semester2.courses.card2.status">Em andamento</span>
-          <button class="btn btn-secondary btn-disabled" disabled data-i18n="semester2.courses.card2.aria">Ver detalhes</button>
-        </article>
-        <article class="course-card course-card--placeholder">
-          <h3 data-i18n="semester2.courses.statusUpdating">Em atualização</h3>
-          <p>Mais cursos e formações serão adicionados à medida que o semestre evolui.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="habilidades" class="section-block" aria-labelledby="habilidades-title">
-      <div class="section-header">
-        <div>
-          <h2 class="section-eyebrow" id="habilidades-title" data-i18n="semester2.skills.title">Relações de Habilidades</h2>
-          <p class="section-copy" data-i18n="semester2.skills.intro">Mapa de competências usado para a construção de interfaces com JavaScript.</p>
-        </div>
-      </div>
-      <div class="skills-grid">
-        <article class="skill-panel">
-          <h3>JavaScript</h3>
-          <ul>
-            <li>Syntax</li>
-            <li>Conditionals</li>
-            <li>Loops</li>
-            <li>Functions</li>
-            <li>Arrays</li>
-            <li>Objects</li>
-            <li>DOM</li>
-            <li>Events</li>
-            <li>Forms</li>
-            <li>LocalStorage</li>
-          </ul>
-        </article>
-        <article class="skill-panel">
-          <h3>HTML</h3>
-          <ul>
-            <li>Semântica</li>
-            <li>Estrutura</li>
-          </ul>
-        </article>
-        <article class="skill-panel">
-          <h3>CSS</h3>
-          <ul>
-            <li>Responsividade</li>
-            <li>Layout</li>
-            <li>Estados visuais</li>
-          </ul>
-        </article>
-        <article class="skill-panel">
-          <h3>Git & GitHub</h3>
-          <ul>
-            <li>Versionamento</li>
-            <li>Organização de projetos</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section id="evolucao-tecnica" class="section-block" aria-labelledby="evolucao-title">
-      <div class="section-header">
-        <div>
-          <h2 class="section-eyebrow" id="evolucao-title" data-i18n="semester2.evolution.title">Evolução Técnica</h2>
-          <p class="section-copy" data-i18n="semester2.evolution.subtitle">Da primeira página estática para interfaces mais dinâmicas e interativas.</p>
-        </div>
-      </div>
-      <div class="timeline">
-        <div class="timeline-item">
-          <strong>1º Semestre</strong>
-          <p data-i18n="semester2.evolution.point1">Primeiro semestre com foco em HTML e CSS.</p>
-        </div>
-        <div class="timeline-item">
-          <strong>2º Semestre</strong>
-          <p data-i18n="semester2.evolution.point2">Segundo semestre com foco em JavaScript e comportamento web.</p>
-        </div>
-        <div class="timeline-item">
-          <strong>Integração</strong>
-          <p data-i18n="semester2.evolution.point3">Aplicação de lógica nas rotinas de usuário.</p>
-        </div>
-        <div class="timeline-item">
-          <strong>Visão</strong>
-          <p data-i18n="semester2.evolution.point4">Uma visão mais madura de página como produto.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="proximos-passos" class="section-block" aria-labelledby="next-title">
-      <div class="section-header">
-        <div>
-          <h2 class="section-eyebrow" id="next-title" data-i18n="semester2.nextSteps.title">Próximos Passos</h2>
-          <p class="section-copy" data-i18n="semester2.nextSteps.intro">Planejamento para os próximos semestres com foco em código mais organizado e integração.</p>
-        </div>
-      </div>
-      <ul class="roadmap-list">
-        <li data-i18n="semester2.nextSteps.item1">Aprofundar JavaScript moderno.</li>
-        <li data-i18n="semester2.nextSteps.item2">Estudar APIs e consumo de dados.</li>
-        <li data-i18n="semester2.nextSteps.item3">Evoluir para frameworks como React.</li>
-        <li data-i18n="semester2.nextSteps.item4">Integrar front-end com back-end.</li>
-        <li data-i18n="semester2.nextSteps.item5">Iniciar banco de dados com mais profundidade.</li>
-        <li data-i18n="semester2.nextSteps.item6">Melhorar organização de código e boas práticas.</li>
-      </ul>
-    </section>
-
-    <section id="contato" class="section-block contact-block" aria-labelledby="contact-title">
-      <div class="section-header">
-        <div>
-          <h2 class="section-eyebrow" id="contact-title">Contato</h2>
-          <p class="section-copy">Interessado em ver os próximos passos ou colaborar em projetos de estudo? Vamos conversar.</p>
-        </div>
-      </div>
-      <div class="contact-panel">
-        <p class="contact-label">E-mail</p>
-        <p class="contact-value">contato@portfolio.dev</p>
-        <a href="#hero" class="btn btn-primary">Voltar ao topo</a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div>
-      <p class="footer-copy" data-i18n="semester2.footer.copyright">2025 • Guilherme Jorge de Araujo</p>
-      <p class="footer-email" data-i18n="semester2.footer.email">contato@portfolio.dev</p>
-    </div>
-    <div class="footer-links">
-      <a href="#hero" data-i18n="semester2.footer.backToTop">Voltar ao topo</a>
-      <a href="introdução.html" data-i18n="semester2.footer.hub">Voltar à seleção de semestres</a>
-    </div>
-  </footer>
-
-  <script>
-    (function () {
-      const navShell = document.querySelector('.page-nav .nav-shell');
-      const navLinks = Array.from(document.querySelectorAll('.page-nav a[href^="#"]'));
-      if (!navShell || navLinks.length === 0) return;
-
-      const activeIndicator = navShell.querySelector('.nav-active-indicator');
-      let activeLink = navLinks.find((link) => link.hasAttribute('aria-current')) || navLinks[0];
-      let observerLocked = false;
-
-      function moveIndicator(link, instant) {
-        if (!link || !activeIndicator) return;
-
-        const offsetLeft = link.offsetLeft - 3;
-        const width = link.offsetWidth + 6;
-
-        if (instant) {
-          activeIndicator.style.transition = 'none';
-        }
-
-        activeIndicator.style.width = `${width}px`;
-        activeIndicator.style.transform = `translateX(${offsetLeft}px)`;
-
-        if (instant) {
-          requestAnimationFrame(() => {
-            activeIndicator.style.transition = '';
-          });
-        }
-      }
-
-      function setActiveLink(link, options = {}) {
-        if (!link || (link === activeLink && !options.force)) return;
-
-        activeLink = link;
-
-        navLinks.forEach((navLink) => {
-          const isActive = navLink === activeLink;
-          navLink.classList.toggle('is-active', isActive);
-          if (isActive) {
-            navLink.setAttribute('aria-current', 'page');
-          } else {
-            navLink.removeAttribute('aria-current');
+          if (instant) {
+            activeIndicator.style.transition = "none";
           }
-        });
 
-        moveIndicator(activeLink, options.instant);
-      }
+          activeIndicator.style.width = `${width}px`;
+          activeIndicator.style.transform = `translateX(${offsetLeft}px)`;
 
-      navLinks.forEach((link) => {
-        link.addEventListener('click', () => {
-          observerLocked = true;
-          setActiveLink(link);
-          window.setTimeout(() => {
-            observerLocked = false;
-          }, 700);
-        });
-      });
+          if (instant) {
+            requestAnimationFrame(() => {
+              activeIndicator.style.transition = "";
+            });
+          }
+        }
 
-      window.addEventListener('resize', () => moveIndicator(activeLink, true));
-      window.addEventListener('orientationchange', () => moveIndicator(activeLink, true));
+        function setActiveLink(link, options = {}) {
+          if (!link || (link === activeLink && !options.force)) return;
 
-      requestAnimationFrame(() => moveIndicator(activeLink, true));
+          activeLink = link;
 
-      if ('IntersectionObserver' in window) {
-        const sectionMap = navLinks
-          .map((link) => ({ link, target: document.querySelector(link.getAttribute('href')) }))
-          .filter((item) => item.target);
-
-        const observer = new IntersectionObserver(
-          (entries) => {
-            if (observerLocked) return;
-            const visible = entries.filter((entry) => entry.isIntersecting && entry.intersectionRatio >= 0.45);
-            if (visible.length > 0) {
-              const mostVisible = visible.reduce((best, current) => (current.intersectionRatio > best.intersectionRatio ? current : best), visible[0]);
-              const item = sectionMap.find((entry) => entry.target === mostVisible.target);
-              if (item) setActiveLink(item.link);
+          navLinks.forEach((navLink) => {
+            const isActive = navLink === activeLink;
+            navLink.classList.toggle("is-active", isActive);
+            if (isActive) {
+              navLink.setAttribute("aria-current", "page");
+            } else {
+              navLink.removeAttribute("aria-current");
             }
-          },
-          { threshold: [0.45, 0.6] }
+          });
+
+          moveIndicator(activeLink, options.instant);
+        }
+
+        navLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            observerLocked = true;
+            setActiveLink(link);
+            window.setTimeout(() => {
+              observerLocked = false;
+            }, 700);
+          });
+        });
+
+        window.addEventListener("resize", () =>
+          moveIndicator(activeLink, true),
+        );
+        window.addEventListener("orientationchange", () =>
+          moveIndicator(activeLink, true),
         );
 
-        sectionMap.forEach((item) => observer.observe(item.target));
-      }
-    })();
-  </script>
-  <script src="i18n.js" defer></script>
-</body>
+        requestAnimationFrame(() => moveIndicator(activeLink, true));
 
+        if ("IntersectionObserver" in window) {
+          const sectionMap = navLinks
+            .map((link) => ({
+              link,
+              target: document.querySelector(link.getAttribute("href")),
+            }))
+            .filter((item) => item.target);
+
+          const observer = new IntersectionObserver(
+            (entries) => {
+              if (observerLocked) return;
+              const visible = entries.filter(
+                (entry) =>
+                  entry.isIntersecting && entry.intersectionRatio >= 0.45,
+              );
+              if (visible.length > 0) {
+                const mostVisible = visible.reduce(
+                  (best, current) =>
+                    current.intersectionRatio > best.intersectionRatio
+                      ? current
+                      : best,
+                  visible[0],
+                );
+                const item = sectionMap.find(
+                  (entry) => entry.target === mostVisible.target,
+                );
+                if (item) setActiveLink(item.link);
+              }
+            },
+            { threshold: [0.45, 0.6] },
+          );
+
+          sectionMap.forEach((item) => observer.observe(item.target));
+        }
+      })();
+    </script>
+    <script src="i18n.js" defer></script>
+  </body>
 </html>
