@@ -20,7 +20,7 @@
 
   <body data-page="portfolio-two">
     <header class="page-header">
-      <!-- Logo (esquerda) -->
+      <!-- Logo (esquerda) – será ocultada em mobile -->
       <div class="page-brand logo" id="logo" aria-label="Logo guilherme_Araujo">
         guilherme_Araujo
       </div>
@@ -31,18 +31,18 @@
           <span class="nav-active-indicator" aria-hidden="true"></span>
           <ul class="nav-list">
             <li>
-              <a
-                href="#aprendizado"
-                aria-current="page"
-                data-i18n="semester2.nav.aprendizado"
-                class="is-active"
-                >Aprendizado</a
+              <a href="#contextualizacao" aria-current="page" class="is-active"
+                >Contextualização</a
               >
             </li>
             <li>
-              <a href="#proximos-passos" data-i18n="semester2.nav.nextSteps"
-                >Próximos Passos</a
-              >
+              <a href="#timeline">Aprendizado</a>
+            </li>
+            <li>
+              <a href="#projetos">Projetos</a>
+            </li>
+            <li>
+              <a href="#cursos">Cursos</a>
             </li>
           </ul>
         </div>
@@ -121,8 +121,9 @@
       </div>
     </header>
 
-    <!-- MAIN (conteúdo original mantido) -->
+    <!-- MAIN -->
     <main class="page-main">
+      <!-- Hero -->
       <section class="hero-panel" id="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
           <span class="eyebrow" data-i18n="semester2.hero.pretitle"
@@ -182,70 +183,342 @@
         </div>
       </section>
 
+      <!-- Contextualização -->
       <section
-        id="aprendizado"
+        id="contextualizacao"
         class="section-block"
-        aria-labelledby="aprendizado-title"
+        aria-labelledby="context-title"
       >
         <div class="section-header">
-          <div>
-            <h1
-              class="section-eyebrow"
-              id="aprendizado-title"
-              data-i18n="semester2.learning.title"
-            >
-              O que aprendi neste 2º Semestre
-            </h1>
-            <p class="section-copy" data-i18n="semester2.learning.description">
-              Conhecimentos e práticas que evoluíram o desenvolvimento de
-              interfaces mais interativas.
-            </p>
-          </div>
+          <h2 class="section-eyebrow" id="context-title">Contextualização</h2>
+          <p class="section-copy">
+            Este semestre foi dedicado a aprofundar meus conhecimentos em
+            JavaScript, linguagem fundamental no Desenvolvimento Web, Servidores
+            e até mesmo IoT. É necessário dizer que neste semestre foquei em
+            entender sua lógica e comportamento, não focando tanto em frameworks
+            ou bibliotecas. Em contrapartida, este semestre foi essencial para
+            afeiçoar-me no que tange à lógica de programação e a entender melhor
+            como desenvolver sistemas com ênfase já em interatividade.
+          </p>
         </div>
       </section>
 
+      <!-- Linha do Tempo (Aprendizado) -->
       <section
-        id="proximos-passos"
-        class="section-block"
-        aria-labelledby="next-title"
+        id="timeline"
+        class="section-block timeline"
+        aria-labelledby="timeline-title"
       >
         <div class="section-header">
-          <div>
-            <h2
-              class="section-eyebrow"
-              id="next-title"
-              data-i18n="semester2.nextSteps.title"
-            >
-              Próximos Passos
-            </h2>
-            <p class="section-copy" data-i18n="semester2.nextSteps.intro">
-              Planejamento para os próximos semestres com foco em código mais
-              organizado e integração.
-            </p>
-          </div>
+          <h2 class="section-eyebrow" id="timeline-title">
+            O que aprendi neste 2º Semestre
+          </h2>
+          <p class="section-copy">
+            Conceitos fundamentais de JavaScript estão expostos a seguir de
+            forma cronológica e sintetizada.
+          </p>
         </div>
-        <ul class="roadmap-list">
-          <li data-i18n="semester2.nextSteps.item1">
-            Aprofundar JavaScript moderno.
-          </li>
-          <li data-i18n="semester2.nextSteps.item2">
-            Estudar APIs e consumo de dados.
-          </li>
-          <li data-i18n="semester2.nextSteps.item3">
-            Evoluir para frameworks como React.
-          </li>
-          <li data-i18n="semester2.nextSteps.item4">
-            Integrar front-end com back-end.
-          </li>
-          <li data-i18n="semester2.nextSteps.item5">
-            Iniciar banco de dados com mais profundidade.
-          </li>
-          <li data-i18n="semester2.nextSteps.item6">
-            Melhorar organização de código e boas práticas.
-          </li>
-        </ul>
+
+        <div class="timeline-container">
+          <div class="timeline-line" aria-hidden="true"></div>
+          <ul class="timeline-list">
+            <!-- Item 1 – Direita -->
+            <li class="timeline-item right">
+              <div class="timeline-card">
+                <span class="timeline-date">Fev 2025</span>
+                <h3>Variáveis e tipos de dados</h3>
+                <p>
+                  Compreensão de `let`, `const`, `number`, `string`, `boolean`,
+                  `null`, `undefined` e operadores básicos.
+                </p>
+                <div class="timeline-actions">
+                  <a href="#" class="btn btn-secondary btn-sm">Ver objetivo</a>
+                  <a href="#" class="btn btn-primary btn-sm">Ver resolução</a>
+                </div>
+              </div>
+            </li>
+
+            <!-- Item 2 – Esquerda -->
+            <li class="timeline-item left">
+              <div class="timeline-card">
+                <span class="timeline-date">Mar 2025</span>
+                <h3>Condicionais</h3>
+                <p>
+                  Estruturas `if`, `else if`, `else` e operador ternário para
+                  controle de fluxo.
+                </p>
+                <div class="timeline-actions">
+                  <a href="#" class="btn btn-secondary btn-sm">Ver objetivo</a>
+                  <a href="#" class="btn btn-primary btn-sm">Ver resolução</a>
+                </div>
+              </div>
+            </li>
+
+            <!-- Item 3 – Direita -->
+            <li class="timeline-item right">
+              <div class="timeline-card">
+                <span class="timeline-date">Mar 2025</span>
+                <h3>Switch</h3>
+                <p>
+                  Uso de `switch` para múltiplas condições e comparação com `if`
+                  encadeado.
+                </p>
+                <div class="timeline-actions">
+                  <a href="#" class="btn btn-secondary btn-sm">Ver objetivo</a>
+                  <a href="#" class="btn btn-primary btn-sm">Ver resolução</a>
+                </div>
+              </div>
+            </li>
+
+            <!-- Item 4 – Esquerda -->
+            <li class="timeline-item left">
+              <div class="timeline-card">
+                <span class="timeline-date">Mar 2025</span>
+                <h3>Objetos</h3>
+                <p>
+                  Criação, acesso a propriedades, métodos e iteração com
+                  `for...in`.
+                </p>
+                <div class="timeline-actions">
+                  <a href="#" class="btn btn-secondary btn-sm">Ver objetivo</a>
+                  <a href="#" class="btn btn-primary btn-sm">Ver resolução</a>
+                </div>
+              </div>
+            </li>
+
+            <!-- Item 5 – Direita -->
+            <li class="timeline-item right">
+              <div class="timeline-card">
+                <span class="timeline-date">Abr 2025</span>
+                <h3>Arrays</h3>
+                <p>
+                  Manipulação de listas com métodos como `push`, `pop`, `map`,
+                  `filter`, `reduce`.
+                </p>
+                <div class="timeline-actions">
+                  <a href="#" class="btn btn-secondary btn-sm">Ver objetivo</a>
+                  <a href="#" class="btn btn-primary btn-sm">Ver resolução</a>
+                </div>
+              </div>
+            </li>
+
+            <!-- Item 6 – Esquerda -->
+            <li class="timeline-item left">
+              <div class="timeline-card">
+                <span class="timeline-date">Abr 2025</span>
+                <h3>Aninhamento de Objetos</h3>
+                <p>
+                  Estruturas complexas com objetos dentro de objetos e acesso
+                  encadeado.
+                </p>
+                <div class="timeline-actions">
+                  <a href="#" class="btn btn-secondary btn-sm">Ver objetivo</a>
+                  <a href="#" class="btn btn-primary btn-sm">Ver resolução</a>
+                </div>
+              </div>
+            </li>
+
+            <!-- Item 7 – Direita -->
+            <li class="timeline-item right">
+              <div class="timeline-card">
+                <span class="timeline-date">Abr 2025</span>
+                <h3>Do While</h3>
+                <p>
+                  Laço `do...while` para execução garantida pelo menos uma vez.
+                </p>
+                <div class="timeline-actions">
+                  <a href="#" class="btn btn-secondary btn-sm">Ver objetivo</a>
+                  <a href="#" class="btn btn-primary btn-sm">Ver resolução</a>
+                </div>
+              </div>
+            </li>
+
+            <!-- Item 8 – Esquerda -->
+            <li class="timeline-item left">
+              <div class="timeline-card">
+                <span class="timeline-date">Mai 2025</span>
+                <h3>Funções</h3>
+                <p>
+                  Declaração, expressão, arrow functions, parâmetros e retorno.
+                </p>
+                <div class="timeline-actions">
+                  <a href="#" class="btn btn-secondary btn-sm">Ver objetivo</a>
+                  <a href="#" class="btn btn-primary btn-sm">Ver resolução</a>
+                </div>
+              </div>
+            </li>
+
+            <!-- Item 9 – Direita -->
+            <li class="timeline-item right">
+              <div class="timeline-card">
+                <span class="timeline-date">Mai 2025</span>
+                <h3>Callbacks</h3>
+                <p>
+                  Funções passadas como argumento para execução assíncrona ou
+                  personalizada.
+                </p>
+                <div class="timeline-actions">
+                  <a href="#" class="btn btn-secondary btn-sm">Ver objetivo</a>
+                  <a href="#" class="btn btn-primary btn-sm">Ver resolução</a>
+                </div>
+              </div>
+            </li>
+
+            <!-- Item 10 – Esquerda -->
+            <li class="timeline-item left">
+              <div class="timeline-card">
+                <span class="timeline-date">Jun 2025</span>
+                <h3>Métodos</h3>
+                <p>
+                  Funções associadas a objetos e arrays, como `toUpperCase`,
+                  `split`, `join`.
+                </p>
+                <div class="timeline-actions">
+                  <a href="#" class="btn btn-secondary btn-sm">Ver objetivo</a>
+                  <a href="#" class="btn btn-primary btn-sm">Ver resolução</a>
+                </div>
+              </div>
+            </li>
+
+            <!-- Item 11 – Direita -->
+            <li class="timeline-item right">
+              <div class="timeline-card">
+                <span class="timeline-date">Jun 2025</span>
+                <h3>DOM</h3>
+                <p>
+                  Manipulação de elementos, eventos, criação dinâmica e
+                  estilização via JavaScript.
+                </p>
+                <div class="timeline-actions">
+                  <a href="#" class="btn btn-secondary btn-sm">Ver objetivo</a>
+                  <a href="#" class="btn btn-primary btn-sm">Ver resolução</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
       </section>
 
+      <!-- Projetos -->
+      <section
+        id="projetos"
+        class="section-block projects"
+        aria-labelledby="projects-title"
+      >
+        <div class="section-header">
+          <h2 class="section-eyebrow" id="projects-title">Projetos Práticos</h2>
+          <p class="section-copy">
+            Três aplicações desenvolvidas para consolidar os conceitos
+            estudados.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-image">
+              <img
+                src="https://via.placeholder.com/400x200/161616/f7df1e?text=Projeto+1"
+                alt="Preview do Projeto 1"
+                loading="lazy"
+              />
+            </div>
+            <div class="project-content">
+              <h3>Calculadora de IMC</h3>
+              <p>
+                Aplicação que calcula o Índice de Massa Corporal com validação
+                de entrada e exibição de resultado.
+              </p>
+              <a href="#" class="btn btn-primary">Ver projeto</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-image">
+              <img
+                src="https://via.placeholder.com/400x200/161616/f7df1e?text=Projeto+2"
+                alt="Preview do Projeto 2"
+                loading="lazy"
+              />
+            </div>
+            <div class="project-content">
+              <h3>Lista de Tarefas</h3>
+              <p>
+                CRUD de tarefas com persistência em LocalStorage e interface
+                dinâmica.
+              </p>
+              <a href="#" class="btn btn-primary">Ver projeto</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-image">
+              <img
+                src="https://via.placeholder.com/400x200/161616/f7df1e?text=Projeto+3"
+                alt="Preview do Projeto 3"
+                loading="lazy"
+              />
+            </div>
+            <div class="project-content">
+              <h3>Jogo da Velha</h3>
+              <p>
+                Jogo completo com lógica de vitória/empate, reinício e indicador
+                de jogador.
+              </p>
+              <a href="#" class="btn btn-primary">Ver projeto</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Cursos -->
+      <section
+        id="cursos"
+        class="section-block courses"
+        aria-labelledby="courses-title"
+      >
+        <div class="section-header">
+          <h2 class="section-eyebrow" id="courses-title">Cursos Realizados</h2>
+          <p class="section-copy">
+            Certificações complementares que ampliaram minha base técnica.
+          </p>
+        </div>
+
+        <div class="courses-grid">
+          <article class="course-card">
+            <div class="course-content">
+              <span class="course-date">Fev 2025</span>
+              <h3>HTML Essentials</h3>
+              <p>
+                Fundamentos da linguagem de marcação: elementos semânticos,
+                formulários, acessibilidade e boas práticas.
+              </p>
+              <div class="course-meta">
+                <span class="course-school">Cisco Networking Academy</span>
+                <span class="course-duration">20h</span>
+              </div>
+              <a href="#" class="btn btn-primary btn-sm">Ver certificado</a>
+            </div>
+          </article>
+
+          <article class="course-card">
+            <div class="course-content">
+              <span class="course-date">Mar 2025</span>
+              <h3>CSS Essentials</h3>
+              <p>
+                Estilização avançada: flexbox, grid, animações, responsividade e
+                organização de código.
+              </p>
+              <div class="course-meta">
+                <span class="course-school">Cisco Networking Academy</span>
+                <span class="course-duration">20h</span>
+              </div>
+              <a href="#" class="btn btn-primary btn-sm">Ver certificado</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Contato -->
       <section
         id="contato"
         class="section-block contact-block"
@@ -276,12 +549,8 @@
 
     <footer class="site-footer">
       <div>
-        <p class="footer-copy" data-i18n="semester2.footer.copyright">
-          2025 • Guilherme Jorge de Araujo
-        </p>
-        <p class="footer-email" data-i18n="semester2.footer.email">
-          contato@portfolio.dev
-        </p>
+        <p class="footer-copy">2025 • Guilherme Jorge de Araujo</p>
+        <p class="footer-email">contato@portfolio.dev</p>
       </div>
       <div class="footer-links"></div>
     </footer>
@@ -432,7 +701,6 @@
         backBtn.addEventListener("click", function (e) {
           e.preventDefault();
           window.scrollTo({ top: 0, behavior: "smooth" });
-          // Foco no topo para acessibilidade
           document.documentElement.setAttribute("tabindex", "-1");
           document.documentElement.focus();
           document.documentElement.removeAttribute("tabindex");
