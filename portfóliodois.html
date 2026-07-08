@@ -19,64 +19,23 @@
   </head>
 
   <body data-page="portfolio-two">
-    <div class="language-switcher" role="group" aria-label="Seletor de idioma">
-      <div class="language-pill">
-        <span
-          id="language-current-flag"
-          class="language-flag"
-          aria-hidden="true"
-          ></span
-        >
-        <span id="language-current-label" class="language-label"
-          >Português</span
-        >
-        <button
-          id="language-menu-toggle"
-          class="language-caret-btn"
-          type="button"
-          aria-label="Abrir seleção de idioma"
-          aria-expanded="false"
-        ></button>
-      </div>
-      <div
-        id="language-dropdown"
-        class="language-dropdown"
-        role="menu"
-        aria-label="Escolher idioma"
-      >
-        <button
-          id="language-alt-option"
-          class="language-option-item"
-          type="button"
-          role="menuitem"
-        >
-          <span id="language-alt-flag" class="language-flag" aria-hidden="true"
-            ></span
-          >
-          <span id="language-alt-label">English</span>
-        </button>
-      </div>
-    </div>
-
     <header class="page-header">
-      <div class="page-brand logo" aria-label="Logo guilherme_Araujo">
+      <!-- Logo (esquerda) -->
+      <div class="page-brand logo" id="logo" aria-label="Logo guilherme_Araujo">
         guilherme_Araujo
       </div>
-      <a
-        href="introdução.html"
-        class="btn btn-ghost back-button"
-        aria-label="Voltar para seleção de semestres"
-        >← Voltar</a
-      >
+
+      <!-- Navegação principal (centralizada) -->
       <nav class="page-nav" aria-label="Navegação principal">
         <div class="nav-shell">
           <span class="nav-active-indicator" aria-hidden="true"></span>
-          <ul>
+          <ul class="nav-list">
             <li>
               <a
                 href="#aprendizado"
                 aria-current="page"
                 data-i18n="semester2.nav.aprendizado"
+                class="is-active"
                 >Aprendizado</a
               >
             </li>
@@ -85,12 +44,84 @@
                 >Próximos Passos</a
               >
             </li>
-
           </ul>
         </div>
       </nav>
+
+      <!-- Menu hambúrguer (direita) -->
+      <div class="menu-wrapper">
+        <button
+          class="hamburger"
+          id="menu-toggle"
+          aria-controls="menu-dropdown"
+          aria-expanded="false"
+          aria-label="Abrir menu"
+          type="button"
+        >
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+
+        <div class="menu-dropdown" id="menu-dropdown" role="menu">
+          <div class="menu-dropdown-inner">
+            <a
+              href="introdução.html"
+              class="btn btn-ghost menu-back-button"
+              aria-label="Voltar para seleção de semestres"
+              role="menuitem"
+              >← Voltar</a
+            >
+
+            <div
+              class="language-switcher"
+              role="group"
+              aria-label="Seletor de idioma"
+            >
+              <div class="language-pill">
+                <span
+                  id="language-current-flag"
+                  class="language-flag"
+                  aria-hidden="true"
+                ></span>
+                <span id="language-current-label" class="language-label"
+                  >Português</span
+                >
+                <button
+                  id="language-menu-toggle"
+                  class="language-caret-btn"
+                  type="button"
+                  aria-label="Abrir seleção de idioma"
+                  aria-expanded="false"
+                ></button>
+              </div>
+              <div
+                id="language-dropdown"
+                class="language-dropdown"
+                role="menu"
+                aria-label="Escolher idioma"
+              >
+                <button
+                  id="language-alt-option"
+                  class="language-option-item"
+                  type="button"
+                  role="menuitem"
+                >
+                  <span
+                    id="language-alt-flag"
+                    class="language-flag"
+                    aria-hidden="true"
+                  ></span>
+                  <span id="language-alt-label">English</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
 
+    <!-- MAIN (conteúdo original mantido) -->
     <main class="page-main">
       <section class="hero-panel" id="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
@@ -108,20 +139,15 @@
 
         <div class="hero-visual">
           <div class="raio-container">
-            <!-- Névoa de energia de fundo -->
-            <div class="raio-glow"></div>
-
-            <!-- Faíscas -->
             <div class="faisca f-1"></div>
             <div class="faisca f-2"></div>
             <div class="faisca f-3"></div>
-
-
-            <!-- RAIO 3D PROFISSIONAL (único SVG com camadas) -->
             <svg
               class="raio-principal"
               viewBox="0 0 100 160"
               preserveAspectRatio="xMidYMid meet"
+              role="img"
+              aria-label="Raio de energia amarelo"
             >
               <defs>
                 <linearGradient
@@ -138,15 +164,11 @@
                   <stop offset="100%" stop-color="#e65100" />
                 </linearGradient>
               </defs>
-
-              <!-- 1. Sombra de profundidade (camada mais atrás) -->
               <path
                 d="M70 5 L18 82 L50 82 L15 158 L88 68 L48 68 Z"
                 fill="#9c4a00"
                 transform="translate(5.5 7.5)"
               />
-
-              <!-- 2. Raio principal (corpo volumétrico) -->
               <path
                 d="M70 5 L18 82 L50 82 L15 158 L88 68 L48 68 Z"
                 fill="url(#gradiente-js-eletrico)"
@@ -181,6 +203,7 @@
           </div>
         </div>
         <div class="cards-grid learning-grid">
+          <!-- 10 cards, mantido igual -->
           <article class="feature-card">
             <h3 data-i18n="semester2.learning.item1.title">
               Fundamentos da linguagem JavaScript
@@ -323,7 +346,13 @@
         <div class="contact-panel">
           <p class="contact-label">E-mail</p>
           <p class="contact-value">contato@portfolio.dev</p>
-          <a href="#hero" class="btn btn-primary">Voltar ao topo</a>
+          <a
+            href="#"
+            class="btn btn-primary back-to-top"
+            aria-label="Voltar ao topo da página"
+          >
+            ↑ Voltar ao topo
+          </a>
         </div>
       </section>
     </main>
@@ -337,59 +366,91 @@
           contato@portfolio.dev
         </p>
       </div>
-      <div class="footer-links">
-      </div>
+      <div class="footer-links"></div>
     </footer>
 
+    <!-- Scripts -->
     <script>
+      // ========== MENU HAMBÚRGUER ==========
       (function () {
-        const navShell = document.querySelector(".page-nav .nav-shell");
-        const navLinks = Array.from(
-          document.querySelectorAll('.page-nav a[href^="#"]'),
-        );
-        if (!navShell || navLinks.length === 0) return;
+        const toggle = document.getElementById("menu-toggle");
+        const dropdown = document.getElementById("menu-dropdown");
+        if (!toggle || !dropdown) return;
 
-        const activeIndicator = navShell.querySelector(".nav-active-indicator");
+        function toggleMenu(forceState) {
+          const isOpen =
+            forceState !== undefined
+              ? forceState
+              : toggle.getAttribute("aria-expanded") === "true";
+          const newState = !isOpen;
+          toggle.setAttribute("aria-expanded", newState);
+          dropdown.classList.toggle("is-open", newState);
+        }
+
+        toggle.addEventListener("click", function (e) {
+          e.stopPropagation();
+          toggleMenu();
+        });
+
+        dropdown.addEventListener("click", function (e) {
+          const languagePill = e.target.closest(".language-pill");
+          const languageDropdown = e.target.closest(".language-dropdown");
+          if (languagePill || languageDropdown) return;
+          toggle.setAttribute("aria-expanded", "false");
+          dropdown.classList.remove("is-open");
+        });
+
+        document.addEventListener("click", function (e) {
+          const menuWrapper = e.target.closest(".menu-wrapper");
+          if (!menuWrapper) {
+            toggle.setAttribute("aria-expanded", "false");
+            dropdown.classList.remove("is-open");
+          }
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            toggle.setAttribute("aria-expanded", "false");
+            dropdown.classList.remove("is-open");
+          }
+        });
+      })();
+
+      // ========== INDICADOR ATIVO (desktop) ==========
+      (function () {
+        const navLinks = Array.from(
+          document.querySelectorAll(".page-nav .nav-list a"),
+        );
+        const indicator = document.querySelector(".nav-active-indicator");
+        if (!indicator || navLinks.length === 0) return;
+
         let activeLink =
           navLinks.find((link) => link.hasAttribute("aria-current")) ||
           navLinks[0];
         let observerLocked = false;
 
         function moveIndicator(link, instant) {
-          if (!link || !activeIndicator) return;
-
+          if (!link) return;
           const offsetLeft = link.offsetLeft - 3;
           const width = link.offsetWidth + 6;
-
-          if (instant) {
-            activeIndicator.style.transition = "none";
-          }
-
-          activeIndicator.style.width = `${width}px`;
-          activeIndicator.style.transform = `translateX(${offsetLeft}px)`;
-
+          if (instant) indicator.style.transition = "none";
+          indicator.style.width = `${width}px`;
+          indicator.style.transform = `translateX(${offsetLeft}px)`;
           if (instant) {
             requestAnimationFrame(() => {
-              activeIndicator.style.transition = "";
+              indicator.style.transition = "";
             });
           }
         }
 
         function setActiveLink(link, options = {}) {
           if (!link || (link === activeLink && !options.force)) return;
-
           activeLink = link;
-
           navLinks.forEach((navLink) => {
             const isActive = navLink === activeLink;
             navLink.classList.toggle("is-active", isActive);
-            if (isActive) {
-              navLink.setAttribute("aria-current", "page");
-            } else {
-              navLink.removeAttribute("aria-current");
-            }
+            navLink.setAttribute("aria-current", isActive ? "page" : "");
           });
-
           moveIndicator(activeLink, options.instant);
         }
 
@@ -428,12 +489,10 @@
                   entry.isIntersecting && entry.intersectionRatio >= 0.45,
               );
               if (visible.length > 0) {
-                const mostVisible = visible.reduce(
-                  (best, current) =>
-                    current.intersectionRatio > best.intersectionRatio
-                      ? current
-                      : best,
-                  visible[0],
+                const mostVisible = visible.reduce((best, current) =>
+                  current.intersectionRatio > best.intersectionRatio
+                    ? current
+                    : best,
                 );
                 const item = sectionMap.find(
                   (entry) => entry.target === mostVisible.target,
@@ -446,6 +505,21 @@
 
           sectionMap.forEach((item) => observer.observe(item.target));
         }
+      })();
+
+      // ========== VOLTAR AO TOPO ==========
+      (function () {
+        const backBtn = document.querySelector(".back-to-top");
+        if (!backBtn) return;
+
+        backBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          // Foco no topo para acessibilidade
+          document.documentElement.setAttribute("tabindex", "-1");
+          document.documentElement.focus();
+          document.documentElement.removeAttribute("tabindex");
+        });
       })();
     </script>
     <script src="i18n.js" defer></script>
