@@ -10,7 +10,7 @@
       pageDescription: "Portfólio de Guilherme, estudante de Desenvolvimento de Sistemas",
       toggleAria: "Abrir seleção de idioma",
       languageLabel: "Português",
-      languageFlag: "🇧🇷",
+      languageFlag: "",
       logoAria: "Logo gui_Dev",
       index: {
         pageTitle: "Portfólio Expositivo",
@@ -312,7 +312,7 @@
       pageDescription: "Guilherme's portfolio, Systems Development student",
       toggleAria: "Open language selection",
       languageLabel: "English",
-      languageFlag: "🇺🇸",
+      languageFlag: "",
       logoAria: "gui_Dev logo",
       index: {
         pageTitle: "Showcase Portfolio",
@@ -463,133 +463,7 @@
           ctaProjects: "View Projects",
           ctaSkills: "View Skills",
         },
-        learning: {
-          title: "What I learned this 2nd Semester",
-          description: "Knowledge and practice that evolved the development of more interactive interfaces.",
-          item1: {
-            title: "JavaScript language fundamentals",
-            desc: "Syntax, variables and control flow for logical thinking.",
-          },
-          item2: {
-            title: "Variables, data types and operators",
-            desc: "Using values, operators and expressions in browser logic.",
-          },
-          item3: {
-            title: "Conditionals and loops",
-            desc: "Decision and repetition flow for smarter behavior.",
-          },
-          item4: {
-            title: "Functions and logic organization",
-            desc: "Reusable blocks that make JavaScript more modular and readable.",
-          },
-          item5: {
-            title: "Arrays and objects",
-            desc: "Structures for organizing data and application state.",
-          },
-          item6: {
-            title: "DOM manipulation",
-            desc: "Updating content, classes and structure from code.",
-          },
-          item7: {
-            title: "Events and interactivity",
-            desc: "User actions turned into response and visual feedback.",
-          },
-          item8: {
-            title: "Form validation",
-            desc: "Data checks and guidance before submission.",
-          },
-          item9: {
-            title: "LocalStorage and storage",
-            desc: "Simple browser persistence for continuous experiences.",
-          },
-          item10: {
-            title: "Logic applied to web interfaces",
-            desc: "Building pages that react and adapt to the user.",
-          },
-        },
-        projects: {
-          title: "Projects",
-          intro: "Study cases and prototypes that reinforce JavaScript practice and interaction.",
-          card1: {
-            title: "DOM Manipulation Project",
-            desc: "Exercise to update elements and visual state with JavaScript.",
-            tech: "HTML, CSS, JavaScript",
-            status: "In development",
-            date: "2nd Semester",
-            cta: "View details",
-          },
-          card2: {
-            title: "Form Validator",
-            desc: "Form with validation and real-time feedback.",
-            tech: "HTML, CSS, JavaScript",
-            status: "Prototype",
-            date: "2nd Semester",
-            cta: "Coming soon",
-          },
-          card3: {
-            title: "Mini Interactive System",
-            desc: "Interface with filters, lists and real-time user responses.",
-            tech: "JavaScript, DOM, Events",
-            status: "In progress",
-            date: "2nd Semester",
-            cta: "Coming soon",
-          },
-          card4: {
-            title: "2nd Semester Final Project",
-            desc: "Integration of logic and structure for a more robust experience.",
-            tech: "JavaScript, LocalStorage, DOM",
-            status: "Planned",
-            date: "2nd Semester",
-            cta: "Coming soon",
-          },
-        },
-        courses: {
-          title: "Courses",
-          intro: "Training and learning that complements the JavaScript journey.",
-          statusUpdating: "Updating",
-          card1: {
-            title: "Basic JavaScript Course",
-            org: "Study Platform",
-            date: "2025",
-            status: "Completed",
-            aria: "View Basic JavaScript course details",
-          },
-          card2: {
-            title: "DOM Fundamentals",
-            org: "Internal Course",
-            date: "2025",
-            status: "In progress",
-            aria: "View DOM Fundamentals course details",
-          },
-        },
-        skills: {
-          title: "Skills Relationships",
-          intro: "Competency map used for building JavaScript-powered interfaces.",
-          group1: {
-            label: "JavaScript",
-            items: ["Syntax", "Conditionals", "Loops", "Functions", "Arrays", "Objects", "DOM", "Events", "Forms", "LocalStorage"],
-          },
-          group2: {
-            label: "HTML",
-            items: ["Semantics", "Structure"],
-          },
-          group3: {
-            label: "CSS",
-            items: ["Responsiveness", "Layout", "Visual states"],
-          },
-          group4: {
-            label: "Git & GitHub",
-            items: ["Version control", "Project organization"],
-          },
-        },
-        evolution: {
-          title: "Technical Evolution",
-          subtitle: "From the first static page to more mature, interactive interfaces.",
-          point1: "First semester focused on HTML and CSS.",
-          point2: "Second semester focused on JavaScript and web behavior.",
-          point3: "Applied logic to user routines.",
-          point4: "A more mature product vision of the page.",
-        },
+        
         nextSteps: {
           title: "Next Steps",
           intro: "Planning the next semesters with a focus on cleaner code and integration.",

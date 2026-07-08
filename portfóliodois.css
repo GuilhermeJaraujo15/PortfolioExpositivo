@@ -433,16 +433,13 @@ button:disabled {
   text-transform: uppercase;
   letter-spacing: 0.22em;
   color: var(--js-yellow);
-  font-size: 0.82rem;
+  font-size: 1.25rem;
 }
 .section-copy {
   max-width: 42rem;
   color: var(--text-muted);
 }
-.cards-grid {
-  display: grid;
-  gap: 1.4rem;
-}
+
 
 /* ---------- Hero (com mais margem superior) ---------- */
 .hero-panel {
@@ -857,9 +854,6 @@ button:disabled {
     font-size: clamp(2.5rem, 7vw, 3.2rem);
   }
 
-  .cards-grid {
-    grid-template-columns: 1fr;
-  }
 
   .page-main {
     width: min(100%, calc(100% - 1.5rem));
