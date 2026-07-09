@@ -840,31 +840,6 @@ button:disabled {
   transition: opacity 0s;
 }
 
-/* ---------- Footer ---------- */
-.site-footer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 2rem 0 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  color: var(--text-muted);
-}
-.footer-links {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-.footer-links a {
-  color: var(--text-muted);
-}
-.footer-links a:hover,
-.footer-links a:focus-visible {
-  color: var(--js-yellow);
-}
-.footer-email {
-  margin-top: 0.5rem;
-}
 
 /* ============================================================
    RESPONSIVIDADE

@@ -547,166 +547,455 @@
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div>
-        <p class="footer-copy">2025 • Guilherme Jorge de Araujo</p>
-        <p class="footer-email">contato@portfolio.dev</p>
-      </div>
-      <div class="footer-links"></div>
-    </footer>
 
-    <!-- Scripts -->
-    <script>
-      // ========== MENU HAMBÚRGUER ==========
-      (function () {
-        const toggle = document.getElementById("menu-toggle");
-        const dropdown = document.getElementById("menu-dropdown");
-        if (!toggle || !dropdown) return;
+<script>
+(() => {
+  "use strict";
 
-        function toggleMenu(forceState) {
-          const isOpen =
-            forceState !== undefined
-              ? forceState
-              : toggle.getAttribute("aria-expanded") === "true";
-          const newState = !isOpen;
-          toggle.setAttribute("aria-expanded", newState);
-          dropdown.classList.toggle("is-open", newState);
-        }
+  /* =====================================================
+     MENU HAMBÚRGUER
+  ===================================================== */
 
-        toggle.addEventListener("click", function (e) {
-          e.stopPropagation();
-          toggleMenu();
+  function initMenu() {
+    const toggle = document.getElementById("menu-toggle");
+    const dropdown = document.getElementById("menu-dropdown");
+
+    if (!toggle || !dropdown) return;
+
+    const closeMenu = () => {
+      toggle.setAttribute("aria-expanded", "false");
+      dropdown.classList.remove("is-open");
+    };
+
+    const openMenu = () => {
+      toggle.setAttribute("aria-expanded", "true");
+      dropdown.classList.add("is-open");
+    };
+
+    const toggleMenu = () => {
+      const opened = toggle.getAttribute("aria-expanded") === "true";
+
+      opened ? closeMenu() : openMenu();
+    };
+
+
+    toggle.addEventListener("click", (event) => {
+      event.stopPropagation();
+      toggleMenu();
+    });
+
+
+    dropdown.addEventListener("click", (event) => {
+
+      // Mantém funcionamento do seletor de idioma
+      if (
+        event.target.closest(".language-pill") ||
+        event.target.closest(".language-dropdown")
+      ) {
+        return;
+      }
+
+      // Fecha ao clicar em links do menu
+      if (event.target.closest("a")) {
+        closeMenu();
+      }
+    });
+
+
+    document.addEventListener("click", (event) => {
+
+      if (!event.target.closest(".menu-wrapper")) {
+        closeMenu();
+      }
+
+    });
+
+
+    document.addEventListener("keydown", (event) => {
+
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+
+    });
+
+  }
+
+
+
+  /* =====================================================
+     NAVEGAÇÃO + INDICADOR + SCROLLSPY
+  ===================================================== */
+
+  function initNavigation() {
+
+    const navLinks = [
+      ...document.querySelectorAll(".page-nav .nav-list a")
+    ];
+
+    const indicator =
+      document.querySelector(".nav-active-indicator");
+
+
+    if (!indicator || !navLinks.length) return;
+
+
+    const header =
+      document.querySelector(".page-header");
+
+
+    let activeLink =
+      navLinks.find(link =>
+        link.getAttribute("aria-current") === "page"
+      ) || navLinks[0];
+
+
+    let scrollLocked = false;
+    let ticking = false;
+
+
+
+    function getHeaderHeight() {
+
+      return header
+        ? header.offsetHeight
+        : 64;
+
+    }
+
+
+
+    function moveIndicator(link, instant = false) {
+
+      if (!link) return;
+
+
+      const left =
+        link.offsetLeft - 3;
+
+
+      const width =
+        link.offsetWidth + 6;
+
+
+
+      if (instant) {
+        indicator.style.transition = "none";
+      }
+
+
+      indicator.style.width = `${width}px`;
+
+      indicator.style.transform =
+        `translateX(${left}px)`;
+
+
+      if (instant) {
+
+        requestAnimationFrame(() => {
+          indicator.style.transition = "";
         });
 
-        dropdown.addEventListener("click", function (e) {
-          const languagePill = e.target.closest(".language-pill");
-          const languageDropdown = e.target.closest(".language-dropdown");
-          if (languagePill || languageDropdown) return;
-          toggle.setAttribute("aria-expanded", "false");
-          dropdown.classList.remove("is-open");
-        });
+      }
 
-        document.addEventListener("click", function (e) {
-          const menuWrapper = e.target.closest(".menu-wrapper");
-          if (!menuWrapper) {
-            toggle.setAttribute("aria-expanded", "false");
-            dropdown.classList.remove("is-open");
-          }
-        });
+    }
 
-        document.addEventListener("keydown", function (e) {
-          if (e.key === "Escape") {
-            toggle.setAttribute("aria-expanded", "false");
-            dropdown.classList.remove("is-open");
-          }
-        });
-      })();
 
-      // ========== INDICADOR ATIVO (desktop) ==========
-      (function () {
-        const navLinks = Array.from(
-          document.querySelectorAll(".page-nav .nav-list a"),
+
+    function setActive(link, force = false) {
+
+      if (!link) return;
+
+
+      if (link === activeLink && !force) {
+        return;
+      }
+
+
+      activeLink = link;
+
+
+      navLinks.forEach(item => {
+
+        const active =
+          item === link;
+
+
+        item.classList.toggle(
+          "is-active",
+          active
         );
-        const indicator = document.querySelector(".nav-active-indicator");
-        if (!indicator || navLinks.length === 0) return;
 
-        let activeLink =
-          navLinks.find((link) => link.hasAttribute("aria-current")) ||
-          navLinks[0];
-        let observerLocked = false;
 
-        function moveIndicator(link, instant) {
-          if (!link) return;
-          const offsetLeft = link.offsetLeft - 3;
-          const width = link.offsetWidth + 6;
-          if (instant) indicator.style.transition = "none";
-          indicator.style.width = `${width}px`;
-          indicator.style.transform = `translateX(${offsetLeft}px)`;
-          if (instant) {
-            requestAnimationFrame(() => {
-              indicator.style.transition = "";
-            });
-          }
-        }
-
-        function setActiveLink(link, options = {}) {
-          if (!link || (link === activeLink && !options.force)) return;
-          activeLink = link;
-          navLinks.forEach((navLink) => {
-            const isActive = navLink === activeLink;
-            navLink.classList.toggle("is-active", isActive);
-            navLink.setAttribute("aria-current", isActive ? "page" : "");
-          });
-          moveIndicator(activeLink, options.instant);
-        }
-
-        navLinks.forEach((link) => {
-          link.addEventListener("click", () => {
-            observerLocked = true;
-            setActiveLink(link);
-            window.setTimeout(() => {
-              observerLocked = false;
-            }, 700);
-          });
-        });
-
-        window.addEventListener("resize", () =>
-          moveIndicator(activeLink, true),
-        );
-        window.addEventListener("orientationchange", () =>
-          moveIndicator(activeLink, true),
-        );
-
-        requestAnimationFrame(() => moveIndicator(activeLink, true));
-
-        if ("IntersectionObserver" in window) {
-          const sectionMap = navLinks
-            .map((link) => ({
-              link,
-              target: document.querySelector(link.getAttribute("href")),
-            }))
-            .filter((item) => item.target);
-
-          const observer = new IntersectionObserver(
-            (entries) => {
-              if (observerLocked) return;
-              const visible = entries.filter(
-                (entry) =>
-                  entry.isIntersecting && entry.intersectionRatio >= 0.45,
-              );
-              if (visible.length > 0) {
-                const mostVisible = visible.reduce((best, current) =>
-                  current.intersectionRatio > best.intersectionRatio
-                    ? current
-                    : best,
-                );
-                const item = sectionMap.find(
-                  (entry) => entry.target === mostVisible.target,
-                );
-                if (item) setActiveLink(item.link);
-              }
-            },
-            { threshold: [0.45, 0.6] },
+        if (active) {
+          item.setAttribute(
+            "aria-current",
+            "page"
           );
-
-          sectionMap.forEach((item) => observer.observe(item.target));
+        } else {
+          item.removeAttribute(
+            "aria-current"
+          );
         }
-      })();
 
-      // ========== VOLTAR AO TOPO ==========
-      (function () {
-        const backBtn = document.querySelector(".back-to-top");
-        if (!backBtn) return;
+      });
 
-        backBtn.addEventListener("click", function (e) {
-          e.preventDefault();
-          window.scrollTo({ top: 0, behavior: "smooth" });
-          document.documentElement.setAttribute("tabindex", "-1");
-          document.documentElement.focus();
-          document.documentElement.removeAttribute("tabindex");
+
+      moveIndicator(link);
+
+    }
+
+
+
+    /*
+       Scroll suave considerando header fixo
+    */
+
+    navLinks.forEach(link => {
+
+      link.addEventListener(
+        "click",
+        event => {
+
+          const targetId =
+            link.getAttribute("href");
+
+
+          if (
+            !targetId ||
+            !targetId.startsWith("#")
+          ) return;
+
+
+          const section =
+            document.querySelector(targetId);
+
+
+          if (!section) return;
+
+
+          event.preventDefault();
+
+
+          const position =
+            section.getBoundingClientRect().top +
+            window.scrollY -
+            getHeaderHeight();
+
+
+          window.scrollTo({
+
+            top: position,
+
+            behavior: "smooth"
+
+          });
+
+
+          setActive(link);
+
+
+          scrollLocked = true;
+
+
+          setTimeout(() => {
+
+            scrollLocked = false;
+
+          }, 800);
+
+
+        }
+      );
+
+    });
+
+
+
+    /*
+       ScrollSpy otimizado
+    */
+
+    const sections =
+      navLinks
+        .map(link => ({
+          link,
+          section:
+            document.querySelector(
+              link.getAttribute("href")
+            )
+        }))
+        .filter(item => item.section);
+
+
+
+    function updateScrollSpy() {
+
+
+      if (scrollLocked) return;
+
+
+      const scrollPosition =
+        window.scrollY +
+        getHeaderHeight() +
+        20;
+
+
+
+      let current =
+        sections[0];
+
+
+
+      sections.forEach(item => {
+
+
+        if (
+          item.section.offsetTop <= scrollPosition
+        ) {
+
+          current = item;
+
+        }
+
+
+      });
+
+
+
+      if (current) {
+        setActive(current.link);
+      }
+
+    }
+
+
+
+    window.addEventListener(
+      "scroll",
+      () => {
+
+        if (!ticking) {
+
+          window.requestAnimationFrame(() => {
+
+            updateScrollSpy();
+
+            ticking = false;
+
+          });
+
+
+          ticking = true;
+
+        }
+
+      },
+      {
+        passive: true
+      }
+    );
+
+
+
+    window.addEventListener(
+      "resize",
+      () => {
+
+        moveIndicator(
+          activeLink,
+          true
+        );
+
+      }
+    );
+
+
+    window.addEventListener(
+      "orientationchange",
+      () => {
+
+        moveIndicator(
+          activeLink,
+          true
+        );
+
+      }
+    );
+
+
+
+    requestAnimationFrame(() => {
+
+      setActive(
+        activeLink,
+        true
+      );
+
+    });
+
+  }
+
+
+
+  /* =====================================================
+     BOTÃO VOLTAR AO TOPO
+  ===================================================== */
+
+  function initBackToTop() {
+
+    const button =
+      document.querySelector(
+        ".back-to-top"
+      );
+
+
+    if (!button) return;
+
+
+
+    button.addEventListener(
+      "click",
+      event => {
+
+        event.preventDefault();
+
+
+        window.scrollTo({
+
+          top: 0,
+
+          behavior: "smooth"
+
         });
-      })();
-    </script>
+
+      }
+    );
+
+  }
+
+
+
+  /* =====================================================
+     START
+  ===================================================== */
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+      initMenu();
+
+      initNavigation();
+
+      initBackToTop();
+
+    }
+  );
+
+
+})();
+</script>
     <script src="i18n.js" defer></script>
   </body>
 </html>
