@@ -193,12 +193,13 @@
           <h2 class="section-eyebrow" id="context-title">Contextualização</h2>
           <p class="section-copy">
             Este período foi empenhado a aprofundar meus conhecimentos em
-            JavaScript, linguagem fundamental no Desenvolvimento Web, Servidores (Node.js)
-            e até mesmo IoT. É necessário dizer que neste semestre foquei em
-            entender sua lógica e comportamento, não focando tanto em frameworks
-            ou bibliotecas. Em contrapartida, este semestre foi essencial para
-            afeiçoar-me no que tange à lógica de programação e a entender melhor
-            como desenvolver sistemas com ênfase já em interatividade.
+            JavaScript, linguagem fundamental no Desenvolvimento Web, Servidores
+            (Node.js) e até mesmo IoT. É necessário dizer que neste semestre
+            foquei em entender sua lógica e comportamento, não focando tanto em
+            frameworks ou bibliotecas. Em contrapartida, este semestre foi
+            essencial para afeiçoar-me no que tange à lógica de programação e a
+            entender melhor como desenvolver sistemas com ênfase já em
+            interatividade.
           </p>
         </div>
       </section>
@@ -407,28 +408,25 @@
       >
         <div class="section-header">
           <h2 class="section-eyebrow" id="projects-title">Projetos Práticos</h2>
-          <p class="section-copy">
-            Três aplicações desenvolvidas para consolidar os conceitos
-            estudados.
-          </p>
+
         </div>
 
         <div class="projects-grid">
           <article class="project-card">
             <div class="project-image">
               <img
-                src="https://via.placeholder.com/400x200/161616/f7df1e?text=Projeto+1"
+                src=""
                 alt="Preview do Projeto 1"
                 loading="lazy"
               />
             </div>
             <div class="project-content">
-              <h3>Calculadora de IMC</h3>
+              <h3>Treino de Lógica em JS</h3>
               <p>
-                Aplicação que calcula o Índice de Massa Corporal com validação
-                de entrada e exibição de resultado.
+                Quatro aplicações desenvolvidas para consolidar os conceitos
+                estudados em Variáveis, Objetos e condicional (if/else)...
               </p>
-              <a href="#" class="btn btn-primary">Ver projeto</a>
+              <a href="https://app.notion.com/p/Projetos-para-Treino-de-Vari-veis-Objetos-e-condicional-if-else-f180c82f53fd4df982ee990ef3a698f1?source=copy_link" class="btn btn-primary">Ver projeto</a>
             </div>
           </article>
 
@@ -479,7 +477,12 @@
         <div class="section-header">
           <h2 class="section-eyebrow" id="courses-title">Cursos Realizados</h2>
           <p class="section-copy">
-            Como disse anteriormente, meu foco durante este semestre foi focar em lógica com ênfase em JavaScript, todavia, pareceu por bem ainda durante as férias de transição entre o 1º e o 2º semestre, continuar estudando HTML e CSS, e por conseguinte, realizei estes dois cursos da Cisco Networking Academy, que me ajudaram a relembrar e fixar sintexes importantes no desenvolvimento front-end.
+            Como disse anteriormente, meu foco durante este semestre foi em
+            lógica com ênfase em JavaScript, todavia, pareceu por bem ainda
+            durante as férias de transição entre o 1º e o 2º semestre, continuar
+            estudando HTML e CSS, e por conseguinte, realizei estes dois cursos
+            da Cisco Networking Academy, que me ajudaram a relembrar e fixar
+            sintexes importantes no desenvolvimento front-end.
           </p>
         </div>
 
@@ -489,14 +492,19 @@
               <span class="course-date">Jul 2025</span>
               <h3>HTML Essentials</h3>
               <p>
-                Entendendo os Fundamentos da linguagem de marcação: elementos semânticos,
-                formulários, acessibilidade e boas práticas.
+                Entendendo os Fundamentos da linguagem de marcação: elementos
+                semânticos, formulários, acessibilidade e boas práticas.
               </p>
               <div class="course-meta">
                 <span class="course-school">Cisco Networking Academy</span>
                 <span class="course-duration">30h</span>
               </div>
-              <a href="https://www.credly.com/badges/3102f81b-82d5-4971-adeb-62aac844f9d2/public_url"  target="_blank" class="btn btn-primary btn-sm">Ver certificado</a>
+              <a
+                href="https://www.credly.com/badges/3102f81b-82d5-4971-adeb-62aac844f9d2/public_url"
+                target="_blank"
+                class="btn btn-primary btn-sm"
+                >Ver certificado</a
+              >
             </div>
           </article>
 
@@ -505,14 +513,20 @@
               <span class="course-date">Ago 2025</span>
               <h3>CSS Essentials</h3>
               <p>
-                Conhecendo melhor como funciona a estilização de páginas web: flexbox, grid, animações com @keyframes, responsividade e
+                Conhecendo melhor como funciona a estilização de páginas web:
+                flexbox, grid, animações com @keyframes, responsividade e
                 organização de código.
               </p>
               <div class="course-meta">
                 <span class="course-school">Cisco Networking Academy</span>
                 <span class="course-duration">30h</span>
               </div>
-              <a href="https://www.credly.com/badges/2b8d08b0-3b8f-44d7-bb28-3c93abf28a83/linked_in_profile"  target="_blank" class="btn btn-primary btn-sm">Ver certificado</a>
+              <a
+                href="https://www.credly.com/badges/2b8d08b0-3b8f-44d7-bb28-3c93abf28a83/linked_in_profile"
+                target="_blank"
+                class="btn btn-primary btn-sm"
+                >Ver certificado</a
+              >
             </div>
           </article>
         </div>
@@ -545,455 +559,272 @@
       </section>
     </main>
 
+    <script>
+      (() => {
+        "use strict";
 
-<script>
-(() => {
-  "use strict";
-
-  /* =====================================================
+        /* =====================================================
      MENU HAMBÚRGUER
   ===================================================== */
 
-  function initMenu() {
-    const toggle = document.getElementById("menu-toggle");
-    const dropdown = document.getElementById("menu-dropdown");
+        function initMenu() {
+          const toggle = document.getElementById("menu-toggle");
+          const dropdown = document.getElementById("menu-dropdown");
 
-    if (!toggle || !dropdown) return;
+          if (!toggle || !dropdown) return;
 
-    const closeMenu = () => {
-      toggle.setAttribute("aria-expanded", "false");
-      dropdown.classList.remove("is-open");
-    };
+          const closeMenu = () => {
+            toggle.setAttribute("aria-expanded", "false");
+            dropdown.classList.remove("is-open");
+          };
 
-    const openMenu = () => {
-      toggle.setAttribute("aria-expanded", "true");
-      dropdown.classList.add("is-open");
-    };
+          const openMenu = () => {
+            toggle.setAttribute("aria-expanded", "true");
+            dropdown.classList.add("is-open");
+          };
 
-    const toggleMenu = () => {
-      const opened = toggle.getAttribute("aria-expanded") === "true";
+          const toggleMenu = () => {
+            const opened = toggle.getAttribute("aria-expanded") === "true";
 
-      opened ? closeMenu() : openMenu();
-    };
+            opened ? closeMenu() : openMenu();
+          };
 
+          toggle.addEventListener("click", (event) => {
+            event.stopPropagation();
+            toggleMenu();
+          });
 
-    toggle.addEventListener("click", (event) => {
-      event.stopPropagation();
-      toggleMenu();
-    });
+          dropdown.addEventListener("click", (event) => {
+            // Mantém funcionamento do seletor de idioma
+            if (
+              event.target.closest(".language-pill") ||
+              event.target.closest(".language-dropdown")
+            ) {
+              return;
+            }
 
+            // Fecha ao clicar em links do menu
+            if (event.target.closest("a")) {
+              closeMenu();
+            }
+          });
 
-    dropdown.addEventListener("click", (event) => {
+          document.addEventListener("click", (event) => {
+            if (!event.target.closest(".menu-wrapper")) {
+              closeMenu();
+            }
+          });
 
-      // Mantém funcionamento do seletor de idioma
-      if (
-        event.target.closest(".language-pill") ||
-        event.target.closest(".language-dropdown")
-      ) {
-        return;
-      }
+          document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+              closeMenu();
+            }
+          });
+        }
 
-      // Fecha ao clicar em links do menu
-      if (event.target.closest("a")) {
-        closeMenu();
-      }
-    });
-
-
-    document.addEventListener("click", (event) => {
-
-      if (!event.target.closest(".menu-wrapper")) {
-        closeMenu();
-      }
-
-    });
-
-
-    document.addEventListener("keydown", (event) => {
-
-      if (event.key === "Escape") {
-        closeMenu();
-      }
-
-    });
-
-  }
-
-
-
-  /* =====================================================
+        /* =====================================================
      NAVEGAÇÃO + INDICADOR + SCROLLSPY
   ===================================================== */
 
-  function initNavigation() {
+        function initNavigation() {
+          const navLinks = [
+            ...document.querySelectorAll(".page-nav .nav-list a"),
+          ];
 
-    const navLinks = [
-      ...document.querySelectorAll(".page-nav .nav-list a")
-    ];
+          const indicator = document.querySelector(".nav-active-indicator");
 
-    const indicator =
-      document.querySelector(".nav-active-indicator");
+          if (!indicator || !navLinks.length) return;
 
+          const header = document.querySelector(".page-header");
 
-    if (!indicator || !navLinks.length) return;
+          let activeLink =
+            navLinks.find(
+              (link) => link.getAttribute("aria-current") === "page",
+            ) || navLinks[0];
 
+          let scrollLocked = false;
+          let ticking = false;
 
-    const header =
-      document.querySelector(".page-header");
+          function getHeaderHeight() {
+            return header ? header.offsetHeight : 64;
+          }
 
+          function moveIndicator(link, instant = false) {
+            if (!link) return;
 
-    let activeLink =
-      navLinks.find(link =>
-        link.getAttribute("aria-current") === "page"
-      ) || navLinks[0];
+            const left = link.offsetLeft - 3;
 
+            const width = link.offsetWidth + 6;
 
-    let scrollLocked = false;
-    let ticking = false;
+            if (instant) {
+              indicator.style.transition = "none";
+            }
 
+            indicator.style.width = `${width}px`;
 
+            indicator.style.transform = `translateX(${left}px)`;
 
-    function getHeaderHeight() {
+            if (instant) {
+              requestAnimationFrame(() => {
+                indicator.style.transition = "";
+              });
+            }
+          }
 
-      return header
-        ? header.offsetHeight
-        : 64;
+          function setActive(link, force = false) {
+            if (!link) return;
 
-    }
+            if (link === activeLink && !force) {
+              return;
+            }
 
+            activeLink = link;
 
+            navLinks.forEach((item) => {
+              const active = item === link;
 
-    function moveIndicator(link, instant = false) {
+              item.classList.toggle("is-active", active);
 
-      if (!link) return;
+              if (active) {
+                item.setAttribute("aria-current", "page");
+              } else {
+                item.removeAttribute("aria-current");
+              }
+            });
 
+            moveIndicator(link);
+          }
 
-      const left =
-        link.offsetLeft - 3;
-
-
-      const width =
-        link.offsetWidth + 6;
-
-
-
-      if (instant) {
-        indicator.style.transition = "none";
-      }
-
-
-      indicator.style.width = `${width}px`;
-
-      indicator.style.transform =
-        `translateX(${left}px)`;
-
-
-      if (instant) {
-
-        requestAnimationFrame(() => {
-          indicator.style.transition = "";
-        });
-
-      }
-
-    }
-
-
-
-    function setActive(link, force = false) {
-
-      if (!link) return;
-
-
-      if (link === activeLink && !force) {
-        return;
-      }
-
-
-      activeLink = link;
-
-
-      navLinks.forEach(item => {
-
-        const active =
-          item === link;
-
-
-        item.classList.toggle(
-          "is-active",
-          active
-        );
-
-
-        if (active) {
-          item.setAttribute(
-            "aria-current",
-            "page"
-          );
-        } else {
-          item.removeAttribute(
-            "aria-current"
-          );
-        }
-
-      });
-
-
-      moveIndicator(link);
-
-    }
-
-
-
-    /*
+          /*
        Scroll suave considerando header fixo
     */
 
-    navLinks.forEach(link => {
+          navLinks.forEach((link) => {
+            link.addEventListener("click", (event) => {
+              const targetId = link.getAttribute("href");
 
-      link.addEventListener(
-        "click",
-        event => {
+              if (!targetId || !targetId.startsWith("#")) return;
 
-          const targetId =
-            link.getAttribute("href");
+              const section = document.querySelector(targetId);
 
+              if (!section) return;
 
-          if (
-            !targetId ||
-            !targetId.startsWith("#")
-          ) return;
+              event.preventDefault();
 
+              const position =
+                section.getBoundingClientRect().top +
+                window.scrollY -
+                getHeaderHeight();
 
-          const section =
-            document.querySelector(targetId);
+              window.scrollTo({
+                top: position,
 
+                behavior: "smooth",
+              });
 
-          if (!section) return;
+              setActive(link);
 
+              scrollLocked = true;
 
-          event.preventDefault();
-
-
-          const position =
-            section.getBoundingClientRect().top +
-            window.scrollY -
-            getHeaderHeight();
-
-
-          window.scrollTo({
-
-            top: position,
-
-            behavior: "smooth"
-
+              setTimeout(() => {
+                scrollLocked = false;
+              }, 800);
+            });
           });
 
-
-          setActive(link);
-
-
-          scrollLocked = true;
-
-
-          setTimeout(() => {
-
-            scrollLocked = false;
-
-          }, 800);
-
-
-        }
-      );
-
-    });
-
-
-
-    /*
+          /*
        ScrollSpy otimizado
     */
 
-    const sections =
-      navLinks
-        .map(link => ({
-          link,
-          section:
-            document.querySelector(
-              link.getAttribute("href")
-            )
-        }))
-        .filter(item => item.section);
+          const sections = navLinks
+            .map((link) => ({
+              link,
+              section: document.querySelector(link.getAttribute("href")),
+            }))
+            .filter((item) => item.section);
 
+          function updateScrollSpy() {
+            if (scrollLocked) return;
 
+            const scrollPosition = window.scrollY + getHeaderHeight() + 20;
 
-    function updateScrollSpy() {
+            let current = sections[0];
 
+            sections.forEach((item) => {
+              if (item.section.offsetTop <= scrollPosition) {
+                current = item;
+              }
+            });
 
-      if (scrollLocked) return;
+            if (current) {
+              setActive(current.link);
+            }
+          }
 
+          window.addEventListener(
+            "scroll",
+            () => {
+              if (!ticking) {
+                window.requestAnimationFrame(() => {
+                  updateScrollSpy();
 
-      const scrollPosition =
-        window.scrollY +
-        getHeaderHeight() +
-        20;
+                  ticking = false;
+                });
 
+                ticking = true;
+              }
+            },
+            {
+              passive: true,
+            },
+          );
 
-
-      let current =
-        sections[0];
-
-
-
-      sections.forEach(item => {
-
-
-        if (
-          item.section.offsetTop <= scrollPosition
-        ) {
-
-          current = item;
-
-        }
-
-
-      });
-
-
-
-      if (current) {
-        setActive(current.link);
-      }
-
-    }
-
-
-
-    window.addEventListener(
-      "scroll",
-      () => {
-
-        if (!ticking) {
-
-          window.requestAnimationFrame(() => {
-
-            updateScrollSpy();
-
-            ticking = false;
-
+          window.addEventListener("resize", () => {
+            moveIndicator(activeLink, true);
           });
 
+          window.addEventListener("orientationchange", () => {
+            moveIndicator(activeLink, true);
+          });
 
-          ticking = true;
-
+          requestAnimationFrame(() => {
+            setActive(activeLink, true);
+          });
         }
 
-      },
-      {
-        passive: true
-      }
-    );
-
-
-
-    window.addEventListener(
-      "resize",
-      () => {
-
-        moveIndicator(
-          activeLink,
-          true
-        );
-
-      }
-    );
-
-
-    window.addEventListener(
-      "orientationchange",
-      () => {
-
-        moveIndicator(
-          activeLink,
-          true
-        );
-
-      }
-    );
-
-
-
-    requestAnimationFrame(() => {
-
-      setActive(
-        activeLink,
-        true
-      );
-
-    });
-
-  }
-
-
-
-  /* =====================================================
+        /* =====================================================
      BOTÃO VOLTAR AO TOPO
   ===================================================== */
 
-  function initBackToTop() {
+        function initBackToTop() {
+          const button = document.querySelector(".back-to-top");
 
-    const button =
-      document.querySelector(
-        ".back-to-top"
-      );
+          if (!button) return;
 
+          button.addEventListener("click", (event) => {
+            event.preventDefault();
 
-    if (!button) return;
+            window.scrollTo({
+              top: 0,
 
+              behavior: "smooth",
+            });
+          });
+        }
 
-
-    button.addEventListener(
-      "click",
-      event => {
-
-        event.preventDefault();
-
-
-        window.scrollTo({
-
-          top: 0,
-
-          behavior: "smooth"
-
-        });
-
-      }
-    );
-
-  }
-
-
-
-  /* =====================================================
+        /* =====================================================
      START
   ===================================================== */
 
-  document.addEventListener(
-    "DOMContentLoaded",
-    () => {
+        document.addEventListener("DOMContentLoaded", () => {
+          initMenu();
 
-      initMenu();
+          initNavigation();
 
-      initNavigation();
-
-      initBackToTop();
-
-    }
-  );
-
-
-})();
-</script>
+          initBackToTop();
+        });
+      })();
+    </script>
     <script src="i18n.js" defer></script>
   </body>
 </html>
