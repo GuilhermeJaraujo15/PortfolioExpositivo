@@ -785,6 +785,24 @@ button:disabled {
   border-radius: 999px;
 }
 
+code {
+    background-color: #252526; /* Fundo cinza escuro */
+    color: #ffd700;           /* Texto amarelo (ou a cor de destaque do seu site) */
+    padding: 2px 6px;         /* Espaçamento interno */
+    border-radius: 4px;       /* Cantos arredondados */
+    font-family: monospace;   /* Fonte estilo código */
+    font-size: 0.9em;         /* Tamanho levemente menor que o texto comum */
+}
+
+/* Efeito de Foco ao navegar pelo Teclado (Tab) */
+.btn-primary:focus-visible {
+    outline: none; /* Remove a borda padrão feia do navegador */
+    box-shadow: 0 0 15px #ffd700, 0 0 5px #ffd700; /* Cria a aura iluminada amarela */
+    transform: scale(1.03); /* Dá um leve zoom no link */
+    transition: all 0.2s ease; /* Deixa o efeito suave */
+}
+
+
 /* ---------- Contato ---------- */
 .contact-block {
   display: grid;
