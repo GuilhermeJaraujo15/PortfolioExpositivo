@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 3 Filter - JavaScript Lab</title>
+    <style>
+        /* Modern Font Stack - Reference: GitHub modern-font-stacks */
+        :root {
+            --font-main: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --color-bg: #ffffff;
+            --color-text: #1a1f23;
+            --color-border: #d0d7de;
+            --color-accent: #0969da;
+            --color-code-bg: #f6f8fa;
+            --radius: 6px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Documentation UI - Reference: MDN Writing Guidelines */
+        .lab-header {
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .lab-title {
+            font-size: 1.85rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .tag-container {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .tag {
+            background: var(--color-code-bg);
+            border: 1px solid var(--color-border);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: ui-monospace, monospace;
+            font-size: 0.8rem;
+        }
+
+        /* Demo Card Style */
+        .demo-card {
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            background: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .label-style {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .input-field {
+            padding: 0.75rem;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.15);
+        }
+
+        .btn-primary {
+            background-color: var(--color-accent);
+            color: white;
+            border: 1px solid rgba(27, 31, 36, 0.15);
+            padding: 0.75rem 1.25rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: var(--radius);
+            cursor: pointer;
+            width: fit-content;
+        }
+
+        .btn-primary:hover { background-color: #0860ca; }
+
+        .result-area {
+            padding: 1.25rem;
+            background-color: #f0f7ff;
+            border-left: 4px solid var(--color-accent);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            min-height: 50px;
+        }
+
+        #p3 {
+            font-weight: 500;
+            color: #053d7a;
+        }
+
+        .doc-footer {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: #57606a;
+            padding: 1rem;
+            background: var(--color-code-bg);
+            border-radius: var(--radius);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="lab-header">
+        <h1 class="lab-title">Filtro de Divisibilidade</h1>
+        <p>Utilização do método <code>filter()</code> para identificação de múltiplos matemáticos.</p>
+        <div class="tag-container">
+            <span class="tag">Array.filter()</span>
+            <span class="tag">Modulo Operator (%)</span>
+            <span class="tag">map(Number)</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="demo-card">
+            <div class="input-group">
+                <!-- IDs matching the JS logic in exerciciosDomMetodos.pdf [2] -->
+                <label class="label-style" for="valores2">Digite os números (separados por vírgula):</label>
+                <input type="text" id="valores2" class="input-field" placeholder="Ex: 3, 5, 9, 12, 14, 21">
+                <button id="botao3" class="btn-primary">Filtrar Múltiplos de 3</button>
+            </div>
+
+            <div class="result-area" aria-live="polite">
+                <p id="p3">Aguardando entrada de dados...</p>
+            </div>
+        </section>
+
+        <aside class="doc-footer">
+            <strong>Dica Técnica:</strong> O operador de resto (<code>%</code>) retorna o que sobra de uma divisão inteira. Quando <code>n % 3 === 0</code>, o número é divisível por 3 sem sobras [2].
+        </aside>
+    </main>
+
+    <!-- Original JavaScript Logic Inalterada [2] -->
+    <script>
+        // chamamento //
+        const input2 = document.getElementById("valores2");
+        const botao3 = document.getElementById("botao3");
+        const p3 = document.getElementById("p3");
+
+        // interação //
+        botao3.addEventListener("click", function () {   
+            const dadosInput = input2.value.split(",").map(Number);
+            const analiseDosDadosdois = dadosInput.filter(     
+                (dadosInputdois) => dadosInputdois % 3 === 0,
+            );
+            p3.textContent = `O(s) número(s) múltiplo(s) de três, é(são): ${analiseDosDadosdois.join(", ")}.`; 
+        });
+    </script>
+</body>
+</html>
