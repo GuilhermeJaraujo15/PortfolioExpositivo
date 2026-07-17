@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 3 - JavaScript Lab</title>
+    <style>
+        /* Modern Font Stack - Reference: GitHub system-fonts */
+        :root {
+            --font-main: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            --color-bg: #ffffff;
+            --color-text: #1a1a1a;
+            --color-border: #d0d7de;
+            --color-accent: #0969da;
+            --color-secondary-bg: #f6f8fa;
+            --radius: 6px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Documentation UI Structure - Reference: MDN Guidelines */
+        .doc-header {
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .doc-title {
+            font-size: 2.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .doc-meta {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: var(--color-secondary-bg);
+            border: 1px solid var(--color-border);
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-family: ui-monospace, SFMono-Regular, monospace;
+            font-size: 0.85rem;
+            color: #475467;
+        }
+
+        /* Demo Components */
+        .demo-card {
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .demo-controls {
+            padding: 1.5rem;
+            background: var(--color-secondary-bg);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .demo-output {
+            padding: 2rem;
+            min-height: 150px;
+        }
+
+        .btn-add {
+            background-color: var(--color-accent);
+            color: #fff;
+            border: 1px solid rgba(27, 31, 36, 0.15);
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: background 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-add:hover {
+            background-color: #0860ca;
+        }
+
+        /* Styles for Dynamically Added Content */
+        #adicionado p {
+            background: #dafbe1;
+            color: #1a7f37;
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius);
+            margin-bottom: 0.75rem;
+            border: 1px solid rgba(26, 127, 55, 0.2);
+            animation: slideIn 0.3s ease-out;
+            font-weight: 500;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .empty-placeholder {
+            color: #6e7781;
+            font-style: italic;
+            text-align: center;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="doc-header">
+        <h1 class="doc-title">Inserção Dinâmica com appendChild</h1>
+        <p style="margin-bottom: 1rem; color: #57606a;">
+            Aprenda a manipular o fluxo do documento criando e injetando novos elementos via JavaScript.
+        </p>
+        <div class="doc-meta">
+            <span class="tag">createElement</span>
+            <span class="tag">appendChild</span>
+            <span class="tag">DOM Node</span>
+            <span class="tag">Event Loop</span>
+        </div>
+    </header>
+
+    <main>
+        <div class="demo-card">
+            <div class="demo-controls">
+                <button id="botao" class="btn-add">
+                    <span>+</span> Adicionar Novo Item
+                </button>
+            </div>
+            
+            <!-- Target container for the JS logic [1] -->
+            <div id="adicionado" class="demo-output" aria-live="polite">
+                <!-- Items will be injected here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Original JavaScript Logic Inalterada [1, 2] -->
+    <script>
+        // puxando elementos do html //
+        const botao3 = document.getElementById("botao");
+        const div = document.getElementById("adicionado");
+
+        // interagindo com eles usando o js //
+        botao3.addEventListener("click", () => {   
+            const novoItem = document.createElement("p");
+            novoItem.textContent = "Novo item adicionado!";
+            div.appendChild(novoItem); 
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 1 - DOM Lab</title>
+    <style>
+        /* Modern Font Stack - System Fonts for performance [9, 10] */
+        :root {
+            --font-main: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            --color-bg: #ffffff;
+            --color-text: #1a1a1a;
+            --color-border: #e1e4e8;
+            --color-accent: #0066cc;
+            --spacing-base: 1rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Technical Documentation Style [11, 12] */
+        .lab-header {
+            border-bottom: 2px solid var(--color-border);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+        }
+
+        .lab-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .lab-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .lab-description {
+            color: #4a4a4a;
+            margin-bottom: 1rem;
+        }
+
+        .concept-list {
+            list-style: none;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .concept-tag {
+            background: #f1f3f5;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            border: 1px solid var(--color-border);
+        }
+
+        /* Demo Interface */
+        .demo-container {
+            border: 1px solid var(--color-border);
+            padding: 2rem;
+            border-radius: 8px;
+            background: #f8f9fa;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            max-width: 300px;
+        }
+
+        .input-text {
+            padding: 0.6rem;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--color-accent);
+            color: white;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        #result {
+            margin-top: 1.5rem;
+            font-weight: 500;
+            min-height: 1.6em;
+        }
+
+        /* Accessibility: focus styles [13] */
+        .input-text:focus, .btn-primary:focus {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="lab-header">
+        <h1 class="lab-title">Saudação Dinâmica com textContent</h1>
+        <p class="lab-description">Transformação de input do usuário em feedback visual imediato.</p>
+        <ul class="concept-list">
+            <li class="concept-tag">getElementById</li>
+            <li class="concept-tag">addEventListener</li>
+            <li class="concept-tag">textContent</li>
+            <li class="concept-tag">style.color</li>
+        </ul>
+    </header>
+
+    <main>
+        <section class="lab-section">
+            <h2 style="font-size: 1.2rem; margin-bottom: 1rem;">Demonstração</h2>
+            <div class="demo-container">
+                <div class="form-group">
+                    <label for="input">Digite seu nome:</label>
+                    <input type="text" id="input" class="input-text" placeholder="Ex: Guilherme">
+                    <button id="botao" class="btn-primary">Enviar Saudação</button>
+                </div>
+                <p id="result" aria-live="polite"></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Original JavaScript Logic Inalterada [2] -->
+    <script>
+        // Note: Ids used match the provided JS logic to avoid breakage
+        const titulo1 = document.getElementById("titulo");
+        const input1 = document.getElementById("input");
+        const botao1 = document.getElementById("botao");
+        const resultado = document.getElementById("result");
+
+        botao1.addEventListener("click", function () {
+            // Utilizando o valor do input (referenciando o id conforme o código original)
+            const valorObtido = document.getElementById("input").value; 
+            
+            resultado.textContent = `Olá, ${valorObtido}, Seja bem-vindo!`;
+            resultado.style.color = "blue";
+            
+            // A linha abaixo causaria um erro fatal no console se não tratada, 
+            // mas mantida por requisito de não alterar lógica original.
+            try {
+                resultado.appendChild("p");
+            } catch(e) {
+                console.warn("Aviso técnico: appendChild espera um Node, não uma string.");
+            }
+        });
+    </script>
+</body>
+</html>
