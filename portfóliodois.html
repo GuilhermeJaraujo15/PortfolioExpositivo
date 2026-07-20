@@ -514,7 +514,12 @@
                 manipulação do BOM e o uso estruturado de condicionais, laços de
                 repetição e objetos.
               </p>
-              <a href="https://lunar-dentist-9df.notion.site/2-Ficha-de-Anamnese-com-JS-1-10-3a36469b1dad80758912f44d73db87fa" target="_blank" class="btn btn-primary">Ver projeto</a>
+              <a
+                href="https://lunar-dentist-9df.notion.site/2-Ficha-de-Anamnese-com-JS-1-10-3a36469b1dad80758912f44d73db87fa"
+                target="_blank"
+                class="btn btn-primary"
+                >Ver projeto</a
+              >
             </div>
           </article>
         </div>
@@ -601,109 +606,180 @@
         aria-labelledby="contact-title"
       >
         <div class="section-header">
-          <div>
-            <h2 class="section-eyebrow" id="contact-title">Contato</h2>
-            <p class="section-copy">
-              Interessado em ver os próximos passos ou colaborar em projetos de
-              estudo? Vamos conversar.
-            </p>
-          </div>
+          <h2 class="section-eyebrow" id="contact-title">Contato</h2>
+          <p class="section-copy">
+            Interessado em ver os próximos passos ou colaborar em projetos de
+            estudo? Vamos conversar.
+          </p>
         </div>
+
         <div class="contact-panel">
-          <a
-            href="#"
-            class="btn btn-primary back-to-top"
-            aria-label="Voltar ao topo da página"
-          >
-            ↑ Voltar ao topo
-          </a>
+          <!-- Formulário -->
+          <form id="contactForm" class="contact-form">
+            <div class="form-group">
+              <label for="from_name">Nome</label>
+              <input
+                type="text"
+                id="from_name"
+                name="from_name"
+                placeholder="Seu nome completo"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="reply_to">E-mail</label>
+              <input
+                type="email"
+                id="reply_to"
+                name="reply_to"
+                placeholder="seu@email.com"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Mensagem</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Escreva sua mensagem aqui..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              Enviar mensagem
+            </button>
+          </form>
         </div>
+
+        <!-- Toast (notificação) -->
+        <div id="toast" class="toast" role="alert" aria-live="polite"></div>
       </section>
     </main>
 
+    <footer class="page-footer" role="contentinfo">
+      <div class="footer-content">
+        <!-- Esquerda: Brand -->
+        <div class="footer-brand">
+          <span class="footer-name">guilherme_Araujo</span>
+          <span class="footer-copy">
+            &copy; <span id="current-year"></span> Todos os direitos reservados.
+          </span>
+        </div>
+
+        <div class="footer-social">
+          <a
+            href="https://www.linkedin.com/in/guilherme-jorge-de-araujo-/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            class="social-link"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+              />
+            </svg>
+          </a>
+
+          <a
+            href="https://github.com/GuilhermeJaraujo15"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            class="social-link"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.468-2.38 1.235-3.22-.123-.3-.535-1.52.117-3.16 0 0 1.008-.322 3.3 1.23.96-.267 1.98-.399 3-.399s2.04.132 3 .399c2.292-1.552 3.3-1.23 3.3-1.23.653 1.64.24 2.86.118 3.16.768.84 1.233 1.91 1.233 3.22 0 4.61-2.804 5.62-5.476 5.92.43.37.824 1.102.824 2.22 0 1.602-.015 2.894-.015 3.287 0 .322.216.694.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+              />
+            </svg>
+          </a>
+        </div>
+
+        <a
+          href="#"
+          class="btn btn-primary back-to-top"
+          aria-label="Voltar ao topo da página"
+        >
+          ↑ Voltar ao topo
+        </a>
+      </div>
+    </footer>
+
     <script>
-      (() => {
-        "use strict";
-
-        /* =====================================================
-     MENU HAMBÚRGUER
-  ===================================================== */
-
+      document.addEventListener("DOMContentLoaded", () => {
+        // ==================== MENU HAMBÚRGUER ====================
         function initMenu() {
           const toggle = document.getElementById("menu-toggle");
           const dropdown = document.getElementById("menu-dropdown");
-
           if (!toggle || !dropdown) return;
 
           const closeMenu = () => {
             toggle.setAttribute("aria-expanded", "false");
             dropdown.classList.remove("is-open");
           };
-
           const openMenu = () => {
             toggle.setAttribute("aria-expanded", "true");
             dropdown.classList.add("is-open");
           };
-
           const toggleMenu = () => {
-            const opened = toggle.getAttribute("aria-expanded") === "true";
-
-            opened ? closeMenu() : openMenu();
+            toggle.getAttribute("aria-expanded") === "true"
+              ? closeMenu()
+              : openMenu();
           };
 
-          toggle.addEventListener("click", (event) => {
-            event.stopPropagation();
+          toggle.addEventListener("click", (e) => {
+            e.stopPropagation();
             toggleMenu();
           });
 
-          dropdown.addEventListener("click", (event) => {
-            // Mantém funcionamento do seletor de idioma
+          dropdown.addEventListener("click", (e) => {
             if (
-              event.target.closest(".language-pill") ||
-              event.target.closest(".language-dropdown")
-            ) {
+              e.target.closest(".language-pill") ||
+              e.target.closest(".language-dropdown")
+            )
               return;
-            }
-
-            // Fecha ao clicar em links do menu
-            if (event.target.closest("a")) {
-              closeMenu();
-            }
+            if (e.target.closest("a")) closeMenu();
           });
 
-          document.addEventListener("click", (event) => {
-            if (!event.target.closest(".menu-wrapper")) {
-              closeMenu();
-            }
+          document.addEventListener("click", (e) => {
+            if (!e.target.closest(".menu-wrapper")) closeMenu();
           });
 
-          document.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") {
-              closeMenu();
-            }
+          document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") closeMenu();
           });
         }
 
-        /* =====================================================
-     NAVEGAÇÃO + INDICADOR + SCROLLSPY
-  ===================================================== */
-
+        // ==================== NAVEGAÇÃO + SCROLLSPY ====================
         function initNavigation() {
           const navLinks = [
             ...document.querySelectorAll(".page-nav .nav-list a"),
           ];
-
           const indicator = document.querySelector(".nav-active-indicator");
-
-          if (!indicator || !navLinks.length) return;
-
           const header = document.querySelector(".page-header");
+          if (!indicator || !navLinks.length) return;
 
           let activeLink =
             navLinks.find(
               (link) => link.getAttribute("aria-current") === "page",
             ) || navLinks[0];
-
           let scrollLocked = false;
           let ticking = false;
 
@@ -713,90 +789,45 @@
 
           function moveIndicator(link, instant = false) {
             if (!link) return;
-
             const left = link.offsetLeft - 3;
-
             const width = link.offsetWidth + 6;
-
-            if (instant) {
-              indicator.style.transition = "none";
-            }
-
+            if (instant) indicator.style.transition = "none";
             indicator.style.width = `${width}px`;
-
             indicator.style.transform = `translateX(${left}px)`;
-
-            if (instant) {
-              requestAnimationFrame(() => {
-                indicator.style.transition = "";
-              });
-            }
+            if (instant)
+              requestAnimationFrame(() => (indicator.style.transition = ""));
           }
 
           function setActive(link, force = false) {
-            if (!link) return;
-
-            if (link === activeLink && !force) {
-              return;
-            }
-
+            if (!link || (link === activeLink && !force)) return;
             activeLink = link;
-
             navLinks.forEach((item) => {
               const active = item === link;
-
               item.classList.toggle("is-active", active);
-
-              if (active) {
-                item.setAttribute("aria-current", "page");
-              } else {
-                item.removeAttribute("aria-current");
-              }
+              item.toggleAttribute("aria-current", active);
             });
-
             moveIndicator(link);
           }
 
-          /*
-       Scroll suave considerando header fixo
-    */
-
           navLinks.forEach((link) => {
-            link.addEventListener("click", (event) => {
+            link.addEventListener("click", (e) => {
               const targetId = link.getAttribute("href");
-
               if (!targetId || !targetId.startsWith("#")) return;
-
               const section = document.querySelector(targetId);
-
               if (!section) return;
-
-              event.preventDefault();
-
-              const position =
-                section.getBoundingClientRect().top +
-                window.scrollY -
-                getHeaderHeight();
-
+              e.preventDefault();
               window.scrollTo({
-                top: position,
-
+                top:
+                  section.getBoundingClientRect().top +
+                  window.scrollY -
+                  getHeaderHeight(),
                 behavior: "smooth",
               });
-
               setActive(link);
-
               scrollLocked = true;
-
-              setTimeout(() => {
-                scrollLocked = false;
-              }, 800);
+              setTimeout(() => (scrollLocked = false), 800);
             });
           });
-
-          /*
-       ScrollSpy otimizado
-    */
 
           const sections = navLinks
             .map((link) => ({
@@ -807,20 +838,12 @@
 
           function updateScrollSpy() {
             if (scrollLocked) return;
-
             const scrollPosition = window.scrollY + getHeaderHeight() + 20;
-
             let current = sections[0];
-
             sections.forEach((item) => {
-              if (item.section.offsetTop <= scrollPosition) {
-                current = item;
-              }
+              if (item.section.offsetTop <= scrollPosition) current = item;
             });
-
-            if (current) {
-              setActive(current.link);
-            }
+            if (current) setActive(current.link);
           }
 
           window.addEventListener(
@@ -829,63 +852,106 @@
               if (!ticking) {
                 window.requestAnimationFrame(() => {
                   updateScrollSpy();
-
                   ticking = false;
                 });
-
                 ticking = true;
               }
             },
-            {
-              passive: true,
-            },
+            { passive: true },
           );
 
-          window.addEventListener("resize", () => {
-            moveIndicator(activeLink, true);
-          });
-
-          window.addEventListener("orientationchange", () => {
-            moveIndicator(activeLink, true);
-          });
-
-          requestAnimationFrame(() => {
-            setActive(activeLink, true);
-          });
+          window.addEventListener("resize", () =>
+            moveIndicator(activeLink, true),
+          );
+          window.addEventListener("orientationchange", () =>
+            moveIndicator(activeLink, true),
+          );
+          requestAnimationFrame(() => setActive(activeLink, true));
         }
 
-        /* =====================================================
-     BOTÃO VOLTAR AO TOPO
-  ===================================================== */
-
+        // ==================== BOTÃO VOLTAR AO TOPO ====================
         function initBackToTop() {
           const button = document.querySelector(".back-to-top");
-
           if (!button) return;
-
-          button.addEventListener("click", (event) => {
-            event.preventDefault();
-
-            window.scrollTo({
-              top: 0,
-
-              behavior: "smooth",
-            });
+          button.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
           });
         }
 
-        /* =====================================================
-     START
-  ===================================================== */
+        // ==================== FORMULÁRIO DE CONTATO ====================
+        function initContactForm() {
+          const form = document.getElementById("contactForm");
+          const toast = document.getElementById("toast");
+          if (!form || !toast) return;
 
-        document.addEventListener("DOMContentLoaded", () => {
-          initMenu();
+          function showToast(message, success = true) {
+            toast.textContent = message;
+            toast.classList.remove("error", "success");
+            toast.classList.add("show", success ? "success" : "error");
+            clearTimeout(toast._timeout);
+            toast._timeout = setTimeout(() => {
+              toast.classList.remove("show");
+            }, 3000);
+          }
 
-          initNavigation();
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
 
-          initBackToTop();
-        });
-      })();
+            const name = form.from_name.value.trim();
+            const email = form.reply_to.value.trim();
+            const message = form.message.value.trim();
+
+            if (!name || !email || !message) {
+              showToast("Preencha todos os campos corretamente.", false);
+              return;
+            }
+
+            const subject = encodeURIComponent(
+              "Novo contato via Portfólio Expositivo - 2° Semestre",
+            );
+            const body = encodeURIComponent(
+              `Nome: ${name}\nEmail: ${email}\n\nMensagem:\n${message}`,
+            );
+
+            const isMobile = /Android|iPhone|iPad|iPod/i.test(
+              navigator.userAgent,
+            );
+
+            if (!isMobile) {
+              // DESKTOP – pergunta se quer Gmail ou mailto
+              const useGmail = confirm(
+                "Deseja enviar a mensagem pelo Gmail?\n\n" +
+                  "OK → Gmail Web\n" +
+                  "Cancelar → Aplicativo de e-mail",
+              );
+
+              if (useGmail) {
+                window.open(
+                  `https://mail.google.com/mail/?view=cm&to=guilherme.j.araujo7@aluno.senai.br&su=${subject}&body=${body}`,
+                  "_blank",
+                );
+                showToast("Abrindo Gmail…", true);
+              } else {
+                window.location.href = `mailto:guilherme.j.araujo7@aluno.senai.br?subject=${subject}&body=${body}`;
+                showToast("Abrindo aplicativo de e-mail…", true);
+              }
+            } else {
+              // MOBILE – mailto direto
+              window.location.href = `mailto:guilherme.j.araujo7@aluno.senai.br?subject=${subject}&body=${body}`;
+              showToast("Abrindo aplicativo de e-mail…", true);
+            }
+
+            form.reset();
+          });
+        } // <--- ESSA CHAVE ESTAVA FALTANDO
+
+        // ==================== INICIALIZAÇÃO ====================
+        initMenu();
+        initNavigation();
+        initBackToTop();
+        initContactForm();
+      });
     </script>
     <script src="i18n.js" defer></script>
   </body>
