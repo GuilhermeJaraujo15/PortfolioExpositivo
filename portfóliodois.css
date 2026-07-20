@@ -691,11 +691,14 @@ button:disabled {
 /* ---------- Projetos ---------- */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   margin-top: 1rem;
 }
 .project-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   background: var(--bg-card);
   border-radius: var(--radius-sm);
   overflow: hidden;
@@ -713,7 +716,14 @@ button:disabled {
   background: #111;
 }
 .project-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   padding: 1.2rem 1.5rem 1.8rem;
+}
+.project-content .btn {
+  margin-top: auto;
+  align-self: flex-start;
 }
 .project-content h3 {
   font-family: 'Jura', sans-serif;
@@ -735,6 +745,9 @@ button:disabled {
   margin-top: 1rem;
 }
 .course-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   background: var(--bg-card);
   border-radius: var(--radius-sm);
   border: 1px solid var(--border-soft);
@@ -745,10 +758,20 @@ button:disabled {
   transform: translateY(-4px);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
 }
+.course-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.course-content .btn {
+  margin-top: auto;
+  align-self: flex-start;
+}
 .course-date {
   display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 500;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 50000;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--js-yellow);
@@ -756,6 +779,7 @@ button:disabled {
   padding: 0.2rem 0.8rem;
   border-radius: 999px;
   margin-bottom: 0.5rem;
+
 }
 .course-card h3 {
   font-family: 'Jura', sans-serif;
