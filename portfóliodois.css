@@ -367,6 +367,44 @@ button:disabled {
   background: rgba(247, 223, 30, 0.15);
 }
 
+@keyframes languageSwitchPop {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes i18nFade {
+  from {
+    opacity: 0.72;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.language-switcher.is-switching-language .language-pill {
+  animation: languageSwitchPop 0.4s ease-out;
+}
+
+main.fade-i18n {
+  animation: i18nFade 0.35s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .language-switcher.is-switching-language .language-pill,
+  main.fade-i18n {
+    animation: none;
+  }
+}
+
 /* ---------- Botões base ---------- */
 .btn {
   display: inline-flex;

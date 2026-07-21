@@ -21,28 +21,37 @@
   <body data-page="portfolio-two">
     <header class="page-header">
       <!-- Logo (esquerda) – será ocultada em mobile -->
-      <div class="page-brand logo" id="logo" aria-label="Logo guilherme_Araujo">
+      <div
+        class="page-brand logo"
+        id="logo"
+        aria-label="Logo guilherme_Araujo"
+        data-i18n-aria="logoAria"
+      >
         guilherme_Araujo
       </div>
 
       <!-- Navegação principal (centralizada) -->
-      <nav class="page-nav" aria-label="Navegação principal">
+      <nav class="page-nav" aria-label="Navegação principal" data-i18n-aria="ui.navAria">
         <div class="nav-shell">
           <span class="nav-active-indicator" aria-hidden="true"></span>
           <ul class="nav-list">
             <li>
-              <a href="#contextualizacao" aria-current="page" class="is-active"
+              <a
+                href="#contextualizacao"
+                aria-current="page"
+                class="is-active"
+                data-i18n="nav.context"
                 >Contextualização</a
               >
             </li>
             <li>
-              <a href="#timeline">Aprendizado</a>
+              <a href="#timeline" data-i18n="nav.learning">Aprendizado</a>
             </li>
             <li>
-              <a href="#projetos">Projetos</a>
+              <a href="#projetos" data-i18n="nav.projects">Projetos</a>
             </li>
             <li>
-              <a href="#cursos">Cursos</a>
+              <a href="#cursos" data-i18n="nav.courses">Cursos</a>
             </li>
           </ul>
         </div>
@@ -56,6 +65,7 @@
           aria-controls="menu-dropdown"
           aria-expanded="false"
           aria-label="Abrir menu"
+          data-i18n-aria="ui.menuOpen"
           type="button"
         >
           <span class="hamburger-line"></span>
@@ -69,6 +79,8 @@
               href="introdução.html"
               class="btn btn-ghost menu-back-button"
               aria-label="Voltar para seleção de semestres"
+              data-i18n="ui.back"
+              data-i18n-aria="ui.backAria"
               role="menuitem"
               >← Voltar</a
             >
@@ -77,6 +89,7 @@
               class="language-switcher"
               role="group"
               aria-label="Seletor de idioma"
+              data-i18n-aria="ui.langSwitcher"
             >
               <div class="language-pill">
                 <span
@@ -100,6 +113,7 @@
                 class="language-dropdown"
                 role="menu"
                 aria-label="Escolher idioma"
+                data-i18n-aria="ui.langChoose"
               >
                 <button
                   id="language-alt-option"
@@ -126,13 +140,13 @@
       <!-- Hero -->
       <section class="hero-panel" id="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <span class="eyebrow" data-i18n="semester2.hero.pretitle"
+          <span class="eyebrow" data-i18n="hero.pretitle"
             >2º Semestre • JavaScript</span
           >
-          <h1 id="hero-title" data-i18n="semester2.hero.headline">
+          <h1 id="hero-title" data-i18n="hero.headline">
             JavaScript Developer
           </h1>
-          <p class="hero-text" data-i18n="semester2.hero.subtitle">
+          <p class="hero-text" data-i18n="hero.subtitle">
             Este semestre foi dedicado à lógica, interação e interfaces
             dinâmicas usando DOM, eventos e comportamento web.
           </p>
@@ -149,6 +163,7 @@
               preserveAspectRatio="xMidYMid meet"
               role="img"
               aria-label="Raio de energia amarelo"
+              data-i18n-aria="ui.boltAria"
             >
               <defs>
                 <linearGradient
@@ -190,8 +205,10 @@
         aria-labelledby="context-title"
       >
         <div class="section-header">
-          <h2 class="section-eyebrow" id="context-title">Contextualização</h2>
-          <p class="section-copy">
+          <h2 class="section-eyebrow" id="context-title" data-i18n="context.title">
+            Contextualização
+          </h2>
+          <p class="section-copy" data-i18n="context.text">
             Este período foi empenhado a aprofundar meus conhecimentos em
             JavaScript, linguagem fundamental no Desenvolvimento Web, Servidores
             (Node.js) e até mesmo IoT. É necessário dizer que neste semestre
@@ -211,10 +228,10 @@
         aria-labelledby="timeline-title"
       >
         <div class="section-header">
-          <h2 class="section-eyebrow" id="timeline-title">
+          <h2 class="section-eyebrow" id="timeline-title" data-i18n="learning.title">
             O que aprendi neste 2º Semestre
           </h2>
-          <p class="section-copy">
+          <p class="section-copy" data-i18n="learning.description">
             Abaixo estão listados os principais tópicos estudados, com links
             para os objetivos e resoluções de cada um. Estes tópicos estão
             dispostos cronologicamente, e cada um deles foi consolidado em
@@ -228,9 +245,13 @@
             <!-- Item 1 – Direita -->
             <li class="timeline-item right">
               <div class="timeline-card">
-                <span class="timeline-date">20 Ago. 2025</span>
-                <h3>Variáveis e Tipos de Dados</h3>
-                <p>
+                <span class="timeline-date" data-i18n="learning.items.i1.date"
+                  >20 Ago. 2025</span
+                >
+                <h3 data-i18n="learning.items.i1.title">
+                  Variáveis e Tipos de Dados
+                </h3>
+                <p data-i18n="learning.items.i1.desc">
                   Compreensão de `let`, `const`, `string`, `number` e operadores
                   matemáticos básicos.
                 </p>
@@ -238,7 +259,9 @@
                   <a
                     href="https://lunar-dentist-9df.notion.site/1-Vari-veis-e-tipos-de-dados-2156469b1dad8298a93c011aac4e3634"
                     target="_blank"
+                    rel="noopener noreferrer"
                     class="btn btn-primary btn-sm"
+                    data-i18n="learning.viewSolution"
                     >Ver resolução</a
                   >
                 </div>
@@ -248,14 +271,20 @@
             <!-- Item 2 – Esquerda -->
             <li class="timeline-item left">
               <div class="timeline-card">
-                <span class="timeline-date"> 22 Ago. 2025</span>
-                <h3>Condicionais</h3>
-                <p>Estudo sobre as estruturas `if`, `else if` e `else`</p>
+                <span class="timeline-date" data-i18n="learning.items.i2.date"
+                  >22 Ago. 2025</span
+                >
+                <h3 data-i18n="learning.items.i2.title">Condicionais</h3>
+                <p data-i18n="learning.items.i2.desc">
+                  Estudo sobre as estruturas `if`, `else if` e `else`
+                </p>
                 <div class="timeline-actions">
                   <a
                     href="https://lunar-dentist-9df.notion.site/2-Condicionais-if-else-39a6469b1dad80ab974efa70836967b0#39a6469b1dad80dd9622fc23107479f3"
                     target="_blank"
+                    rel="noopener noreferrer"
                     class="btn btn-primary btn-sm"
+                    data-i18n="learning.viewSolution"
                     >Ver resolução</a
                   >
                 </div>
@@ -265,9 +294,11 @@
             <!-- Item 3 – Direita -->
             <li class="timeline-item right">
               <div class="timeline-card">
-                <span class="timeline-date">27 Ago. 2025</span>
-                <h3>Switch</h3>
-                <p>
+                <span class="timeline-date" data-i18n="learning.items.i3.date"
+                  >27 Ago. 2025</span
+                >
+                <h3 data-i18n="learning.items.i3.title">Switch</h3>
+                <p data-i18n="learning.items.i3.desc">
                   Exercícios de múltiplas condições usando agora o Switch. Por
                   meio destes, tive a oportunidade de aprender o uso do `case`,
                   `break` e `default`.
@@ -276,7 +307,9 @@
                   <a
                     href="https://lunar-dentist-9df.notion.site/3-Switch-Case-39a6469b1dad8079b18befa37615953f"
                     target="_blank"
+                    rel="noopener noreferrer"
                     class="btn btn-primary btn-sm"
+                    data-i18n="learning.viewSolution"
                     >Ver resolução</a
                   >
                 </div>
@@ -286,9 +319,11 @@
             <!-- Item 4 – Esquerda -->
             <li class="timeline-item left">
               <div class="timeline-card">
-                <span class="timeline-date">03 Set. 2025</span>
-                <h3>Objetos</h3>
-                <p>
+                <span class="timeline-date" data-i18n="learning.items.i4.date"
+                  >03 Set. 2025</span
+                >
+                <h3 data-i18n="learning.items.i4.title">Objetos</h3>
+                <p data-i18n="learning.items.i4.desc">
                   Criação e manipulação de estruturas de dados baseadas em pares
                   de chave e valor, com ênfase em tópicos do mundo real.
                 </p>
@@ -296,7 +331,9 @@
                   <a
                     href="https://lunar-dentist-9df.notion.site/4-Objects-39c6469b1dad80bcaa92efed99644838"
                     target="_blank"
+                    rel="noopener noreferrer"
                     class="btn btn-primary btn-sm"
+                    data-i18n="learning.viewSolution"
                     >Ver resolução</a
                   >
                 </div>
@@ -306,9 +343,11 @@
             <!-- Item 5 – Direita -->
             <li class="timeline-item right">
               <div class="timeline-card">
-                <span class="timeline-date">03 Set. 2025</span>
-                <h3>Arrays</h3>
-                <p>
+                <span class="timeline-date" data-i18n="learning.items.i5.date"
+                  >03 Set. 2025</span
+                >
+                <h3 data-i18n="learning.items.i5.title">Arrays</h3>
+                <p data-i18n="learning.items.i5.desc">
                   Manipulação de listas com métodos como `push`, `pop`, `map`,
                   `filter`, `reduce` e entre outros...
                 </p>
@@ -316,7 +355,9 @@
                   <a
                     href="https://lunar-dentist-9df.notion.site/5-Arrays-39d6469b1dad80f584c8f95a2f569bb5?pvs=74"
                     target="_blank"
+                    rel="noopener noreferrer"
                     class="btn btn-primary btn-sm"
+                    data-i18n="learning.viewSolution"
                     >Ver resolução</a
                   >
                 </div>
@@ -326,9 +367,11 @@
             <!-- Item 6 – Esquerda -->
             <li class="timeline-item left">
               <div class="timeline-card">
-                <span class="timeline-date">10 Set. 2025</span>
-                <h3>Aninhamento de Objetos</h3>
-                <p>
+                <span class="timeline-date" data-i18n="learning.items.i6.date"
+                  >10 Set. 2025</span
+                >
+                <h3 data-i18n="learning.items.i6.title">Aninhamento de Objetos</h3>
+                <p data-i18n="learning.items.i6.desc">
                   Controle de estruturas de dados hierárquicos em JavaScript,
                   aplicando cálculos matemáticos e condicionais.
                 </p>
@@ -336,7 +379,9 @@
                   <a
                     href="https://lunar-dentist-9df.notion.site/6-Aninhamento-de-Objetos-39d6469b1dad800a92fed4f173c0a429"
                     target="_blank"
+                    rel="noopener noreferrer"
                     class="btn btn-primary btn-sm"
+                    data-i18n="learning.viewSolution"
                     >Ver resolução</a
                   >
                 </div>
@@ -346,9 +391,11 @@
             <!-- Item 7 – Direita -->
             <li class="timeline-item right">
               <div class="timeline-card">
-                <span class="timeline-date">12 Set. 2025</span>
-                <h3>Do...While</h3>
-                <p>
+                <span class="timeline-date" data-i18n="learning.items.i7.date"
+                  >12 Set. 2025</span
+                >
+                <h3 data-i18n="learning.items.i7.title">Do...While</h3>
+                <p data-i18n="learning.items.i7.desc">
                   Controle de fluxos de repetição em JavaScript com execução
                   inicial garantida. Aplicado na manipulação, atualização e
                   validação segura de dados em objetos aninhados.
@@ -357,7 +404,9 @@
                   <a
                     href="https://lunar-dentist-9df.notion.site/7-Do-While-39d6469b1dad805ba88dcf84a87b82ae"
                     target="_blank"
+                    rel="noopener noreferrer"
                     class="btn btn-primary btn-sm"
+                    data-i18n="learning.viewSolution"
                     >Ver resolução</a
                   >
                 </div>
@@ -367,9 +416,11 @@
             <!-- Item 8 – Esquerda -->
             <li class="timeline-item left">
               <div class="timeline-card">
-                <span class="timeline-date">03 Out. 2025</span>
-                <h3>Funções</h3>
-                <p>
+                <span class="timeline-date" data-i18n="learning.items.i8.date"
+                  >03 Out. 2025</span
+                >
+                <h3 data-i18n="learning.items.i8.title">Funções</h3>
+                <p data-i18n="learning.items.i8.desc">
                   Desenvolvimento de blocos reutilizáveis que processam
                   parâmetros dinâmicos para automatizar cálculos, validar dados
                   e isolar a lógica do sistema visando uma melhor organização e
@@ -379,7 +430,9 @@
                   <a
                     href="https://lunar-dentist-9df.notion.site/8-Fun-es-39d6469b1dad80d094d4c80cac25f76a"
                     target="_blank"
+                    rel="noopener noreferrer"
                     class="btn btn-primary btn-sm"
+                    data-i18n="learning.viewSolution"
                     >Ver resolução</a
                   >
                 </div>
@@ -389,9 +442,11 @@
             <!-- Item 9 – Direita -->
             <li class="timeline-item right">
               <div class="timeline-card">
-                <span class="timeline-date">08 Out. 2025</span>
-                <h3>Callbacks</h3>
-                <p>
+                <span class="timeline-date" data-i18n="learning.items.i9.date"
+                  >08 Out. 2025</span
+                >
+                <h3 data-i18n="learning.items.i9.title">Callbacks</h3>
+                <p data-i18n="learning.items.i9.desc">
                   Uso de funções enviadas como parâmetros para executar ações no
                   momento certo. Essencial para responder a cliques do usuário,
                   controlar o tempo e processar dados dinamicamente.
@@ -400,7 +455,9 @@
                   <a
                     href="https://lunar-dentist-9df.notion.site/9-Callbacks-39e6469b1dad802582b8c1c8c9de0f38"
                     target="_blank"
+                    rel="noopener noreferrer"
                     class="btn btn-primary btn-sm"
+                    data-i18n="learning.viewSolution"
                     >Ver resolução</a
                   >
                 </div>
@@ -410,9 +467,11 @@
             <!-- Item 10 – Esquerda -->
             <li class="timeline-item left">
               <div class="timeline-card">
-                <span class="timeline-date">29 Out. 2025</span>
-                <h3>Métodos</h3>
-                <p>
+                <span class="timeline-date" data-i18n="learning.items.i10.date"
+                  >29 Out. 2025</span
+                >
+                <h3 data-i18n="learning.items.i10.title">Métodos</h3>
+                <p data-i18n="learning.items.i10.desc">
                   Uso prático de funções integradas do JavaScript para
                   transformar dados com mais agilidade. Manipulando Strings,
                   Objetos e Arrays e aplicação de .map(), .filter(), .split() e
@@ -423,7 +482,9 @@
                   <a
                     href="https://lunar-dentist-9df.notion.site/10-M-todos-39e6469b1dad8044a19ec51939c4ff7b"
                     target="_blank"
+                    rel="noopener noreferrer"
                     class="btn btn-primary btn-sm"
+                    data-i18n="learning.viewSolution"
                     >Ver resolução</a
                   >
                 </div>
@@ -433,9 +494,11 @@
             <!-- Item 11 – Direita -->
             <li class="timeline-item right">
               <div class="timeline-card">
-                <span class="timeline-date">07 Dez. 2025</span>
-                <h3>DOM</h3>
-                <p>
+                <span class="timeline-date" data-i18n="learning.items.i11.date"
+                  >07 Dez. 2025</span
+                >
+                <h3 data-i18n="learning.items.i11.title">DOM</h3>
+                <p data-i18n="learning.items.i11.desc">
                   Alteração e controle de elementos da página em tempo real com
                   JavaScript. Desenvolvimento de lógica para capturar cliques do
                   usuário, modificar textos e criar componentes dinâmicos.
@@ -444,7 +507,9 @@
                   <a
                     href="https://lunar-dentist-9df.notion.site/11-DOM-3a06469b1dad801d9e3ef26ce0f339ef"
                     target="_blank"
+                    rel="noopener noreferrer"
                     class="btn btn-primary btn-sm"
+                    data-i18n="learning.viewSolution"
                     >Ver resolução</a
                   >
                 </div>
@@ -461,8 +526,10 @@
         aria-labelledby="projects-title"
       >
         <div class="section-header">
-          <h2 class="section-eyebrow" id="projects-title">Projetos Práticos</h2>
-          <p class="section-copy">
+          <h2 class="section-eyebrow" id="projects-title" data-i18n="projects.title">
+            Projetos Práticos
+          </h2>
+          <p class="section-copy" data-i18n="projects.description">
             Além de exercícios de fixação avulsos, fomos impelidos à resolver
             problemas práticos mais complexos, que exigiam a junção de diversos
             conceitos estudados. Estes projetos foram desenvolvidos em grupo, e
@@ -477,22 +544,25 @@
               <img
                 src="./img/project1.svg"
                 alt="Preview do Projeto 1"
+                data-i18n-alt="projects.p1.alt"
                 loading="lazy"
               />
             </div>
             <div class="project-content">
-              <h3>
+              <h3 data-i18n="projects.p1.title">
                 Lógicas JS para Sistemas simples de Cadastro, Vendas, Conta
                 Bancária e Avaliação de Funcionários.
               </h3>
-              <p>
+              <p data-i18n="projects.p1.desc">
                 Quatro aplicações desenvolvidas para consolidar os conceitos
                 estudados em Variáveis, Objetos e condicional (if/else)...
               </p>
               <a
                 href="https://lunar-dentist-9df.notion.site/1-Projetos-Pr-ticos-Reais-para-Treino-de-Vari-veis-Objetos-e-Condicional-if-else-f180c82f53fd4df982ee990ef3a698f1?source=copy_link"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="btn btn-primary"
+                data-i18n="projects.viewProject"
                 >Ver projeto</a
               >
             </div>
@@ -503,12 +573,13 @@
               <img
                 src="./img/Form.png"
                 alt="Preview do Projeto 2"
+                data-i18n-alt="projects.p2.alt"
                 loading="lazy"
               />
             </div>
             <div class="project-content">
-              <h3>Ficha Nutricional de Anamnese</h3>
-              <p>
+              <h3 data-i18n="projects.p2.title">Ficha Nutricional de Anamnese</h3>
+              <p data-i18n="projects.p2.desc">
                 Aplicação prática dos principais conceitos de JavaScript
                 aprendidos no semestre, destacando a integração do DOM,
                 manipulação do BOM e o uso estruturado de condicionais, laços de
@@ -517,7 +588,9 @@
               <a
                 href="https://lunar-dentist-9df.notion.site/2-Ficha-de-Anamnese-com-JS-1-10-3a36469b1dad80758912f44d73db87fa"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="btn btn-primary"
+                data-i18n="projects.viewProject"
                 >Ver projeto</a
               >
             </div>
@@ -532,8 +605,10 @@
         aria-labelledby="courses-title"
       >
         <div class="section-header">
-          <h2 class="section-eyebrow" id="courses-title">Cursos Realizados</h2>
-          <p class="section-copy">
+          <h2 class="section-eyebrow" id="courses-title" data-i18n="courses.title">
+            Cursos Realizados
+          </h2>
+          <p class="section-copy" data-i18n="courses.description">
             Como disse anteriormente, meu foco durante este semestre foi em
             lógica com ênfase em JavaScript, todavia, pareceu por bem ainda
             durante as férias de transição entre o 1º e o 2º semestre, continuar
@@ -546,9 +621,9 @@
         <div class="courses-grid">
           <article class="course-card">
             <div class="course-content">
-              <span class="course-date">Jul 2025</span>
-              <h3>HTML Essentials</h3>
-              <p>
+              <span class="course-date" data-i18n="courses.c1.date">Jul 2025</span>
+              <h3 data-i18n="courses.c1.title">HTML Essentials</h3>
+              <p data-i18n-html="courses.c1.desc">
                 Entendendo os Fundamentos da linguagem de marcação: elementos
                 semânticos ( <code>&lt;div&gt;</code>, <code>&lt;h1&gt;</code>,
                 <code>&lt;p&gt;</code>), atributos como <code>id</code>,
@@ -565,7 +640,9 @@
               <a
                 href="https://www.credly.com/badges/3102f81b-82d5-4971-adeb-62aac844f9d2/public_url"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="btn btn-primary btn-sm"
+                data-i18n="courses.viewCertificate"
                 >Ver certificado</a
               >
             </div>
@@ -573,9 +650,9 @@
 
           <article class="course-card">
             <div class="course-content">
-              <span class="course-date">Ago 2025</span>
-              <h3>CSS Essentials</h3>
-              <p>
+              <span class="course-date" data-i18n="courses.c2.date">Ago 2025</span>
+              <h3 data-i18n="courses.c2.title">CSS Essentials</h3>
+              <p data-i18n-html="courses.c2.desc">
                 Conhecendo melhor como funciona a estilização de páginas web,
                 analisando de forma mais acurada os layouts
                 <code>flexbox</code> e <code>grid</code>, animações com
@@ -591,7 +668,9 @@
               <a
                 href="https://www.credly.com/badges/2b8d08b0-3b8f-44d7-bb28-3c93abf28a83/linked_in_profile"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="btn btn-primary btn-sm"
+                data-i18n="courses.viewCertificate"
                 >Ver certificado</a
               >
             </div>
@@ -606,8 +685,10 @@
         aria-labelledby="contact-title"
       >
         <div class="section-header">
-          <h2 class="section-eyebrow" id="contact-title">Contato</h2>
-          <p class="section-copy">
+          <h2 class="section-eyebrow" id="contact-title" data-i18n="contact.title">
+            Contato
+          </h2>
+          <p class="section-copy" data-i18n="contact.description">
             Interessado em ver os próximos passos ou colaborar em projetos de
             estudo? Vamos conversar.
           </p>
@@ -617,39 +698,42 @@
           <!-- Formulário -->
           <form id="contactForm" class="contact-form">
             <div class="form-group">
-              <label for="from_name">Nome</label>
+              <label for="from_name" data-i18n="contact.name">Nome</label>
               <input
                 type="text"
                 id="from_name"
                 name="from_name"
                 placeholder="Seu nome completo"
+                data-i18n-placeholder="contact.namePlaceholder"
                 required
               />
             </div>
 
             <div class="form-group">
-              <label for="reply_to">E-mail</label>
+              <label for="reply_to" data-i18n="contact.email">E-mail</label>
               <input
                 type="email"
                 id="reply_to"
                 name="reply_to"
                 placeholder="seu@email.com"
+                data-i18n-placeholder="contact.emailPlaceholder"
                 required
               />
             </div>
 
             <div class="form-group">
-              <label for="message">Mensagem</label>
+              <label for="message" data-i18n="contact.message">Mensagem</label>
               <textarea
                 id="message"
                 name="message"
                 rows="5"
                 placeholder="Escreva sua mensagem aqui..."
+                data-i18n-placeholder="contact.messagePlaceholder"
                 required
               ></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary" data-i18n="contact.submit">
               Enviar mensagem
             </button>
           </form>
@@ -666,7 +750,8 @@
         <div class="footer-brand">
           <span class="footer-name">guilherme_Araujo</span>
           <span class="footer-copy">
-            &copy; <span id="current-year"></span> Todos os direitos reservados.
+            &copy; <span id="current-year">2025-2026</span>
+            <span data-i18n="footer.rights">Todos os direitos reservados.</span>
           </span>
         </div>
 
@@ -716,6 +801,8 @@
           href="#"
           class="btn btn-primary back-to-top"
           aria-label="Voltar ao topo da página"
+          data-i18n="footer.backToTop"
+          data-i18n-aria="footer.backToTopAria"
         >
           ↑ Voltar ao topo
         </a>
@@ -885,6 +972,11 @@
           const toast = document.getElementById("toast");
           if (!form || !toast) return;
 
+          function t(key, fallback) {
+            const value = window.PortfolioI18n?.t?.(key);
+            return typeof value === "string" ? value : fallback;
+          }
+
           function showToast(message, success = true) {
             toast.textContent = message;
             toast.classList.remove("error", "success");
@@ -903,15 +995,21 @@
             const message = form.message.value.trim();
 
             if (!name || !email || !message) {
-              showToast("Preencha todos os campos corretamente.", false);
+              showToast(
+                t("contact.toastFill", "Preencha todos os campos corretamente."),
+                false,
+              );
               return;
             }
 
             const subject = encodeURIComponent(
-              "Novo contato via Portfólio Expositivo - 2° Semestre",
+              t(
+                "contact.mailSubject",
+                "Novo contato via Portfólio Expositivo - 2° Semestre",
+              ),
             );
             const body = encodeURIComponent(
-              `Nome: ${name}\nEmail: ${email}\n\nMensagem:\n${message}`,
+              `${t("contact.mailName", "Nome")}: ${name}\n${t("contact.mailEmail", "Email")}: ${email}\n\n${t("contact.mailMessage", "Mensagem")}:\n${message}`,
             );
 
             const isMobile = /Android|iPhone|iPad|iPod/i.test(
@@ -921,9 +1019,12 @@
             if (!isMobile) {
               // DESKTOP – pergunta se quer Gmail ou mailto
               const useGmail = confirm(
-                "Deseja enviar a mensagem pelo Gmail?\n\n" +
-                  "OK → Gmail Web\n" +
-                  "Cancelar → Aplicativo de e-mail",
+                t(
+                  "contact.confirmGmail",
+                  "Deseja enviar a mensagem pelo Gmail?\n\n" +
+                    "OK → Gmail Web\n" +
+                    "Cancelar → Aplicativo de e-mail",
+                ),
               );
 
               if (useGmail) {
@@ -931,20 +1032,26 @@
                   `https://mail.google.com/mail/?view=cm&to=guilherme.j.araujo7@aluno.senai.br&su=${subject}&body=${body}`,
                   "_blank",
                 );
-                showToast("Abrindo Gmail…", true);
+                showToast(t("contact.toastGmail", "Abrindo Gmail…"), true);
               } else {
                 window.location.href = `mailto:guilherme.j.araujo7@aluno.senai.br?subject=${subject}&body=${body}`;
-                showToast("Abrindo aplicativo de e-mail…", true);
+                showToast(
+                  t("contact.toastMailto", "Abrindo aplicativo de e-mail…"),
+                  true,
+                );
               }
             } else {
               // MOBILE – mailto direto
               window.location.href = `mailto:guilherme.j.araujo7@aluno.senai.br?subject=${subject}&body=${body}`;
-              showToast("Abrindo aplicativo de e-mail…", true);
+              showToast(
+                t("contact.toastMailto", "Abrindo aplicativo de e-mail…"),
+                true,
+              );
             }
 
             form.reset();
           });
-        } // <--- ESSA CHAVE ESTAVA FALTANDO
+        }
 
         // ==================== INICIALIZAÇÃO ====================
         initMenu();
@@ -953,6 +1060,6 @@
         initContactForm();
       });
     </script>
-    <script src="i18n.js" defer></script>
+    <script src="i18n2.js" defer></script>
   </body>
 </html>

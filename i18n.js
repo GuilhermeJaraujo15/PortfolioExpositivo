@@ -443,47 +443,8 @@
            },
          },
        },
-      semester2: {
-        pageTitle: "2nd Semester Portfolio | JavaScript",
-        pageDescription: "2nd semester portfolio focused on JavaScript and interactive web interfaces.",
-        nav: {
-          aprendizado: "Learning",
-          projetos: "Projects",
-          cursos: "Courses",
-          habilidades: "Skills",
-          evolucao: "Technical Evolution",
-          nextSteps: "Next Steps",
-          contato: "Contact",
-          back: "Back to Hub",
-        },
-        hero: {
-          pretitle: "2nd Semester • JavaScript",
-          headline: "JavaScript Developer",
-          subtitle: "This semester focused on logic, interaction and dynamic interfaces using DOM, events and web behavior.",
-          ctaProjects: "View Projects",
-          ctaSkills: "View Skills",
-        },
-        
-        nextSteps: {
-          title: "Next Steps",
-          intro: "Planning the next semesters with a focus on cleaner code and integration.",
-          item1: "Deepen modern JavaScript.",
-          item2: "Study APIs and data consumption.",
-          item3: "Evolve toward frameworks like React.",
-          item4: "Integrate front-end with back-end.",
-          item5: "Start deeper database work.",
-          item6: "Improve code organization and best practices.",
-        },
-        footer: {
-          copyright: "2025 • Guilherme Jorge de Araujo",
-          email: "contact@portfolio.dev",
-          backToTop: "Back to top",
-          hub: "Back to semester selection",
-        },
-      },
-    },
-  };
-
+     },
+  }
   const projectKeys = ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8"];
 
   function setText(selector, value) {
