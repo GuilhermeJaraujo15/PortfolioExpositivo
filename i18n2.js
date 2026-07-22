@@ -125,6 +125,11 @@
           title: "Ficha Nutricional de Anamnese",
           desc: "Aplicação prática dos principais conceitos de JavaScript aprendidos no semestre, destacando a integração do DOM, manipulação do BOM e o uso estruturado de condicionais, laços de repetição e objetos.",
         },
+        p3: {
+          alt: "Preview do Projeto 3",
+          title: "Blog Interativo sobre a Escola SENAI",
+          desc: "Trabalho de fechamento do segundo semestre do Curso de Desenvolvimento de Sistemas, usando HTML, CSS e JS. O projeto gira entorno da exposição de um blog do próprio SENAI, com um CRUD interativo no final.",
+        },
       },
 
       courses: {
@@ -291,6 +296,11 @@
         },
         p2: {
           alt: "Project 2 preview",
+          title: "Nutritional Anamnesis Form",
+          desc: "A hands-on application of the main JavaScript concepts learned during the semester, highlighting DOM integration, BOM manipulation, and the structured use of conditionals, loops, and objects.",
+        },
+        p3: {
+          alt: "Project 3 preview",
           title: "Nutritional Anamnesis Form",
           desc: "A hands-on application of the main JavaScript concepts learned during the semester, highlighting DOM integration, BOM manipulation, and the structured use of conditionals, loops, and objects.",
         },
