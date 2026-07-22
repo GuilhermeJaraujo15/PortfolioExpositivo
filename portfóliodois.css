@@ -763,16 +763,11 @@ main.fade-i18n {
   }
 }
 
-/* --- Card em destaque (padrão / ativo / interação) --- */
+/* --- Card em destaque (ativo / interação) --- */
 .timeline-item.is-active .timeline-card,
 .timeline-card.is-active,
 .timeline-item:hover .timeline-card,
-.timeline-item:focus-within .timeline-card,
-.timeline-list:not(:has(.timeline-item:hover)):not(:has(.timeline-item:focus-within)):not(
-    :has(.timeline-item.is-active)
-  ):not(:has(.timeline-card.is-active))
-  .timeline-item:first-child
-  .timeline-card {
+.timeline-item:focus-within .timeline-card {
   --timeline-lift: -6px;
   --timeline-scale: 1;
   --timeline-opacity: 1;
@@ -935,12 +930,17 @@ main.fade-i18n {
   outline-offset: 3px;
 }
 
-.timeline-arrow:disabled,
-.timeline-arrow[aria-disabled='true'] {
-  opacity: 0.35;
-  cursor: not-allowed;
-  transform: none;
-  pointer-events: none;
+/* Texto só para leitores de tela */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* --- Responsividade --- */
@@ -1007,11 +1007,6 @@ main.fade-i18n {
   .timeline-card.is-active,
   .timeline-item:hover .timeline-card,
   .timeline-item:focus-within .timeline-card,
-  .timeline-list:not(:has(.timeline-item:hover)):not(:has(.timeline-item:focus-within)):not(
-      :has(.timeline-item.is-active)
-    ):not(:has(.timeline-card.is-active))
-    .timeline-item:first-child
-    .timeline-card,
   .timeline-list:has(.timeline-item:hover) .timeline-item:not(:hover) .timeline-card,
   .timeline-list:has(.timeline-item:focus-within)
     .timeline-item:not(:focus-within)

@@ -520,7 +520,7 @@
           <div
             class="timeline-controls"
             role="group"
-            aria-label="Navegação dos tópicos de aprendizado"
+            aria-label="Navegação contínua dos tópicos de aprendizado"
           >
             <button
               type="button"
@@ -1076,7 +1076,7 @@
           });
         }
 
-        // ==================== CARROSSEL APRENDIZADO ====================
+        // ==================== CARROSSEL APRENDIZADO (loop 360°) ====================
         function initTimelineCarousel() {
           const section = document.getElementById("timeline");
           if (!section) return;
@@ -1084,82 +1084,184 @@
           const list = section.querySelector(".timeline-list");
           const prevBtn = section.querySelector(".timeline-arrow--prev");
           const nextBtn = section.querySelector(".timeline-arrow--next");
+          const controls = section.querySelector(".timeline-controls");
           if (!list || !prevBtn || !nextBtn) return;
 
-          const items = Array.from(list.querySelectorAll(".timeline-item"));
-          if (!items.length) return;
+          const realItems = Array.from(list.querySelectorAll(".timeline-item"));
+          const total = realItems.length;
+          if (!total) return;
 
-          let index = 0;
-          let lockScrollSync = false;
+          realItems.forEach((item, i) => {
+            item.dataset.timelineIndex = String(i);
+          });
 
-          function prefersReducedMotion() {
-            return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          // Clones nas extremidades → loop visual contínuo (primeiro após o último)
+          if (total > 1) {
+            const firstClone = realItems[0].cloneNode(true);
+            const lastClone = realItems[total - 1].cloneNode(true);
+
+            [firstClone, lastClone].forEach((clone) => {
+              clone.classList.add("is-clone");
+              clone.setAttribute("aria-hidden", "true");
+              clone.querySelectorAll("a, button").forEach((el) => {
+                el.setAttribute("tabindex", "-1");
+                el.setAttribute("aria-hidden", "true");
+              });
+            });
+
+            firstClone.dataset.timelineIndex = "0";
+            lastClone.dataset.timelineIndex = String(total - 1);
+            list.appendChild(firstClone);
+            list.insertBefore(lastClone, realItems[0]);
           }
 
-          function goTo(nextIndex, smooth = true) {
-            index = Math.max(0, Math.min(nextIndex, items.length - 1));
-            items.forEach((item, i) => {
-              item.classList.toggle("is-active", i === index);
+          const slides = Array.from(list.querySelectorAll(".timeline-item"));
+          // Com clones: [lastClone, ...reais, firstClone] → reais começam em 1
+          const realOffset = total > 1 ? 1 : 0;
+
+          let index = 0;
+          let slidePos = realOffset;
+          let lockScrollSync = false;
+          let settleTimer = 0;
+
+          // Região viva para leitores de tela (boas práticas a11y)
+          let statusEl = section.querySelector(".timeline-status");
+          if (!statusEl && controls) {
+            statusEl = document.createElement("p");
+            statusEl.className = "timeline-status visually-hidden";
+            statusEl.setAttribute("aria-live", "polite");
+            statusEl.setAttribute("aria-atomic", "true");
+            controls.appendChild(statusEl);
+          }
+
+          function prefersReducedMotion() {
+            return window.matchMedia("(prefers-reduced-motion: reduce)")
+              .matches;
+          }
+
+          function slideTargetLeft(slide) {
+            return slide.offsetLeft - (list.clientWidth - slide.offsetWidth) / 2;
+          }
+
+          function announce() {
+            if (!statusEl) return;
+            statusEl.textContent = `Card ${index + 1} de ${total}`;
+          }
+
+          function setActive(logicalIndex) {
+            index = ((logicalIndex % total) + total) % total;
+            slides.forEach((slide, domIndex) => {
+              const logical = Number(slide.dataset.timelineIndex);
+              const isClone = slide.classList.contains("is-clone");
+              // Ativo: card real correspondente, ou o clone que está no centro agora
+              const active =
+                logical === index && (!isClone || domIndex === slidePos);
+              slide.classList.toggle("is-active", active);
             });
+            announce();
+          }
+
+          function scrollToDomIndex(domIndex, smooth) {
+            const slide = slides[domIndex];
+            if (!slide) return;
+            slidePos = domIndex;
+            setActive(Number(slide.dataset.timelineIndex));
 
             const behavior =
               smooth && !prefersReducedMotion() ? "smooth" : "auto";
-            const item = items[index];
-            const targetLeft =
-              item.offsetLeft - (list.clientWidth - item.offsetWidth) / 2;
 
             lockScrollSync = true;
             list.scrollTo({
-              left: Math.max(0, targetLeft),
+              left: Math.max(0, slideTargetLeft(slide)),
               behavior,
             });
 
-            prevBtn.disabled = index === 0;
-            nextBtn.disabled = index === items.length - 1;
-            prevBtn.setAttribute("aria-disabled", String(index === 0));
-            nextBtn.setAttribute(
-              "aria-disabled",
-              String(index === items.length - 1),
-            );
-
-            window.setTimeout(
+            window.clearTimeout(settleTimer);
+            settleTimer = window.setTimeout(
               () => {
+                normalizeClones();
                 lockScrollSync = false;
               },
-              smooth && !prefersReducedMotion() ? 450 : 50,
+              behavior === "smooth" ? 480 : 40,
             );
+          }
+
+          function normalizeClones() {
+            if (total < 2) return;
+            // firstClone (último DOM) → card real 0
+            if (slidePos === slides.length - 1) {
+              list.scrollTo({
+                left: Math.max(0, slideTargetLeft(slides[realOffset])),
+                behavior: "auto",
+              });
+              slidePos = realOffset;
+              setActive(0);
+              return;
+            }
+            // lastClone (primeiro DOM) → card real final
+            if (slidePos === 0) {
+              const realLast = realOffset + total - 1;
+              list.scrollTo({
+                left: Math.max(0, slideTargetLeft(slides[realLast])),
+                behavior: "auto",
+              });
+              slidePos = realLast;
+              setActive(total - 1);
+            }
+          }
+
+          function goTo(nextLogical, smooth = true) {
+            if (total === 1) {
+              scrollToDomIndex(0, false);
+              return;
+            }
+
+            const wrapped = ((nextLogical % total) + total) % total;
+            const goingNextFromLast = index === total - 1 && wrapped === 0;
+            const goingPrevFromFirst = index === 0 && wrapped === total - 1;
+
+            if (smooth && goingNextFromLast) {
+              scrollToDomIndex(slides.length - 1, true);
+              return;
+            }
+            if (smooth && goingPrevFromFirst) {
+              scrollToDomIndex(0, true);
+              return;
+            }
+
+            scrollToDomIndex(realOffset + wrapped, smooth);
           }
 
           function syncFromScroll() {
             if (lockScrollSync) return;
             const listRect = list.getBoundingClientRect();
             const centerX = listRect.left + listRect.width / 2;
-            let closest = 0;
+            let closest = slidePos;
             let closestDist = Infinity;
 
-            items.forEach((item, i) => {
-              const rect = item.getBoundingClientRect();
-              const itemCenter = rect.left + rect.width / 2;
-              const dist = Math.abs(itemCenter - centerX);
+            slides.forEach((slide, i) => {
+              const rect = slide.getBoundingClientRect();
+              const dist = Math.abs(rect.left + rect.width / 2 - centerX);
               if (dist < closestDist) {
                 closestDist = dist;
                 closest = i;
               }
             });
 
-            if (closest !== index) {
-              index = closest;
-              items.forEach((item, i) => {
-                item.classList.toggle("is-active", i === index);
-              });
-              prevBtn.disabled = index === 0;
-              nextBtn.disabled = index === items.length - 1;
-              prevBtn.setAttribute("aria-disabled", String(index === 0));
-              nextBtn.setAttribute(
-                "aria-disabled",
-                String(index === items.length - 1),
-              );
+            slidePos = closest;
+            const logical = Number(slides[slidePos].dataset.timelineIndex);
+
+            if (
+              total > 1 &&
+              (slidePos === 0 || slidePos === slides.length - 1) &&
+              closestDist < listRect.width * 0.2
+            ) {
+              // Usuário chegou na zona do clone (arraste) → corrige posição
+              normalizeClones();
+              return;
             }
+
+            if (logical !== index) setActive(logical);
           }
 
           let scrollTick = false;
@@ -1176,24 +1278,39 @@
             { passive: true },
           );
 
+          list.addEventListener("scrollend", () => {
+            if (lockScrollSync) {
+              normalizeClones();
+              lockScrollSync = false;
+            } else {
+              syncFromScroll();
+            }
+          });
+
+          prevBtn.disabled = false;
+          nextBtn.disabled = false;
+          prevBtn.removeAttribute("aria-disabled");
+          nextBtn.removeAttribute("aria-disabled");
+
           prevBtn.addEventListener("click", () => goTo(index - 1));
           nextBtn.addEventListener("click", () => goTo(index + 1));
 
           section.addEventListener("keydown", (e) => {
-            if (e.target.closest(".timeline-card a, .timeline-arrow")) {
-              if (e.key === "ArrowLeft") {
-                e.preventDefault();
-                goTo(index - 1);
-              } else if (e.key === "ArrowRight") {
-                e.preventDefault();
-                goTo(index + 1);
-              }
+            if (!e.target.closest(".timeline-card a, .timeline-arrow")) return;
+            if (e.key === "ArrowLeft") {
+              e.preventDefault();
+              goTo(index - 1);
+            } else if (e.key === "ArrowRight") {
+              e.preventDefault();
+              goTo(index + 1);
             }
           });
 
           goTo(0, false);
           requestAnimationFrame(() => goTo(0, false));
-          window.addEventListener("resize", () => goTo(index, false));
+          window.addEventListener("resize", () => {
+            goTo(index, false);
+          });
         }
 
         // ==================== INICIALIZAÇÃO ====================
