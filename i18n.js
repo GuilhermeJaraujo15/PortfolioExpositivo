@@ -38,8 +38,7 @@
       },
       projects: {
         title: "Linha do Tempo Dos Projetos",
-        tooltip: "Ver Projeto",
-        openWindow: "Abrir em nova janela",
+        open: "Abrir Projeto",
         p1: { title: "Síntese dos Conteúdos", desc: "Resumo visual de hardware, metodologias ágeis e sistemas operacionais.", date: "Fevereiro à Março de 2025", aria: "Ver projeto Síntese dos Conteúdos (nova janela)" },
         p2: { title: "Protótipo de App", desc: "Aplicativo de vendas de bicicletas com interface moderna.", date: "Ainda em Março de 2025", aria: "Ver projeto Protótipo de App (nova janela)" },
         p3: { title: "Site sobre Nuvens", desc: "Portal educativo sobre formação e tipos de nuvens.", date: "Meados de Abril de 2025", aria: "Ver projeto Site sobre Nuvens (nova janela)" },
@@ -141,171 +140,7 @@
            },
          },
        },
-      semester2: {
-        pageTitle: "Portfólio 2º Semestre | JavaScript",
-        pageDescription: "Portfólio do 2º semestre focado em JavaScript e interfaces interativas",
-        nav: {
-          aprendizado: "Aprendizado",
-          projetos: "Projetos",
-          cursos: "Cursos",
-          habilidades: "Habilidades",
-          evolucao: "Evolução Técnica",
-          nextSteps: "Próximos Passos",
-          contato: "Contato",
-          back: "Voltar ao Hub",
-        },
-        hero: {
-          pretitle: "2º Semestre • JavaScript",
-          headline: "JavaScript Developer",
-          subtitle: "Este semestre foi dedicado à lógica, interação e interfaces dinâmicas usando DOM, eventos e comportamento web.",
-          ctaProjects: "Ver Projetos",
-          ctaSkills: "Ver Habilidades",
-        },
-        learning: {
-          title: "O que aprendi neste 2º Semestre",
-          description: "Conhecimentos e práticas que evoluíram o desenvolvimento de interfaces mais interativas.",
-          item1: {
-            title: "Fundamentos da linguagem JavaScript",
-            desc: "Sintaxe, variáveis e controle de fluxo para raciocínio lógico.",
-          },
-          item2: {
-            title: "Variáveis, tipos de dados e operadores",
-            desc: "Uso de valores, operadores e expressão de resultados no navegador.",
-          },
-          item3: {
-            title: "Condicionais e estruturas de repetição",
-            desc: "Fluxo de decisão e repetição para comportamento mais inteligente.",
-          },
-          item4: {
-            title: "Funções e organização de lógica",
-            desc: "Blocos reutilizáveis que tornam o JavaScript mais legível e modular.",
-          },
-          item5: {
-            title: "Arrays e objetos",
-            desc: "Estruturas para organizar dados e estados de aplicações.",
-          },
-          item6: {
-            title: "Manipulação do DOM",
-            desc: "Atualização de conteúdo, classes e estrutura a partir de código.",
-          },
-          item7: {
-            title: "Eventos e interatividade",
-            desc: "Ações do usuário transformadas em resposta e feedback visual.",
-          },
-          item8: {
-            title: "Validação de formulários",
-            desc: "Verificação de dados e orientações antes do envio.",
-          },
-          item9: {
-            title: "LocalStorage e armazenamento",
-            desc: "Persistência simples de dados no navegador para experiências contínuas.",
-          },
-          item10: {
-            title: "Lógica aplicada a interfaces web",
-            desc: "Construção de páginas que reagem e se adaptam ao usuário.",
-          },
-        },
-        projects: {
-          title: "Projetos",
-          intro: "Estudos e protótipos que reforçam a prática em JavaScript e interação.",
-          card1: {
-            title: "Projeto de Manipulação do DOM",
-            desc: "Exercício para atualizar elementos e estado visual com JavaScript.",
-            tech: "HTML, CSS, JavaScript",
-            status: "Em desenvolvimento",
-            date: "2º Semestre",
-            cta: "Ver detalhes",
-          },
-          card2: {
-            title: "Validador de Formulários",
-            desc: "Formulário com validação e retorno em tempo real.",
-            tech: "HTML, CSS, JavaScript",
-            status: "Protótipo",
-            date: "2º Semestre",
-            cta: "Em breve",
-          },
-          card3: {
-            title: "Mini Sistema Interativo",
-            desc: "Interface com filtros, listas e respostas do usuário em tempo real.",
-            tech: "JavaScript, DOM, Eventos",
-            status: "Em criação",
-            date: "2º Semestre",
-            cta: "Em breve",
-          },
-          card4: {
-            title: "Projeto Final do 2º Semestre",
-            desc: "Integração de lógica e estrutura para uma experiência mais robusta.",
-            tech: "JavaScript, LocalStorage, DOM",
-            status: "Planejado",
-            date: "2º Semestre",
-            cta: "Em breve",
-          },
-        },
-        courses: {
-          title: "Cursos",
-          intro: "Formação e aprendizado que complementam a jornada em JavaScript.",
-          statusUpdating: "Em atualização",
-          card1: {
-            title: "Curso de JavaScript Básico",
-            org: "Plataforma de Estudo",
-            date: "2025",
-            status: "Concluído",
-            aria: "Ver detalhes do curso de JavaScript Básico",
-          },
-          card2: {
-            title: "Fundamentos de DOM",
-            org: "Curso Interno",
-            date: "2025",
-            status: "Em andamento",
-            aria: "Ver detalhes do curso de DOM",
-          },
-        },
-        skills: {
-          title: "Relações de Habilidades",
-          intro: "Mapa de competências usado para a construção de interfaces com JavaScript.",
-          group1: {
-            label: "JavaScript",
-            items: ["Sintaxe", "Condicionais", "Loops", "Funções", "Arrays", "Objetos", "DOM", "Eventos", "Formulários", "LocalStorage"],
-          },
-          group2: {
-            label: "HTML",
-            items: ["Semântica", "Estrutura"],
-          },
-          group3: {
-            label: "CSS",
-            items: ["Responsividade", "Layout", "Estados visuais"],
-          },
-          group4: {
-            label: "Git & GitHub",
-            items: ["Versionamento", "Organização de projetos"],
-          },
-        },
-        evolution: {
-          title: "Evolução Técnica",
-          subtitle: "Da primeira página estática para interfaces mais dinâmicas e interativas.",
-          point1: "Primeiro semestre com foco em HTML e CSS.",
-          point2: "Segundo semestre com foco em JavaScript e comportamento web.",
-          point3: "Aplicação de lógica nas rotinas de usuário.",
-          point4: "Visão mais madura de página como produto.",
-        },
-        nextSteps: {
-          title: "Próximos Passos",
-          intro: "Planejamento para os próximos semestres com foco em código mais organizado e integração.",
-          item1: "Aprofundar JavaScript moderno.",
-          item2: "Estudar APIs e consumo de dados.",
-          item3: "Evoluir para frameworks como React.",
-          item4: "Integrar front-end com back-end.",
-          item5: "Iniciar banco de dados com mais profundidade.",
-          item6: "Melhorar organização de código e boas práticas.",
-        },
-        footer: {
-          copyright: "2025 • Guilherme Jorge de Araujo",
-          email: "contato@portfolio.dev",
-          backToTop: "Voltar ao topo",
-          hub: "Voltar à seleção de semestres",
-        },
       },
-    },
     en: {
       pageLang: "en",
       pageTitle: "Portfolio - Systems Development",
@@ -340,8 +175,7 @@
       },
       projects: {
         title: "Project Timeline",
-        tooltip: "View Project",
-        openWindow: "Open in a new window",
+        open: "Open Project",
         p1: { title: "Content Synthesis", desc: "Visual summary of hardware, agile methodologies, and operating systems.", date: "February to March 2025", aria: "View Content Synthesis project (new window)" },
         p2: { title: "App Prototype", desc: "Bicycle sales app with a modern interface.", date: "Still in March 2025", aria: "View App Prototype project (new window)" },
         p3: { title: "Cloud Website", desc: "Educational portal about cloud formation and types.", date: "Mid-April 2025", aria: "View Cloud Website project (new window)" },
@@ -445,49 +279,60 @@
        },
      },
   }
-  const projectKeys = ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8"];
+
+  /**
+   * Declarative bindings: data-* marker → HTML attribute to translate.
+   * To support a new attribute later, add one entry here (Open/Closed).
+   */
+  const I18N_ATTR_BINDINGS = Object.freeze([
+    { dataAttr: "data-i18n-aria", htmlAttr: "aria-label" },
+    { dataAttr: "data-i18n-title", htmlAttr: "title" },
+    { dataAttr: "data-i18n-placeholder", htmlAttr: "placeholder" },
+    { dataAttr: "data-i18n-alt", htmlAttr: "alt" },
+    { dataAttr: "data-i18n-aria-description", htmlAttr: "aria-description" },
+    { dataAttr: "data-i18n-aria-labelledby", htmlAttr: "aria-labelledby" },
+  ]);
+
+  function resolveKey(pack, keyPath) {
+    if (!keyPath) return undefined;
+    return keyPath.split(".").reduce(
+      (acc, key) => (acc == null ? undefined : acc[key]),
+      pack,
+    );
+  }
+
+  function applyContentTranslations(pack) {
+    document.querySelectorAll("[data-i18n]").forEach((element) => {
+      const value = resolveKey(pack, element.getAttribute("data-i18n"));
+      if (typeof value !== "string") return;
+
+      if (value.includes("<br>")) {
+        element.innerHTML = value;
+      } else {
+        element.textContent = value;
+      }
+    });
+  }
+
+  function applyAttributeTranslations(pack) {
+    I18N_ATTR_BINDINGS.forEach(({ dataAttr, htmlAttr }) => {
+      document.querySelectorAll(`[${dataAttr}]`).forEach((element) => {
+        const value = resolveKey(pack, element.getAttribute(dataAttr));
+        if (typeof value === "string") {
+          element.setAttribute(htmlAttr, value);
+        }
+      });
+    });
+  }
 
   function setText(selector, value) {
     const element = document.querySelector(selector);
     if (element) element.textContent = value;
   }
 
-  function setHTML(selector, value) {
-    const element = document.querySelector(selector);
-    if (element) element.innerHTML = value;
-  }
-
   function setAttr(selector, attr, value) {
     const element = document.querySelector(selector);
     if (element) element.setAttribute(attr, value);
-  }
-
-  function setAllText(selector, value) {
-    document.querySelectorAll(selector).forEach((element) => {
-      element.textContent = value;
-    });
-  }
-
-  function setDateWithIcon(selector, dateText) {
-    const dateEl = document.querySelector(selector);
-    if (!dateEl) return;
-    const icon = dateEl.querySelector("i");
-    dateEl.innerHTML = "";
-    if (icon) dateEl.appendChild(icon);
-    dateEl.appendChild(document.createTextNode(` ${dateText}`));
-  }
-
-  function setButtonLabelKeepingIcon(selector, label) {
-    document.querySelectorAll(selector).forEach((button) => {
-      const icon = button.querySelector("i");
-      button.innerHTML = "";
-      if (icon) {
-        button.appendChild(icon);
-        button.appendChild(document.createTextNode(` ${label}`));
-      } else {
-        button.textContent = label;
-      }
-    });
   }
 
   function applyLanguage(lang) {
@@ -526,32 +371,8 @@
     setText("#language-current-label", t.languageLabel);
     setText("#language-current-flag", t.languageFlag);
 
-    document.querySelectorAll("[data-i18n]").forEach((element) => {
-      const keyPath = element.getAttribute("data-i18n");
-      const value = keyPath.split(".").reduce((acc, key) => (acc ? acc[key] : undefined), t);
-      if (typeof value === "string") {
-        if (value.includes("<br>")) {
-          element.innerHTML = value;
-        } else {
-          element.textContent = value;
-        }
-      }
-    });
-
-    document.querySelectorAll("[data-i18n-aria]").forEach((element) => {
-      const keyPath = element.getAttribute("data-i18n-aria");
-      const value = keyPath.split(".").reduce((acc, key) => (acc ? acc[key] : undefined), t);
-      if (typeof value === "string") {
-        element.setAttribute("aria-label", value);
-      }
-    });
-
-    // The following dynamic mappings were removed because the related
-    // DOM structures (projects timeline, prototype widgets and footer
-    // prototype icons) are not present in the current portfóliodois.html.
-    // Keeping this code would attempt to access non-existent elements and
-    // add unnecessary complexity. If these components are reintroduced,
-    // restore the mapping logic below.
+    applyContentTranslations(t);
+    applyAttributeTranslations(t);
 
     const nextStepItems = document.querySelectorAll("[id='Próximos Passos'] ol li");
     nextStepItems.forEach((item, idx) => {

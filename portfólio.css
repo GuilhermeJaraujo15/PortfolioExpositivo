@@ -796,22 +796,52 @@ h3 {
   animation: link-click 0.4s ease-out;
 }
 
-.timeline-link::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  right: 100%;
-  white-space: nowrap;
-  background: var(--cinza-code);
-  padding: 5px 10px;
-  border-radius: 4px;
-  margin-right: 10px;
-  font-size: 0.8rem;
-  opacity: 0;
-  transition: opacity 0.3s;
+.timeline-link::after{
+    content: attr(aria-label);
+
+    position:absolute;
+
+    right:calc(100% + 12px);
+    top:50%;
+
+    transform:translateY(-50%);
+
+    padding:.55rem .8rem;
+
+    border-radius:6px;
+
+    background:#12253c;
+    color:#ffffff;
+
+    font-size:.78rem;
+    font-family:'IBM Plex Mono', monospace;
+
+    white-space:nowrap;
+
+    opacity:0;
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transition:
+        opacity .25s ease,
+        visibility .25s ease,
+        transform .25s ease;
+
+    box-shadow:
+        0 0 12px rgba(0,170,255,.35);
 }
 
-.timeline-link:hover::after {
-  opacity: 1;
+.timeline-link:hover::after,
+.timeline-link:focus-visible::after{
+
+    opacity:1;
+    visibility:visible;
+
+    transform:
+        translateY(-50%)
+        translateX(-4px);
+
 }
 
 /* Elementos da timeline */
@@ -841,7 +871,7 @@ h3 {
   padding: 0.3rem 0.8rem;
   border-radius: 20px;
   font-size: 0.8rem;
-  transition: all 0.3s ease;
+
 }
 
 
