@@ -20,55 +20,57 @@
   </head>
 
   <body>
-    <div class="language-switcher" role="group" aria-label="Seletor de idioma">
-      <div class="language-pill">
-        <span
-          id="language-current-flag"
-          class="language-flag"
-          aria-hidden="true"
-          >🇧🇷</span
-        >
-        <span id="language-current-label" class="language-label"
-          >Português</span
-        >
-        <button
-          id="language-menu-toggle"
-          class="language-caret-btn"
-          type="button"
-          aria-label="Abrir seleção de idioma"
-          aria-expanded="false"
-        ></button>
-      </div>
-
-      <div
-        id="language-dropdown"
-        class="language-dropdown"
-        role="menu"
-        aria-label="Escolher idioma"
-      >
-        <button
-          id="language-alt-option"
-          class="language-option-item"
-          type="button"
-          role="menuitem"
-        >
-          <span id="language-alt-flag" class="language-flag" aria-hidden="true"
-            >🇺🇸</span
-          >
-          <span id="language-alt-label">English</span>
-        </button>
-      </div>
-    </div>
-
     <header class="nav-top">
-      <a
-        href="index.html"
-        class="nav-top__back"
-        data-i18n-aria="intro.backAria"
-      >
-        <span class="nav-top__arrow" aria-hidden="true">←</span>
-        <span class="nav-top__label" data-i18n="intro.back">Voltar</span>
-      </a>
+      <div class="header-top-bar">
+        <a
+          href="index.html"
+          class="nav-top__back"
+          data-i18n-aria="intro.backAria"
+        >
+          <span class="nav-top__arrow" aria-hidden="true">←</span>
+          <span class="nav-top__label" data-i18n="intro.back">Voltar</span>
+        </a>
+
+        <div class="language-switcher" role="group" aria-label="Seletor de idioma">
+          <div class="language-pill">
+            <span
+              id="language-current-flag"
+              class="language-flag"
+              aria-hidden="true"
+              >🇧🇷</span
+            >
+            <span id="language-current-label" class="language-label"
+              >Português</span
+            >
+            <button
+              id="language-menu-toggle"
+              class="language-caret-btn"
+              type="button"
+              aria-label="Abrir seleção de idioma"
+              aria-expanded="false"
+            ></button>
+          </div>
+
+          <div
+            id="language-dropdown"
+            class="language-dropdown"
+            role="menu"
+            aria-label="Escolher idioma"
+          >
+            <button
+              id="language-alt-option"
+              class="language-option-item"
+              type="button"
+              role="menuitem"
+            >
+              <span id="language-alt-flag" class="language-flag" aria-hidden="true"
+                >🇺🇸</span
+              >
+              <span id="language-alt-label">English</span>
+            </button>
+          </div>
+        </div>
+      </div>
       <link rel="preload" as="video" href="./mp4/sem1.webm" type="video/webm" />
 
       <link rel="preload" as="video" href="./mp4/sem2.webm" type="video/webm" />
