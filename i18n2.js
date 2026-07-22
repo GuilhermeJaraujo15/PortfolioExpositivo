@@ -48,6 +48,8 @@
         description:
           "Abaixo estão listados os principais tópicos estudados, com links para os objetivos e resoluções de cada um. Estes tópicos estão dispostos cronologicamente, e cada um deles foi consolidado em exercícios e em projetos práticos.",
         viewSolution: "Ver resolução",
+        prevAria: "Card anterior",
+        nextAria: "Próximo card",
         items: {
           i1: {
             date: "20 Ago. 2025",
@@ -215,6 +217,8 @@
         description:
           "Below are the main topics studied, with links to the objectives and solutions for each one. They are listed chronologically, and each was reinforced through exercises and practical projects.",
         viewSolution: "View solution",
+        prevAria: "Previous card",
+        nextAria: "Next card",
         items: {
           i1: {
             date: "Aug 20, 2025",

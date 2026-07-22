@@ -516,6 +516,29 @@
               </div>
             </li>
           </ul>
+
+          <div
+            class="timeline-controls"
+            role="group"
+            aria-label="Navegação dos tópicos de aprendizado"
+          >
+            <button
+              type="button"
+              class="timeline-arrow timeline-arrow--prev"
+              aria-label="Card anterior"
+              data-i18n-aria="learning.prevAria"
+            >
+              <span aria-hidden="true">‹</span>
+            </button>
+            <button
+              type="button"
+              class="timeline-arrow timeline-arrow--next"
+              aria-label="Próximo card"
+              data-i18n-aria="learning.nextAria"
+            >
+              <span aria-hidden="true">›</span>
+            </button>
+          </div>
         </div>
       </section>
 
@@ -1053,11 +1076,132 @@
           });
         }
 
+        // ==================== CARROSSEL APRENDIZADO ====================
+        function initTimelineCarousel() {
+          const section = document.getElementById("timeline");
+          if (!section) return;
+
+          const list = section.querySelector(".timeline-list");
+          const prevBtn = section.querySelector(".timeline-arrow--prev");
+          const nextBtn = section.querySelector(".timeline-arrow--next");
+          if (!list || !prevBtn || !nextBtn) return;
+
+          const items = Array.from(list.querySelectorAll(".timeline-item"));
+          if (!items.length) return;
+
+          let index = 0;
+          let lockScrollSync = false;
+
+          function prefersReducedMotion() {
+            return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          }
+
+          function goTo(nextIndex, smooth = true) {
+            index = Math.max(0, Math.min(nextIndex, items.length - 1));
+            items.forEach((item, i) => {
+              item.classList.toggle("is-active", i === index);
+            });
+
+            const behavior =
+              smooth && !prefersReducedMotion() ? "smooth" : "auto";
+            const item = items[index];
+            const targetLeft =
+              item.offsetLeft - (list.clientWidth - item.offsetWidth) / 2;
+
+            lockScrollSync = true;
+            list.scrollTo({
+              left: Math.max(0, targetLeft),
+              behavior,
+            });
+
+            prevBtn.disabled = index === 0;
+            nextBtn.disabled = index === items.length - 1;
+            prevBtn.setAttribute("aria-disabled", String(index === 0));
+            nextBtn.setAttribute(
+              "aria-disabled",
+              String(index === items.length - 1),
+            );
+
+            window.setTimeout(
+              () => {
+                lockScrollSync = false;
+              },
+              smooth && !prefersReducedMotion() ? 450 : 50,
+            );
+          }
+
+          function syncFromScroll() {
+            if (lockScrollSync) return;
+            const listRect = list.getBoundingClientRect();
+            const centerX = listRect.left + listRect.width / 2;
+            let closest = 0;
+            let closestDist = Infinity;
+
+            items.forEach((item, i) => {
+              const rect = item.getBoundingClientRect();
+              const itemCenter = rect.left + rect.width / 2;
+              const dist = Math.abs(itemCenter - centerX);
+              if (dist < closestDist) {
+                closestDist = dist;
+                closest = i;
+              }
+            });
+
+            if (closest !== index) {
+              index = closest;
+              items.forEach((item, i) => {
+                item.classList.toggle("is-active", i === index);
+              });
+              prevBtn.disabled = index === 0;
+              nextBtn.disabled = index === items.length - 1;
+              prevBtn.setAttribute("aria-disabled", String(index === 0));
+              nextBtn.setAttribute(
+                "aria-disabled",
+                String(index === items.length - 1),
+              );
+            }
+          }
+
+          let scrollTick = false;
+          list.addEventListener(
+            "scroll",
+            () => {
+              if (scrollTick) return;
+              scrollTick = true;
+              requestAnimationFrame(() => {
+                syncFromScroll();
+                scrollTick = false;
+              });
+            },
+            { passive: true },
+          );
+
+          prevBtn.addEventListener("click", () => goTo(index - 1));
+          nextBtn.addEventListener("click", () => goTo(index + 1));
+
+          section.addEventListener("keydown", (e) => {
+            if (e.target.closest(".timeline-card a, .timeline-arrow")) {
+              if (e.key === "ArrowLeft") {
+                e.preventDefault();
+                goTo(index - 1);
+              } else if (e.key === "ArrowRight") {
+                e.preventDefault();
+                goTo(index + 1);
+              }
+            }
+          });
+
+          goTo(0, false);
+          requestAnimationFrame(() => goTo(0, false));
+          window.addEventListener("resize", () => goTo(index, false));
+        }
+
         // ==================== INICIALIZAÇÃO ====================
         initMenu();
         initNavigation();
         initBackToTop();
         initContactForm();
+        initTimelineCarousel();
       });
     </script>
     <script src="i18n2.js" defer></script>
