@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Página de seleção de semestres do portfólio de Guilherme" />
+    <meta
+      name="description"
+      content="Página de seleção de semestres do portfólio de Guilherme"
+    />
     <title>Seleção de Semestres | Portfólio</title>
 
     <!-- Pré-carrega a fonte para evitar FOIT -->
@@ -19,8 +22,15 @@
   <body>
     <div class="language-switcher" role="group" aria-label="Seletor de idioma">
       <div class="language-pill">
-        <span id="language-current-flag" class="language-flag" aria-hidden="true">🇧🇷</span>
-        <span id="language-current-label" class="language-label">Português</span>
+        <span
+          id="language-current-flag"
+          class="language-flag"
+          aria-hidden="true"
+          >🇧🇷</span
+        >
+        <span id="language-current-label" class="language-label"
+          >Português</span
+        >
         <button
           id="language-menu-toggle"
           class="language-caret-btn"
@@ -30,9 +40,21 @@
         ></button>
       </div>
 
-      <div id="language-dropdown" class="language-dropdown" role="menu" aria-label="Escolher idioma">
-        <button id="language-alt-option" class="language-option-item" type="button" role="menuitem">
-          <span id="language-alt-flag" class="language-flag" aria-hidden="true">🇺🇸</span>
+      <div
+        id="language-dropdown"
+        class="language-dropdown"
+        role="menu"
+        aria-label="Escolher idioma"
+      >
+        <button
+          id="language-alt-option"
+          class="language-option-item"
+          type="button"
+          role="menuitem"
+        >
+          <span id="language-alt-flag" class="language-flag" aria-hidden="true"
+            >🇺🇸</span
+          >
           <span id="language-alt-label">English</span>
         </button>
       </div>
@@ -58,12 +80,17 @@
             Explore technical evolution through interactive animations
           </span>
           <span class="hub__subtitle-mobile" data-i18n="intro.subtitleMobile">
-            Tap once to preview the animation. Tap the same semester again to access the portfolio.
+            Tap once to preview the animation. Tap the same semester again to
+            access the portfolio.
           </span>
         </p>
       </div>
 
-      <nav class="hub__grid" aria-label="Navegação por semestres" data-i18n-aria="intro.navAria">
+      <nav
+        class="hub__grid"
+        aria-label="Navegação por semestres"
+        data-i18n-aria="intro.navAria"
+      >
         <!-- 1º Semestre — Front-end -->
         <a
           href="portfólio.html"
@@ -77,11 +104,15 @@
               muted
               loop
               playsinline
-              preload="none"
+              preload="auto"
             ></video>
           </div>
           <div class="semestre-card__content">
-            <span class="semestre-card__label" data-i18n="intro.semesters.s1.label">1º Semestre</span>
+            <span
+              class="semestre-card__label"
+              data-i18n="intro.semesters.s1.label"
+              >1º Semestre</span
+            >
           </div>
         </a>
 
@@ -98,14 +129,17 @@
               muted
               loop
               playsinline
-              preload="none"
+              preload="auto"
             ></video>
           </div>
 
           <div class="semestre-card__content">
-            <span class="semestre-card__label" data-i18n="intro.semesters.s2.label">2º Semestre</span>
+            <span
+              class="semestre-card__label"
+              data-i18n="intro.semesters.s2.label"
+              >2º Semestre</span
+            >
           </div>
-
         </a>
 
         <!-- 3º Semestre — Banco de Dados -->
@@ -121,13 +155,16 @@
               muted
               loop
               playsinline
-              preload="none"
+              preload="auto"
             ></video>
           </div>
           <div class="semestre-card__content">
-            <span class="semestre-card__label" data-i18n="intro.semesters.s3.label">3º Semestre</span>
+            <span
+              class="semestre-card__label"
+              data-i18n="intro.semesters.s3.label"
+              >3º Semestre</span
+            >
           </div>
-
         </a>
 
         <!-- 4º Semestre — Python -->
@@ -143,14 +180,17 @@
               muted
               loop
               playsinline
-              preload="none"
+              preload="auto"
             ></video>
           </div>
 
           <div class="semestre-card__content">
-            <span class="semestre-card__label" data-i18n="intro.semesters.s4.label">4º Semestre</span>
-          </div> 
-          
+            <span
+              class="semestre-card__label"
+              data-i18n="intro.semesters.s4.label"
+              >4º Semestre</span
+            >
+          </div>
         </a>
       </nav>
     </main>
@@ -159,8 +199,12 @@
     <script>
       (function () {
         const cards = document.querySelectorAll(".semestre-card");
-        const touchMediaQuery = window.matchMedia("(hover: none), (pointer: coarse)");
-        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const touchMediaQuery = window.matchMedia(
+          "(hover: none), (pointer: coarse)",
+        );
+        const prefersReducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
         let activeTouchCard = null;
         let isPortfolioTransitioning = false;
 
