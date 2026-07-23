@@ -176,6 +176,26 @@
         backToTop: "↑ Voltar ao topo",
         backToTopAria: "Voltar ao topo da página",
       },
+      links: {
+        learning: {
+          variablesAndDataTypes: "https://lunar-dentist-9df.notion.site/1-Vari-veis-e-tipos-de-dados-2156469b1dad8298a93c011aac4e3634",
+          conditionals: "https://lunar-dentist-9df.notion.site/2-Condicionais-if-else-39a6469b1dad80ab974efa70836967b0#39a6469b1dad80dd9622fc23107479f3",
+          switch: "https://lunar-dentist-9df.notion.site/3-Switch-Case-39a6469b1dad8079b18befa37615953f",
+          objects: "https://lunar-dentist-9df.notion.site/4-Objects-39c6469b1dad80bcaa92efed99644838",
+          arrays: "https://lunar-dentist-9df.notion.site/5-Arrays-39d6469b1dad80f584c8f95a2f569bb5?pvs=74",
+          nestedObjects: "https://lunar-dentist-9df.notion.site/6-Aninhamento-de-Objetos-39d6469b1dad800a92fed4f173c0a429",
+          doWhile: "https://lunar-dentist-9df.notion.site/7-Do-While-39d6469b1dad805ba88dcf84a87b82ae",
+          functions: "https://lunar-dentist-9df.notion.site/8-Fun-es-39d6469b1dad80d094d4c80cac25f76a",
+          callbacks: "https://lunar-dentist-9df.notion.site/9-Callbacks-39e6469b1dad802582b8c1c8c9de0f38",
+          methods: "https://lunar-dentist-9df.notion.site/10-M-todos-39e6469b1dad8044a19ec51939c4ff7b",
+          dom: "https://lunar-dentist-9df.notion.site/11-DOM-3a06469b1dad801d9e3ef26ce0f339ef",
+        },
+        projects: {
+          registrationSystems: "https://lunar-dentist-9df.notion.site/1-Projetos-Pr-ticos-Reais-para-Treino-de-Vari-veis-Objetos-e-Condicional-if-else-f180c82f53fd4df982ee990ef3a698f1?source=copy_link",
+          nutritionalForm: "https://lunar-dentist-9df.notion.site/2-Ficha-de-Anamnese-com-JS-1-10-3a36469b1dad80758912f44d73db87fa",
+          senaiBlog: "https://guilhermejaraujo15.github.io/Blog-Senai/",
+        },
+      },
     },
 
     en: {
@@ -301,8 +321,8 @@
         },
         p3: {
           alt: "Project 3 preview",
-          title: "Nutritional Anamnesis Form",
-          desc: "A hands-on application of the main JavaScript concepts learned during the semester, highlighting DOM integration, BOM manipulation, and the structured use of conditionals, loops, and objects.",
+          title: "Interactive Blog about the SENAI School",
+          desc: "End-of-semester project for the Systems Development course, using HTML, CSS, and JS. The project centers on showcasing a SENAI blog, featuring an interactive CRUD interface at the end.",
         },
       },
 
@@ -349,6 +369,26 @@
         rights: "All rights reserved.",
         backToTop: "↑ Back to top",
         backToTopAria: "Back to top of the page",
+      },
+      links: {
+        learning: {
+          variablesAndDataTypes: "",
+          conditionals: "",
+          switch: "",
+          objects: "",
+          arrays: "",
+          nestedObjects: "",
+          doWhile: "",
+          functions: "",
+          callbacks: "",
+          methods: "",
+          dom: "",
+        },
+        projects: {
+          registrationSystems: "",
+          nutritionalForm: "", 
+          senaiBlog: "",
+        },
       },
     },
   };
@@ -412,6 +452,12 @@
       const keyPath = element.getAttribute("data-i18n-alt");
       const value = resolveKey(t, keyPath);
       if (typeof value === "string") element.setAttribute("alt", value);
+    });
+
+    document.querySelectorAll("[data-i18n-href]").forEach((element) => {
+      const keyPath = element.getAttribute("data-i18n-href");
+      const value = resolveKey(t, keyPath);
+      if (typeof value === "string") element.setAttribute("href", value);
     });
 
     const main = document.querySelector("main");
