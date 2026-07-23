@@ -372,7 +372,7 @@
       },
       links: {
         learning: {
-          variablesAndDataTypes: "",
+          variablesAndDataTypes: "https://lunar-dentist-9df.notion.site/1-Variables-and-Data-Types-5b66469b1dad83d1a1e081c7a697289c",
           conditionals: "",
           switch: "",
           objects: "",
