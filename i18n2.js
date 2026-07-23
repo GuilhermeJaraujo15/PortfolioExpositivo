@@ -385,9 +385,9 @@
           dom: "",
         },
         projects: {
-          registrationSystems: "",
-          nutritionalForm: "", 
-          senaiBlog: "",
+          registrationSystems: "https://lunar-dentist-9df.notion.site/1-Practical-Projects-for-Practicing-Variables-Objects-and-Conditional-Statements-if-else-Sept-ffa6469b1dad82aba79a01b7587b71bf",
+          nutritionalForm: "https://lunar-dentist-9df.notion.site/2-Nutrition-Medical-History-Form-with-JS-October-1-9ab6469b1dad83b592c3014499e44230", 
+          senaiBlog: "https://guilhermejaraujo15.github.io/Blog-Senai/",
         },
       },
     },
