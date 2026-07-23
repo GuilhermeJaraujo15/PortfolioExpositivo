@@ -373,8 +373,8 @@
       links: {
         learning: {
           variablesAndDataTypes: "https://lunar-dentist-9df.notion.site/1-Variables-and-Data-Types-5b66469b1dad83d1a1e081c7a697289c",
-          conditionals: "",
-          switch: "",
+          conditionals: "https://lunar-dentist-9df.notion.site/2-Conditionals-if-else-8fa6469b1dad82abb9c601fef0ebda9f",
+          switch: "https://lunar-dentist-9df.notion.site/3-Switch-Case-ced6469b1dad82d1871e01f7ee13e3d4",
           objects: "",
           arrays: "",
           nestedObjects: "",
