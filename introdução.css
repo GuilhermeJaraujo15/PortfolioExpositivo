@@ -298,10 +298,9 @@ main.fade-i18n {
 body {
     min-height: 100vh;
     font-family: 'Jura', sans-serif;
-    background-image: url('./img/códigos-tela\ de\ fundo.png');
+    background-image: url('./img/códigos.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
     color: var(--color-text-primary);
     display: flex;
     flex-direction: column;
