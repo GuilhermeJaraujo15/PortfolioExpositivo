@@ -295,30 +295,63 @@ main.fade-i18n {
 }
 
 /* -------------------- BODY / FUNDO -------------------- */
+html {
+    min-height: 100%;
+    background-color: #050c18;
+}
+
 body {
     min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
     font-family: 'Jura', sans-serif;
-    background-image: url('./img/códigos.png');
-    background-size: cover;
-    background-position: center;
+    background-color: #050c18;
     color: var(--color-text-primary);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow-x: hidden;
+    overflow-x: clip;
     position: relative;
+    isolation: isolate;
 }
 
-/* Overlay com blur (mantém identidade existente) */
-body::before {
-    content: '';
+@supports not (overflow: clip) {
+    body {
+        overflow-x: hidden;
+    }
+}
+
+.page-background {
     position: fixed;
     inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    background-color: #050c18;
+}
+
+body > :not(.page-background) {
+    position: relative;
+    z-index: 1;
+}
+
+.page-background::before,
+.page-background::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+}
+
+.page-background::before {
+    background-image: url('./img/codigo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.page-background::after {
     background-color: var(--color-bg-overlay);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    z-index: -1;
 }
 
 /* -------------------- NAVE GAÇÃO SUPERIOR -------------------- */
