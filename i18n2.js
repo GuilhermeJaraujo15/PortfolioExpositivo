@@ -152,7 +152,7 @@
       contact: {
         title: "Contato",
         description:
-          "Interessado em ver os próximos passos ou colaborar em projetos de estudo? Vamos conversar.",
+          "Se estiver interessado em novos projetos, saiba que estou disposto a conversar! Mande-me uma mensagem, e assim que possível, entrarei em contato.",
         name: "Nome",
         namePlaceholder: "Seu nome completo",
         email: "E-mail",
@@ -346,7 +346,7 @@
       contact: {
         title: "Contact",
         description:
-          "Interested in seeing the next steps or collaborating on study projects? Let's talk.",
+          "If you are interested in new projects, please know that I am open to discussing them! Send me a message, and I will get in touch as soon as possible.",
         name: "Name",
         namePlaceholder: "Your full name",
         email: "Email",
