@@ -11,14 +11,14 @@
 <body>
     <div class="language-switcher" role="group" aria-label="Seletor de idioma">
         <div class="language-pill">
-            <span id="language-current-flag" class="language-flag" aria-hidden="true">🇧🇷</span>
+            <span id="language-current-flag" class="language-flag" aria-hidden="true"></span>
             <span id="language-current-label" class="language-label">Português</span>
             <button id="language-menu-toggle" class="language-caret-btn" type="button" aria-label="Abrir seleção de idioma"
                 aria-expanded="false"></button>
         </div>
         <div id="language-dropdown" class="language-dropdown" role="menu" aria-label="Escolher idioma">
             <button id="language-alt-option" class="language-option-item" type="button" role="menuitem">
-                <span id="language-alt-flag" class="language-flag" aria-hidden="true">🇺🇸</span>
+                <span id="language-alt-flag" class="language-flag" aria-hidden="true"></span>
                 <span id="language-alt-label">English</span>
             </button>
         </div>
@@ -33,7 +33,7 @@
         </div>
 
         <!-- Botão Avançar atualizado -->
-        <a href="introdução.html" class="btn-avancar" aria-label="Avançar para introdução" data-i18n-aria="index.advanceAria">
+        <a href="introducao.html" class="btn-avancar" aria-label="Avançar para introdução" data-i18n-aria="index.advanceAria">
             <span data-i18n="index.advance">Avançar</span> <span class="seta-icone">→</span>
         </a>
     </div>
@@ -45,11 +45,11 @@
             document.documentElement.classList.add('is-changing', 'is-animating');
             document.getElementById('main-content').classList.add('fade-out');
             setTimeout(function () {
-                window.location.href = "introdução.html";
+                window.location.href = "introducao.html";
             }, 800);
         });
     </script>
-    <script src="i18n.js" defer></script>
+    <script src="./portolioUm/i18n.js" defer></script>
 </body>
 
 </html>
