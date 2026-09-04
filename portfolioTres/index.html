@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Seu Nome — Desenvolvimento de Sistemas &amp; Dados</title>
+<meta name="description" content="Portfólio de Seu Nome, estudante de Desenvolvimento de Sistemas com foco em Dados, Banco de Dados e SQL. Trilha de aprendizado, projetos e certificações do 3º semestre." />
+<meta name="theme-color" content="#0F1720" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Seu Nome — Desenvolvimento de Sistemas & Dados" />
+<meta property="og:description" content="Estudante de Desenvolvimento de Sistemas com foco em Dados, Banco de Dados e SQL. Confira minha trilha de aprendizado, projetos e certificações." />
+<meta property="og:type" content="website" />
+
+<!-- Fonts: Space Grotesk (display/technical) + IBM Plex Sans (body/readable) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          graphite: {
+            950: '#0B1015',
+            900: '#101820',
+            800: '#182029',
+            700: '#232C36',
+            600: '#3A4753',
+            500: '#5B6B78',
+            400: '#8493A0',
+            300: '#B7C2CA',
+            200: '#DDE4E8',
+            100: '#EFF3F5',
+            50:  '#F7FAFB'
+          },
+          cyan: {
+            600: '#0891A8',
+            500: '#00B4C6',
+            400: '#2FD1E0'
+          },
+          teal: {
+            600: '#0E8E7D',
+            500: '#14B8A6',
+            400: '#4FD1C0'
+          },
+          lime: {
+            500: '#B7D400',
+            400: '#CBE838'
+          }
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'],
+          body: ['"IBM Plex Sans"', 'sans-serif'],
+          mono: ['"IBM Plex Mono"', 'monospace']
+        },
+        maxWidth: {
+          content: '72rem'
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  :root { color-scheme: light; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: #182029;
+    background-color: #eef4f5;
+    background-image:
+      radial-gradient(52rem 30rem at 88% 0%, rgba(0,180,198,0.10), transparent 60%),
+      radial-gradient(40rem 26rem at 6% 18%, rgba(20,184,166,0.08), transparent 60%),
+      linear-gradient(180deg, #f4f9f9 0%, #edf6f7 22%, #e7f1f3 48%, #dfeaed 72%, #d9e5e9 100%);
+    background-attachment: fixed;
+  }
+  h1, h2, h3, .font-display { font-family: 'Space Grotesk', sans-serif; }
+  .font-mono-data { font-family: 'IBM Plex Mono', monospace; }
+
+  /* Section-level luminosity/depth variation — layered above body gradient */
+  .surface-veil { position: relative; }
+  .surface-veil::before {
+    content: '';
+    position: absolute; inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  #hero.surface-veil::before {
+    background: radial-gradient(46rem 28rem at 78% 30%, rgba(0,180,198,0.07), transparent 65%);
+  }
+  #projetos.surface-veil::before {
+    background: linear-gradient(180deg, rgba(255,255,255,0.5), rgba(255,255,255,0) 30%);
+  }
+  #contato.surface-veil::before {
+    background: radial-gradient(40rem 24rem at 10% 60%, rgba(20,184,166,0.06), transparent 65%);
+  }
+
+  /* ---------- Focus visibility ---------- */
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+    outline: 2px solid #00B4C6;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* ---------- Background data field ---------- */
+  #bg-field {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  #bg-field svg { position: absolute; }
+  .bg-shape { opacity: 0.05; }
+  .bg-line-path {
+    fill: none;
+    stroke: #0E8E7D;
+    stroke-width: 1.4;
+    stroke-linecap: round;
+  }
+  .bg-pulse {
+    animation: bgPulse 7s ease-in-out infinite;
+  }
+  .bg-drift {
+    animation: bgDrift 26s ease-in-out infinite;
+  }
+  @keyframes bgPulse {
+    0%, 100% { opacity: 0.04; }
+    50% { opacity: 0.09; }
+  }
+  @keyframes bgDrift {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-10px, 14px); }
+  }
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s cubic-bezier(.2,.7,.3,1), transform 0.7s cubic-bezier(.2,.7,.3,1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ---------- Hero draw-in lines ---------- */
+  .draw-path {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    animation: drawIn 1.8s ease-out 0.3s forwards;
+  }
+  @keyframes drawIn {
+    to { stroke-dashoffset: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .draw-path { stroke-dashoffset: 0; animation: none; }
+  }
+
+  /* ---------- Trilha bar grow ---------- */
+  .track-bar {
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.9s cubic-bezier(.2,.8,.2,1);
+  }
+  .track-bar.is-visible { transform: scaleY(1); }
+  @media (prefers-reduced-motion: reduce) {
+    .track-bar { transform: scaleY(1); transition: none; }
+  }
+
+  /* ---------- Donut fill (certifications icon) ---------- */
+  .donut-arc {
+    stroke-dasharray: 251;
+    stroke-dashoffset: 251;
+    transition: stroke-dashoffset 1.4s cubic-bezier(.16,.8,.24,1);
+  }
+  .donut-arc.is-visible { stroke-dashoffset: var(--fill, 60); }
+
+  /* ---------- Depth layers for background data-viz ---------- */
+  .depth-far  { opacity: 0.035; filter: blur(0.4px); }
+  .depth-mid  { opacity: 0.065; }
+  .depth-near { opacity: 0.11; }
+
+  .depth-drift-slow { animation: depthDrift 34s ease-in-out infinite; }
+  .depth-drift-med  { animation: depthDrift 20s ease-in-out infinite; }
+  @keyframes depthDrift {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-8px, 10px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .depth-drift-slow, .depth-drift-med, .bg-drift, .bg-pulse { animation: none !important; }
+  }
+
+  /* ---------- Chart micro-motion primitives ---------- */
+  .chart-draw {
+    stroke-dasharray: var(--len, 400);
+    stroke-dashoffset: var(--len, 400);
+    transition: stroke-dashoffset 1.6s cubic-bezier(.19,.75,.24,1);
+  }
+  .chart-draw.is-visible { stroke-dashoffset: 0; }
+
+  .chart-point {
+    opacity: 0;
+    transform: scale(0.4);
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(.3,1.4,.4,1);
+  }
+  .chart-point.is-visible { opacity: 1; transform: scale(1); }
+
+  .chart-bar-grow {
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transform-box: fill-box;
+    transition: transform 0.85s cubic-bezier(.22,.85,.25,1.15);
+  }
+  .chart-bar-grow.is-visible { transform: scaleY(1); }
+
+  .chart-fade {
+    opacity: 0;
+    transition: opacity 0.9s ease-out;
+  }
+  .chart-fade.is-visible { opacity: 1; }
+
+  /* Gentle ambient loop for a couple of "alive" background elements only.
+     Short, slow, low-amplitude — never continuous distraction. */
+  .ambient-pulse { animation: ambientPulse 9s ease-in-out infinite; }
+  @keyframes ambientPulse {
+    0%, 100% { opacity: 0.04; }
+    50% { opacity: 0.1; }
+  }
+  .ambient-sweep { animation: ambientSweep 12s ease-in-out infinite; }
+  @keyframes ambientSweep {
+    0%, 100% { stroke-dashoffset: 0; }
+    50% { stroke-dashoffset: 24; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ambient-pulse, .ambient-sweep { animation: none !important; }
+  }
+
+  /* ---------- Microinteractions ---------- */
+  .btn-lift {
+    transition: transform 0.25s cubic-bezier(.2,.8,.2,1), background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .btn-lift:hover { transform: translateY(-2px); }
+  .btn-lift:active { transform: translateY(0); }
+
+  .card-hover {
+    transition: transform 0.35s cubic-bezier(.2,.8,.2,1), border-color 0.35s ease, box-shadow 0.35s ease;
+  }
+  .card-hover:hover { transform: translateY(-4px); }
+
+  .track-bar-hover {
+    transition: transform 0.5s cubic-bezier(.2,.8,.2,1), filter 0.5s ease;
+  }
+  .group:hover .track-bar-hover {
+    transform: scaleY(1.04);
+    filter: brightness(1.12) saturate(1.1);
+  }
+
+  /* ---------- Section connective thread ---------- */
+  .section-thread { position: absolute; left: 0; right: 0; pointer-events: none; overflow: visible; z-index: 0; }
+
+  /* ---------- Utility: skip link ---------- */
+  .skip-link {
+    position: absolute;
+    left: -999px;
+    top: 0;
+    background: #101820;
+    color: #F7FAFB;
+    padding: 0.75rem 1.25rem;
+    z-index: 100;
+    border-radius: 0 0 6px 0;
+  }
+  .skip-link:focus { left: 0; }
+
+  /* ---------- Scrollbar (subtle) ---------- */
+  ::selection { background: #B7D40055; color: #101820; }
+</style>
+</head>
+
+<body class="font-body antialiased">
+<a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
+
+<!-- ============================================================ -->
+<!-- BACKGROUND DATA FIELD (decorative, aria-hidden, low opacity) -->
+<!-- ============================================================ -->
+<div id="bg-field" aria-hidden="true">
+  <!-- Ambient, viewport-fixed atmosphere — sparse on purpose. Section-level
+       decoration (denser, more varied) lives inside each <section> below,
+       positioned in that section's own whitespace and scrolling with it. -->
+  <svg class="bg-shape depth-far bg-drift" style="top:16%; right:8%;" width="110" height="110" viewBox="0 0 110 110">
+    <circle cx="55" cy="55" r="46" fill="none" stroke="#00B4C6" stroke-width="8" stroke-dasharray="60 226" />
+  </svg>
+  <svg class="bg-shape depth-far bg-drift" style="bottom:14%; left:6%;" width="120" height="120" viewBox="0 0 120 120" style="animation-delay:4s;">
+    <g fill="none" stroke="#5B6B78" stroke-width="1">
+      <circle cx="60" cy="60" r="52" />
+      <circle cx="60" cy="60" r="26" />
+    </g>
+  </svg>
+</div>
+
+<!-- ============================================================ -->
+<!-- NAVBAR -->
+<!-- ============================================================ -->
+<header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-colors duration-300">
+  <nav class="max-w-content mx-auto px-6 lg:px-10 h-16 flex items-center justify-between" aria-label="Navegação principal">
+    <a href="#hero" class="font-display font-semibold text-graphite-900 text-lg tracking-tight">
+      sn<span class="text-cyan-500">.</span>dev
+    </a>
+    <ul class="hidden md:flex items-center gap-8 text-sm text-graphite-600">
+      <li><a href="#trilha" class="hover:text-graphite-900 transition-colors">Trilha</a></li>
+      <li><a href="#projetos" class="hover:text-graphite-900 transition-colors">Projetos</a></li>
+      <li><a href="#certificacoes" class="hover:text-graphite-900 transition-colors">Certificações</a></li>
+      <li><a href="#contato" class="hover:text-graphite-900 transition-colors">Contato</a></li>
+    </ul>
+    <a href="#contato" class="hidden md:inline-flex items-center gap-2 text-sm font-medium text-graphite-50 bg-graphite-900 hover:bg-graphite-800 transition-colors px-4 py-2 rounded-md">
+      Vamos conversar
+    </a>
+    <button id="menu-toggle" class="md:hidden text-graphite-900 p-2" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg id="icon-open" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="2" y1="6" x2="20" y2="6"/><line x1="2" y1="11" x2="20" y2="11"/><line x1="2" y1="16" x2="20" y2="16"/></svg>
+      <svg id="icon-close" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden"><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></svg>
+    </button>
+  </nav>
+  <div id="mobile-menu" class="md:hidden hidden bg-graphite-50/95 backdrop-blur border-t border-graphite-200">
+    <ul class="flex flex-col px-6 py-4 gap-4 text-graphite-700">
+      <li><a href="#trilha" class="mobile-link block py-1">Trilha de aprendizado</a></li>
+      <li><a href="#projetos" class="mobile-link block py-1">Projetos</a></li>
+      <li><a href="#certificacoes" class="mobile-link block py-1">Certificações</a></li>
+      <li><a href="#contato" class="mobile-link block py-1 font-medium text-cyan-600">Contato</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="conteudo" class="relative z-10">
+
+<!-- ============================================================ -->
+<!-- 1. HERO -->
+<!-- ============================================================ -->
+<section id="hero" class="surface-veil relative min-h-screen flex items-center pt-24 pb-16 px-6 lg:px-10 overflow-hidden">
+
+  <!-- Decorative data layer: hero negative space (right/margins), never behind text -->
+  <div class="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+    <svg class="absolute depth-far depth-drift-slow" style="top:8%; left:2%;" width="130" height="90" viewBox="0 0 130 90">
+      <polyline points="0,70 20,50 40,60 60,20 80,35 100,10 130,28" fill="none" stroke="#0E8E7D" stroke-width="1.3"/>
+    </svg>
+    <svg class="absolute depth-mid" style="bottom:6%; left:6%;" width="70" height="46" viewBox="0 0 70 46">
+      <g fill="none" stroke="#3A4753" stroke-width="1">
+        <line x1="0" y1="0" x2="0" y2="46"/><line x1="0" y1="46" x2="70" y2="46"/>
+        <circle cx="16" cy="30" r="2" fill="#00B4C6" stroke="none"/>
+        <circle cx="36" cy="16" r="2" fill="#00B4C6" stroke="none"/>
+        <circle cx="56" cy="24" r="2" fill="#00B4C6" stroke="none"/>
+      </g>
+    </svg>
+    <svg class="absolute depth-far" style="top:64%; right:2%;" width="60" height="20" viewBox="0 0 60 20">
+      <text x="0" y="15" font-family="IBM Plex Mono" font-size="12" fill="#101820">n = 128</text>
+    </svg>
+  </div>
+
+  <div class="relative z-10 max-w-content mx-auto w-full grid lg:grid-cols-12 gap-10 lg:gap-6 items-center">
+
+    <div class="lg:col-span-7">
+      <p class="font-mono-data text-sm text-teal-600 mb-4">Desenvolvimento de Sistemas · 3º semestre</p>
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-graphite-900 leading-[1.08] tracking-tight">
+        Seu Nome constrói sistemas que transformam dados em decisões.
+      </h1>
+      <p class="mt-6 text-lg text-graphite-600 max-w-xl leading-relaxed">
+        Estudo modelagem de banco de dados, SQL e desenvolvimento de aplicações — e uso este semestre
+        para transformar cada conceito novo em algo que funciona de verdade.
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-4">
+        <a href="#projetos" class="btn-lift inline-flex items-center gap-2 bg-graphite-900 text-graphite-50 hover:bg-graphite-800 hover:shadow-lg hover:shadow-graphite-900/15 px-6 py-3 rounded-md font-medium">
+          Ver projetos
+        </a>
+        <a href="#contato" class="btn-lift inline-flex items-center gap-2 text-graphite-800 hover:text-cyan-600 px-6 py-3 rounded-md font-medium border border-graphite-200 hover:border-cyan-500/50">
+          Entrar em contato
+        </a>
+      </div>
+
+      <dl id="hero-stats" class="mt-14 grid grid-cols-3 gap-6 max-w-md">
+        <div>
+          <dt class="text-xs text-graphite-500 font-mono-data">Módulos concluídos</dt>
+          <dd class="font-display text-2xl text-graphite-900 mt-1"><span class="count-num" data-count-to="6" data-suffix="/8">0</span></dd>
+        </div>
+        <div>
+          <dt class="text-xs text-graphite-500 font-mono-data">Projetos práticos</dt>
+          <dd class="font-display text-2xl text-graphite-900 mt-1"><span class="count-num" data-count-to="4" data-pad="2">00</span></dd>
+        </div>
+        <div>
+          <dt class="text-xs text-graphite-500 font-mono-data">Consultas SQL escritas</dt>
+          <dd class="font-display text-2xl text-graphite-900 mt-1"><span class="count-num" data-count-to="180" data-suffix="+">0</span></dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- Hero visual: one integrated data-viz composition (editorial, not a dashboard) -->
+    <div class="lg:col-span-5 relative h-80 sm:h-[26rem] lg:h-[28rem]" aria-hidden="true">
+      <svg viewBox="0 0 420 380" class="w-full h-full overflow-visible">
+
+        <!-- faint axis / grid, sits behind everything -->
+        <g stroke="#B7C2CA" stroke-width="1" opacity="0.5">
+          <line x1="10" y1="330" x2="400" y2="330"/>
+          <line x1="10" y1="60" x2="10" y2="330"/>
+        </g>
+
+        <!-- connective thread from bars toward the donut, ties the composition together -->
+        <path id="hero-thread" class="chart-draw" style="--len:260" d="M 120,300 C 200,300 240,260 300,250"
+          fill="none" stroke="#B7C2CA" stroke-width="1.4" stroke-dasharray="1 6" stroke-linecap="round" />
+
+        <!-- line chart, drawn progressively -->
+        <polyline id="hero-line" class="chart-draw" style="--len:520" points="20,300 90,220 150,260 220,140 290,180 360,80"
+          fill="none" stroke="#00B4C6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+
+        <!-- points, appear sequentially after the line -->
+        <g fill="#0E8E7D">
+          <circle class="chart-point" style="transition-delay:1.1s" cx="20" cy="300" r="5"/>
+          <circle class="chart-point" style="transition-delay:1.25s" cx="90" cy="220" r="5"/>
+          <circle class="chart-point" style="transition-delay:1.4s" cx="150" cy="260" r="5"/>
+          <circle class="chart-point" style="transition-delay:1.55s" cx="220" cy="140" r="5"/>
+          <circle class="chart-point" style="transition-delay:1.7s" cx="290" cy="180" r="5"/>
+          <circle class="chart-point ambient-pulse" style="transition-delay:1.85s; animation-delay:2.4s" cx="360" cy="80" r="5"/>
+        </g>
+
+        <!-- ascending bars, grow sequentially -->
+        <g fill="#B7D400" opacity="0.9">
+          <rect class="chart-bar-grow" style="transition-delay:.3s" x="20" y="300" width="16" height="30" />
+          <rect class="chart-bar-grow" style="transition-delay:.42s" x="60" y="280" width="16" height="50" />
+          <rect class="chart-bar-grow" style="transition-delay:.54s" x="100" y="260" width="16" height="70" />
+        </g>
+
+        <!-- small scatter cluster, unrelated axis, reinforces "data field" -->
+        <g fill="#5B6B78">
+          <circle class="chart-point" style="transition-delay:1.9s" cx="150" cy="70" r="2.5"/>
+          <circle class="chart-point" style="transition-delay:2.05s" cx="170" cy="90" r="2.5"/>
+          <circle class="chart-point" style="transition-delay:2.2s" cx="130" cy="95" r="2.5"/>
+          <circle class="chart-point" style="transition-delay:2.35s" cx="185" cy="65" r="2.5"/>
+        </g>
+
+        <!-- donut, fills while the counter beside it counts up -->
+        <circle cx="340" cy="290" r="48" fill="none" stroke="#DDE4E8" stroke-width="14"/>
+        <circle id="hero-donut" class="donut-arc" style="--fill:114.6; stroke-dasharray:301.6; stroke-dashoffset:301.6;" cx="340" cy="290" r="48" fill="none" stroke="#232C36" stroke-width="14"
+          stroke-linecap="round" transform="rotate(-90 340 290)"/>
+        <text id="hero-donut-label" x="340" y="296" text-anchor="middle" class="font-mono-data" font-size="16" fill="#101820">0%</text>
+
+        <!-- tiny sparkline label, reads as a caption to the composition -->
+        <text x="14" y="352" font-family="IBM Plex Mono" font-size="11" fill="#5B6B78">progresso · 3º semestre</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 2. TRILHA DE APRENDIZADO -->
+<!-- ============================================================ -->
+<section id="trilha" class="relative py-24 px-6 lg:px-10 bg-graphite-900 overflow-hidden">
+
+  <!-- Section connector: thread continuing down from the hero, fading into the dark section -->
+  <svg class="section-thread" style="top:-1px; height:60px;" preserveAspectRatio="none" viewBox="0 0 1000 60" aria-hidden="true">
+    <path class="chart-draw" style="--len:1100" d="M 0,40 C 200,10 400,50 600,20 800,-5 900,30 1000,15"
+      fill="none" stroke="#232C36" stroke-width="1" stroke-dasharray="1 7" />
+  </svg>
+
+  <div class="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+    <svg class="absolute depth-mid" style="top:10%; right:4%;" width="90" height="90" viewBox="0 0 90 90">
+      <circle cx="45" cy="45" r="38" fill="none" stroke="#4FD1C0" stroke-width="8" stroke-dasharray="60 178" />
+    </svg>
+    <svg class="absolute depth-far depth-drift-med" style="bottom:8%; left:3%;" width="120" height="70" viewBox="0 0 120 70">
+      <g fill="none" stroke="#5B6B78" stroke-width="1">
+        <circle cx="20" cy="20" r="2" fill="#5B6B78"/><circle cx="50" cy="40" r="2" fill="#5B6B78"/>
+        <circle cx="80" cy="15" r="2" fill="#5B6B78"/><circle cx="100" cy="45" r="2" fill="#5B6B78"/>
+        <line x1="20" y1="20" x2="50" y2="40" stroke-dasharray="2 3"/>
+        <line x1="80" y1="15" x2="100" y2="45" stroke-dasharray="2 3"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="relative z-10 max-w-content mx-auto">
+    <div class="max-w-2xl reveal">
+      <p class="font-mono-data text-sm text-lime-400 mb-3">03 — Progressão</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold text-graphite-50 leading-tight">
+        Trilha de aprendizado
+      </h2>
+      <p class="mt-4 text-graphite-300 leading-relaxed">
+        Meu conhecimento evolui como um conjunto de dados: cada módulo aumenta a amostra.
+        Do armazenamento local até consultas avançadas, esta é a curva do semestre.
+      </p>
+    </div>
+
+    <!-- Desktop: ascending bar-track / Mobile: vertical track -->
+    <div id="track-list" class="mt-16 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-5 lg:gap-4 lg:items-end">
+      <!-- items injected by JS from trackData -->
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 3. PROJETOS -->
+<!-- ============================================================ -->
+<section id="projetos" class="surface-veil relative py-24 px-6 lg:px-10 overflow-hidden">
+
+  <div class="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+    <svg class="absolute depth-mid" style="top:4%; left:1%;" width="70" height="120" viewBox="0 0 70 120">
+      <g fill="#0E8E7D">
+        <rect x="0" y="80" width="10" height="40"/><rect x="18" y="55" width="10" height="65"/>
+        <rect x="36" y="30" width="10" height="90"/><rect x="54" y="65" width="10" height="55"/>
+      </g>
+    </svg>
+    <svg class="absolute depth-far" style="bottom:2%; right:2%;" width="110" height="60" viewBox="0 0 110 60">
+      <polyline points="0,50 20,30 40,38 60,10 80,22 110,5" fill="none" stroke="#00B4C6" stroke-width="1.2"/>
+    </svg>
+  </div>
+
+  <div class="relative z-10 max-w-content mx-auto">
+    <div class="max-w-2xl reveal">
+      <p class="font-mono-data text-sm text-teal-600 mb-3">04 — Prática</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold text-graphite-900 leading-tight">
+        Projetos
+      </h2>
+      <p class="mt-4 text-graphite-600 leading-relaxed">
+        Aplicações construídas para testar, na prática, cada conceito de dados e sistemas do semestre.
+      </p>
+    </div>
+
+    <div id="project-grid" class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- items injected by JS from projectData -->
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 4. CERTIFICAÇÕES -->
+<!-- ============================================================ -->
+<section id="certificacoes" class="relative py-24 px-6 lg:px-10 bg-graphite-50 border-y border-graphite-200 overflow-hidden">
+
+  <div class="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+    <svg class="absolute depth-mid" style="top:8%; right:5%;" width="80" height="80" viewBox="0 0 80 80">
+      <circle cx="40" cy="40" r="34" fill="none" stroke="#DDE4E8" stroke-width="10"/>
+      <circle cx="40" cy="40" r="34" fill="none" stroke="#B7D400" stroke-width="10" stroke-dasharray="70 143" stroke-linecap="round" transform="rotate(-90 40 40)"/>
+    </svg>
+    <svg class="absolute depth-far" style="bottom:6%; left:4%;" width="90" height="46" viewBox="0 0 90 46">
+      <g stroke="#5B6B78" stroke-width="1" fill="none">
+        <rect x="0" y="0" width="90" height="46" opacity="0.5"/>
+        <line x1="30" y1="0" x2="30" y2="46" opacity="0.5"/>
+        <line x1="60" y1="0" x2="60" y2="46" opacity="0.5"/>
+        <line x1="0" y1="23" x2="90" y2="23" opacity="0.5"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="relative z-10 max-w-content mx-auto">
+    <div class="max-w-2xl reveal">
+      <p class="font-mono-data text-sm text-teal-600 mb-3">05 — Formação</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold text-graphite-900 leading-tight">
+        Certificações
+      </h2>
+      <p class="mt-4 text-graphite-600 leading-relaxed">
+        Cursos e formações complementares que sustentam o que venho construindo em sala de aula.
+      </p>
+    </div>
+
+    <ul id="cert-list" class="mt-14 flex flex-col divide-y divide-graphite-200 border-t border-b border-graphite-200">
+      <!-- items injected by JS from certData -->
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 5. CONTATO -->
+<!-- ============================================================ -->
+<section id="contato" class="surface-veil relative py-24 px-6 lg:px-10 overflow-hidden">
+
+  <div class="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+    <svg class="absolute depth-far depth-drift-slow" style="top:6%; right:3%;" width="100" height="60" viewBox="0 0 100 60">
+      <polyline points="0,50 15,35 30,42 45,15 60,28 75,8 100,20" fill="none" stroke="#0E8E7D" stroke-width="1.2"/>
+    </svg>
+    <svg class="absolute depth-far" style="bottom:4%; left:2%;" width="60" height="20" viewBox="0 0 60 20">
+      <text x="0" y="15" font-family="IBM Plex Mono" font-size="12" fill="#101820">status: aberto</text>
+    </svg>
+  </div>
+
+  <div class="relative z-10 max-w-content mx-auto grid lg:grid-cols-12 gap-12">
+    <div class="lg:col-span-5 reveal">
+      <p class="font-mono-data text-sm text-teal-600 mb-3">06 — Contato</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold text-graphite-900 leading-tight">
+        Vamos conversar
+      </h2>
+      <p class="mt-4 text-graphite-600 leading-relaxed max-w-md">
+        Aberto a oportunidades de estágio, projetos em dupla e trocas sobre dados e desenvolvimento.
+        Responda ao formulário ou use um dos canais abaixo.
+      </p>
+      <div class="mt-8 flex flex-col gap-3 text-sm">
+        <a href="mailto:seunome@email.com" class="text-graphite-700 hover:text-cyan-600 transition-colors">seunome@email.com</a>
+        <a href="https://linkedin.com/in/seunome" target="_blank" rel="noopener noreferrer" class="text-graphite-700 hover:text-cyan-600 transition-colors">linkedin.com/in/seunome</a>
+        <a href="https://github.com/seunome" target="_blank" rel="noopener noreferrer" class="text-graphite-700 hover:text-cyan-600 transition-colors">github.com/seunome</a>
+      </div>
+    </div>
+
+    <div class="lg:col-span-7 reveal">
+      <form id="contact-form" class="space-y-5" novalidate>
+        <div>
+          <label for="name" class="block text-sm font-medium text-graphite-700 mb-1.5">Nome</label>
+          <input type="text" id="name" name="name" required
+            class="w-full rounded-md border border-graphite-200 bg-white px-4 py-3 text-graphite-900 placeholder:text-graphite-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition"
+            placeholder="Como podemos te chamar?" aria-describedby="name-error" />
+          <p id="name-error" class="mt-1.5 text-sm text-rose-600 hidden" role="alert"></p>
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium text-graphite-700 mb-1.5">E-mail</label>
+          <input type="email" id="email" name="email" required
+            class="w-full rounded-md border border-graphite-200 bg-white px-4 py-3 text-graphite-900 placeholder:text-graphite-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition"
+            placeholder="voce@email.com" aria-describedby="email-error" />
+          <p id="email-error" class="mt-1.5 text-sm text-rose-600 hidden" role="alert"></p>
+        </div>
+
+        <div>
+          <label for="message" class="block text-sm font-medium text-graphite-700 mb-1.5">Mensagem</label>
+          <textarea id="message" name="message" rows="5" required
+            class="w-full rounded-md border border-graphite-200 bg-white px-4 py-3 text-graphite-900 placeholder:text-graphite-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition resize-none"
+            placeholder="Conte um pouco sobre o que você tem em mente" aria-describedby="message-error"></textarea>
+          <p id="message-error" class="mt-1.5 text-sm text-rose-600 hidden" role="alert"></p>
+        </div>
+
+        <button type="submit" id="submit-btn"
+          class="inline-flex items-center justify-center gap-2 bg-graphite-900 hover:bg-graphite-800 text-graphite-50 font-medium px-6 py-3 rounded-md transition-colors w-full sm:w-auto disabled:opacity-60 disabled:cursor-not-allowed">
+          <span id="submit-label">Enviar mensagem</span>
+          <svg id="submit-spinner" class="hidden animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-90" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.37 0 0 5.37 0 12h4z"></path>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Toast (contextual feedback, no alert()) -->
+<div id="toast" role="status" aria-live="polite"
+  class="fixed bottom-6 right-6 left-6 sm:left-auto z-50 translate-y-24 opacity-0 transition-all duration-400 pointer-events-none">
+  <div class="flex items-start gap-3 bg-graphite-900 text-graphite-50 rounded-lg shadow-xl px-5 py-4 max-w-sm">
+    <svg class="shrink-0 mt-0.5" width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <circle cx="9" cy="9" r="9" fill="#14B8A6"/>
+      <path d="M5 9l2.5 2.5L13 6" stroke="#0B1015" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div>
+      <p class="text-sm font-medium">Mensagem enviada</p>
+      <p class="text-sm text-graphite-300 mt-0.5">Obrigado pelo contato — retorno em breve.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+<footer class="relative z-10 bg-graphite-900 text-graphite-400 py-12 px-6 lg:px-10">
+  <div class="max-w-content mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+    <div>
+      <p class="font-display text-graphite-50 text-lg">Seu Nome</p>
+      <p class="text-sm mt-1">Estudante de Desenvolvimento de Sistemas · Dados &amp; Banco de Dados</p>
+    </div>
+    <nav aria-label="Navegação do rodapé">
+      <ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+        <li><a href="#trilha" class="hover:text-graphite-100 transition-colors">Trilha</a></li>
+        <li><a href="#projetos" class="hover:text-graphite-100 transition-colors">Projetos</a></li>
+        <li><a href="#certificacoes" class="hover:text-graphite-100 transition-colors">Certificações</a></li>
+        <li><a href="https://linkedin.com/in/seunome" target="_blank" rel="noopener noreferrer" class="hover:text-graphite-100 transition-colors">LinkedIn</a></li>
+        <li><a href="https://github.com/seunome" target="_blank" rel="noopener noreferrer" class="hover:text-graphite-100 transition-colors">GitHub</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="max-w-content mx-auto mt-8 pt-6 border-t border-graphite-700 text-xs">
+    <p>© <span id="year"></span> Seu Nome. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   DATA — edite os arrays abaixo para atualizar o conteúdo
+   ============================================================ */
+
+const trackData = [
+  { level: 1, title: "Local Storage", desc: "Persistência de dados no navegador para pequenas aplicações.", height: 30 },
+  { level: 2, title: "Modelagem de BD", desc: "Entidades, relacionamentos e diagramas ER como base de tudo.", height: 45 },
+  { level: 3, title: "DDL & DML", desc: "Criação de estruturas e manipulação de dados em SQL.", height: 58 },
+  { level: 4, title: "JOINs & Relacionamentos", desc: "Combinando tabelas para responder perguntas reais.", height: 72 },
+  { level: 5, title: "GROUP BY & Agregações", desc: "HAVING, funções de agregação e sumarização de dados.", height: 86 },
+  { level: 6, title: "Consultas Avançadas", desc: "Normalização, subqueries e análise aplicada a projetos.", height: 100 },
+];
+
+const projectData = [
+  {
+    name: "Painel de Estoque SQL",
+    category: "Banco de Dados",
+    desc: "Sistema de controle de estoque com modelagem relacional e consultas otimizadas para relatórios.",
+    tech: ["PostgreSQL", "SQL", "Modelagem ER"],
+    color: "from-cyan-500 to-teal-500"
+  },
+  {
+    name: "Biblioteca Escolar",
+    category: "Aplicação Web",
+    desc: "CRUD completo de empréstimos com regras de negócio e consultas de disponibilidade em tempo real.",
+    tech: ["Node.js", "MySQL", "Express"],
+    color: "from-teal-500 to-lime-500"
+  },
+  {
+    name: "Análise de Vendas",
+    category: "Análise de Dados",
+    desc: "Consultas de agregação e visualizações para identificar tendências em uma base de vendas simulada.",
+    tech: ["SQL", "GROUP BY", "Python"],
+    color: "from-graphite-600 to-cyan-500"
+  },
+];
+
+const certData = [
+  { name: "Fundamentos de Banco de Dados", inst: "Instituição de Ensino", date: "2026", pct: 100 },
+  { name: "SQL para Análise de Dados", inst: "Plataforma de Cursos", date: "2026", pct: 100 },
+  { name: "Lógica de Programação", inst: "Instituição de Ensino", date: "2025", pct: 100 },
+];
+
+/* ============================================================
+   RENDER: Trilha de aprendizado
+   ============================================================ */
+const trackList = document.getElementById('track-list');
+trackData.forEach((item, i) => {
+  const el = document.createElement('div');
+  el.className = 'reveal group flex flex-col';
+  el.style.transitionDelay = (i * 70) + 'ms';
+  el.innerHTML = `
+    <div class="relative h-28 flex items-end justify-center mb-4 lg:h-[${40 + item.height}px]">
+      <span class="track-bar-percent absolute -top-1 text-xs font-mono-data text-cyan-300 opacity-0 group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-300">${item.height}%</span>
+      <div class="track-bar track-bar-hover w-full rounded-t-md bg-gradient-to-t from-teal-600 to-cyan-400"
+           style="height:${40 + item.height * 1.3}px; transition-delay:${i * 90}ms;"></div>
+    </div>
+    <div class="border-t-2 border-graphite-700/0 group-hover:border-lime-400 pt-4 transition-colors duration-300">
+      <p class="font-mono-data text-xs text-cyan-400">Nível ${item.level}</p>
+      <h3 class="font-display text-graphite-50 font-medium mt-1">${item.title}</h3>
+      <p class="text-sm text-graphite-400 group-hover:text-graphite-300 mt-2 leading-relaxed transition-colors duration-300">${item.desc}</p>
+    </div>
+  `;
+  trackList.appendChild(el);
+});
+
+/* ============================================================
+   RENDER: Projetos
+   ============================================================ */
+const projectGrid = document.getElementById('project-grid');
+projectData.forEach((p, i) => {
+  const el = document.createElement('article');
+  el.className = 'reveal group card-hover rounded-xl border border-graphite-200 bg-white overflow-hidden hover:border-cyan-500/50 hover:shadow-xl hover:shadow-cyan-500/10';
+  el.style.transitionDelay = (i * 80) + 'ms';
+  el.innerHTML = `
+    <div class="aspect-[16/10] bg-gradient-to-br ${p.color} relative overflow-hidden">
+      <svg class="absolute inset-0 w-full h-full opacity-25 group-hover:opacity-45 transition-opacity duration-500" viewBox="0 0 200 125" preserveAspectRatio="none">
+        <polyline class="chart-draw" style="--len:340" points="0,100 30,70 60,85 90,40 120,60 150,20 200,50" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <g fill="white" class="transition-transform duration-500 group-hover:-translate-y-0.5">
+          <circle cx="90" cy="40" r="2.4"/>
+          <circle cx="150" cy="20" r="2.4"/>
+        </g>
+      </svg>
+      <span class="absolute top-3 left-3 text-xs font-mono-data text-white/90 bg-black/20 px-2 py-1 rounded">${p.category}</span>
+    </div>
+    <div class="p-6">
+      <h3 class="font-display text-lg font-medium text-graphite-900">${p.name}</h3>
+      <p class="text-sm text-graphite-600 mt-2 leading-relaxed">${p.desc}</p>
+      <ul class="flex flex-wrap gap-2 mt-4">
+        ${p.tech.map(t => `<li class="text-xs font-mono-data text-teal-700 bg-teal-50 px-2 py-1 rounded">${t}</li>`).join('')}
+      </ul>
+      <div class="flex items-center gap-4 mt-5 pt-5 border-t border-graphite-100">
+        <a href="#" class="text-sm font-medium text-graphite-900 hover:text-cyan-600 transition-colors">Ver projeto →</a>
+        <a href="#" class="text-sm text-graphite-500 hover:text-graphite-800 transition-colors">GitHub</a>
+      </div>
+    </div>
+  `;
+  projectGrid.appendChild(el);
+});
+
+/* ============================================================
+   RENDER: Certificações
+   ============================================================ */
+const certList = document.getElementById('cert-list');
+certData.forEach((c, i) => {
+  const dashoffset = 251 - (251 * c.pct / 100);
+  const el = document.createElement('li');
+  el.className = 'reveal flex flex-col sm:flex-row sm:items-center gap-4 py-6';
+  el.style.transitionDelay = (i * 70) + 'ms';
+  el.innerHTML = `
+    <svg width="52" height="52" viewBox="0 0 90 90" class="shrink-0" aria-hidden="true">
+      <circle cx="45" cy="45" r="40" fill="none" stroke="#DDE4E8" stroke-width="8"/>
+      <circle class="donut-arc" style="--fill:${dashoffset}" cx="45" cy="45" r="40" fill="none" stroke="#0E8E7D" stroke-width="8"
+        stroke-dasharray="251" stroke-dashoffset="251" stroke-linecap="round" transform="rotate(-90 45 45)"/>
+    </svg>
+    <div class="flex-1">
+      <h3 class="font-display text-graphite-900 font-medium">${c.name}</h3>
+      <p class="text-sm text-graphite-500 mt-1">${c.inst} · ${c.date}</p>
+    </div>
+    <a href="#" class="text-sm font-medium text-teal-700 hover:text-teal-800 transition-colors whitespace-nowrap">Ver certificado →</a>
+  `;
+  certList.appendChild(el);
+});
+
+/* ============================================================
+   NAVBAR: blur/solid on scroll + mobile menu
+   ============================================================ */
+const navbar = document.getElementById('navbar');
+function updateNavbar() {
+  if (window.scrollY > 24) {
+    navbar.classList.add('bg-white/80', 'backdrop-blur-md', 'shadow-sm');
+  } else {
+    navbar.classList.remove('bg-white/80', 'backdrop-blur-md', 'shadow-sm');
+  }
+}
+updateNavbar();
+window.addEventListener('scroll', updateNavbar, { passive: true });
+
+const menuToggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+const iconOpen = document.getElementById('icon-open');
+const iconClose = document.getElementById('icon-close');
+menuToggle.addEventListener('click', () => {
+  const isOpen = !mobileMenu.classList.contains('hidden');
+  mobileMenu.classList.toggle('hidden');
+  iconOpen.classList.toggle('hidden');
+  iconClose.classList.toggle('hidden');
+  menuToggle.setAttribute('aria-expanded', String(!isOpen));
+});
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
+    iconOpen.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  });
+});
+
+/* ============================================================
+   REVEAL ON SCROLL (single IntersectionObserver, runs once each)
+   ============================================================ */
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal, .track-bar, .donut-arc, .chart-draw, .chart-point, .chart-bar-grow, .chart-fade')
+  .forEach(el => revealObserver.observe(el));
+
+/* ------------------------------------------------------------
+   DATA COUNTERS — count-up triggered once elements enter view,
+   used for the hero stat numbers and the hero donut percentage.
+   This is the visual "cycle": bars grow + line draws + counters
+   tick up together, as one system rather than isolated effects.
+   ------------------------------------------------------------ */
+function animateCount(el) {
+  const target = parseInt(el.dataset.countTo, 10) || 0;
+  const suffix = el.dataset.suffix || '';
+  const pad = parseInt(el.dataset.pad, 10) || 0;
+
+  if (prefersReducedMotion) {
+    el.textContent = String(target).padStart(pad, '0') + suffix;
+    return;
+  }
+
+  const duration = 1400;
+  const start = performance.now();
+
+  function tick(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const value = Math.round(target * eased);
+    el.textContent = String(value).padStart(pad, '0') + suffix;
+    if (progress < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+function animateHeroDonut() {
+  const arc = document.getElementById('hero-donut');
+  const label = document.getElementById('hero-donut-label');
+  if (!arc || !label) return;
+  const pct = 51; // 62% ring fill, mirrors --fill offset below
+  arc.classList.add('is-visible');
+
+  if (prefersReducedMotion) {
+    label.textContent = '62%';
+    return;
+  }
+  const duration = 1400;
+  const start = performance.now();
+  function tick(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    label.textContent = Math.round(62 * eased) + '%';
+    if (progress < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+const countObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCount(entry.target);
+      countObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.4 });
+document.querySelectorAll('.count-num').forEach(el => countObserver.observe(el));
+
+const heroDonutObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateHeroDonut();
+      heroDonutObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+const heroDonutEl = document.getElementById('hero-donut');
+if (heroDonutEl) heroDonutObserver.observe(heroDonutEl);
+
+/* ============================================================
+   CONTACT FORM: validation, loading state, toast feedback
+   ============================================================ */
+const form = document.getElementById('contact-form');
+const submitBtn = document.getElementById('submit-btn');
+const submitLabel = document.getElementById('submit-label');
+const submitSpinner = document.getElementById('submit-spinner');
+const toast = document.getElementById('toast');
+
+function setFieldError(fieldId, message) {
+  const field = document.getElementById(fieldId);
+  const errorEl = document.getElementById(fieldId + '-error');
+  if (message) {
+    field.classList.add('border-rose-500', 'focus:ring-rose-500');
+    field.classList.remove('border-graphite-200', 'focus:ring-cyan-500');
+    errorEl.textContent = message;
+    errorEl.classList.remove('hidden');
+  } else {
+    field.classList.remove('border-rose-500', 'focus:ring-rose-500');
+    field.classList.add('border-graphite-200', 'focus:ring-cyan-500');
+    errorEl.classList.add('hidden');
+  }
+}
+
+function validateForm() {
+  let valid = true;
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (name.length < 2) {
+    setFieldError('name', 'Informe seu nome completo.');
+    valid = false;
+  } else {
+    setFieldError('name', null);
+  }
+
+  if (!emailPattern.test(email)) {
+    setFieldError('email', 'Informe um e-mail válido.');
+    valid = false;
+  } else {
+    setFieldError('email', null);
+  }
+
+  if (message.length < 10) {
+    setFieldError('message', 'A mensagem precisa ter pelo menos 10 caracteres.');
+    valid = false;
+  } else {
+    setFieldError('message', null);
+  }
+
+  return valid;
+}
+
+function showToast() {
+  toast.classList.remove('translate-y-24', 'opacity-0');
+  toast.classList.add('translate-y-0', 'opacity-100');
+  setTimeout(() => {
+    toast.classList.add('translate-y-24', 'opacity-0');
+    toast.classList.remove('translate-y-0', 'opacity-100');
+  }, 4200);
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  if (!validateForm()) return;
+
+  submitBtn.disabled = true;
+  submitLabel.textContent = 'Enviando...';
+  submitSpinner.classList.remove('hidden');
+
+  // Simula envio — substitua por chamada real (fetch para API/serviço de e-mail)
+  await new Promise(resolve => setTimeout(resolve, 1200));
+
+  submitBtn.disabled = false;
+  submitLabel.textContent = 'Enviar mensagem';
+  submitSpinner.classList.add('hidden');
+  form.reset();
+  showToast();
+});
+
+/* ============================================================
+   SUBTLE SCROLL-REACTIVE DEPTH (near/mid layers drift a few
+   pixels with scroll position — capped, transform-only, and
+   skipped entirely under reduced motion).
+   ============================================================ */
+if (!prefersReducedMotion) {
+  const depthEls = Array.from(document.querySelectorAll('.depth-mid, .depth-near')).map(el => ({
+    el, factor: el.classList.contains('depth-near') ? 0.03 : 0.018
+  }));
+  let ticking = false;
+  function updateDepth() {
+    const y = window.scrollY;
+    depthEls.forEach(({ el, factor }) => {
+      const offset = Math.max(-14, Math.min(14, y * factor * 0.02));
+      el.style.transform = `translateY(${offset}px)`;
+    });
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(updateDepth);
+      ticking = true;
+    }
+  }, { passive: true });
+}
+
+/* ============================================================
+   MISC
+   ============================================================ */
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
