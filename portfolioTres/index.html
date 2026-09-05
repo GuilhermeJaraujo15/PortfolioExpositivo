@@ -517,86 +517,170 @@
     }
 
     /* ============================================================ */
-    /* ANIMAÇÕES DOS ÍCONES – VERSÃO SUAVE E NATURAL */
+    /* ANIMAÇÕES DOS ÍCONES – microinterações semânticas */
     /* ============================================================ */
+    .nav-link svg [class],
+    .mobile-link svg [class] {
+      transform-box: fill-box;
+    }
 
-    /* 1. TRILHA – gráfico "cresce" suavemente (scaleY com bounce) */
-    .icon-trilha .chart-group {
+    .icon-trilha,
+    .icon-projetos,
+    .icon-cert,
+    .icon-contato {
+      overflow: visible;
+    }
+
+    .icon-trilha .chart-rect {
       transform-origin: bottom;
-      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
-    .icon-trilha.animate .chart-group {
-      transform: scaleY(1.25) translateY(-6%);
+    .icon-trilha .chart-line {
+      stroke-dasharray: 32;
+      stroke-dashoffset: 0;
+    }
+    .icon-trilha .chart-node {
+      opacity: 1;
+      transform-origin: center;
+    }
+    .icon-trilha.animate .chart-rect {
+      animation: chartBarRise 560ms cubic-bezier(.2,.8,.2,1) both;
+    }
+    .icon-trilha.animate .chart-rect-2 { animation-delay: 55ms; }
+    .icon-trilha.animate .chart-rect-3 { animation-delay: 110ms; }
+    .icon-trilha.animate .chart-line {
+      animation: chartLineDraw 520ms cubic-bezier(.25,.8,.25,1) 150ms both;
+    }
+    .icon-trilha.animate .chart-node {
+      animation: chartPointIn 340ms cubic-bezier(.2,.9,.25,1) both;
+    }
+    .icon-trilha.animate .chart-node-1 { animation-delay: 230ms; }
+    .icon-trilha.animate .chart-node-2 { animation-delay: 300ms; }
+    .icon-trilha.animate .chart-node-3 { animation-delay: 370ms; }
+
+    @keyframes chartBarRise {
+      0% { transform: scaleY(0); opacity: 0.45; }
+      76% { transform: scaleY(1.05); opacity: 1; }
+      100% { transform: scaleY(1); opacity: 1; }
+    }
+    @keyframes chartLineDraw {
+      0% { stroke-dashoffset: 32; opacity: 0.7; }
+      100% { stroke-dashoffset: 0; opacity: 1; }
+    }
+    @keyframes chartPointIn {
+      0% { opacity: 0; transform: scale(0.55); }
+      70% { opacity: 1; transform: scale(1.12); }
+      100% { opacity: 1; transform: scale(1); }
     }
 
-    /* 2. PROJETOS – pasta abre com documento emergindo */
     .icon-projetos .folder-lid {
-      transform-origin: left center;
-      transition: transform 0.5s cubic-bezier(0.34, 1.0, 0.64, 1);
-    }
-    .icon-projetos.animate .folder-lid {
-      transform: rotate(-20deg) translateY(-2px);
+      transform-origin: 4px 8px;
     }
     .icon-projetos .folder-content {
       opacity: 0;
-      transform: scale(0.7) translateY(4px);
-      transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform: translateY(3px) scale(0.94);
+      transform-origin: center;
+    }
+    .icon-projetos.animate .folder-lid {
+      animation: folderLidOpen 680ms cubic-bezier(.2,.8,.2,1) both;
     }
     .icon-projetos.animate .folder-content {
-      opacity: 1;
-      transform: scale(1) translateY(0);
+      animation: folderContentPeek 620ms cubic-bezier(.2,.8,.2,1) 90ms both;
+    }
+    @keyframes folderLidOpen {
+      0% { transform: translateY(0) rotate(0deg); }
+      36% { transform: translateY(-2px) rotate(-10deg); }
+      58% { transform: translateY(-1px) rotate(-6deg); }
+      76% { transform: translateY(-0.6px) rotate(-3deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+    @keyframes folderContentPeek {
+      0% { opacity: 0; transform: translateY(4px) scale(0.94); }
+      30% { opacity: 1; transform: translateY(-2px) scale(1.02); }
+      58% { opacity: 1; transform: translateY(-0.6px) scale(1); }
+      82% { opacity: 0.92; transform: translateY(-0.5px) scale(0.995); }
+      100% { opacity: 0; transform: translateY(3px) scale(0.96); }
     }
 
-    /* 3. CERTIFICAÇÕES – estrela gira suavemente com brilho */
-    .icon-cert .star-body {
-      transition: transform 0.6s cubic-bezier(0.34, 1.0, 0.64, 1);
-    }
-    .icon-cert.animate .star-body {
-      transform: rotate(180deg) scale(1.1);
+    .icon-cert .star-body,
+    .icon-cert .star-glow {
+      transform-origin: center;
     }
     .icon-cert .star-glow {
       opacity: 0;
-      transition: opacity 0.3s ease;
+    }
+    .icon-cert.animate .star-body {
+      animation: starUnlock 660ms cubic-bezier(.2,.85,.25,1) both;
     }
     .icon-cert.animate .star-glow {
-      animation: glowPulse 0.7s ease forwards;
+      animation: starGlow 620ms ease-out 60ms both;
     }
-    @keyframes glowPulse {
-      0% { opacity: 0; transform: scale(0.6); }
-      40% { opacity: 0.8; transform: scale(1.8); }
-      100% { opacity: 0; transform: scale(1); }
+    @keyframes starUnlock {
+      0% { transform: scale(0.9) rotate(-5deg); }
+      48% { transform: scale(1.1) rotate(7deg); }
+      74% { transform: scale(0.98) rotate(-1deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
+    @keyframes starGlow {
+      0% { opacity: 0; transform: scale(0.65); }
+      38% { opacity: 0.2; transform: scale(1.45); }
+      100% { opacity: 0; transform: scale(1.85); }
     }
 
-    /* 4. CONTATO – envelope abre com carta saindo */
     .icon-contato .envelope-flap {
-      transform-origin: top center;
-      transition: transform 0.5s cubic-bezier(0.34, 1.0, 0.64, 1);
-    }
-    .icon-contato.animate .envelope-flap {
-      transform: rotateX(160deg) translateY(-3px);
+      transform-origin: 12px 6px;
     }
     .icon-contato .envelope-letter {
       opacity: 0;
-      transform: translateY(6px);
-      transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform: translateY(4px);
+      transform-origin: center;
+    }
+    .icon-contato.animate .envelope-flap {
+      animation: envelopeOpen 690ms cubic-bezier(.2,.8,.2,1) both;
     }
     .icon-contato.animate .envelope-letter {
-      opacity: 1;
-      transform: translateY(0);
+      animation: letterRise 640ms cubic-bezier(.2,.8,.2,1) 80ms both;
+    }
+    @keyframes envelopeOpen {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      34% { transform: translateY(-1.8px) rotate(-9deg); opacity: 0.98; }
+      56% { transform: translateY(-0.9px) rotate(-5deg); opacity: 0.98; }
+      78% { transform: translateY(-0.5px) rotate(-2deg); opacity: 0.99; }
+      100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    }
+    @keyframes letterRise {
+      0% { opacity: 0; transform: translateY(4px) scale(0.96); }
+      28% { opacity: 1; transform: translateY(-2.6px) scale(1.02); }
+      54% { opacity: 1; transform: translateY(-1px) scale(1); }
+      84% { opacity: 0.9; transform: translateY(-0.6px) scale(0.995); }
+      100% { opacity: 0; transform: translateY(4px) scale(0.96); }
     }
 
-    /* Suporte para prefers-reduced-motion */
-    @media (prefers-reduced-motion: reduce) {
-      .icon-trilha.animate .chart-group,
+    @media (max-width: 767px) {
       .icon-projetos.animate .folder-lid,
+      .icon-contato.animate .envelope-flap {
+        animation-duration: 620ms;
+      }
       .icon-projetos.animate .folder-content,
-      .icon-cert.animate .star-body,
-      .icon-cert.animate .star-glow,
-      .icon-contato.animate .envelope-flap,
       .icon-contato.animate .envelope-letter {
+        animation-duration: 580ms;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .icon-trilha.animate *,
+      .icon-projetos.animate *,
+      .icon-cert.animate *,
+      .icon-contato.animate * {
         animation: none !important;
         transition: none !important;
         transform: none !important;
+      }
+      .icon-projetos .folder-content,
+      .icon-cert .star-glow,
+      .icon-contato .envelope-letter {
+        opacity: 0 !important;
+      }
+      .icon-trilha .chart-node {
         opacity: 1 !important;
       }
     }
@@ -635,8 +719,18 @@
         <li>
           <a href="#trilha" class="nav-link" data-section="trilha">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon-trilha">
+              <g class="chart-bars" opacity="0.95">
+                <!-- semantically: three vertical bars sitting on a baseline -->
+                <rect class="chart-rect chart-rect-1" x="4" y="15" width="3" height="4" rx="0.4" />
+                <rect class="chart-rect chart-rect-2" x="9" y="11" width="3" height="8" rx="0.4" />
+                <rect class="chart-rect chart-rect-3" x="14" y="8" width="3" height="11" rx="0.4" />
+              </g>
               <g class="chart-group">
-                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                <!-- line connects the data points; positioned to follow bar tops -->
+                <path class="chart-line" d="M6 13.5L11.5 9.5L15.5 10.5L18.5 7.5L21 6" />
+                <circle class="chart-node chart-node-1" cx="8.5" cy="13.5" r="1.15" fill="currentColor" stroke="none" />
+                <circle class="chart-node chart-node-2" cx="16" cy="9.5" r="1.15" fill="currentColor" stroke="none" />
+                <circle class="chart-node chart-node-3" cx="20" cy="7" r="1.15" fill="currentColor" stroke="none" />
               </g>
             </svg>
             Trilha
@@ -645,15 +739,21 @@
         <li>
           <a href="#projetos" class="nav-link" data-section="projetos">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon-projetos">
+              <path class="folder-back" d="M3 8.5V7a2 2 0 0 1 2-2h4.2l2 2.6H19a2 2 0 0 1 2 2v1.1" />
               <g class="folder-lid">
-                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                <path d="M3 8.5h7.4l1.8 2.1H21" />
               </g>
-              <!-- Conteúdo da pasta (documento) -->
               <g class="folder-content" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="8" y="10" width="10" height="6" rx="0.5" />
-                <line x1="10" y1="12" x2="14" y2="12" />
-                <line x1="10" y1="14" x2="16" y2="14" />
+                <rect x="8" y="9.5" width="8" height="6" rx="0.7" />
+                <line x1="10" y1="11.6" x2="14" y2="11.6" />
+                <line x1="10" y1="13.5" x2="15" y2="13.5" />
+                <!-- small document inside the folder that will peek out -->
+                <g class="folder-doc" transform="translate(0,0)">
+                  <rect x="9.8" y="10.2" width="4.4" height="4" rx="0.5" fill="none" stroke="currentColor" stroke-width="1.2" />
+                  <line x1="10.5" y1="11.1" x2="13.2" y2="11.1" stroke="currentColor" stroke-width="1.1" />
+                </g>
               </g>
+              <path class="folder-front" d="M3 8.5h18l-1.5 9.7A2 2 0 0 1 17.5 20H5.7a2 2 0 0 1-2-1.7L3 8.5z" />
             </svg>
             Projetos
           </a>
@@ -661,11 +761,10 @@
         <li>
           <a href="#certificacoes" class="nav-link" data-section="certificacoes">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon-cert">
+              <circle class="star-glow" cx="12" cy="12" r="5.7" fill="#00B4C6" stroke="none" />
               <g class="star-body">
                 <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/>
               </g>
-              <!-- Glow (brilho) -->
-              <circle class="star-glow" cx="12" cy="12" r="6" fill="#00B4C6" opacity="0" />
             </svg>
             Certificações
           </a>
@@ -673,17 +772,14 @@
         <li>
           <a href="#contato" class="nav-link" data-section="contato">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon-contato">
-              <!-- Corpo do envelope -->
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-              <!-- Aba (flap) -->
+              <g class="envelope-letter" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="7.5" y="9" width="9" height="6.5" rx="0.7" />
+                <line x1="9.5" y1="11.2" x2="14.5" y2="11.2" />
+                <line x1="9.5" y1="13.2" x2="13" y2="13.2" />
+              </g>
               <g class="envelope-flap">
                 <polyline points="22,6 12,13 2,6"/>
-              </g>
-              <!-- Carta (conteúdo) -->
-              <g class="envelope-letter" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="7" y="10" width="10" height="6" rx="0.5" />
-                <line x1="9" y1="12" x2="15" y2="12" />
-                <line x1="9" y1="14" x2="13" y2="14" />
               </g>
             </svg>
             Contato
@@ -702,19 +798,31 @@
     <div id="mobile-menu-panel" class="md:hidden mobile-menu-panel hidden mt-2 mx-4">
       <ul class="flex flex-col gap-0.5">
         <li><a href="#trilha" class="mobile-link" data-section="trilha">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon-trilha"><g class="chart-group"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></g></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon-trilha">
+            <g class="chart-bars" opacity="0.95">
+              <rect class="chart-rect chart-rect-1" x="4" y="15" width="3" height="4" rx="0.4" />
+              <rect class="chart-rect chart-rect-2" x="9" y="11" width="3" height="8" rx="0.4" />
+              <rect class="chart-rect chart-rect-3" x="14" y="8" width="3" height="11" rx="0.4" />
+            </g>
+            <g class="chart-group">
+              <path class="chart-line" d="M6 13.5L11.5 9.5L15.5 10.5L18.5 7.5L21 6" />
+              <circle class="chart-node chart-node-1" cx="11.5" cy="9.5" r="1" fill="currentColor" stroke="none" />
+              <circle class="chart-node chart-node-2" cx="15.5" cy="10.5" r="1" fill="currentColor" stroke="none" />
+              <circle class="chart-node chart-node-3" cx="21" cy="6" r="1" fill="currentColor" stroke="none" />
+            </g>
+          </svg>
           Trilha
         </a></li>
         <li><a href="#projetos" class="mobile-link" data-section="projetos">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon-projetos"><g class="folder-lid"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></g><g class="folder-content" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="10" width="10" height="6" rx="0.5" /><line x1="10" y1="12" x2="14" y2="12" /><line x1="10" y1="14" x2="16" y2="14" /></g></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon-projetos"><path class="folder-back" d="M3 8.5V7a2 2 0 0 1 2-2h4.2l2 2.6H19a2 2 0 0 1 2 2v1.1" /><g class="folder-lid"><path d="M3 8.5h7.4l1.8 2.1H21" /></g><g class="folder-content" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="9.5" width="8" height="6" rx="0.7" /><line x1="10" y1="11.6" x2="14" y2="11.6" /><line x1="10" y1="13.5" x2="15" y2="13.5" /><g class="folder-doc" transform="translate(0,0)"><rect x="9.8" y="10.2" width="4.4" height="4" rx="0.5" fill="none" stroke="currentColor" stroke-width="1.2" /><line x1="10.5" y1="11.1" x2="13.2" y2="11.1" stroke="currentColor" stroke-width="1.1" /></g></g><path class="folder-front" d="M3 8.5h18l-1.5 9.7A2 2 0 0 1 17.5 20H5.7a2 2 0 0 1-2-1.7L3 8.5z" /></svg>
           Projetos
         </a></li>
         <li><a href="#certificacoes" class="mobile-link" data-section="certificacoes">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon-cert"><g class="star-body"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></g><circle class="star-glow" cx="12" cy="12" r="6" fill="#00B4C6" opacity="0" /></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon-cert"><circle class="star-glow" cx="12" cy="12" r="5.7" fill="#00B4C6" stroke="none" /><g class="star-body"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></g></svg>
           Certificações
         </a></li>
         <li><a href="#contato" class="mobile-link" data-section="contato">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon-contato"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><g class="envelope-flap"><polyline points="22,6 12,13 2,6"/></g><g class="envelope-letter" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="7" y="10" width="10" height="6" rx="0.5" /><line x1="9" y1="12" x2="15" y2="12" /><line x1="9" y1="14" x2="13" y2="14" /></g></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon-contato"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><g class="envelope-letter" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="7.5" y="9" width="9" height="6.5" rx="0.7" /><line x1="9.5" y1="11.2" x2="14.5" y2="11.2" /><line x1="9.5" y1="13.2" x2="13" y2="13.2" /></g><g class="envelope-flap"><polyline points="22,6 12,13 2,6"/></g></svg>
           Contato
         </a></li>
       </ul>
@@ -1314,6 +1422,18 @@ document.querySelectorAll('.mobile-link').forEach(link => {
 const sections = ['trilha', 'projetos', 'certificacoes', 'contato'];
 const navLinks = document.querySelectorAll('.nav-link[data-section]');
 const mobileLinks = document.querySelectorAll('.mobile-link[data-section]');
+const allSectionLinks = document.querySelectorAll('.nav-link[data-section], .mobile-link[data-section]');
+const desktopNavQuery = window.matchMedia('(min-width: 768px)');
+
+function setLinkActiveState(link, currentSection, receivesCurrent) {
+  const isActive = link.dataset.section === currentSection;
+  link.classList.toggle('active', isActive);
+  if (isActive && receivesCurrent) {
+    link.setAttribute('aria-current', 'page');
+  } else {
+    link.removeAttribute('aria-current');
+  }
+}
 
 function updateActiveSection() {
   let currentSection = '';
@@ -1330,52 +1450,251 @@ function updateActiveSection() {
   }
   if (!currentSection && sections.length) currentSection = sections[0];
 
-  navLinks.forEach(link => {
-    link.classList.toggle('active', link.dataset.section === currentSection);
-  });
-  mobileLinks.forEach(link => {
-    link.classList.toggle('active', link.dataset.section === currentSection);
-  });
+  navLinks.forEach(link => setLinkActiveState(link, currentSection, desktopNavQuery.matches));
+  mobileLinks.forEach(link => setLinkActiveState(link, currentSection, !desktopNavQuery.matches));
 }
 
 window.addEventListener('scroll', updateActiveSection, { passive: true });
 window.addEventListener('resize', updateActiveSection, { passive: true });
+if (desktopNavQuery.addEventListener) {
+  desktopNavQuery.addEventListener('change', updateActiveSection);
+} else {
+  desktopNavQuery.addListener(updateActiveSection);
+}
 updateActiveSection();
 
 /* ============================================================
-   ANIMAÇÃO DOS ÍCONES AO CLIQUE (versão suave)
+   ANIMAÇÃO DOS ÍCONES AO CLIQUE
    ============================================================ */
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+let prefersReducedMotion = reducedMotionQuery.matches;
+const iconAnimationTimers = new WeakMap();
+const iconAnimationRuns = new WeakMap();
+
+if (reducedMotionQuery.addEventListener) {
+  reducedMotionQuery.addEventListener('change', event => {
+    prefersReducedMotion = event.matches;
+  });
+} else {
+  reducedMotionQuery.addListener(event => {
+    prefersReducedMotion = event.matches;
+  });
+}
 
 function animateIcon(link) {
-  if (prefersReducedMotion) return;
-
-  // Busca o SVG dentro do link (pode ser direto ou via descendente)
   const svg = link.querySelector('svg');
   if (!svg) return;
 
-  // Remove classe de animação anterior (se houver)
-  svg.classList.remove('animate');
+  // Respect reduced motion immediately
+  if (prefersReducedMotion) return;
 
-  // Força reflow para reiniciar a animação
-  void svg.offsetWidth;
+  // Cancel ongoing animations for this svg
+  const prev = iconAnimationRuns.get(svg);
+  if (prev && prev.cancel) prev.cancel();
 
-  // Adiciona a classe que dispara a animação
-  svg.classList.add('animate');
+  // Choose sequence by section or svg class
+  const section = link.dataset.section;
 
-  // Remove a classe após a animação terminar (para permitir repetição)
-  const duration = 700; // duração máxima da animação (ms)
-  setTimeout(() => {
+  let runner;
+  if (section === 'trilha' || svg.classList.contains('icon-trilha')) runner = runChartSequence(svg);
+  else if (section === 'projetos' || svg.classList.contains('icon-projetos')) runner = runFolderSequence(svg);
+  else if (section === 'certificacoes' || svg.classList.contains('icon-cert')) runner = runStarSequence(svg);
+  else if (section === 'contato' || svg.classList.contains('icon-contato')) runner = runEnvelopeSequence(svg);
+  else {
+    // fallback: briefly toggle animate class
     svg.classList.remove('animate');
-  }, duration);
+    void svg.offsetWidth;
+    svg.classList.add('animate');
+    const t = setTimeout(() => svg.classList.remove('animate'), 700);
+    iconAnimationTimers.set(svg, t);
+    return;
+  }
+
+  // store cancellable handle
+  iconAnimationRuns.set(svg, runner);
+  runner.play().then(() => {
+    // cleanup
+    if (iconAnimationRuns.get(svg) === runner) iconAnimationRuns.delete(svg);
+  }).catch(() => {
+    if (iconAnimationRuns.get(svg) === runner) iconAnimationRuns.delete(svg);
+  });
+}
+
+function makeCancellable(promise, cancelFn) {
+  let cancelled = false;
+  const wrapped = {
+    play() { if (cancelled) return Promise.reject(new Error('cancelled')); return promise(); },
+    cancel() { cancelled = true; if (cancelFn) cancelFn(); }
+  };
+  return wrapped;
+}
+
+function runChartSequence(svg) {
+  return makeCancellable(() => new Promise((resolve) => {
+    const bars = Array.from(svg.querySelectorAll('.chart-rect'));
+    const line = svg.querySelector('.chart-line');
+    const points = Array.from(svg.querySelectorAll('.chart-node'));
+
+    // Prepare line stroke animation via dashoffset
+    let lineLen = 0;
+    if (line && line.getTotalLength) {
+      lineLen = line.getTotalLength();
+      line.style.strokeDasharray = lineLen;
+      line.style.strokeDashoffset = lineLen;
+    }
+
+    // Cancel helper
+    const running = [];
+    function cancelAll() { running.forEach(a => a.cancel && a.cancel()); if (line) line.style.strokeDashoffset = 0; resolve(); }
+
+    // Bars: scaleY from 0 to 1 staggered
+    bars.forEach((b, i) => {
+      b.style.transformOrigin = 'bottom';
+      b.style.transform = 'scaleY(0)';
+      const anim = b.animate([{ transform: 'scaleY(0)', opacity: 0.5 }, { transform: 'scaleY(1.06)', opacity: 1 }, { transform: 'scaleY(1)', opacity: 1 }], { duration: 520, easing: 'cubic-bezier(.22,.85,.25,1)', delay: i * 70, fill: 'forwards' });
+      running.push(anim);
+    });
+
+    // Line draw slightly after first bars
+    if (line && lineLen) {
+      const lineAnim = line.animate([{ strokeDashoffset: lineLen }, { strokeDashoffset: 0 }], { duration: 520, easing: 'cubic-bezier(.25,.8,.25,1)', delay: 170, fill: 'forwards' });
+      running.push(lineAnim);
+    }
+
+    // Points appear sequentially
+    points.forEach((p, i) => {
+      p.style.opacity = 0; p.style.transform = 'scale(0.55)';
+      const pa = p.animate([{ opacity: 0, transform: 'scale(0.55)' }, { opacity: 1, transform: 'scale(1.12)' }, { opacity: 1, transform: 'scale(1)' }], { duration: 360, easing: 'cubic-bezier(.2,.9,.25,1)', delay: 220 + i * 70, fill: 'forwards' });
+      running.push(pa);
+    });
+
+    // Resolve when all animations finish or after timeout
+    const finishedPromises = running.map(a => a.finished.catch(() => {}));
+    Promise.all(finishedPromises).then(() => resolve());
+
+    return { cancel: cancelAll };
+  }), function noop(){ });
+}
+
+function runFolderSequence(svg) {
+  return makeCancellable(() => new Promise((resolve) => {
+    const lid = svg.querySelector('.folder-lid');
+    const content = svg.querySelector('.folder-content');
+    const running = [];
+    function cancelAll() { running.forEach(a => a.cancel && a.cancel()); if (lid) lid.style.transform = ''; if (content) { content.style.opacity = 0; content.style.transform = ''; } resolve(); }
+
+    if (lid) {
+      const a = lid.animate([
+        { transform: 'translateY(0) rotate(0deg)' },
+        { transform: 'translateY(-2px) rotate(-10deg)' },
+        { transform: 'translateY(-0.6px) rotate(-3deg)' },
+        { transform: 'translateY(0) rotate(0deg)' }
+      ], { duration: 560, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'forwards' });
+      running.push(a);
+    }
+
+    // Animate the internal document to peek out from the folder
+    const doc = svg.querySelector('.folder-doc');
+    if (doc) {
+      // ensure transform origin
+      doc.style.transformOrigin = 'center';
+      const docAnim = doc.animate([
+        { transform: 'translateY(0px) scale(0.98)', opacity: 0 },
+        { transform: 'translateY(-6px) scale(1.03)', opacity: 1 },
+        { transform: 'translateY(-2px) scale(1.01)', opacity: 1 },
+        { transform: 'translateY(0px) scale(0.98)', opacity: 0 }
+      ], { duration: 700, easing: 'cubic-bezier(.2,.8,.2,1)', delay: 80, fill: 'forwards' });
+      running.push(docAnim);
+    }
+
+    const finishedPromises = running.map(a => a.finished.catch(() => {}));
+    Promise.all(finishedPromises).then(() => resolve());
+    return { cancel: cancelAll };
+  }), function noop(){});
+}
+
+function runStarSequence(svg) {
+  return makeCancellable(() => new Promise((resolve) => {
+    const body = svg.querySelector('.star-body');
+    const glow = svg.querySelector('.star-glow');
+    const running = [];
+    function cancelAll() { running.forEach(a => a.cancel && a.cancel()); if (body) body.style.transform = ''; if (glow) glow.style.opacity = 0; resolve(); }
+
+    if (body) {
+      const a = body.animate([
+        { transform: 'scale(0.92) rotate(-4deg)' },
+        { transform: 'scale(1.12) rotate(6deg)' },
+        { transform: 'scale(0.98) rotate(-1deg)' },
+        { transform: 'scale(1) rotate(0deg)' }
+      ], { duration: 660, easing: 'cubic-bezier(.2,.85,.25,1)', fill: 'forwards' });
+      running.push(a);
+    }
+    if (glow) {
+      const g = glow.animate([
+        { opacity: 0, transform: 'scale(0.65)' },
+        { opacity: 0.22, transform: 'scale(1.45)' },
+        { opacity: 0, transform: 'scale(1.85)' }
+      ], { duration: 620, easing: 'ease-out', delay: 60, fill: 'forwards' });
+      running.push(g);
+    }
+
+    const finishedPromises = running.map(a => a.finished.catch(() => {}));
+    Promise.all(finishedPromises).then(() => resolve());
+    return { cancel: cancelAll };
+  }), function noop(){});
+}
+
+function runEnvelopeSequence(svg) {
+  return makeCancellable(() => new Promise((resolve) => {
+    const flap = svg.querySelector('.envelope-flap');
+    const letter = svg.querySelector('.envelope-letter');
+    const running = [];
+    function cancelAll() { running.forEach(a => a.cancel && a.cancel()); if (flap) flap.style.transform = ''; if (letter) { letter.style.opacity = 0; letter.style.transform = ''; } resolve(); }
+
+    if (flap) {
+      const a = flap.animate([
+        { transform: 'translateY(0) rotate(0deg)' },
+        { transform: 'translateY(-1.8px) rotate(-9deg)' },
+        { transform: 'translateY(-0.9px) rotate(-5deg)' },
+        { transform: 'translateY(0) rotate(0deg)' }
+      ], { duration: 690, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'forwards' });
+      running.push(a);
+    }
+    if (letter) {
+      const b = letter.animate([
+        { opacity: 0, transform: 'translateY(6px) scale(0.96) rotate(0deg)' },
+        { opacity: 1, transform: 'translateY(-8px) scale(1.02) rotate(-2deg)' },
+        { opacity: 1, transform: 'translateY(-4px) scale(1) rotate(-1deg)' },
+        { opacity: 0, transform: 'translateY(6px) scale(0.96) rotate(0deg)' }
+      ], { duration: 720, easing: 'cubic-bezier(.2,.8,.2,1)', delay: 80, fill: 'forwards' });
+      running.push(b);
+    }
+
+    const finishedPromises = running.map(a => a.finished.catch(() => {}));
+    Promise.all(finishedPromises).then(() => resolve());
+    return { cancel: cancelAll };
+  }), function noop(){});
 }
 
 // Adiciona evento de clique a todos os links de navegação (desktop e mobile)
-document.querySelectorAll('.nav-link, .mobile-link').forEach(link => {
-  link.addEventListener('click', function(e) {
-    // Permite o comportamento padrão (navegação âncora)
-    // A animação é acionada antes do scroll, mas é visualmente simultânea
-    animateIcon(this);
+allSectionLinks.forEach(link => {
+  // Click triggers the micro-história
+  link.addEventListener('click', (e) => {
+    // let navigation proceed naturally, but trigger the icon animation
+    animateIcon(link);
+  });
+
+  // Keyboard activation should provide the same feedback (Enter / Space)
+  link.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      // trigger the same visual microinteração
+      animateIcon(link);
+
+      // For Space, also emulate click so the link navigates
+      // For Enter it will also activate naturally on <a>
+      if (e.key === ' ') link.click();
+    }
   });
 });
 
