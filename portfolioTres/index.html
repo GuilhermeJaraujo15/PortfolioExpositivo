@@ -383,6 +383,7 @@
       text-decoration: none;
       white-space: nowrap;
       letter-spacing: -0.01em;
+      cursor: pointer;
     }
     .nav-link svg {
       width: 1.1rem;
@@ -422,6 +423,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
     }
     .menu-toggle:hover {
       background: rgba(0,0,0,0.04);
@@ -460,6 +462,7 @@
       color: #3A4753;
       transition: background 0.15s, color 0.15s;
       text-decoration: none;
+      cursor: pointer;
     }
     .mobile-link svg {
       width: 1.1rem;
@@ -512,6 +515,91 @@
         height: 0.8rem;
       }
     }
+
+    /* ============================================================ */
+    /* ANIMAÇÕES DOS ÍCONES – VERSÃO SUAVE E NATURAL */
+    /* ============================================================ */
+
+    /* 1. TRILHA – gráfico "cresce" suavemente (scaleY com bounce) */
+    .icon-trilha .chart-group {
+      transform-origin: bottom;
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .icon-trilha.animate .chart-group {
+      transform: scaleY(1.25) translateY(-6%);
+    }
+
+    /* 2. PROJETOS – pasta abre com documento emergindo */
+    .icon-projetos .folder-lid {
+      transform-origin: left center;
+      transition: transform 0.5s cubic-bezier(0.34, 1.0, 0.64, 1);
+    }
+    .icon-projetos.animate .folder-lid {
+      transform: rotate(-20deg) translateY(-2px);
+    }
+    .icon-projetos .folder-content {
+      opacity: 0;
+      transform: scale(0.7) translateY(4px);
+      transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .icon-projetos.animate .folder-content {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    /* 3. CERTIFICAÇÕES – estrela gira suavemente com brilho */
+    .icon-cert .star-body {
+      transition: transform 0.6s cubic-bezier(0.34, 1.0, 0.64, 1);
+    }
+    .icon-cert.animate .star-body {
+      transform: rotate(180deg) scale(1.1);
+    }
+    .icon-cert .star-glow {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .icon-cert.animate .star-glow {
+      animation: glowPulse 0.7s ease forwards;
+    }
+    @keyframes glowPulse {
+      0% { opacity: 0; transform: scale(0.6); }
+      40% { opacity: 0.8; transform: scale(1.8); }
+      100% { opacity: 0; transform: scale(1); }
+    }
+
+    /* 4. CONTATO – envelope abre com carta saindo */
+    .icon-contato .envelope-flap {
+      transform-origin: top center;
+      transition: transform 0.5s cubic-bezier(0.34, 1.0, 0.64, 1);
+    }
+    .icon-contato.animate .envelope-flap {
+      transform: rotateX(160deg) translateY(-3px);
+    }
+    .icon-contato .envelope-letter {
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .icon-contato.animate .envelope-letter {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Suporte para prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      .icon-trilha.animate .chart-group,
+      .icon-projetos.animate .folder-lid,
+      .icon-projetos.animate .folder-content,
+      .icon-cert.animate .star-body,
+      .icon-cert.animate .star-glow,
+      .icon-contato.animate .envelope-flap,
+      .icon-contato.animate .envelope-letter {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+      }
+    }
   </style>
 </head>
 
@@ -537,7 +625,7 @@
 </div>
 
 <!-- ============================================================ -->
-<!-- HEADER – NAVEGAÇÃO FLUTUANTE (PILL) com ícones -->
+<!-- HEADER – NAVEGAÇÃO FLUTUANTE (PILL) com ícones animados -->
 <!-- ============================================================ -->
 <header id="navbar" class="fixed top-0 inset-x-0 z-50 flex justify-center pointer-events-none pt-4 sm:pt-5 transition-all duration-300">
   <div class="pointer-events-auto">
@@ -546,25 +634,58 @@
       <ul class="hidden md:flex items-center gap-0.5">
         <li>
           <a href="#trilha" class="nav-link" data-section="trilha">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon-trilha">
+              <g class="chart-group">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </g>
+            </svg>
             Trilha
           </a>
         </li>
         <li>
           <a href="#projetos" class="nav-link" data-section="projetos">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon-projetos">
+              <g class="folder-lid">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+              </g>
+              <!-- Conteúdo da pasta (documento) -->
+              <g class="folder-content" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="8" y="10" width="10" height="6" rx="0.5" />
+                <line x1="10" y1="12" x2="14" y2="12" />
+                <line x1="10" y1="14" x2="16" y2="14" />
+              </g>
+            </svg>
             Projetos
           </a>
         </li>
         <li>
           <a href="#certificacoes" class="nav-link" data-section="certificacoes">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon-cert">
+              <g class="star-body">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/>
+              </g>
+              <!-- Glow (brilho) -->
+              <circle class="star-glow" cx="12" cy="12" r="6" fill="#00B4C6" opacity="0" />
+            </svg>
             Certificações
           </a>
         </li>
         <li>
           <a href="#contato" class="nav-link" data-section="contato">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon-contato">
+              <!-- Corpo do envelope -->
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <!-- Aba (flap) -->
+              <g class="envelope-flap">
+                <polyline points="22,6 12,13 2,6"/>
+              </g>
+              <!-- Carta (conteúdo) -->
+              <g class="envelope-letter" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="7" y="10" width="10" height="6" rx="0.5" />
+                <line x1="9" y1="12" x2="15" y2="12" />
+                <line x1="9" y1="14" x2="13" y2="14" />
+              </g>
+            </svg>
             Contato
           </a>
         </li>
@@ -581,19 +702,19 @@
     <div id="mobile-menu-panel" class="md:hidden mobile-menu-panel hidden mt-2 mx-4">
       <ul class="flex flex-col gap-0.5">
         <li><a href="#trilha" class="mobile-link" data-section="trilha">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon-trilha"><g class="chart-group"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></g></svg>
           Trilha
         </a></li>
         <li><a href="#projetos" class="mobile-link" data-section="projetos">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon-projetos"><g class="folder-lid"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></g><g class="folder-content" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="10" width="10" height="6" rx="0.5" /><line x1="10" y1="12" x2="14" y2="12" /><line x1="10" y1="14" x2="16" y2="14" /></g></svg>
           Projetos
         </a></li>
         <li><a href="#certificacoes" class="mobile-link" data-section="certificacoes">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon-cert"><g class="star-body"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></g><circle class="star-glow" cx="12" cy="12" r="6" fill="#00B4C6" opacity="0" /></svg>
           Certificações
         </a></li>
         <li><a href="#contato" class="mobile-link" data-section="contato">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon-contato"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><g class="envelope-flap"><polyline points="22,6 12,13 2,6"/></g><g class="envelope-letter" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="7" y="10" width="10" height="6" rx="0.5" /><line x1="9" y1="12" x2="15" y2="12" /><line x1="9" y1="14" x2="13" y2="14" /></g></svg>
           Contato
         </a></li>
       </ul>
@@ -983,21 +1104,21 @@
 <footer class="relative z-10 bg-graphite-900 text-graphite-400 py-12 px-6 lg:px-10 border-t border-graphite-800">
   <div class="max-w-content mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
     <div>
-      <p class="font-display text-graphite-50 text-lg">Seu Nome</p>
-      <p class="text-sm mt-1">Estudante de Desenvolvimento de Sistemas · Dados &amp; Banco de Dados</p>
+      <p class="font-display text-graphite-50 text-lg">Guilherme J. Araujo</p>
+      <p class="text-sm mt-1">Desenvolvedor de Sistemas · Full Stack</p>
     </div>
     <nav aria-label="Navegação do rodapé">
       <ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
         <li><a href="#trilha" class="link-underline hover:text-graphite-100 transition-colors">Trilha</a></li>
         <li><a href="#projetos" class="link-underline hover:text-graphite-100 transition-colors">Projetos</a></li>
         <li><a href="#certificacoes" class="link-underline hover:text-graphite-100 transition-colors">Certificações</a></li>
-        <li><a href="https://linkedin.com/in/seunome" target="_blank" rel="noopener noreferrer" class="link-underline hover:text-graphite-100 transition-colors">LinkedIn</a></li>
-        <li><a href="https://github.com/seunome" target="_blank" rel="noopener noreferrer" class="link-underline hover:text-graphite-100 transition-colors">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/guilherme-jorge-de-araujo-/" target="_blank" rel="noopener noreferrer" class="link-underline hover:text-graphite-100 transition-colors">LinkedIn</a></li>
+        <li><a href="https://github.com/GuilhermeJaraujo15" target="_blank" rel="noopener noreferrer" class="link-underline hover:text-graphite-100 transition-colors">GitHub</a></li>
       </ul>
     </nav>
   </div>
   <div class="max-w-content mx-auto mt-8 pt-6 border-t border-graphite-700 text-xs">
-    <p>© <span id="year"></span> Seu Nome. Todos os direitos reservados.</p>
+    <p>© <span id="year"></span>. Todos os direitos reservados.</p>
   </div>
 </footer>
 
@@ -1151,7 +1272,7 @@ certData.forEach((c, i) => {
 });
 
 /* ============================================================
-   HEADER: comportamento ao scroll + scroll-spy
+   HEADER: comportamento ao scroll + scroll-spy + animações de ícone
    ============================================================ */
 const navPill = document.getElementById('navPill');
 const menuToggle = document.getElementById('menu-toggle');
@@ -1200,7 +1321,6 @@ function updateActiveSection() {
     const el = document.getElementById(id);
     if (el) {
       const rect = el.getBoundingClientRect();
-      // Se o topo da seção estiver acima do meio da viewport, consideramos ativa
       if (rect.top <= window.innerHeight * 0.35) {
         currentSection = id;
       } else {
@@ -1208,29 +1328,60 @@ function updateActiveSection() {
       }
     }
   }
-  // Se nenhuma seção for encontrada, usa a primeira
   if (!currentSection && sections.length) currentSection = sections[0];
 
-  // Atualiza links desktop
   navLinks.forEach(link => {
     link.classList.toggle('active', link.dataset.section === currentSection);
   });
-  // Atualiza links mobile
   mobileLinks.forEach(link => {
     link.classList.toggle('active', link.dataset.section === currentSection);
   });
 }
 
-// Disparar no scroll e no load
 window.addEventListener('scroll', updateActiveSection, { passive: true });
 window.addEventListener('resize', updateActiveSection, { passive: true });
 updateActiveSection();
 
 /* ============================================================
-   REVEAL ON SCROLL (mantido)
+   ANIMAÇÃO DOS ÍCONES AO CLIQUE (versão suave)
    ============================================================ */
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+function animateIcon(link) {
+  if (prefersReducedMotion) return;
+
+  // Busca o SVG dentro do link (pode ser direto ou via descendente)
+  const svg = link.querySelector('svg');
+  if (!svg) return;
+
+  // Remove classe de animação anterior (se houver)
+  svg.classList.remove('animate');
+
+  // Força reflow para reiniciar a animação
+  void svg.offsetWidth;
+
+  // Adiciona a classe que dispara a animação
+  svg.classList.add('animate');
+
+  // Remove a classe após a animação terminar (para permitir repetição)
+  const duration = 700; // duração máxima da animação (ms)
+  setTimeout(() => {
+    svg.classList.remove('animate');
+  }, duration);
+}
+
+// Adiciona evento de clique a todos os links de navegação (desktop e mobile)
+document.querySelectorAll('.nav-link, .mobile-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    // Permite o comportamento padrão (navegação âncora)
+    // A animação é acionada antes do scroll, mas é visualmente simultânea
+    animateIcon(this);
+  });
+});
+
+/* ============================================================
+   REVEAL ON SCROLL (mantido)
+   ============================================================ */
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
