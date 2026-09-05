@@ -351,6 +351,167 @@
     @media (prefers-reduced-motion: reduce) {
       .depth-drift-slow, .depth-drift-med, .bg-drift, .bg-pulse { animation: none !important; }
     }
+
+    /* ---------- HEADER – pill com glassmorphism vivo ---------- */
+    .nav-pill {
+      background: rgba(255, 255, 255, 0.30);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02), 0 1px 4px rgba(0, 0, 0, 0.01);
+      transition: background 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+      padding: 0.45rem 0.6rem;
+      border-radius: 9999px;
+    }
+    .nav-pill.scrolled {
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-color: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.02);
+    }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #3A4753;
+      transition: color 0.2s, background 0.2s;
+      text-decoration: none;
+      white-space: nowrap;
+      letter-spacing: -0.01em;
+    }
+    .nav-link svg {
+      width: 1.1rem;
+      height: 1.1rem;
+      flex-shrink: 0;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    .nav-link:hover {
+      color: #101820;
+      background: rgba(0, 0, 0, 0.04);
+    }
+    .nav-link:hover svg {
+      opacity: 0.9;
+    }
+    .nav-link:focus-visible {
+      outline: 2px solid #00B4C6;
+      outline-offset: 2px;
+    }
+    .nav-link.active {
+      color: #0B1015;
+      background: rgba(0, 180, 198, 0.12);
+      font-weight: 600;
+    }
+    .nav-link.active svg {
+      opacity: 1;
+    }
+
+    /* Botão hamburger (mobile) */
+    .menu-toggle {
+      background: transparent;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 9999px;
+      color: #3A4753;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .menu-toggle:hover {
+      background: rgba(0,0,0,0.04);
+    }
+
+    /* Menu mobile – dropdown com glass */
+    .mobile-menu-panel {
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.04);
+      border-radius: 1.5rem;
+      padding: 0.75rem 1rem;
+      min-width: 200px;
+      transform-origin: top center;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .mobile-menu-panel.hidden {
+      opacity: 0;
+      transform: scale(0.96) translateY(-8px);
+      pointer-events: none;
+    }
+    .mobile-menu-panel:not(.hidden) {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      pointer-events: auto;
+    }
+    .mobile-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.75rem;
+      font-weight: 500;
+      color: #3A4753;
+      transition: background 0.15s, color 0.15s;
+      text-decoration: none;
+    }
+    .mobile-link svg {
+      width: 1.1rem;
+      height: 1.1rem;
+      opacity: 0.6;
+    }
+    .mobile-link:hover {
+      background: rgba(0, 0, 0, 0.04);
+      color: #101820;
+    }
+    .mobile-link.active {
+      background: rgba(0, 180, 198, 0.10);
+      color: #0B1015;
+    }
+    .mobile-link.active svg {
+      opacity: 1;
+    }
+
+    /* Ajustes responsivos */
+    @media (max-width: 767px) {
+      .nav-pill {
+        padding: 0.3rem 0.4rem;
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      .nav-pill.scrolled {
+        background: rgba(255, 255, 255, 0.50);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+      }
+      .nav-link {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.7rem;
+        gap: 0.3rem;
+      }
+      .nav-link svg {
+        width: 0.9rem;
+        height: 0.9rem;
+      }
+    }
+    @media (max-width: 430px) {
+      .nav-link {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+        gap: 0.25rem;
+      }
+      .nav-link svg {
+        width: 0.8rem;
+        height: 0.8rem;
+      }
+    }
   </style>
 </head>
 
@@ -376,34 +537,67 @@
 </div>
 
 <!-- ============================================================ -->
-<!-- NAVBAR (glassmorphism) -->
+<!-- HEADER – NAVEGAÇÃO FLUTUANTE (PILL) com ícones -->
 <!-- ============================================================ -->
-<header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-colors duration-300">
-  <nav class="max-w-content mx-auto px-6 lg:px-10 h-16 flex items-center justify-between" aria-label="Navegação principal">
-    <a href="#hero" class="font-display font-semibold text-graphite-900 text-lg tracking-tight">
-      sn<span class="text-cyan-500">.</span>dev
-    </a>
-    <ul class="hidden md:flex items-center gap-8 text-sm text-graphide-600">
-      <li><a href="#trilha" class="link-underline hover:text-graphite-900 transition-colors">Trilha</a></li>
-      <li><a href="#projetos" class="link-underline hover:text-graphite-900 transition-colors">Projetos</a></li>
-      <li><a href="#certificacoes" class="link-underline hover:text-graphite-900 transition-colors">Certificações</a></li>
-      <li><a href="#contato" class="link-underline hover:text-graphite-900 transition-colors">Contato</a></li>
-    </ul>
-    <a href="#contato" class="hidden md:inline-flex items-center gap-2 text-sm font-medium text-graphite-50 bg-graphite-900 hover:bg-graphite-800 transition-colors px-4 py-2 rounded-md btn-lift shadow-md hover:shadow-lg">
-      Vamos conversar
-    </a>
-    <button id="menu-toggle" class="md:hidden text-graphite-900 p-2" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
-      <svg id="icon-open" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="2" y1="6" x2="20" y2="6"/><line x1="2" y1="11" x2="20" y2="11"/><line x1="2" y1="16" x2="20" y2="16"/></svg>
-      <svg id="icon-close" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden"><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></svg>
-    </button>
-  </nav>
-  <div id="mobile-menu" class="md:hidden hidden glass border-t border-white/20">
-    <ul class="flex flex-col px-6 py-4 gap-4 text-graphite-700">
-      <li><a href="#trilha" class="mobile-link block py-1">Trilha de aprendizado</a></li>
-      <li><a href="#projetos" class="mobile-link block py-1">Projetos</a></li>
-      <li><a href="#certificacoes" class="mobile-link block py-1">Certificações</a></li>
-      <li><a href="#contato" class="mobile-link block py-1 font-medium text-cyan-600">Contato</a></li>
-    </ul>
+<header id="navbar" class="fixed top-0 inset-x-0 z-50 flex justify-center pointer-events-none pt-4 sm:pt-5 transition-all duration-300">
+  <div class="pointer-events-auto">
+    <nav class="nav-pill flex items-center gap-0.5 transition-all duration-300" aria-label="Navegação principal" id="navPill">
+      <!-- Links desktop (visíveis em md+) -->
+      <ul class="hidden md:flex items-center gap-0.5">
+        <li>
+          <a href="#trilha" class="nav-link" data-section="trilha">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Trilha
+          </a>
+        </li>
+        <li>
+          <a href="#projetos" class="nav-link" data-section="projetos">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            Projetos
+          </a>
+        </li>
+        <li>
+          <a href="#certificacoes" class="nav-link" data-section="certificacoes">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg>
+            Certificações
+          </a>
+        </li>
+        <li>
+          <a href="#contato" class="nav-link" data-section="contato">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Contato
+          </a>
+        </li>
+      </ul>
+
+      <!-- Botão hamburger (mobile) -->
+      <button id="menu-toggle" class="md:hidden menu-toggle flex items-center justify-center w-9 h-9" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu-panel">
+        <svg id="icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+      </button>
+    </nav>
+
+    <!-- Menu mobile (dropdown flutuante) -->
+    <div id="mobile-menu-panel" class="md:hidden mobile-menu-panel hidden mt-2 mx-4">
+      <ul class="flex flex-col gap-0.5">
+        <li><a href="#trilha" class="mobile-link" data-section="trilha">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Trilha
+        </a></li>
+        <li><a href="#projetos" class="mobile-link" data-section="projetos">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          Projetos
+        </a></li>
+        <li><a href="#certificacoes" class="mobile-link" data-section="certificacoes">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg>
+          Certificações
+        </a></li>
+        <li><a href="#contato" class="mobile-link" data-section="contato">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Contato
+        </a></li>
+      </ul>
+    </div>
   </div>
 </header>
 
@@ -449,19 +643,9 @@
       </h1>
       <p class="mt-6 text-lg text-graphite-600 max-w-xl leading-relaxed">
         Momento dedicado à modelagem de banco de dados, consultas SQL e desenvolvimento de aplicações práticas —
-        para transformar páginas estáticas em experiências interativas e informativas.
+        para transformar páginas estáticas, em experiências interativas e informativas.
       </p>
 
-      <div class="mt-9 flex flex-wrap items-center gap-4">
-        <a href="#projetos" class="btn-lift inline-flex items-center gap-2 bg-graphite-900 text-graphite-50 hover:bg-graphite-800 hover:shadow-xl hover:shadow-graphite-900/20 px-6 py-3 rounded-md font-medium transition-all">
-          Ver projetos
-        </a>
-        <a href="#contato" class="btn-lift inline-flex items-center gap-2 text-graphite-800 hover:text-cyan-600 px-6 py-3 rounded-md font-medium border border-graphite-200 hover:border-cyan-500/50 transition-all">
-          Entrar em contato
-        </a>
-      </div>
-
-    
     </div>
 
     <!-- Hero visual: data-viz composition -->
@@ -967,43 +1151,83 @@ certData.forEach((c, i) => {
 });
 
 /* ============================================================
-   NAVBAR: blur/solid on scroll + glass effect
+   HEADER: comportamento ao scroll + scroll-spy
    ============================================================ */
-const navbar = document.getElementById('navbar');
-function updateNavbar() {
-  if (window.scrollY > 24) {
-    navbar.classList.add('glass', 'shadow-glass');
-    navbar.classList.remove('bg-transparent');
-  } else {
-    navbar.classList.remove('glass', 'shadow-glass');
-    navbar.classList.add('bg-transparent');
-  }
-}
-updateNavbar();
-window.addEventListener('scroll', updateNavbar, { passive: true });
-
+const navPill = document.getElementById('navPill');
 const menuToggle = document.getElementById('menu-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
+const mobileMenuPanel = document.getElementById('mobile-menu-panel');
 const iconOpen = document.getElementById('icon-open');
 const iconClose = document.getElementById('icon-close');
+
+// Função para atualizar o estado do header no scroll
+function updateNavbar() {
+  if (window.scrollY > 20) {
+    navPill.classList.add('scrolled');
+  } else {
+    navPill.classList.remove('scrolled');
+  }
+}
+window.addEventListener('scroll', updateNavbar, { passive: true });
+updateNavbar(); // estado inicial
+
+// Mobile menu toggle
 menuToggle.addEventListener('click', () => {
-  const isOpen = !mobileMenu.classList.contains('hidden');
-  mobileMenu.classList.toggle('hidden');
+  const isOpen = !mobileMenuPanel.classList.contains('hidden');
+  mobileMenuPanel.classList.toggle('hidden');
   iconOpen.classList.toggle('hidden');
   iconClose.classList.toggle('hidden');
   menuToggle.setAttribute('aria-expanded', String(!isOpen));
 });
+
+// Fechar menu mobile ao clicar em um link
 document.querySelectorAll('.mobile-link').forEach(link => {
   link.addEventListener('click', () => {
-    mobileMenu.classList.add('hidden');
+    mobileMenuPanel.classList.add('hidden');
     iconOpen.classList.remove('hidden');
     iconClose.classList.add('hidden');
     menuToggle.setAttribute('aria-expanded', 'false');
   });
 });
 
+// Scroll-spy: atualizar links ativos com base na seção visível
+const sections = ['trilha', 'projetos', 'certificacoes', 'contato'];
+const navLinks = document.querySelectorAll('.nav-link[data-section]');
+const mobileLinks = document.querySelectorAll('.mobile-link[data-section]');
+
+function updateActiveSection() {
+  let currentSection = '';
+  for (const id of sections) {
+    const el = document.getElementById(id);
+    if (el) {
+      const rect = el.getBoundingClientRect();
+      // Se o topo da seção estiver acima do meio da viewport, consideramos ativa
+      if (rect.top <= window.innerHeight * 0.35) {
+        currentSection = id;
+      } else {
+        break;
+      }
+    }
+  }
+  // Se nenhuma seção for encontrada, usa a primeira
+  if (!currentSection && sections.length) currentSection = sections[0];
+
+  // Atualiza links desktop
+  navLinks.forEach(link => {
+    link.classList.toggle('active', link.dataset.section === currentSection);
+  });
+  // Atualiza links mobile
+  mobileLinks.forEach(link => {
+    link.classList.toggle('active', link.dataset.section === currentSection);
+  });
+}
+
+// Disparar no scroll e no load
+window.addEventListener('scroll', updateActiveSection, { passive: true });
+window.addEventListener('resize', updateActiveSection, { passive: true });
+updateActiveSection();
+
 /* ============================================================
-   REVEAL ON SCROLL (single IntersectionObserver, runs once each)
+   REVEAL ON SCROLL (mantido)
    ============================================================ */
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
