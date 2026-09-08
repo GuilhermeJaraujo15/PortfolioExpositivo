@@ -1,0 +1,1424 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfólio do 2º semestre focado em JavaScript e interfaces interativas"
+    />
+    <title>Portfólio 2º Semestre | JavaScript</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Jura:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="portfolioDois.css" />
+  </head>
+
+  <body data-page="portfolio-two">
+    <header class="page-header">
+      <!-- Logo (esquerda) – será ocultada em mobile -->
+      <div
+        class="page-brand logo"
+        id="logo"
+        aria-label="Logo guilherme_Araujo"
+        data-i18n-aria="logoAria"
+      >
+        guilherme_Araujo
+      </div>
+
+      <!-- Navegação principal (centralizada) -->
+      <nav
+        class="page-nav"
+        aria-label="Navegação principal"
+        data-i18n-aria="ui.navAria"
+      >
+        <div class="nav-shell">
+          <span class="nav-active-indicator" aria-hidden="true"></span>
+          <ul class="nav-list">
+            <li>
+              <a
+                href="#contextualizacao"
+                aria-current="page"
+                class="is-active"
+                data-i18n="nav.context"
+                >Contextualização</a
+              >
+            </li>
+            <li>
+              <a href="#timeline" data-i18n="nav.learning">Aprendizado</a>
+            </li>
+            <li>
+              <a href="#projetos" data-i18n="nav.projects">Projetos</a>
+            </li>
+            <li>
+              <a href="#cursos" data-i18n="nav.courses">Cursos</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Menu hambúrguer (direita) -->
+      <div class="menu-wrapper">
+        <button
+          class="hamburger"
+          id="menu-toggle"
+          aria-controls="menu-dropdown"
+          aria-expanded="false"
+          aria-label="Abrir menu"
+          data-i18n-aria="ui.menuOpen"
+          type="button"
+        >
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+
+        <div class="menu-dropdown" id="menu-dropdown" role="menu">
+          <div class="menu-dropdown-inner">
+            <a
+              href="../introducao.html"
+              class="btn btn-ghost menu-back-button"
+              aria-label="Voltar para seleção de semestres"
+              data-i18n="ui.back"
+              data-i18n-aria="ui.backAria"
+              role="menuitem"
+              >← Voltar</a
+            >
+
+            <div
+              class="language-switcher"
+              role="group"
+              aria-label="Seletor de idioma"
+              data-i18n-aria="ui.langSwitcher"
+            >
+              <div class="language-pill">
+                <span
+                  id="language-current-flag"
+                  class="language-flag"
+                  aria-hidden="true"
+                ></span>
+                <span id="language-current-label" class="language-label"
+                  >Português</span
+                >
+                <button
+                  id="language-menu-toggle"
+                  class="language-caret-btn"
+                  type="button"
+                  aria-label="Abrir seleção de idioma"
+                  aria-expanded="false"
+                ></button>
+              </div>
+              <div
+                id="language-dropdown"
+                class="language-dropdown"
+                role="menu"
+                aria-label="Escolher idioma"
+                data-i18n-aria="ui.langChoose"
+              >
+                <button
+                  id="language-alt-option"
+                  class="language-option-item"
+                  type="button"
+                  role="menuitem"
+                >
+                  <span
+                    id="language-alt-flag"
+                    class="language-flag"
+                    aria-hidden="true"
+                  ></span>
+                  <span id="language-alt-label">English</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="page-main">
+      <!-- Hero -->
+      <section class="hero-panel" id="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <span class="eyebrow" data-i18n="hero.pretitle"
+            >2º Semestre • JavaScript</span
+          >
+          <h1 id="hero-title" data-i18n="hero.headline">
+            JavaScript Developer
+          </h1>
+          <p class="hero-text" data-i18n="hero.subtitle">
+            Este semestre foi dedicado à lógica, interação e interfaces
+            dinâmicas usando DOM, eventos e comportamento web.
+          </p>
+        </div>
+
+        <div class="hero-visual">
+          <div class="raio-container">
+            <div class="faisca f-1"></div>
+            <div class="faisca f-2"></div>
+            <div class="faisca f-3"></div>
+            <svg
+              class="raio-principal"
+              viewBox="0 0 100 160"
+              preserveAspectRatio="xMidYMid meet"
+              role="img"
+              aria-label="Raio de energia amarelo"
+              data-i18n-aria="ui.boltAria"
+            >
+              <defs>
+                <linearGradient
+                  id="gradiente-js-eletrico"
+                  x1="38%"
+                  y1="0%"
+                  x2="62%"
+                  y2="100%"
+                >
+                  <stop offset="0%" stop-color="#fffb00" />
+                  <stop offset="32%" stop-color="#ffcc00" />
+                  <stop offset="55%" stop-color="#ff9800" />
+                  <stop offset="78%" stop-color="#f57c00" />
+                  <stop offset="100%" stop-color="#e65100" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M70 5 L18 82 L50 82 L15 158 L88 68 L48 68 Z"
+                fill="#9c4a00"
+                transform="translate(5.5 7.5)"
+              />
+              <path
+                d="M70 5 L18 82 L50 82 L15 158 L88 68 L48 68 Z"
+                fill="url(#gradiente-js-eletrico)"
+                stroke="#fff59d"
+                stroke-width="2.2"
+                stroke-linejoin="round"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contextualização -->
+      <section
+        id="contextualizacao"
+        class="section-block"
+        aria-labelledby="context-title"
+      >
+        <div class="section-header">
+          <h2
+            class="section-eyebrow"
+            id="context-title"
+            data-i18n="context.title"
+          >
+            Contextualização
+          </h2>
+          <p class="section-copy" data-i18n="context.text">
+            Este período foi empenhado a aprofundar meus conhecimentos em
+            JavaScript, linguagem fundamental no Desenvolvimento Web, Servidores
+            (Node.js) e até mesmo IoT. É necessário dizer que neste semestre
+            foquei em entender sua lógica e comportamento, não focando tanto em
+            frameworks ou bibliotecas. Em contrapartida, este semestre foi
+            essencial para afeiçoar-me no que tange à lógica de programação e a
+            entender melhor como desenvolver sistemas com ênfase já em
+            interatividade.
+          </p>
+        </div>
+      </section>
+
+      <!-- Linha do Tempo (Aprendizado) -->
+      <section
+        id="timeline"
+        class="section-block timeline"
+        aria-labelledby="timeline-title"
+      >
+        <div class="section-header">
+          <h2
+            class="section-eyebrow"
+            id="timeline-title"
+            data-i18n="learning.title"
+          >
+            O que aprendi neste 2º Semestre
+          </h2>
+          <p class="section-copy" data-i18n="learning.description">
+            Abaixo estão listados os principais tópicos estudados, com links
+            para os objetivos e resoluções de cada um. Estes tópicos estão
+            dispostos cronologicamente, e cada um deles foi consolidado em
+            exercícios e em projetos práticos.
+          </p>
+        </div>
+
+        <div class="timeline-container">
+          <div class="timeline-line" aria-hidden="true"></div>
+          <ul class="timeline-list">
+            <!-- Item 1 – Direita -->
+            <li class="timeline-item right">
+              <div class="timeline-card">
+                <span class="timeline-date" data-i18n="learning.items.i1.date"
+                  >20 Ago. 2025</span
+                >
+                <h3 data-i18n="learning.items.i1.title">
+                  Variáveis e Tipos de Dados
+                </h3>
+                <p data-i18n="learning.items.i1.desc">
+                  Compreensão de `let`, `const`, `string`, `number` e operadores
+                  matemáticos básicos.
+                </p>
+                <div class="timeline-actions">
+                  <a
+                    id="link-learning-variablesAndDataTypes"
+                    href="https://lunar-dentist-9df.notion.site/1-Vari-veis-e-tipos-de-dados-2156469b1dad8298a93c011aac4e3634"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary btn-sm"
+                    data-i18n="learning.viewSolution"
+                    data-i18n-href="links.learning.variablesAndDataTypes"
+                    >Ver resolução</a
+                  >
+                </div>
+              </div>
+            </li>
+
+            <!-- Item 2 – Esquerda -->
+            <li class="timeline-item left">
+              <div class="timeline-card">
+                <span class="timeline-date" data-i18n="learning.items.i2.date"
+                  >22 Ago. 2025</span
+                >
+                <h3 data-i18n="learning.items.i2.title">Condicionais</h3>
+                <p data-i18n="learning.items.i2.desc">
+                  Estudo sobre as estruturas `if`, `else if` e `else`
+                </p>
+                <div class="timeline-actions">
+                  <a
+                    id="link-learning-conditionals"
+                    href="https://lunar-dentist-9df.notion.site/2-Condicionais-if-else-39a6469b1dad80ab974efa70836967b0#39a6469b1dad80dd9622fc23107479f3"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary btn-sm"
+                    data-i18n="learning.viewSolution"
+                    data-i18n-href="links.learning.conditionals"
+                    >Ver resolução</a
+                  >
+                </div>
+              </div>
+            </li>
+
+            <!-- Item 3 – Direita -->
+            <li class="timeline-item right">
+              <div class="timeline-card">
+                <span class="timeline-date" data-i18n="learning.items.i3.date"
+                  >27 Ago. 2025</span
+                >
+                <h3 data-i18n="learning.items.i3.title">Switch</h3>
+                <p data-i18n="learning.items.i3.desc">
+                  Exercícios de múltiplas condições usando agora o Switch. Por
+                  meio destes, tive a oportunidade de aprender o uso do `case`,
+                  `break` e `default`.
+                </p>
+                <div class="timeline-actions">
+                  <a
+                    id="link-learning-switch"
+                    href="https://lunar-dentist-9df.notion.site/3-Switch-Case-39a6469b1dad8079b18befa37615953f"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary btn-sm"
+                    data-i18n="learning.viewSolution"
+                    data-i18n-href="links.learning.switch"
+                    >Ver resolução</a
+                  >
+                </div>
+              </div>
+            </li>
+
+            <!-- Item 4 – Esquerda -->
+            <li class="timeline-item left">
+              <div class="timeline-card">
+                <span class="timeline-date" data-i18n="learning.items.i4.date"
+                  >03 Set. 2025</span
+                >
+                <h3 data-i18n="learning.items.i4.title">Objetos</h3>
+                <p data-i18n="learning.items.i4.desc">
+                  Criação e manipulação de estruturas de dados baseadas em pares
+                  de chave e valor, com ênfase em tópicos do mundo real.
+                </p>
+                <div class="timeline-actions">
+                  <a
+                    id="link-learning-objects"
+                    href="https://lunar-dentist-9df.notion.site/4-Objects-39c6469b1dad80bcaa92efed99644838"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary btn-sm"
+                    data-i18n="learning.viewSolution"
+                    data-i18n-href="links.learning.objects"
+                    >Ver resolução</a
+                  >
+                </div>
+              </div>
+            </li>
+
+            <!-- Item 5 – Direita -->
+            <li class="timeline-item right">
+              <div class="timeline-card">
+                <span class="timeline-date" data-i18n="learning.items.i5.date"
+                  >03 Set. 2025</span
+                >
+                <h3 data-i18n="learning.items.i5.title">Arrays</h3>
+                <p data-i18n="learning.items.i5.desc">
+                  Manipulação de listas com métodos como `push`, `pop`, `map`,
+                  `filter`, `reduce` e entre outros...
+                </p>
+                <div class="timeline-actions">
+                  <a
+                    id="link-learning-arrays"
+                    href="https://lunar-dentist-9df.notion.site/5-Arrays-39d6469b1dad80f584c8f95a2f569bb5?pvs=74"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary btn-sm"
+                    data-i18n="learning.viewSolution"
+                    data-i18n-href="links.learning.arrays"
+                    >Ver resolução</a
+                  >
+                </div>
+              </div>
+            </li>
+
+            <!-- Item 6 – Esquerda -->
+            <li class="timeline-item left">
+              <div class="timeline-card">
+                <span class="timeline-date" data-i18n="learning.items.i6.date"
+                  >10 Set. 2025</span
+                >
+                <h3 data-i18n="learning.items.i6.title">
+                  Aninhamento de Objetos
+                </h3>
+                <p data-i18n="learning.items.i6.desc">
+                  Controle de estruturas de dados hierárquicos em JavaScript,
+                  aplicando cálculos matemáticos e condicionais.
+                </p>
+                <div class="timeline-actions">
+                  <a
+                    id="link-learning-nestedObjects"
+                    href="https://lunar-dentist-9df.notion.site/6-Aninhamento-de-Objetos-39d6469b1dad800a92fed4f173c0a429"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary btn-sm"
+                    data-i18n="learning.viewSolution"
+                    data-i18n-href="links.learning.nestedObjects"
+                    >Ver resolução</a
+                  >
+                </div>
+              </div>
+            </li>
+
+            <!-- Item 7 – Direita -->
+            <li class="timeline-item right">
+              <div class="timeline-card">
+                <span class="timeline-date" data-i18n="learning.items.i7.date"
+                  >12 Set. 2025</span
+                >
+                <h3 data-i18n="learning.items.i7.title">Do...While</h3>
+                <p data-i18n="learning.items.i7.desc">
+                  Controle de fluxos de repetição em JavaScript com execução
+                  inicial garantida. Aplicado na manipulação, atualização e
+                  validação segura de dados em objetos aninhados.
+                </p>
+                <div class="timeline-actions">
+                  <a
+                    id="link-learning-doWhile"
+                    href="https://lunar-dentist-9df.notion.site/7-Do-While-39d6469b1dad805ba88dcf84a87b82ae"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary btn-sm"
+                    data-i18n="learning.viewSolution"
+                    data-i18n-href="links.learning.doWhile"
+                    >Ver resolução</a
+                  >
+                </div>
+              </div>
+            </li>
+
+            <!-- Item 8 – Esquerda -->
+            <li class="timeline-item left">
+              <div class="timeline-card">
+                <span class="timeline-date" data-i18n="learning.items.i8.date"
+                  >03 Out. 2025</span
+                >
+                <h3 data-i18n="learning.items.i8.title">Funções</h3>
+                <p data-i18n="learning.items.i8.desc">
+                  Desenvolvimento de blocos reutilizáveis que processam
+                  parâmetros dinâmicos para automatizar cálculos, validar dados
+                  e isolar a lógica do sistema visando uma melhor organização e
+                  manutenibilidade.
+                </p>
+                <div class="timeline-actions">
+                  <a
+                    id="link-learning-functions"
+                    href="https://lunar-dentist-9df.notion.site/8-Fun-es-39d6469b1dad80d094d4c80cac25f76a"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary btn-sm"
+                    data-i18n="learning.viewSolution"
+                    data-i18n-href="links.learning.functions"
+                    >Ver resolução</a
+                  >
+                </div>
+              </div>
+            </li>
+
+            <!-- Item 9 – Direita -->
+            <li class="timeline-item right">
+              <div class="timeline-card">
+                <span class="timeline-date" data-i18n="learning.items.i9.date"
+                  >08 Out. 2025</span
+                >
+                <h3 data-i18n="learning.items.i9.title">Callbacks</h3>
+                <p data-i18n="learning.items.i9.desc">
+                  Uso de funções enviadas como parâmetros para executar ações no
+                  momento certo. Essencial para responder a cliques do usuário,
+                  controlar o tempo e processar dados dinamicamente.
+                </p>
+                <div class="timeline-actions">
+                  <a
+                    id="link-learning-callbacks"
+                    href="https://lunar-dentist-9df.notion.site/9-Callbacks-39e6469b1dad802582b8c1c8c9de0f38"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary btn-sm"
+                    data-i18n="learning.viewSolution"
+                    data-i18n-href="links.learning.callbacks"
+                    >Ver resolução</a
+                  >
+                </div>
+              </div>
+            </li>
+
+            <!-- Item 10 – Esquerda -->
+            <li class="timeline-item left">
+              <div class="timeline-card">
+                <span class="timeline-date" data-i18n="learning.items.i10.date"
+                  >29 Out. 2025</span
+                >
+                <h3 data-i18n="learning.items.i10.title">Métodos</h3>
+                <p data-i18n="learning.items.i10.desc">
+                  Uso prático de funções integradas do JavaScript para
+                  transformar dados com mais agilidade. Manipulando Strings,
+                  Objetos e Arrays e aplicação de .map(), .filter(), .split() e
+                  entre outros métodos que facilitam a manipulação de dados e a
+                  construção de soluções mais eficientes.
+                </p>
+                <div class="timeline-actions">
+                  <a
+                    id="link-learning-methods"
+                    href="https://lunar-dentist-9df.notion.site/10-M-todos-39e6469b1dad8044a19ec51939c4ff7b"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary btn-sm"
+                    data-i18n="learning.viewSolution"
+                    data-i18n-href="links.learning.methods"
+                    >Ver resolução</a
+                  >
+                </div>
+              </div>
+            </li>
+
+            <!-- Item 11 – Direita -->
+            <li class="timeline-item right">
+              <div class="timeline-card">
+                <span class="timeline-date" data-i18n="learning.items.i11.date"
+                  >07 Dez. 2025</span
+                >
+                <h3 data-i18n="learning.items.i11.title">DOM</h3>
+                <p data-i18n="learning.items.i11.desc">
+                  Alteração e controle de elementos da página em tempo real com
+                  JavaScript. Desenvolvimento de lógica para capturar cliques do
+                  usuário, modificar textos e criar componentes dinâmicos.
+                </p>
+                <div class="timeline-actions">
+                  <a
+                    id="link-learning-dom"
+                    href="https://lunar-dentist-9df.notion.site/11-DOM-3a06469b1dad801d9e3ef26ce0f339ef"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary btn-sm"
+                    data-i18n="learning.viewSolution"
+                    data-i18n-href="links.learning.dom"
+                    >Ver resolução</a
+                  >
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <div
+            class="timeline-controls"
+            role="group"
+            aria-label="Navegação contínua dos tópicos de aprendizado"
+          >
+            <button
+              type="button"
+              class="timeline-arrow timeline-arrow--prev"
+              aria-label="Card anterior"
+              data-i18n-aria="learning.prevAria"
+            >
+              <span aria-hidden="true">‹</span>
+            </button>
+            <button
+              type="button"
+              class="timeline-arrow timeline-arrow--next"
+              aria-label="Próximo card"
+              data-i18n-aria="learning.nextAria"
+            >
+              <span aria-hidden="true">›</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projetos -->
+      <section
+        id="projetos"
+        class="section-block projects"
+        aria-labelledby="projects-title"
+      >
+        <div class="section-header">
+          <h2
+            class="section-eyebrow"
+            id="projects-title"
+            data-i18n="projects.title"
+          >
+            Projetos Práticos
+          </h2>
+          <p class="section-copy" data-i18n="projects.description">
+            Além de exercícios de fixação avulsos, fomos impelidos à resolver
+            problemas práticos mais complexos, que exigiam a junção de diversos
+            conceitos estudados. Estes projetos foram desenvolvidos em grupo, e
+            cada um deles ajudaram na consolidação do meu aprendizado de uma
+            forma mais concreta.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-image">
+              <img
+                src="../img/project1.svg"
+                alt="Preview do Projeto 1"
+                data-i18n-alt="projects.p1.alt"
+                loading="lazy"
+              />
+            </div>
+            <div class="project-content">
+              <h3 data-i18n="projects.p1.title">
+                Lógicas JS para Sistemas simples de Cadastro, Vendas, Conta
+                Bancária e Avaliação de Funcionários.
+              </h3>
+              <p data-i18n="projects.p1.desc">
+                Quatro aplicações desenvolvidas para consolidar os conceitos
+                estudados em Variáveis, Objetos e condicional (if/else)...
+              </p>
+              <a
+                id="link-project-registrationSystems"
+                href="https://lunar-dentist-9df.notion.site/1-Projetos-Pr-ticos-Reais-para-Treino-de-Vari-veis-Objetos-e-Condicional-if-else-f180c82f53fd4df982ee990ef3a698f1?source=copy_link"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary"
+                data-i18n="projects.viewProject"
+                data-i18n-href="links.projects.registrationSystems"
+                >Ver projeto</a
+              >
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-image">
+              <img
+                src="../img/Form.png"
+                alt="Preview do Projeto 2"
+                data-i18n-alt="projects.p2.alt"
+                loading="lazy"
+              />
+            </div>
+            <div class="project-content">
+              <h3 data-i18n="projects.p2.title">
+                Ficha Nutricional de Anamnese
+              </h3>
+              <p data-i18n="projects.p2.desc">
+                Aplicação prática dos principais conceitos de JavaScript
+                aprendidos no semestre, destacando a integração do DOM,
+                manipulação do BOM e o uso estruturado de condicionais, laços de
+                repetição e objetos.
+              </p>
+              <a
+                id="link-project-nutritionalForm"
+                href="https://lunar-dentist-9df.notion.site/2-Ficha-de-Anamnese-com-JS-1-10-3a36469b1dad80758912f44d73db87fa"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary"
+                data-i18n="projects.viewProject"
+                data-i18n-href="links.projects.nutritionalForm"
+                >Ver projeto</a
+              >
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-image">
+              <img
+                src="../img/Blog.png"
+                alt="Preview do Projeto 3"
+                data-i18n-alt="projects.p3.alt"
+                loading="lazy"
+              />
+            </div>
+            <div class="project-content">
+              <h3 data-i18n="projects.p3.title">
+                Blog Interativo sobre a Escola SENAI
+              </h3>
+              <p data-i18n="projects.p3.desc">
+                Trabalho em grupo de fechamento do segundo semestre do Curso de
+                Desenvolvimento de Sistemas, usando HTML, CSS e JS. O projeto
+                gira entorno da exposição de um blog do próprio SENAI, com um
+                CRUD interativo no final.
+              </p>
+              <a
+                id="link-project-senaiBlog"
+                href="https://guilhermejaraujo15.github.io/Blog-Senai/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary"
+                data-i18n="projects.viewProject"
+                data-i18n-href="links.projects.senaiBlog"
+                >Ver projeto</a
+              >
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Cursos -->
+      <section
+        id="cursos"
+        class="section-block courses"
+        aria-labelledby="courses-title"
+      >
+        <div class="section-header">
+          <h2
+            class="section-eyebrow"
+            id="courses-title"
+            data-i18n="courses.title"
+          >
+            Cursos Realizados
+          </h2>
+          <p class="section-copy" data-i18n="courses.description">
+            Como disse anteriormente, meu foco durante este semestre foi em
+            lógica com ênfase em JavaScript, todavia, pareceu por bem ainda
+            durante as férias de transição entre o 1º e o 2º semestre, continuar
+            estudando HTML e CSS, e por conseguinte, realizei estes dois cursos
+            da Cisco Networking Academy, que me ajudaram a relembrar e fixar
+            sintexes importantes no desenvolvimento front-end.
+          </p>
+        </div>
+
+        <div class="courses-grid">
+          <article class="course-card">
+            <div class="course-content">
+              <span class="course-date" data-i18n="courses.c1.date"
+                >Jul 2025</span
+              >
+              <h3 data-i18n="courses.c1.title">HTML Essentials</h3>
+              <p data-i18n-html="courses.c1.desc">
+                Entendendo os Fundamentos da linguagem de marcação: elementos
+                semânticos ( <code>&lt;div&gt;</code>, <code>&lt;h1&gt;</code>,
+                <code>&lt;p&gt;</code>), atributos como <code>id</code>,
+                <code>class</code> e <code>target</code>, além de formulários,
+                usando <code>&lt;form&gt;</code>, <code>&lt;input&gt;</code> e
+                <code>&lt;button&gt;</code>, acessibilidade com
+                <code>alt</code> e boas práticas a seguir na construção de
+                páginas Web.
+              </p>
+              <div class="course-meta">
+                <span class="course-school">Cisco Networking Academy</span>
+                <span class="course-duration">30h</span>
+              </div>
+              <a
+                href="https://www.credly.com/badges/3102f81b-82d5-4971-adeb-62aac844f9d2/public_url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary btn-sm"
+                data-i18n="courses.viewCertificate"
+                >Ver certificado</a
+              >
+            </div>
+          </article>
+
+          <article class="course-card">
+            <div class="course-content">
+              <span class="course-date" data-i18n="courses.c2.date"
+                >Ago 2025</span
+              >
+              <h3 data-i18n="courses.c2.title">CSS Essentials</h3>
+              <p data-i18n-html="courses.c2.desc">
+                Conhecendo melhor como funciona a estilização de páginas web,
+                analisando de forma mais acurada os layouts
+                <code>flexbox</code> e <code>grid</code>, animações com
+                <code>@keyframes</code>, responsividade com <code>@media</code>,
+                acessibilidade visual, boas práticas de organização de código e
+                entre outros tópicos que tangem a esfera do Desenvolvimento Web,
+                unindo uma estrutura sólida a um design mais fluido e atraente.
+              </p>
+              <div class="course-meta">
+                <span class="course-school">Cisco Networking Academy</span>
+                <span class="course-duration">30h</span>
+              </div>
+              <a
+                href="https://www.credly.com/badges/2b8d08b0-3b8f-44d7-bb28-3c93abf28a83/linked_in_profile"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary btn-sm"
+                data-i18n="courses.viewCertificate"
+                >Ver certificado</a
+              >
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Contato -->
+      <section
+        id="contato"
+        class="section-block contact-block"
+        aria-labelledby="contact-title"
+      >
+        <div class="section-header">
+          <h2
+            class="section-eyebrow"
+            id="contact-title"
+            data-i18n="contact.title"
+          >
+            Contato
+          </h2>
+          <p class="section-copy" data-i18n="contact.description">
+            Se estiver interessado em novos projetos, saiba que estou disposto a conversar! Mande-me uma mensagem, e assim que possível, entrarei em contato.
+          </p>
+        </div>
+
+        <div class="contact-panel">
+          <!-- Formulário -->
+          <form id="contactForm" class="contact-form">
+            <div class="form-group">
+              <label for="from_name" data-i18n="contact.name">Nome</label>
+              <input
+                type="text"
+                id="from_name"
+                name="from_name"
+                placeholder="Seu nome completo"
+                data-i18n-placeholder="contact.namePlaceholder"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="reply_to" data-i18n="contact.email">E-mail</label>
+              <input
+                type="email"
+                id="reply_to"
+                name="reply_to"
+                placeholder="seu@email.com"
+                data-i18n-placeholder="contact.emailPlaceholder"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="message" data-i18n="contact.message">Mensagem</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Escreva sua mensagem aqui..."
+                data-i18n-placeholder="contact.messagePlaceholder"
+                required
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              data-i18n="contact.submit"
+            >
+              Enviar mensagem
+            </button>
+          </form>
+        </div>
+
+        <!-- Toast (notificação) -->
+        <div id="toast" class="toast" role="alert" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="page-footer" role="contentinfo">
+      <div class="footer-content">
+        <!-- Esquerda: Brand -->
+        <div class="footer-brand">
+          <span class="footer-name">guilherme_Araujo</span>
+          <span class="footer-copy">
+            &copy; <span id="current-year">2025-2026</span>
+            <span data-i18n="footer.rights">Todos os direitos reservados.</span>
+          </span>
+        </div>
+
+        <div class="footer-social">
+          <a
+            href="https://www.linkedin.com/in/guilherme-jorge-de-araujo-/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            class="social-link"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+              />
+            </svg>
+          </a>
+
+          <a
+            href="https://github.com/GuilhermeJaraujo15"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            class="social-link"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.468-2.38 1.235-3.22-.123-.3-.535-1.52.117-3.16 0 0 1.008-.322 3.3 1.23.96-.267 1.98-.399 3-.399s2.04.132 3 .399c2.292-1.552 3.3-1.23 3.3-1.23.653 1.64.24 2.86.118 3.16.768.84 1.233 1.91 1.233 3.22 0 4.61-2.804 5.62-5.476 5.92.43.37.824 1.102.824 2.22 0 1.602-.015 2.894-.015 3.287 0 .322.216.694.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+              />
+            </svg>
+          </a>
+        </div>
+
+        <a
+          href="#"
+          class="btn btn-primary back-to-top"
+          aria-label="Voltar ao topo da página"
+          data-i18n="footer.backToTop"
+          data-i18n-aria="footer.backToTopAria"
+        >
+          ↑ Voltar ao topo
+        </a>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // ==================== MENU HAMBÚRGUER ====================
+        function initMenu() {
+          const toggle = document.getElementById("menu-toggle");
+          const dropdown = document.getElementById("menu-dropdown");
+          if (!toggle || !dropdown) return;
+
+          const closeMenu = () => {
+            toggle.setAttribute("aria-expanded", "false");
+            dropdown.classList.remove("is-open");
+          };
+          const openMenu = () => {
+            toggle.setAttribute("aria-expanded", "true");
+            dropdown.classList.add("is-open");
+          };
+          const toggleMenu = () => {
+            toggle.getAttribute("aria-expanded") === "true"
+              ? closeMenu()
+              : openMenu();
+          };
+
+          toggle.addEventListener("click", (e) => {
+            e.stopPropagation();
+            toggleMenu();
+          });
+
+          dropdown.addEventListener("click", (e) => {
+            if (
+              e.target.closest(".language-pill") ||
+              e.target.closest(".language-dropdown")
+            )
+              return;
+            if (e.target.closest("a")) closeMenu();
+          });
+
+          document.addEventListener("click", (e) => {
+            if (!e.target.closest(".menu-wrapper")) closeMenu();
+          });
+
+          document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") closeMenu();
+          });
+        }
+
+        // ==================== NAVEGAÇÃO + SCROLLSPY ====================
+        function initNavigation() {
+          const navLinks = [
+            ...document.querySelectorAll(".page-nav .nav-list a"),
+          ];
+          const indicator = document.querySelector(".nav-active-indicator");
+          const header = document.querySelector(".page-header");
+          if (!indicator || !navLinks.length) return;
+
+          let activeLink =
+            navLinks.find(
+              (link) => link.getAttribute("aria-current") === "page",
+            ) || navLinks[0];
+          let scrollLocked = false;
+          let ticking = false;
+
+          function getHeaderHeight() {
+            return header ? header.offsetHeight : 64;
+          }
+
+          function moveIndicator(link, instant = false) {
+            if (!link) return;
+            const left = link.offsetLeft - 3;
+            const width = link.offsetWidth + 6;
+            if (instant) indicator.style.transition = "none";
+            indicator.style.width = `${width}px`;
+            indicator.style.transform = `translateX(${left}px)`;
+            if (instant)
+              requestAnimationFrame(() => (indicator.style.transition = ""));
+          }
+
+          function setActive(link, force = false) {
+            if (!link || (link === activeLink && !force)) return;
+            activeLink = link;
+            navLinks.forEach((item) => {
+              const active = item === link;
+              item.classList.toggle("is-active", active);
+              item.toggleAttribute("aria-current", active);
+            });
+            moveIndicator(link);
+          }
+
+          navLinks.forEach((link) => {
+            link.addEventListener("click", (e) => {
+              const targetId = link.getAttribute("href");
+              if (!targetId || !targetId.startsWith("#")) return;
+              const section = document.querySelector(targetId);
+              if (!section) return;
+              e.preventDefault();
+              window.scrollTo({
+                top:
+                  section.getBoundingClientRect().top +
+                  window.scrollY -
+                  getHeaderHeight(),
+                behavior: "smooth",
+              });
+              setActive(link);
+              scrollLocked = true;
+              setTimeout(() => (scrollLocked = false), 800);
+            });
+          });
+
+          const sections = navLinks
+            .map((link) => ({
+              link,
+              section: document.querySelector(link.getAttribute("href")),
+            }))
+            .filter((item) => item.section);
+
+          function updateScrollSpy() {
+            if (scrollLocked) return;
+            const scrollPosition = window.scrollY + getHeaderHeight() + 20;
+            let current = sections[0];
+            sections.forEach((item) => {
+              if (item.section.offsetTop <= scrollPosition) current = item;
+            });
+            if (current) setActive(current.link);
+          }
+
+          window.addEventListener(
+            "scroll",
+            () => {
+              if (!ticking) {
+                window.requestAnimationFrame(() => {
+                  updateScrollSpy();
+                  ticking = false;
+                });
+                ticking = true;
+              }
+            },
+            { passive: true },
+          );
+
+          window.addEventListener("resize", () =>
+            moveIndicator(activeLink, true),
+          );
+          window.addEventListener("orientationchange", () =>
+            moveIndicator(activeLink, true),
+          );
+          requestAnimationFrame(() => setActive(activeLink, true));
+        }
+
+        // ==================== BOTÃO VOLTAR AO TOPO ====================
+        function initBackToTop() {
+          const button = document.querySelector(".back-to-top");
+          if (!button) return;
+          button.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+        }
+
+        // ==================== FORMULÁRIO DE CONTATO ====================
+        function initContactForm() {
+          const form = document.getElementById("contactForm");
+          const toast = document.getElementById("toast");
+          if (!form || !toast) return;
+
+          function t(key, fallback) {
+            const value = window.PortfolioI18n?.t?.(key);
+            return typeof value === "string" ? value : fallback;
+          }
+
+          function showToast(message, success = true) {
+            toast.textContent = message;
+            toast.classList.remove("error", "success");
+            toast.classList.add("show", success ? "success" : "error");
+            clearTimeout(toast._timeout);
+            toast._timeout = setTimeout(() => {
+              toast.classList.remove("show");
+            }, 3000);
+          }
+
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const name = form.from_name.value.trim();
+            const email = form.reply_to.value.trim();
+            const message = form.message.value.trim();
+
+            if (!name || !email || !message) {
+              showToast(
+                t(
+                  "contact.toastFill",
+                  "Preencha todos os campos corretamente.",
+                ),
+                false,
+              );
+              return;
+            }
+
+            const subject = encodeURIComponent(
+              t(
+                "contact.mailSubject",
+                "Novo contato via Portfólio Expositivo - 2° Semestre",
+              ),
+            );
+            const body = encodeURIComponent(
+              `${t("contact.mailName", "Nome")}: ${name}\n${t("contact.mailEmail", "Email")}: ${email}\n\n${t("contact.mailMessage", "Mensagem")}:\n${message}`,
+            );
+
+            const isMobile = /Android|iPhone|iPad|iPod/i.test(
+              navigator.userAgent,
+            );
+
+            if (!isMobile) {
+              // DESKTOP – pergunta se quer Gmail ou mailto
+              const useGmail = confirm(
+                t(
+                  "contact.confirmGmail",
+                  "Deseja enviar a mensagem pelo Gmail?\n\n" +
+                    "OK → Gmail Web\n" +
+                    "Cancelar → Aplicativo de e-mail",
+                ),
+              );
+
+              if (useGmail) {
+                window.open(
+                  `https://mail.google.com/mail/?view=cm&to=guilherme.j.araujo7@aluno.senai.br&su=${subject}&body=${body}`,
+                  "_blank",
+                );
+                showToast(t("contact.toastGmail", "Abrindo Gmail…"), true);
+              } else {
+                window.location.href = `mailto:guilherme.j.araujo7@aluno.senai.br?subject=${subject}&body=${body}`;
+                showToast(
+                  t("contact.toastMailto", "Abrindo aplicativo de e-mail…"),
+                  true,
+                );
+              }
+            } else {
+              // MOBILE – mailto direto
+              window.location.href = `mailto:guilherme.j.araujo7@aluno.senai.br?subject=${subject}&body=${body}`;
+              showToast(
+                t("contact.toastMailto", "Abrindo aplicativo de e-mail…"),
+                true,
+              );
+            }
+
+            form.reset();
+          });
+        }
+
+        // ==================== CARROSSEL APRENDIZADO (loop 360°) ====================
+        function initTimelineCarousel() {
+          const section = document.getElementById("timeline");
+          if (!section) return;
+
+          const list = section.querySelector(".timeline-list");
+          const prevBtn = section.querySelector(".timeline-arrow--prev");
+          const nextBtn = section.querySelector(".timeline-arrow--next");
+          const controls = section.querySelector(".timeline-controls");
+          if (!list || !prevBtn || !nextBtn) return;
+
+          const realItems = Array.from(list.querySelectorAll(".timeline-item"));
+          const total = realItems.length;
+          if (!total) return;
+
+          realItems.forEach((item, i) => {
+            item.dataset.timelineIndex = String(i);
+          });
+
+          // Clones nas extremidades → loop visual contínuo (primeiro após o último)
+          if (total > 1) {
+            const firstClone = realItems[0].cloneNode(true);
+            const lastClone = realItems[total - 1].cloneNode(true);
+
+            [firstClone, lastClone].forEach((clone) => {
+              clone.classList.add("is-clone");
+              clone.setAttribute("aria-hidden", "true");
+              clone.querySelectorAll("a, button").forEach((el) => {
+                el.setAttribute("tabindex", "-1");
+                el.setAttribute("aria-hidden", "true");
+              });
+            });
+
+            firstClone.dataset.timelineIndex = "0";
+            lastClone.dataset.timelineIndex = String(total - 1);
+            list.appendChild(firstClone);
+            list.insertBefore(lastClone, realItems[0]);
+          }
+
+          const slides = Array.from(list.querySelectorAll(".timeline-item"));
+          // Com clones: [lastClone, ...reais, firstClone] → reais começam em 1
+          const realOffset = total > 1 ? 1 : 0;
+
+          let index = 0;
+          let slidePos = realOffset;
+          let lockScrollSync = false;
+          let settleTimer = 0;
+
+          // Região viva para leitores de tela (boas práticas a11y)
+          let statusEl = section.querySelector(".timeline-status");
+          if (!statusEl && controls) {
+            statusEl = document.createElement("p");
+            statusEl.className = "timeline-status visually-hidden";
+            statusEl.setAttribute("aria-live", "polite");
+            statusEl.setAttribute("aria-atomic", "true");
+            controls.appendChild(statusEl);
+          }
+
+          function prefersReducedMotion() {
+            return window.matchMedia("(prefers-reduced-motion: reduce)")
+              .matches;
+          }
+
+          function slideTargetLeft(slide) {
+            return (
+              slide.offsetLeft - (list.clientWidth - slide.offsetWidth) / 2
+            );
+          }
+
+          function announce() {
+            if (!statusEl) return;
+            statusEl.textContent = `Card ${index + 1} de ${total}`;
+          }
+
+          function setActive(logicalIndex) {
+            index = ((logicalIndex % total) + total) % total;
+            slides.forEach((slide, domIndex) => {
+              const logical = Number(slide.dataset.timelineIndex);
+              const isClone = slide.classList.contains("is-clone");
+              // Ativo: card real correspondente, ou o clone que está no centro agora
+              const active =
+                logical === index && (!isClone || domIndex === slidePos);
+              slide.classList.toggle("is-active", active);
+            });
+            announce();
+          }
+
+          function scrollToDomIndex(domIndex, smooth) {
+            const slide = slides[domIndex];
+            if (!slide) return;
+            slidePos = domIndex;
+            setActive(Number(slide.dataset.timelineIndex));
+
+            const behavior =
+              smooth && !prefersReducedMotion() ? "smooth" : "auto";
+
+            lockScrollSync = true;
+            list.scrollTo({
+              left: Math.max(0, slideTargetLeft(slide)),
+              behavior,
+            });
+
+            window.clearTimeout(settleTimer);
+            settleTimer = window.setTimeout(
+              () => {
+                normalizeClones();
+                lockScrollSync = false;
+              },
+              behavior === "smooth" ? 480 : 40,
+            );
+          }
+
+          function normalizeClones() {
+            if (total < 2) return;
+            // firstClone (último DOM) → card real 0
+            if (slidePos === slides.length - 1) {
+              list.scrollTo({
+                left: Math.max(0, slideTargetLeft(slides[realOffset])),
+                behavior: "auto",
+              });
+              slidePos = realOffset;
+              setActive(0);
+              return;
+            }
+            // lastClone (primeiro DOM) → card real final
+            if (slidePos === 0) {
+              const realLast = realOffset + total - 1;
+              list.scrollTo({
+                left: Math.max(0, slideTargetLeft(slides[realLast])),
+                behavior: "auto",
+              });
+              slidePos = realLast;
+              setActive(total - 1);
+            }
+          }
+
+          function goTo(nextLogical, smooth = true) {
+            if (total === 1) {
+              scrollToDomIndex(0, false);
+              return;
+            }
+
+            const wrapped = ((nextLogical % total) + total) % total;
+            const goingNextFromLast = index === total - 1 && wrapped === 0;
+            const goingPrevFromFirst = index === 0 && wrapped === total - 1;
+
+            if (smooth && goingNextFromLast) {
+              scrollToDomIndex(slides.length - 1, true);
+              return;
+            }
+            if (smooth && goingPrevFromFirst) {
+              scrollToDomIndex(0, true);
+              return;
+            }
+
+            scrollToDomIndex(realOffset + wrapped, smooth);
+          }
+
+          function syncFromScroll() {
+            if (lockScrollSync) return;
+            const listRect = list.getBoundingClientRect();
+            const centerX = listRect.left + listRect.width / 2;
+            let closest = slidePos;
+            let closestDist = Infinity;
+
+            slides.forEach((slide, i) => {
+              const rect = slide.getBoundingClientRect();
+              const dist = Math.abs(rect.left + rect.width / 2 - centerX);
+              if (dist < closestDist) {
+                closestDist = dist;
+                closest = i;
+              }
+            });
+
+            slidePos = closest;
+            const logical = Number(slides[slidePos].dataset.timelineIndex);
+
+            if (
+              total > 1 &&
+              (slidePos === 0 || slidePos === slides.length - 1) &&
+              closestDist < listRect.width * 0.2
+            ) {
+              // Usuário chegou na zona do clone (arraste) → corrige posição
+              normalizeClones();
+              return;
+            }
+
+            if (logical !== index) setActive(logical);
+          }
+
+          let scrollTick = false;
+          list.addEventListener(
+            "scroll",
+            () => {
+              if (scrollTick) return;
+              scrollTick = true;
+              requestAnimationFrame(() => {
+                syncFromScroll();
+                scrollTick = false;
+              });
+            },
+            { passive: true },
+          );
+
+          list.addEventListener("scrollend", () => {
+            if (lockScrollSync) {
+              normalizeClones();
+              lockScrollSync = false;
+            } else {
+              syncFromScroll();
+            }
+          });
+
+          prevBtn.disabled = false;
+          nextBtn.disabled = false;
+          prevBtn.removeAttribute("aria-disabled");
+          nextBtn.removeAttribute("aria-disabled");
+
+          prevBtn.addEventListener("click", () => goTo(index - 1));
+          nextBtn.addEventListener("click", () => goTo(index + 1));
+
+          section.addEventListener("keydown", (e) => {
+            if (!e.target.closest(".timeline-card a, .timeline-arrow")) return;
+            if (e.key === "ArrowLeft") {
+              e.preventDefault();
+              goTo(index - 1);
+            } else if (e.key === "ArrowRight") {
+              e.preventDefault();
+              goTo(index + 1);
+            }
+          });
+
+          goTo(0, false);
+          requestAnimationFrame(() => goTo(0, false));
+          window.addEventListener("resize", () => {
+            goTo(index, false);
+          });
+        }
+
+        // ==================== INICIALIZAÇÃO ====================
+        initMenu();
+        initNavigation();
+        initBackToTop();
+        initContactForm();
+        initTimelineCarousel();
+      });
+    </script>
+    <script src="i18n2.js" defer></script>
+  </body>
+</html>
