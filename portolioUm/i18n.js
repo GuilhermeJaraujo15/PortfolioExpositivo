@@ -407,7 +407,13 @@
     const altFlag = document.getElementById("language-alt-flag");
     const altLabel = document.getElementById("language-alt-label");
 
-    if (!switcher || !menuToggle || !altOption || !altFlag || !altLabel) return;
+    const initialLang = getInitialLanguage();
+    applyLanguage(initialLang);
+
+    if (!switcher || !menuToggle || !altOption || !altFlag || !altLabel) {
+      setTimeout(() => window.dispatchEvent(new Event("resize")), 60);
+      return;
+    }
 
     function closeLanguageMenu() {
       switcher.classList.remove("is-open");
@@ -426,12 +432,8 @@
       altOption.setAttribute("aria-label", altText.languageLabel);
     }
 
-    const initialLang = getInitialLanguage();
-    applyLanguage(initialLang);
     updateLanguageMenu(initialLang);
-    // Ensure UI components that depend on layout (nav indicator) recalculate
-    // after initial language application
-    setTimeout(() => window.dispatchEvent(new Event('resize')), 60);
+    setTimeout(() => window.dispatchEvent(new Event("resize")), 60);
 
     menuToggle.addEventListener("click", (event) => {
       event.stopPropagation();
@@ -442,22 +444,18 @@
     altOption.addEventListener("click", () => {
       const nextLang = altOption.getAttribute("data-lang");
       if (!SUPPORTED_LANGS.includes(nextLang)) return;
-      
-      // Adicionar classe de animação visual
+
       switcher.classList.add("is-switching-language");
-      
+
       localStorage.setItem(STORAGE_KEY, nextLang);
       applyLanguage(nextLang);
       updateLanguageMenu(nextLang);
       closeLanguageMenu();
-      
-      // Force a resize event shortly after language swap so components
-      // that measure text (like the nav active indicator) recalc widths.
+
       setTimeout(() => {
-        window.dispatchEvent(new Event('resize'));
+        window.dispatchEvent(new Event("resize"));
       }, 80);
 
-      // Remover classe de animação após 450ms
       setTimeout(() => {
         switcher.classList.remove("is-switching-language");
       }, 450);
