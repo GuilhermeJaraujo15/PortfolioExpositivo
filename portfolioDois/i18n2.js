@@ -457,7 +457,10 @@
     document.querySelectorAll("[data-i18n-href]").forEach((element) => {
       const keyPath = element.getAttribute("data-i18n-href");
       const value = resolveKey(t, keyPath);
-      if (typeof value === "string") element.setAttribute("href", value);
+      // Uma tradução vazia não deve substituir o destino pela própria página.
+      if (typeof value === "string" && value.trim()) {
+        element.setAttribute("href", value.trim());
+      }
     });
 
     const main = document.querySelector("main");
