@@ -401,6 +401,10 @@
   }
 
   document.addEventListener("DOMContentLoaded", () => {
+    // Aplica o idioma salvo também nas páginas sem seletor de idioma.
+    const initialLang = getInitialLanguage();
+    applyLanguage(initialLang);
+
     const switcher = document.querySelector(".language-switcher");
     const menuToggle = document.getElementById("language-menu-toggle");
     const altOption = document.getElementById("language-alt-option");
@@ -426,8 +430,6 @@
       altOption.setAttribute("aria-label", altText.languageLabel);
     }
 
-    const initialLang = getInitialLanguage();
-    applyLanguage(initialLang);
     updateLanguageMenu(initialLang);
     // Ensure UI components that depend on layout (nav indicator) recalculate
     // after initial language application
