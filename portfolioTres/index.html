@@ -706,7 +706,61 @@
         opacity: 1;
       }
 
+      /* Keep the chart readable before JS and observe its stable HTML box. */
+      #hero-chart:not(.is-pending) .chart-draw {
+        stroke-dashoffset: 0;
+      }
+      #hero-chart:not(.is-pending) .chart-point,
+      #hero-chart:not(.is-pending) .chart-fade {
+        opacity: 1;
+        transform: none;
+      }
+      #hero-chart:not(.is-pending) .chart-bar-grow {
+        transform: scaleY(1);
+      }
+      #hero-chart:not(.is-pending) .donut-arc {
+        stroke-dashoffset: var(--fill, 60);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #hero-chart .chart-draw { stroke-dashoffset: 0; }
+        #hero-chart .chart-point,
+        #hero-chart .chart-fade { opacity: 1; transform: none; }
+        #hero-chart .chart-bar-grow { transform: scaleY(1); }
+        #hero-chart .donut-arc { stroke-dashoffset: var(--fill, 60); }
+      }
+
       /* ---------- Ambient elements ---------- */
+      .hero-flow-line {
+        pointer-events: none;
+        animation-play-state: paused;
+      }
+      .hero-flow-line {
+        stroke-dasharray: 22 518;
+        stroke-dashoffset: 22;
+        opacity: 0;
+        animation: heroDataFlow 9s linear 2.6s infinite paused;
+      }
+      #hero-chart .chart-bar-grow {
+        animation: heroBarFlow 4.8s ease-in-out 2.6s infinite paused;
+      }
+      #hero-chart .chart-bar-grow:nth-child(2) { animation-delay: 3s; }
+      #hero-chart .chart-bar-grow:nth-child(3) { animation-delay: 3.4s; }
+      #hero-chart[data-flow="running"] :is(.hero-flow-line, .chart-bar-grow) {
+        animation-play-state: running;
+      }
+      @keyframes heroBarFlow {
+        0%, 100% { transform: scaleY(1); }
+        50% { transform: scaleY(0.72); }
+      }
+      @keyframes heroDataFlow {
+        0% { stroke-dashoffset: 22; opacity: 0; }
+        8%, 80% { opacity: 0.8; }
+        95%, 100% { stroke-dashoffset: -540; opacity: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .hero-flow-line { animation: none; opacity: 0; }
+        #hero-chart .chart-bar-grow { animation: none; }
+      }
       .ambient-pulse {
         animation: ambientPulse 9s ease-in-out infinite;
       }
@@ -1718,10 +1772,10 @@
 
           <!-- Hero visual: data-viz composition -->
           <div
-            class="lg:col-span-5 relative h-80 sm:h-[26rem] lg:h-[28rem]"
-            aria-hidden="true"
+            id="hero-chart"
+            class="lg:col-span-5 relative min-w-0 h-80 sm:h-[26rem] lg:h-[28rem]"
           >
-            <svg viewBox="0 0 420 380" class="w-full h-full overflow-visible">
+            <svg viewBox="0 0 420 380" class="w-full h-full overflow-visible" aria-hidden="true" focusable="false">
               <!-- faint axis / grid -->
               <g stroke="#B7C2CA" stroke-width="1" opacity="0.5">
                 <line x1="10" y1="330" x2="400" y2="330" />
@@ -1753,6 +1807,11 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
               />
+
+              <!-- Decorative data flow; the underlying values stay stable. -->
+              <polyline class="hero-flow-line" pathLength="540"
+                points="20,300 90,220 150,260 220,140 290,180 360,80"
+                fill="none" stroke="#0E8E7D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
 
               <!-- points -->
               <g fill="#0E8E7D">
@@ -1792,8 +1851,7 @@
                   r="5"
                 />
                 <circle
-                  class="chart-point ambient-pulse"
-                  style="transition-delay: 1.85s; animation-delay: 2.4s"
+                  id="hero-endpoint"
                   cx="360"
                   cy="80"
                   r="5"
@@ -1862,6 +1920,7 @@
 
               <!-- donut -->
               <circle
+                id="hero-donut-track"
                 cx="340"
                 cy="290"
                 r="48"
@@ -1875,7 +1934,6 @@
                 style="
                   --fill: 114.6;
                   stroke-dasharray: 301.6;
-                  stroke-dashoffset: 301.6;
                 "
                 cx="340"
                 cy="290"
@@ -1895,7 +1953,7 @@
                 font-size="16"
                 fill="#101820"
               >
-                0%
+                62%
               </text>
             </svg>
           </div>
@@ -3392,7 +3450,9 @@
         .querySelectorAll(
           ".reveal, .donut-arc, .chart-draw, .chart-point, .chart-bar-grow, .chart-fade",
         )
-        .forEach((el) => revealObserver.observe(el));
+        .forEach((el) => {
+          if (!el.closest("#hero-chart")) revealObserver.observe(el);
+        });
 
       /* ------------------------------------------------------------
    DATA COUNTERS
@@ -3431,6 +3491,23 @@
           return;
         }
         const duration = 1400;
+        // Explicit keyframes preserve the draw-in even when the chart is
+        // revealed before the browser paints its initial CSS state.
+        if (arc.animate) {
+          const circumference = 2 * Math.PI * arc.r.baseVal.value;
+          const finalOffset = getComputedStyle(arc).getPropertyValue("--fill").trim();
+          arc.animate(
+            [
+              { strokeDashoffset: String(circumference) },
+              { strokeDashoffset: finalOffset },
+            ],
+            {
+              duration,
+              easing: "cubic-bezier(0.16, 0.8, 0.24, 1)",
+            },
+          );
+        }
+        label.textContent = "0%";
         const start = performance.now();
         function tick(now) {
           const progress = Math.min((now - start) / duration, 1);
@@ -3456,19 +3533,48 @@
         .querySelectorAll(".count-num")
         .forEach((el) => countObserver.observe(el));
 
-      const heroDonutObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              animateHeroDonut();
-              heroDonutObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.3 },
-      );
-      const heroDonutEl = document.getElementById("hero-donut");
-      if (heroDonutEl) heroDonutObserver.observe(heroDonutEl);
+      const heroChart = document.getElementById("hero-chart");
+      if (heroChart && !prefersReducedMotion && "IntersectionObserver" in window) {
+        heroChart.classList.add("is-pending");
+        const heroChartObserver = new IntersectionObserver((entries) => {
+          if (!entries.some((entry) => entry.isIntersecting)) return;
+          // SVG children may have zero-area bounds while scaled to zero.
+          // Reveal the whole composition from the untransformed container.
+          heroChart.classList.remove("is-pending");
+          heroChartObserver.disconnect();
+        }, { threshold: 0.1 });
+        heroChartObserver.observe(heroChart);
+      }
+
+      // On mobile the ring sits below the line chart. Start its animation
+      // when the ring itself is visible, after font loading settles the layout.
+      const donutTrack = document.getElementById("hero-donut-track");
+      if (donutTrack && "IntersectionObserver" in window) {
+        const donutObserver = new IntersectionObserver(([entry]) => {
+          if (!entry.isIntersecting || entry.intersectionRatio < 0.65) return;
+          animateHeroDonut();
+          donutObserver.disconnect();
+        }, { threshold: 0.65 });
+        document.fonts.ready.then(() => donutObserver.observe(donutTrack));
+      }
+
+      // Let CSS run the ambient motion; JS only manages visibility and preference.
+      if (heroChart && "IntersectionObserver" in window) {
+        let chartInView = false;
+        function syncHeroFlow() {
+          const reduced = reducedMotionQuery.matches;
+          heroChart.dataset.flow = chartInView && !document.hidden && !reduced
+            ? "running" : "paused";
+        }
+        const flowObserver = new IntersectionObserver(([entry]) => {
+          chartInView = entry.isIntersecting;
+          syncHeroFlow();
+        });
+        flowObserver.observe(heroChart);
+        document.addEventListener("visibilitychange", syncHeroFlow);
+        reducedMotionQuery.addEventListener("change", syncHeroFlow);
+        syncHeroFlow();
+      }
 
       /* ============================================================
    SUBTLE PARALLAX
