@@ -2712,7 +2712,7 @@
             const panelTitle = trackElement("h4", "", item.title);
             panelTitle.id = "track-title-" + item.level;
             copy.append(panelTitle, trackElement("p", "", item.desc));
-            const more = trackElement("button", "track-more", "Saber mais ↗");
+            const more = trackElement("button", "track-more", "Saber mais");
             more.type = "button";
             more.setAttribute("aria-expanded", "false");
             more.setAttribute("aria-controls", "track-more-" + item.level);
@@ -2806,7 +2806,7 @@
             more.addEventListener("click", () => {
               const open = more.getAttribute("aria-expanded") !== "true";
               more.setAttribute("aria-expanded", String(open));
-              more.textContent = open ? "Mostrar menos ↑" : "Saber mais ↗";
+              more.textContent = open ? "Mostrar menos" : "Saber mais";
               more.setAttribute(
                 "aria-label",
                 (open ? "Mostrar menos sobre " : "Saber mais sobre ") +
