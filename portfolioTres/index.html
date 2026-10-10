@@ -605,6 +605,55 @@
         opacity: 0.45;
         cursor: default;
       }
+      .language-toggle {
+        display: inline-flex;
+        width: 92px;
+        height: 36px;
+        flex: 0 0 92px;
+        align-items: center;
+        justify-content: center;
+        gap: 11px;
+        margin-left: 2px;
+        border: 1px solid rgba(255, 255, 255, 0.58);
+        border-radius: 9999px;
+        color: #0e8e7d;
+        background: rgba(255, 255, 255, 0.34);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        box-shadow:
+          0 3px 14px rgba(16, 24, 32, 0.08),
+          inset 0 1px 0 rgba(255, 255, 255, 0.55);
+        font: 600 0.72rem/1 "IBM Plex Mono", monospace;
+        letter-spacing: 0.02em;
+        cursor: pointer;
+        transition:
+          background-color 180ms ease,
+          border-color 180ms ease,
+          box-shadow 180ms ease,
+          transform 180ms ease;
+      }
+      .language-toggle:hover {
+        background: rgba(255, 255, 255, 0.58);
+        border-color: rgba(255, 255, 255, 0.86);
+        box-shadow:
+          0 5px 18px rgba(16, 24, 32, 0.12),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      }
+      .language-toggle:active { transform: scale(0.94); }
+      .language-toggle img {
+        display: block;
+        width: 22px;
+        height: 22px;
+        flex: 0 0 22px;
+        object-fit: contain;
+      }
+      .language-toggle-label { min-width: 1.25em; text-align: center; }
+      @media (max-width: 767px) {
+        .mobile-nav-shell { width: 190px; }
+        .nav-pill,
+        .nav-pill.scrolled { width: 190px; }
+        .language-toggle { margin-left: auto; }
+      }
       .project-video-flow {
         display: none;
         pointer-events: none;
@@ -1072,13 +1121,13 @@
       @media (max-width: 767px) {
         .mobile-nav-shell {
           position: relative;
-          width: 94px;
+          width: 190px;
         }
         .nav-pill,
         .nav-pill.scrolled {
           position: relative;
           z-index: 1;
-          width: 94px;
+          width: 190px;
           height: 48px;
           padding: 2px;
           background: transparent;
@@ -1108,7 +1157,7 @@
           background: rgba(247, 250, 251, 0.4);
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
-          clip-path: inset(0 73px calc(100% - 48px) 73px round 24px);
+          clip-path: inset(0 25px calc(100% - 48px) 25px round 24px);
           box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.65);
         }
         .mobile-menu-panel {
@@ -1224,6 +1273,41 @@
       }
       #navbar .semester-back:hover {
         background: var(--nav-hover);
+      }
+      #navbar .language-toggle {
+        color: var(--nav-text);
+        background: var(--nav-back);
+        border-color: var(--nav-border);
+        box-shadow: var(--nav-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+      }
+      #navbar .language-toggle:hover {
+        color: var(--nav-strong);
+        background: var(--nav-hover);
+        border-color: var(--nav-border);
+      }
+      #navbar .language-toggle:focus-visible {
+        outline: 2px solid var(--nav-focus);
+        outline-offset: 3px;
+      }
+      #navbar[data-nav-theme="dark"] .language-toggle {
+        color: #e8fbff;
+        background: rgba(47, 209, 224, 0.14);
+        border-color: rgba(101, 222, 235, 0.42);
+        box-shadow:
+          0 0 0 1px rgba(47, 209, 224, 0.08),
+          0 4px 18px rgba(0, 180, 198, 0.14),
+          inset 0 1px 0 rgba(255, 255, 255, 0.16);
+      }
+      #navbar[data-nav-theme="dark"] .language-toggle:hover {
+        background: rgba(47, 209, 224, 0.23);
+        border-color: rgba(101, 222, 235, 0.66);
+        box-shadow:
+          0 0 0 1px rgba(47, 209, 224, 0.12),
+          0 5px 22px rgba(0, 180, 198, 0.22),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      }
+      #navbar[data-nav-theme="dark"] .language-toggle img {
+        filter: invert(1);
       }
       #navbar :is(.nav-link, .mobile-link, .menu-toggle, .semester-back):focus-visible {
         outline: 2px solid var(--nav-focus);
@@ -1499,6 +1583,10 @@
                 y2="18"
               />
             </svg>
+          </button>
+          <button id="language-toggle" class="language-toggle" type="button" aria-label="Switch language to English" title="English">
+            <img src="../img/buttonLanguage.png" alt="" aria-hidden="true" width="22" height="22" />
+            <span class="language-toggle-label" aria-hidden="true">EN</span>
           </button>
         </nav>
 
@@ -3085,7 +3173,7 @@
         {
           el: document.querySelector(".mobile-menu-surface"),
           closed: {
-            clipPath: "inset(0px 73px calc(100% - 48px) 73px round 24px)",
+            clipPath: "inset(0px 25px calc(100% - 48px) 25px round 24px)",
           },
           open: {
             clipPath: "inset(0px 0px 0px 0px round 26px)",
@@ -3648,5 +3736,6 @@
    ============================================================ */
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
+    <script src="i18n3.js" defer></script>
   </body>
 </html>
