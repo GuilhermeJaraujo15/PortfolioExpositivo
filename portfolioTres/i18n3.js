@@ -65,6 +65,17 @@
     "Introdução à Ciência de Dados": "Introduction to Data Science", "Banco de Dados para Desenvolvedores": "Database for Developers", "Banco de Dados: fundamentos": "Database Fundamentals", "Instituto Federal de Educação, Ciência e Tecnologia de São Paulo - IFSP": "Federal Institute of Education, Science and Technology of São Paulo (IFSP)", "Implantação de Serviços de Inteligência Artificial em Nuvem - Microsoft AI-900": "Deploying Artificial Intelligence Services in the Cloud — Microsoft AI-900", "Programação em Inteligência Artificial Generativa": "Generative AI Programming", "Fundamentos da Gestão de Projetos Aplicados na Indústria": "Fundamentals of Project Management Applied to Industry"
   }));
 
+  // Add English document URLs here, in the same order as each level's links.
+  // Level 1 intentionally keeps its existing URLs; levels 2–7 use only these URLs in English.
+  const englishPracticeLinks = {
+    2: ["https://drive.google.com/file/d/1V597k7GqslESpglNB1JSGacFCamcCGT2/view?usp=sharing", "https://app.brmodeloweb.com/publicview/69a599f30a4f1151d54f667e"], // Database Modeling: proposal, then diagram
+    3: ["https://docs.google.com/document/d/1NvMnCMb2_04G5IbH64npSETHshKOSLf074Ax-2asX6E/edit?usp=sharing"],     // SQL commands
+    4: ["https://docs.google.com/document/d/1xsQBu50XyltBLlsdpmFCfxX5a-Nvp6n5qadKgEbjVeQ/edit?usp=sharing"],     // Sorting and filtering
+    5: [""],     // Aggregate functions
+    6: [""],     // Grouping
+    7: [""],     // Joins
+  };
+
   function translateText(root) {
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
     const nodes = [];
@@ -97,6 +108,29 @@
     if (language === "en") translateText(document.body);
   });
 
+  function applyEnglishPracticeLinks() {
+    document
+      .querySelectorAll("#track-list a[data-track-level][data-practice-link-index]")
+      .forEach((link) => {
+        const level = Number(link.dataset.trackLevel);
+        const index = Number(link.dataset.practiceLinkIndex);
+        if (level < 2) return;
+
+        const levelLinks = englishPracticeLinks[level];
+        const englishUrl = levelLinks?.[index]?.trim() || "";
+
+        if (englishUrl) {
+          link.href = englishUrl;
+          return;
+        }
+
+        // Remove the Portuguese destination completely when no English URL exists.
+        const list = link.closest("ul.track-practice");
+        link.closest("li")?.remove();
+        if (list && list.childElementCount === 0) list.remove();
+      });
+  }
+
   function applyLanguage(next) {
     language = next;
     document.documentElement.lang = next;
@@ -107,6 +141,7 @@
       const title = document.querySelector("title");
       if (title) title.textContent = translations.get(title.textContent) || title.textContent;
       translateText(document.body);
+      applyEnglishPracticeLinks();
       observer.observe(document.body, { subtree: true, childList: true, characterData: true });
     } else {
       observer.disconnect();

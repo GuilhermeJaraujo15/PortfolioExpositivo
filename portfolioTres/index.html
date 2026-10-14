@@ -2881,10 +2881,12 @@
             );
             if (practiceLinks.length) {
               const linkList = trackElement("ul", "track-practice");
-              practiceLinks.forEach(({ label, href }) => {
+              practiceLinks.forEach(({ label, href }, linkIndex) => {
                 const listItem = trackElement("li");
                 const link = trackElement("a", "", label);
                 link.href = href;
+                link.dataset.trackLevel = String(item.level);
+                link.dataset.practiceLinkIndex = String(linkIndex);
                 link.target = "_blank";
                 link.rel = "noopener noreferrer";
                 listItem.append(link);
