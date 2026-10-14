@@ -71,8 +71,8 @@
     2: ["https://drive.google.com/file/d/1V597k7GqslESpglNB1JSGacFCamcCGT2/view?usp=sharing", "https://app.brmodeloweb.com/publicview/69a599f30a4f1151d54f667e"], // Database Modeling: proposal, then diagram
     3: ["https://docs.google.com/document/d/1NvMnCMb2_04G5IbH64npSETHshKOSLf074Ax-2asX6E/edit?usp=sharing"],     // SQL commands
     4: ["https://docs.google.com/document/d/1xsQBu50XyltBLlsdpmFCfxX5a-Nvp6n5qadKgEbjVeQ/edit?usp=sharing"],     // Sorting and filtering
-    5: [""],     // Aggregate functions
-    6: [""],     // Grouping
+    5: ["https://docs.google.com/document/d/1BWIYnVBzHI01mBbBpsLEVeRUkDVufO9kjjKyLZqQ2u8/edit?usp=sharing"],     // Aggregate functions
+    6: ["https://docs.google.com/document/d/1_tBxLFj-dfFuRSHi9KwpcelDOxAqgON6rg0ugMacJVQ/edit?usp=sharing"],     // Grouping
     7: [""],     // Joins
   };
 
