@@ -73,7 +73,7 @@
     4: ["https://docs.google.com/document/d/1xsQBu50XyltBLlsdpmFCfxX5a-Nvp6n5qadKgEbjVeQ/edit?usp=sharing"],     // Sorting and filtering
     5: ["https://docs.google.com/document/d/1BWIYnVBzHI01mBbBpsLEVeRUkDVufO9kjjKyLZqQ2u8/edit?usp=sharing"],     // Aggregate functions
     6: ["https://docs.google.com/document/d/1_tBxLFj-dfFuRSHi9KwpcelDOxAqgON6rg0ugMacJVQ/edit?usp=sharing"],     // Grouping
-    7: [""],     // Joins
+    7: ["https://docs.google.com/document/d/1PpdZyvzjWdQ9ynDowUe-blvROuOmBoQLtkoJI7X7LfU/edit?usp=sharing"],     // Joins
   };
 
   function translateText(root) {
