@@ -1,8 +1,8 @@
-﻿const projectAreas = [
-  { name: "Math", focus: "CÃ¡lculos e lÃ³gica", detail: "Registre exercÃ­cios e aplicaÃ§Ãµes construÃ­dos com o mÃ³dulo padrÃ£o math." },
-  { name: "Pandas", focus: "ManipulaÃ§Ã£o de dados", detail: "Descreva anÃ¡lises e transformaÃ§Ãµes feitas com estruturas de dados tabulares." },
-  { name: "NumPy", focus: "ComputaÃ§Ã£o numÃ©rica", detail: "Adicione estudos com arrays, operaÃ§Ãµes vetorizadas e mÃ©todos numÃ©ricos." },
-  { name: "Seaborn", focus: "VisualizaÃ§Ã£o de dados", detail: "Apresente visualizaÃ§Ãµes e as perguntas que cada anÃ¡lise procurou responder." },
+const projectAreas = [
+  { name: "Math", focus: "Cálculos e lógica", detail: "Registre exercícios e aplicações construídos com o módulo padrão math." },
+  { name: "Pandas", focus: "Manipulação de dados", detail: "Descreva análises e transformações feitas com estruturas de dados tabulares." },
+  { name: "NumPy", focus: "Computação numérica", detail: "Adicione estudos com arrays, operações vetorizadas e métodos numéricos." },
+  { name: "Seaborn", focus: "Visualização de dados", detail: "Apresente visualizações e as perguntas que cada análise procurou responder." },
 ];
 
 const projectList = document.querySelector("#project-list");
@@ -18,7 +18,7 @@ for (const [index, project] of projectAreas.entries()) {
   description.textContent = project.detail;
   const status = document.createElement("span");
   status.className = "project-state";
-  status.textContent = "ÃREA RESERVADA Â· A PREENCHER";
+  status.textContent = "ÁREA RESERVADA · A PREENCHER";
   article.append(number, title, description, status);
   projectList.append(article);
 }
