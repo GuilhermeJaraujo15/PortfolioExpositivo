@@ -26,10 +26,19 @@
             <div class="snake-yellow"></div>
           </div>
         </div>
-        <svg class="current" viewBox="0 0 360 300" aria-hidden="true">
-          <path d="M180 12 162 57l24-7-34 54 28-12-23 53M40 92l43 7-18 18 53 4-19 18 48 4M320 72l-44 25 20 7-54 27 10 19M70 226l49-27-3 23 42-31 2 26 38-35M288 234l-33-39-4 23-27-38-5 25-22-35"/>
-          <path class="ray-streak" d="M180 12 162 57l24-7-34 54 28-12-23 53M40 92l43 7-18 18 53 4-19 18 48 4M320 72l-44 25 20 7-54 27 10 19M70 226l49-27-3 23 42-31 2 26 38-35M288 234l-33-39-4 23-27-38-5 25-22-35"/>
-          <circle cx="70" cy="72" r="2"/><circle cx="295" cy="117" r="2"/><circle cx="120" cy="246" r="2"/><circle cx="260" cy="54" r="1.5"/>
+        <svg class="current" viewBox="-20 -15 400 330" aria-hidden="true">
+          <g class="flow-tracks">
+            <path id="flow-left" class="flow-track" d="M34 70 C12 92 13 118 30 137 S42 173 27 194"/>
+            <path id="flow-right" class="flow-track" d="M330 68 C352 88 351 118 334 139 S322 177 342 198"/>
+            <path id="flow-top" class="flow-track flow-track--top" d="M144 4 C163 -11 195 -10 214 5"/>
+            <path id="flow-bottom" class="flow-track flow-track--bottom" d="M144 296 C166 312 196 312 217 296"/>
+          </g>
+          <g class="flow-pulses">
+            <circle class="flow-pulse flow-pulse--cyan" r="2.2"><animateMotion dur="4.8s" begin=".7s" repeatCount="indefinite" path="M34 70 C12 92 13 118 30 137 S42 173 27 194"/></circle>
+            <circle class="flow-pulse flow-pulse--blue" r="1.7"><animateMotion dur="5.7s" begin="1.4s" repeatCount="indefinite" path="M330 68 C352 88 351 118 334 139 S322 177 342 198"/></circle>
+            <circle class="flow-pulse flow-pulse--cyan flow-pulse--late flow-pulse--top" r="1.8"><animateMotion dur="4.2s" begin="2.1s" repeatCount="indefinite" path="M144 4 C163 -11 195 -10 214 5"/></circle>
+            <circle class="flow-pulse flow-pulse--blue flow-pulse--late flow-pulse--bottom" r="1.7"><animateMotion dur="5.2s" begin="2.7s" repeatCount="indefinite" path="M144 296 C166 312 196 312 217 296"/></circle>
+          </g>
         </svg>
       </div>
       <div class="hero-copy">
