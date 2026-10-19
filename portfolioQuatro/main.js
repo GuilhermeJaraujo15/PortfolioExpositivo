@@ -1,8 +1,8 @@
-const projectAreas = [
-  { name: "Math", focus: "Cálculos e lógica", detail: "Registre exercícios e aplicações construídos com o módulo padrão math." },
-  { name: "Pandas", focus: "Manipulação de dados", detail: "Descreva análises e transformações feitas com estruturas de dados tabulares." },
-  { name: "NumPy", focus: "Computação numérica", detail: "Adicione estudos com arrays, operações vetorizadas e métodos numéricos." },
-  { name: "Seaborn", focus: "Visualização de dados", detail: "Apresente visualizações e as perguntas que cada análise procurou responder." },
+﻿const projectAreas = [
+  { name: "Math", focus: "CÃ¡lculos e lÃ³gica", detail: "Registre exercÃ­cios e aplicaÃ§Ãµes construÃ­dos com o mÃ³dulo padrÃ£o math." },
+  { name: "Pandas", focus: "ManipulaÃ§Ã£o de dados", detail: "Descreva anÃ¡lises e transformaÃ§Ãµes feitas com estruturas de dados tabulares." },
+  { name: "NumPy", focus: "ComputaÃ§Ã£o numÃ©rica", detail: "Adicione estudos com arrays, operaÃ§Ãµes vetorizadas e mÃ©todos numÃ©ricos." },
+  { name: "Seaborn", focus: "VisualizaÃ§Ã£o de dados", detail: "Apresente visualizaÃ§Ãµes e as perguntas que cada anÃ¡lise procurou responder." },
 ];
 
 const projectList = document.querySelector("#project-list");
@@ -18,44 +18,12 @@ for (const [index, project] of projectAreas.entries()) {
   description.textContent = project.detail;
   const status = document.createElement("span");
   status.className = "project-state";
-  status.textContent = "ÁREA RESERVADA · A PREENCHER";
+  status.textContent = "ÃREA RESERVADA Â· A PREENCHER";
   article.append(number, title, description, status);
   projectList.append(article);
 }
 
 document.querySelector("#year").textContent = new Date().getFullYear();
-
-const emailLink = document.querySelector(".footer-email");
-emailLink?.addEventListener("click", (event) => {
-  const recipient = "guilherme.j.araujo7@aluno.senai.br";
-  const subject = "Contato via Portfólio do 4º Semestre — Ênfase em Python";
-  const body = [
-    "Olá, Guilherme!",
-    "",
-    "Encontrei seu portfólio do 4º semestre e, gostaria de conversar com você.",
-    "",
-    "Escreva sua mensagem aqui:",
-  ].join("\n");
-  const mailto = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-  if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-    return;
-  }
-
-  event.preventDefault();
-  const useGmail = window.confirm(
-    "Deseja abrir uma mensagem pronta no Gmail?\n\n" +
-      "OK → Gmail no navegador\n" +
-      "Cancelar → Aplicativo de e-mail",
-  );
-
-  if (useGmail) {
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(recipient)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.open(gmailUrl, "_blank", "noopener,noreferrer");
-  } else {
-    window.location.href = mailto;
-  }
-});
 
 const journey = document.querySelector(".journey");
 const track = document.querySelector("#track");
