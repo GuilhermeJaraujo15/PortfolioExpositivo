@@ -1,8 +1,11 @@
 const projectAreas = [
-  { name: "Math", focus: "Cálculos e lógica", detail: "Registre exercícios e aplicações construídos com o módulo padrão math." },
-  { name: "Pandas", focus: "Manipulação de dados", detail: "Descreva análises e transformações feitas com estruturas de dados tabulares." },
-  { name: "NumPy", focus: "Computação numérica", detail: "Adicione estudos com arrays, operações vetorizadas e métodos numéricos." },
-  { name: "Seaborn", focus: "Visualização de dados", detail: "Apresente visualizações e as perguntas que cada análise procurou responder." },
+  { name: ".format", detail: "Formatação de textos com variáveis, índices e apresentação de valores.", colabUrl: "https://colab.research.google.com/drive/1mGVOP-KnlgpIwyIy_Pv6HVnsj5X0FOBS?usp=sharing" },
+  { name: "Condicionais", detail: "Decisões com if, elif e else para tratar diferentes situações.", colabUrl: "https://colab.research.google.com/drive/1si_vHDcZ7FAX5d-uOQHXdbKWHVfKP82j?usp=sharing" },
+  { name: "Listas", detail: "Criação, acesso, atualização e percurso de coleções mutáveis.", colabUrl: "" },
+  { name: "Laços", detail: "Repetições com for e while, contadores e condições de parada.", colabUrl: "" },
+  { name: "Tuplas", detail: "Coleções ordenadas e imutáveis, desempacotamento e acesso a elementos.", colabUrl: "" },
+  { name: "Dicionários", detail: "Dados organizados em pares de chave e valor, consultas e atualizações.", colabUrl: "" },
+  { name: "Bibliotecas", detail: "Importação de módulos e uso de funções prontas para ampliar os programas.", colabUrl: "" },
 ];
 
 const projectList = document.querySelector("#project-list");
@@ -16,10 +19,23 @@ for (const [index, project] of projectAreas.entries()) {
   title.textContent = project.name;
   const description = document.createElement("p");
   description.textContent = project.detail;
-  const status = document.createElement("span");
-  status.className = "project-state";
-  status.textContent = "ÁREA RESERVADA · A PREENCHER";
-  article.append(number, title, description, status);
+  article.append(number, title, description);
+
+  if (project.colabUrl) {
+    const link = document.createElement("a");
+    link.className = "project-state project-link";
+    link.href = project.colabUrl;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = "Abrir resolução no Google Colab ↗";
+    article.append(link);
+  } else {
+    const status = document.createElement("span");
+    status.className = "project-state";
+    status.textContent = "Notebook do Colab a vincular";
+    article.append(status);
+  }
+
   projectList.append(article);
 }
 
