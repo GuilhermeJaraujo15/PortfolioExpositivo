@@ -25,6 +25,38 @@ for (const [index, project] of projectAreas.entries()) {
 
 document.querySelector("#year").textContent = new Date().getFullYear();
 
+const emailLink = document.querySelector(".footer-email");
+emailLink?.addEventListener("click", (event) => {
+  const recipient = "guilherme.j.araujo7@aluno.senai.br";
+  const subject = "Contato via Portfólio do 4º Semestre — Ênfase em Python";
+  const body = [
+    "Olá, Guilherme!",
+    "",
+    "Encontrei seu portfólio do 4º semestre e, gostaria de conversar com você.",
+    "",
+    "Escreva sua mensagem aqui:",
+  ].join("\n");
+  const mailto = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    return;
+  }
+
+  event.preventDefault();
+  const useGmail = window.confirm(
+    "Deseja abrir uma mensagem pronta no Gmail?\n\n" +
+      "OK → Gmail no navegador\n" +
+      "Cancelar → Aplicativo de e-mail",
+  );
+
+  if (useGmail) {
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(recipient)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(gmailUrl, "_blank", "noopener,noreferrer");
+  } else {
+    window.location.href = mailto;
+  }
+});
+
 const journey = document.querySelector(".journey");
 const track = document.querySelector("#track");
 const progress = document.querySelector(".journey-progress span");
