@@ -1,11 +1,11 @@
 const projectAreas = [
-  { name: ".format", detail: "Formatação de textos com variáveis, índices e apresentação de valores.", colabUrl: "https://colab.research.google.com/drive/1mGVOP-KnlgpIwyIy_Pv6HVnsj5X0FOBS?usp=sharing" },
-  { name: "Condicionais", detail: "Decisões com if, elif e else para tratar diferentes situações.", colabUrl: "https://colab.research.google.com/drive/1si_vHDcZ7FAX5d-uOQHXdbKWHVfKP82j?usp=sharing#scrollTo=qg5CDqnky8SD" },
-  { name: "Listas", detail: "Criação, acesso, atualização e percurso de coleções mutáveis.", colabUrl: "https://colab.research.google.com/drive/1n76ctdu5dzjdrNX4YcqYIXkaGLDwvfLw?usp=sharing" },
-  { name: "Laços", detail: "Repetições com for e while, contadores e condições de parada.", colabUrl: "https://colab.research.google.com/drive/1iOP8a5a2o4g5bIFeNWCpRxOs6gf_0KyD?usp=sharing" },
-  { name: "Tuplas", detail: "Coleções ordenadas e imutáveis, desempacotamento e acesso a elementos.", colabUrl: "" },
-  { name: "Dicionários", detail: "Dados organizados em pares de chave e valor, consultas e atualizações.", colabUrl: "" },
-  { name: "Bibliotecas", detail: "Importação de módulos e uso de funções prontas para ampliar os programas.", colabUrl: "" },
+  { name: ".format", detail: "Formata\u00e7\u00e3o de textos com vari\u00e1veis, \u00edndices e apresenta\u00e7\u00e3o de valores.", resources: [{ label: "Colab \u00b7 .format", url: "https://colab.research.google.com/drive/1mGVOP-KnlgpIwyIy_Pv6HVnsj5X0FOBS?usp=sharing" }] },
+  { name: "Condicionais", detail: "Decis\u00f5es com if, elif e else para tratar diferentes situa\u00e7\u00f5es.", resources: [{ label: "Colab \u00b7 Condicionais", url: "https://colab.research.google.com/drive/1si_vHDcZ7FAX5d-uOQHXdbKWHVfKP82j?usp=sharing#scrollTo=qg5CDqnky8SD" }] },
+  { name: "Listas", detail: "Cria\u00e7\u00e3o, acesso, atualiza\u00e7\u00e3o e percurso de cole\u00e7\u00f5es mut\u00e1veis.", resources: [{ label: "Colab \u00b7 Listas", url: "https://colab.research.google.com/drive/1n76ctdu5dzjdrNX4YcqYIXkaGLDwvfLw?usp=sharing" }] },
+  { name: "La\u00e7os", detail: "Repeti\u00e7\u00f5es com for e while, contadores e condi\u00e7\u00f5es de parada.", resources: [{ label: "Colab \u00b7 For", url: "https://colab.research.google.com/drive/1iOP8a5a2o4g5bIFeNWCpRxOs6gf_0KyD?usp=sharing" }, { label: "Colab \u00b7 While", url: "https://colab.research.google.com/drive/1jUBg2ne-B7YAu6tv5twAGEMjUt6Yp8oW?usp=sharing" }] },
+  { name: "Tuplas", detail: "Cole\u00e7\u00f5es ordenadas e imut\u00e1veis, desempacotamento e acesso a elementos.", resources: [{ label: "Colab \u00b7 Tuplas", url: "https://colab.research.google.com/drive/1-sd3p04tHwjvHVqW0MFVNma9PNZ8vxr1?usp=sharing" }] },
+  { name: "Dicion\u00e1rios", detail: "Dados organizados em pares de chave e valor, consultas e atualiza\u00e7\u00f5es.", resources: [{ label: "Colab \u00b7 Dicion\u00e1rios", url: "https://colab.research.google.com/drive/1LUg_3v5i4ccRmtnluecqFQ9AK62-YUmX?usp=sharing" }] },
+  { name: "Bibliotecas", detail: "Importa\u00e7\u00e3o de m\u00f3dulos e uso de fun\u00e7\u00f5es prontas para ampliar os programas.", resources: [{ label: "Colab \u00b7 Bibliotecas", url: "https://colab.research.google.com/drive/1cCd0IWusFMBYF39iinBalChDkuIpnxfN?usp=sharing" }] },
 ];
 
 const projectList = document.querySelector("#project-list");
@@ -21,20 +21,27 @@ for (const [index, project] of projectAreas.entries()) {
   description.textContent = project.detail;
   article.append(number, title, description);
 
-  if (project.colabUrl) {
-    const link = document.createElement("a");
-    link.className = "project-state project-link";
-    link.href = project.colabUrl;
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-    link.textContent = "Abrir resolução no Google Colab ↗";
-    article.append(link);
-  } else {
-    const status = document.createElement("span");
-    status.className = "project-state";
-    status.textContent = "Notebook do Colab a vincular";
-    article.append(status);
+  const actions = document.createElement("div");
+  actions.className = "project-actions";
+
+  for (const resource of project.resources) {
+    if (resource.url) {
+      const link = document.createElement("a");
+      link.className = "project-link";
+      link.href = resource.url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = resource.label;
+      actions.append(link);
+    } else {
+      const pending = document.createElement("span");
+      pending.className = "project-link project-link-pending";
+      pending.textContent = `${resource.label} \u00b7 link pendente`;
+      actions.append(pending);
+    }
   }
+
+  article.append(actions);
 
   projectList.append(article);
 }
