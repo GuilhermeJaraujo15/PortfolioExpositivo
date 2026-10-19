@@ -12,4 +12,4 @@ Abra `index.html` no navegador ou sirva esta pasta com `python -m http.server 80
 - Adicione registros reais de cursos e certificados no painel `#certificacoes` em `index.html`.
 - Os links pessoais no rodapé reaproveitam os endereços já existentes no portfólio do repositório; confirme que continuam corretos.
 
-O símbolo Python em `python-logo.svg` foi obtido do [Wikimedia Commons](https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg).
+O símbolo do Python é desenhado com formas CSS no próprio `index.html`, usando os contornos da marca e sem depender de arquivo de imagem.

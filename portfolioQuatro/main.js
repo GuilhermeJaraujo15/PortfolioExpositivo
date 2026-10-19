@@ -86,4 +86,12 @@ window.addEventListener("resize", configureTravel, { passive: true });
 window.addEventListener("pageshow", configureTravel);
 wideFinePointer.addEventListener("change", configureTravel);
 reducedMotion.addEventListener("change", configureTravel);
+
+document.querySelector(".footer-top")?.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: reducedMotion.matches ? "auto" : "smooth",
+  });
+});
+
 configureTravel();
