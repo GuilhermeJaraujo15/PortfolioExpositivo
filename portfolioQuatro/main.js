@@ -1,8 +1,8 @@
 const projectAreas = [
   { name: ".format", detail: "Formatação de textos com variáveis, índices e apresentação de valores.", colabUrl: "https://colab.research.google.com/drive/1mGVOP-KnlgpIwyIy_Pv6HVnsj5X0FOBS?usp=sharing" },
-  { name: "Condicionais", detail: "Decisões com if, elif e else para tratar diferentes situações.", colabUrl: "https://colab.research.google.com/drive/1si_vHDcZ7FAX5d-uOQHXdbKWHVfKP82j?usp=sharing" },
-  { name: "Listas", detail: "Criação, acesso, atualização e percurso de coleções mutáveis.", colabUrl: "" },
-  { name: "Laços", detail: "Repetições com for e while, contadores e condições de parada.", colabUrl: "" },
+  { name: "Condicionais", detail: "Decisões com if, elif e else para tratar diferentes situações.", colabUrl: "https://colab.research.google.com/drive/1si_vHDcZ7FAX5d-uOQHXdbKWHVfKP82j?usp=sharing#scrollTo=qg5CDqnky8SD" },
+  { name: "Listas", detail: "Criação, acesso, atualização e percurso de coleções mutáveis.", colabUrl: "https://colab.research.google.com/drive/1n76ctdu5dzjdrNX4YcqYIXkaGLDwvfLw?usp=sharing" },
+  { name: "Laços", detail: "Repetições com for e while, contadores e condições de parada.", colabUrl: "https://colab.research.google.com/drive/1iOP8a5a2o4g5bIFeNWCpRxOs6gf_0KyD?usp=sharing" },
   { name: "Tuplas", detail: "Coleções ordenadas e imutáveis, desempacotamento e acesso a elementos.", colabUrl: "" },
   { name: "Dicionários", detail: "Dados organizados em pares de chave e valor, consultas e atualizações.", colabUrl: "" },
   { name: "Bibliotecas", detail: "Importação de módulos e uso de funções prontas para ampliar os programas.", colabUrl: "" },
