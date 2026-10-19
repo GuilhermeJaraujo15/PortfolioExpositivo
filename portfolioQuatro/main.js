@@ -12,14 +12,11 @@ const projectList = document.querySelector("#project-list");
 for (const [index, project] of projectAreas.entries()) {
   const article = document.createElement("article");
   article.className = "project-card";
-  const number = document.createElement("span");
-  number.className = "project-index";
-  number.textContent = `0${index + 1} / PY`;
   const title = document.createElement("h3");
   title.textContent = project.name;
   const description = document.createElement("p");
   description.textContent = project.detail;
-  article.append(number, title, description);
+  article.append(title, description);
 
   const actions = document.createElement("div");
   actions.className = "project-actions";
