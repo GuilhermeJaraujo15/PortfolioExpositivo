@@ -29,3 +29,19 @@
 @keyframes mark-edge-breathe{from{filter:brightness(1)}to{filter:brightness(1.035)}}
 @media(hover:hover){.mark-scene:hover .trace{opacity:.88}.mark-scene:hover .trace-run{opacity:1;stroke-width:1.8}.mark-scene:hover .python-mark{filter:drop-shadow(0 9px 8px rgba(0,0,0,.4)) drop-shadow(0 0 10px rgba(57,191,255,.32)) drop-shadow(0 0 9px rgba(255,202,58,.2))}}
 @media(prefers-reduced-motion:reduce){.python-mark-canvas{animation:none}.trace-run{animation:none;opacity:.78;stroke-dasharray:none}}
+
+.showcase-content{width:min(1120px,100%);margin:0 auto}
+.showcase-content .projects-heading{margin-bottom:2rem}
+.showcase-content .projects-heading .body-copy{max-width:350px}
+.showcase-content code{color:var(--cyan);font:inherit}
+.semester-project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.semester-project-card{display:flex;flex-direction:column;min-width:0;min-height:250px;padding:1.4rem;border:1px solid var(--line);border-radius:2px;background:linear-gradient(145deg,rgba(16,35,56,.76),rgba(11,25,40,.42));transition:border-color var(--duration),background var(--duration),transform var(--duration) var(--ease)}
+.semester-project-card:hover{transform:translateY(-3px);border-color:rgba(57,191,255,.42);background:linear-gradient(145deg,rgba(16,42,66,.9),rgba(11,25,40,.62))}
+.semester-project-card h3{margin:0 0 .65rem;font-size:1.18rem;font-weight:550;letter-spacing:-.025em}
+.semester-project-card p{margin:0;color:var(--muted);font-size:.8rem;line-height:1.7}
+.semester-project-technologies{display:flex;flex-wrap:wrap;gap:.45rem;margin:1rem 0 0;padding:0;list-style:none}
+.semester-project-technologies li{padding:.35rem .5rem;border:1px solid var(--line);color:#c4d2df;font:500 .58rem/1.4 var(--mono)}
+.semester-project-link{align-self:flex-start;margin-top:auto;padding-top:1.2rem;color:var(--cyan);font:500 .65rem/1.5 var(--mono);text-decoration:none}
+@media(max-width:900px){.semester-project-card{min-height:270px;padding:1.15rem}}
+@media(max-width:700px),(pointer:coarse){.showcase-content .projects-heading{gap:.25rem;margin-bottom:1.2rem}.showcase-content .projects-heading .body-copy{max-width:unset;margin:.55rem 0 0}.semester-project-grid{grid-template-columns:1fr;gap:.6rem}.semester-project-card{min-height:0;padding:.85rem 1rem}.semester-project-card h3{margin:0 0 .35rem;font-size:1rem}.semester-project-card p{font-size:.72rem;line-height:1.5}.semester-project-technologies{gap:.35rem;margin:.65rem 0 0}.semester-project-technologies li{padding:.3rem .4rem;font-size:.56rem}.semester-project-link{padding-top:.65rem}}
+@media(prefers-reduced-motion:reduce){.semester-project-card{transition:none}}

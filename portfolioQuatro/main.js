@@ -8,6 +8,27 @@ const projectAreas = [
   { name: "Bibliotecas", detail: "Importa\u00e7\u00e3o de m\u00f3dulos e uso de fun\u00e7\u00f5es prontas para ampliar os programas.", resources: [{ label: "Colab \u00b7 Bibliotecas", url: "https://colab.research.google.com/drive/1cCd0IWusFMBYF39iinBalChDkuIpnxfN?usp=sharing" }] },
 ];
 
+const semesterProjects = [
+  {
+    name: "Análise de vendas - Agência de Viagens",
+    description: "A aplicação permite gerar métricas, filtrar dados por destino, consultar informações de vendas e visualizar gráficos gerados dinamicamente.",
+    technologies: ["Python • Flask • Pandas • NumPy • Matplotlib • Seaborn • MySQL • HTML5 • CSS3"],
+    url: "https://github.com/GuilhermeJaraujo15/Data_Analysis_With_Python",
+  },
+  {
+    name: "Projeto 02",
+    description: "Adicione uma descrição breve do objetivo e do que foi desenvolvido.",
+    technologies: ["Tecnologias a definir"],
+    url: "",
+  },
+  {
+    name: "Projeto 03",
+    description: "Adicione uma descrição breve do objetivo e do que foi desenvolvido.",
+    technologies: ["Tecnologias a definir"],
+    url: "",
+  },
+];
+
 const projectList = document.querySelector("#project-list");
 for (const [index, project] of projectAreas.entries()) {
   const article = document.createElement("article");
@@ -41,6 +62,42 @@ for (const [index, project] of projectAreas.entries()) {
   article.append(actions);
 
   projectList.append(article);
+}
+
+const semesterProjectList = document.querySelector("#semester-project-list");
+for (const project of semesterProjects) {
+  const article = document.createElement("article");
+  article.className = "semester-project-card";
+
+  const title = document.createElement("h3");
+  title.textContent = project.name;
+
+  const description = document.createElement("p");
+  description.textContent = project.description;
+
+  const technologies = document.createElement("ul");
+  technologies.className = "semester-project-technologies";
+  technologies.setAttribute("aria-label", `Tecnologias de ${project.name}`);
+  for (const technology of project.technologies) {
+    const item = document.createElement("li");
+    item.textContent = technology;
+    technologies.append(item);
+  }
+
+  article.append(title, description, technologies);
+
+  if (project.url) {
+    const link = document.createElement("a");
+    link.className = "semester-project-link";
+    link.href = project.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = "Acessar projeto";
+    link.setAttribute("aria-label", `Acessar projeto: ${project.name} (abre em nova aba)`);
+    article.append(link);
+  }
+
+  semesterProjectList.append(article);
 }
 
 document.querySelector("#year").textContent = new Date().getFullYear();
