@@ -143,7 +143,7 @@ if (shouldAnimate) {
   });
 
   // Adicionar índice aos cards para animação escalonada
-  document.querySelectorAll('.project-card, .semester-project-card').forEach((card, index) => {
+  document.querySelectorAll('.project-card, .semester-project-card, .cert-card').forEach((card, index) => {
     card.style.setProperty('--index', index);
   });
 } else {
