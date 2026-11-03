@@ -14,18 +14,21 @@ const semesterProjects = [
     description: "A aplicação permite gerar métricas, filtrar dados por destino, consultar informações de vendas e visualizar gráficos gerados dinamicamente.",
     technologies: ["Python • Flask • Pandas • NumPy • Matplotlib • Seaborn • MySQL"],
     url: "https://github.com/GuilhermeJaraujo15/Data_Analysis_With_Python",
+    linkLabel: "Acessar projeto",
   },
   {
     name: "Dashboards utilizando Business Intelligence",
-    description: "Neste projeto, desenvolvi diversos dashboards com propósito de gerar insights para tomada de decisão no âmbito empresarial.",
+    description: "Neste projeto, desenvolvi diversos dashboards com propósito de gerar insights para tomada de decisão no âmbito empresarial, utilizando do Power BI para análise de dados e visualização de informações advindas de diversas fontes, de maneira limpa e com foco profissional.",
     technologies: ["Power BI • Excel • Google Analytics • CSV"],
     url: "",
+    linkLabel: "Vídeo demonstrativo",
   },
   {
-    name: "Projeto 03",
-    description: "Adicione uma descrição breve do objetivo e do que foi desenvolvido.",
-    technologies: ["Tecnologias a definir"],
+    name: "Plataforma Completa para Entidade de Ensino Superior - Instituto Socrático",
+    description: "Esta plataforma foi desenvolvida para atender às necessidades de uma entidade de ensino superior, oferecendo funcionalidades como gestão acadêmica, comunicação entre alunos e professores, análise de desempenho, acompanhamento de atividades, gerenciamento financeiro e muito mais, em um único lugar.",
+    technologies: ["A definir"],
     url: "",
+    linkLabel: "Acessar a plataforma",
   },
 ];
 
@@ -86,21 +89,74 @@ for (const project of semesterProjects) {
 
   article.append(title, description, technologies);
 
+  const linkLabel = project.linkLabel || "Acessar projeto";
+  const link = document.createElement("a");
+  link.className = "semester-project-link";
+  link.textContent = linkLabel;
+
   if (project.url) {
-    const link = document.createElement("a");
-    link.className = "semester-project-link";
     link.href = project.url;
     link.target = "_blank";
     link.rel = "noopener noreferrer";
-    link.textContent = "Acessar projeto";
-    link.setAttribute("aria-label", `Acessar projeto: ${project.name} (abre em nova aba)`);
-    article.append(link);
+    link.setAttribute("aria-label", `${linkLabel}: ${project.name} (abre em nova aba)`);
+  } else {
+    link.href = "#";
+    link.setAttribute("aria-label", `${linkLabel}: ${project.name}`);
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+    });
   }
+
+  article.append(link);
 
   semesterProjectList.append(article);
 }
 
 document.querySelector("#year").textContent = new Date().getFullYear();
+
+// Intersection Observer para animações de entrada estilo Apple
+// Apenas em telas maiores e com pointer fine para melhor performance
+const shouldAnimate = window.matchMedia("(min-width: 701px) and (pointer: fine)").matches &&
+                      !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (shouldAnimate) {
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.15
+  };
+
+  const panelObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        entry.target.classList.remove('is-leaving');
+      } else {
+        entry.target.classList.add('is-leaving');
+      }
+    });
+  }, observerOptions);
+
+  // Observar todos os painéis
+  document.querySelectorAll('.panel').forEach(panel => {
+    panelObserver.observe(panel);
+  });
+
+  // Adicionar índice aos cards para animação escalonada
+  document.querySelectorAll('.project-card, .semester-project-card').forEach((card, index) => {
+    card.style.setProperty('--index', index);
+  });
+} else {
+  // Em dispositivos móveis ou com reduced motion, mostrar tudo imediatamente
+  document.querySelectorAll('.panel').forEach(panel => {
+    panel.classList.add('is-visible');
+  });
+  // Também animar o hero
+  document.querySelectorAll('.eyebrow, .hero h1, .hero-intro, .scroll-cue').forEach(el => {
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0)';
+  });
+}
 
 const journey = document.querySelector(".journey");
 const track = document.querySelector("#track");
