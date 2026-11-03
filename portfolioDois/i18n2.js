@@ -135,7 +135,7 @@
       courses: {
         title: "Cursos Realizados",
         description:
-          "Como disse anteriormente, meu foco durante este semestre foi em lógica com ênfase em JavaScript, todavia, pareceu por bem ainda durante as férias de transição entre o 1º e o 2º semestre, continuar estudando HTML e CSS, e por conseguinte, realizei estes dois cursos da Cisco Networking Academy, que me ajudaram a relembrar e fixar sintexes importantes no desenvolvimento front-end.",
+          "Como disse anteriormente, meu foco durante este semestre foi em lógica com ênfase em JavaScript, todavia, pareceu por bem ainda durante as férias de transição entre o 1º e o 2º semestre, continuar estudando HTML e CSS, e por conseguinte, realizei estes cursos da Cisco Networking Academy, que me ajudaram a relembrar e fixar sintaxes importantes no desenvolvimento front-end.",
         viewCertificate: "Ver certificado",
         c1: {
           date: "Jul 2025",
@@ -146,6 +146,11 @@
           date: "Ago 2025",
           title: "CSS Essentials",
           desc: "Conhecendo melhor como funciona a estilização de páginas web, analisando de forma mais acurada os layouts <code>flexbox</code> e <code>grid</code>, animações com <code>@keyframes</code>, responsividade com <code>@media</code>, acessibilidade visual, boas práticas de organização de código e entre outros tópicos que tangem a esfera do Desenvolvimento Web, unindo uma estrutura sólida a um design mais fluido e atraente.",
+        },
+        c3: {
+          date: "Ago 2026",
+          title: "JavaScript Essentials",
+          desc: "Este curso me ajudou no que tange ao desenvolvimento da lógica de programação com ênfase na sintaxe do JavaScript, abordando tópicos como variáveis, tipos de dados, operadores, condicionais, loops e funções. Além disso, o curso também explorou a manipulação do DOM e eventos, permitindo a criação de páginas web interativas e dinâmicas.",
         },
       },
 
@@ -329,7 +334,7 @@
       courses: {
         title: "Completed Courses",
         description:
-          "As mentioned earlier, my focus this semester was on logic with an emphasis on JavaScript. Still, during the break between the 1st and 2nd semesters, I chose to keep studying HTML and CSS — and completed these two Cisco Networking Academy courses, which helped me review and reinforce important front-end syntax.",
+          "As mentioned earlier, my focus this semester was on logic with an emphasis on JavaScript. Still, during the break between the 1st and 2nd semesters, I chose to keep studying HTML and CSS — and completed these Cisco Networking Academy courses, which helped me review and reinforce important front-end syntax.",
         viewCertificate: "View certificate",
         c1: {
           date: "Jul 2025",
@@ -340,6 +345,11 @@
           date: "Aug 2025",
           title: "CSS Essentials",
           desc: "A deeper look at styling web pages — covering <code>flexbox</code> and <code>grid</code> layouts, animations with <code>@keyframes</code>, responsiveness with <code>@media</code>, visual accessibility, code organization best practices, and other Web Development topics that help combine solid structure with a more fluid, appealing design.",
+        },
+        c3: {
+          date: "Aug 2026",
+          title: "JavaScript Essentials",
+          desc: "This course helped me develop programming logic with an emphasis on JavaScript syntax, covering variables, data types, operators, conditionals, loops, and functions. Additionally, the course explored DOM manipulation and events to create interactive and dynamic web pages.",
         },
       },
 

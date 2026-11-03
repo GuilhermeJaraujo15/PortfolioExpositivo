@@ -12,13 +12,13 @@ const semesterProjects = [
   {
     name: "Análise de vendas - Agência de Viagens",
     description: "A aplicação permite gerar métricas, filtrar dados por destino, consultar informações de vendas e visualizar gráficos gerados dinamicamente.",
-    technologies: ["Python • Flask • Pandas • NumPy • Matplotlib • Seaborn • MySQL • HTML5 • CSS3"],
+    technologies: ["Python • Flask • Pandas • NumPy • Matplotlib • Seaborn • MySQL"],
     url: "https://github.com/GuilhermeJaraujo15/Data_Analysis_With_Python",
   },
   {
-    name: "Projeto 02",
-    description: "Adicione uma descrição breve do objetivo e do que foi desenvolvido.",
-    technologies: ["Tecnologias a definir"],
+    name: "Dashboards utilizando Business Intelligence",
+    description: "Neste projeto, desenvolvi diversos dashboards com propósito de gerar insights para tomada de decisão no âmbito empresarial.",
+    technologies: ["Power BI • Excel • Google Analytics • CSV"],
     url: "",
   },
   {

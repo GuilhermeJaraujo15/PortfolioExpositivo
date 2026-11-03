@@ -1073,7 +1073,7 @@ main.fade-i18n {
 /* ---------- Cursos ---------- */
 .courses-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2rem;
   margin-top: 1rem;
 }
@@ -1097,14 +1097,13 @@ main.fade-i18n {
   flex-direction: column;
 }
 .course-content .btn {
-  margin-top: auto;
   align-self: flex-start;
 }
 .course-date {
   display: inline-block;
   text-align: center;
   font-size: 0.8rem;
-  font-weight: 50000;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--js-yellow);
@@ -1128,10 +1127,12 @@ main.fade-i18n {
 }
 .course-meta {
   display: flex;
+  align-items: center;
   gap: 1rem;
   font-size: 0.8rem;
   color: var(--text-muted);
-  margin-bottom: 1rem;
+  margin-top: auto;
+  margin-bottom: 1.25rem;
 }
 .course-school {
   font-weight: 500;
@@ -1475,6 +1476,15 @@ code {
 
 /* Telas médias (tablet) */
 @media (max-width: 960px) {
+  .courses-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .course-card {
+    padding: 1.25rem;
+  }
+
   .hero-visual {
     height: 380px;
   }
