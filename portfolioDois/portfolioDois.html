@@ -195,7 +195,7 @@
 
     <!-- Contextualização -->
     <section id="contextualizacao" class="section-block" aria-labelledby="context-title">
-      <div class="section-header">
+      <div class="section-header reveal-item">
         <h2 class="section-eyebrow" id="context-title" data-i18n="context.title">
           Contextualização
         </h2>
@@ -214,7 +214,7 @@
 
     <!-- Linha do Tempo (Aprendizado) -->
     <section id="timeline" class="section-block timeline" aria-labelledby="timeline-title">
-      <div class="section-header">
+      <div class="section-header reveal-item">
         <h2 class="section-eyebrow" id="timeline-title" data-i18n="learning.title">
           O que aprendi neste 2º Semestre
         </h2>
@@ -226,7 +226,7 @@
         </p>
       </div>
 
-      <div class="timeline-container">
+      <div class="timeline-container reveal-item">
         <div class="timeline-line" aria-hidden="true"></div>
         <ul class="timeline-list">
           <!-- Item 1 – Direita -->
@@ -456,7 +456,7 @@
 
     <!-- Projetos -->
     <section id="projetos" class="section-block projects" aria-labelledby="projects-title">
-      <div class="section-header">
+      <div class="section-header reveal-item">
         <h2 class="section-eyebrow" id="projects-title" data-i18n="projects.title">
           Projetos Práticos
         </h2>
@@ -470,7 +470,7 @@
       </div>
 
       <div class="projects-grid">
-        <article class="project-card">
+        <article class="project-card reveal-item reveal-stagger-1">
           <div class="project-image">
             <img src="../img/project1.svg" alt="Preview do Projeto 1" data-i18n-alt="projects.p1.alt" loading="lazy" />
           </div>
@@ -490,7 +490,7 @@
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="project-card reveal-item reveal-stagger-2">
           <div class="project-image">
             <img src="../img/Form.png" alt="Preview do Projeto 2" data-i18n-alt="projects.p2.alt" loading="lazy" />
           </div>
@@ -511,7 +511,7 @@
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="project-card reveal-item reveal-stagger-3">
           <div class="project-image">
             <img src="../img/Blog.png" alt="Preview do Projeto 3" data-i18n-alt="projects.p3.alt" loading="lazy" />
           </div>
@@ -535,7 +535,7 @@
 
     <!-- Cursos -->
     <section id="cursos" class="section-block courses" aria-labelledby="courses-title">
-      <div class="section-header">
+      <div class="section-header reveal-item">
         <h2 class="section-eyebrow" id="courses-title" data-i18n="courses.title">
           Cursos Realizados
         </h2>
@@ -550,7 +550,7 @@
       </div>
 
       <div class="courses-grid">
-        <article class="course-card">
+        <article class="course-card reveal-item reveal-stagger-1">
           <div class="course-content">
             <span class="course-date" data-i18n="courses.c1.date">Jul 2025</span>
             <h3 data-i18n="courses.c1.title">HTML Essentials</h3>
@@ -574,7 +574,7 @@
           </div>
         </article>
 
-        <article class="course-card">
+        <article class="course-card reveal-item reveal-stagger-2">
           <div class="course-content">
             <span class="course-date" data-i18n="courses.c2.date">Ago 2025</span>
             <h3 data-i18n="courses.c2.title">CSS Essentials</h3>
@@ -597,7 +597,7 @@
           </div>
         </article>
 
-        <article class="course-card">
+        <article class="course-card reveal-item reveal-stagger-3">
           <div class="course-content">
             <span class="course-date" data-i18n="courses.c3.date">Ago 2026</span>
             <h3 data-i18n="courses.c3.title">JavaScript Essentials</h3>
@@ -621,7 +621,7 @@
 
     <!-- Contato -->
     <section id="contato" class="section-block contact-block" aria-labelledby="contact-title">
-      <div class="section-header">
+      <div class="section-header reveal-item">
         <h2 class="section-eyebrow" id="contact-title" data-i18n="contact.title">
           Contato
         </h2>
@@ -631,7 +631,7 @@
         </p>
       </div>
 
-      <div class="contact-panel">
+      <div class="contact-panel reveal-item">
         <!-- Formulário -->
         <form id="contactForm" class="contact-form">
           <div class="form-group">
@@ -664,7 +664,7 @@
   </main>
 
   <footer class="page-footer" role="contentinfo">
-    <div class="footer-content">
+    <div class="footer-content reveal-item">
       <!-- Esquerda: Brand -->
       <div class="footer-brand">
         <span class="footer-name">guilherme_Araujo</span>
@@ -1191,12 +1191,64 @@
         });
       }
 
+
+      // ==================== SCROLL REVEAL (Estilo Apple) ====================
+      function initScrollReveal() {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          return;
+        }
+
+        if (!("IntersectionObserver" in window)) {
+          return;
+        }
+
+        const revealElements = document.querySelectorAll(".reveal-item");
+        if (!revealElements.length) return;
+
+        document.documentElement.classList.add("has-scroll-reveal");
+
+        const observerOptions = {
+          root: null,
+          rootMargin: "0px 0px -40px 0px",
+          threshold: 0.12,
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target;
+              el.classList.add("is-revealed");
+              observer.unobserve(el);
+
+              el.addEventListener(
+                "transitionend",
+                () => {
+                  el.classList.add("is-revealed-done");
+                },
+                { once: true },
+              );
+            }
+          });
+        }, observerOptions);
+
+        revealElements.forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 30 && rect.bottom > 0) {
+            el.classList.add("is-revealed");
+            el.classList.add("is-revealed-done");
+          } else {
+            revealObserver.observe(el);
+          }
+        });
+      }
+
       // ==================== INICIALIZAÇÃO ====================
       initMenu();
       initNavigation();
       initBackToTop();
       initContactForm();
-      initTimelineCarousel();
+      initTimelineCarousel();
+      initScrollReveal();
     });
   </script>
   <script src="./i18n2.js" defer></script>
