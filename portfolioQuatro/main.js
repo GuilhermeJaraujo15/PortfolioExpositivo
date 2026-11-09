@@ -221,4 +221,20 @@ document.querySelectorAll(".cert-editorial-grid .cert-card").forEach((card) => {
   });
 });
 
+function clearCertificateSelection() {
+  document.querySelectorAll(".cert-editorial-grid.has-selection").forEach((grid) => {
+    grid.classList.remove("has-selection");
+    grid.querySelectorAll(".cert-card.is-selected").forEach((card) => {
+      card.classList.remove("is-selected");
+    });
+  });
+}
+
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") clearCertificateSelection();
+});
+window.addEventListener("pageshow", clearCertificateSelection);
+window.addEventListener("focus", clearCertificateSelection);
+window.addEventListener("blur", clearCertificateSelection);
+
 configureTravel();
