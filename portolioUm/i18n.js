@@ -9,6 +9,7 @@
       pageTitle: "Portfólio-Dev Sistemas",
       pageDescription: "Portfólio de Guilherme, estudante de Desenvolvimento de Sistemas",
       toggleAria: "Abrir seleção de idioma",
+      switchLanguageAria: "Mudar idioma para inglês",
       languageLabel: "Português",
       languageFlag: "",
       logoAria: "Logo gui_Dev",
@@ -146,6 +147,7 @@
       pageTitle: "Portfolio - Systems Development",
       pageDescription: "Guilherme's portfolio, Systems Development student",
       toggleAria: "Open language selection",
+      switchLanguageAria: "Switch language to Portuguese",
       languageLabel: "English",
       languageFlag: "",
       logoAria: "gui_Dev logo",
@@ -411,7 +413,35 @@
     const altFlag = document.getElementById("language-alt-flag");
     const altLabel = document.getElementById("language-alt-label");
 
-    if (!switcher || !menuToggle || !altOption || !altFlag || !altLabel) return;
+    if (!switcher || !menuToggle) return;
+
+    function switchLanguage(nextLang) {
+      if (!SUPPORTED_LANGS.includes(nextLang)) return;
+
+      switcher.classList.add("is-switching-language");
+      localStorage.setItem(STORAGE_KEY, nextLang);
+      applyLanguage(nextLang);
+      setTimeout(() => window.dispatchEvent(new Event("resize")), 80);
+      setTimeout(() => switcher.classList.remove("is-switching-language"), 450);
+    }
+
+    if (!altOption || !altFlag || !altLabel) {
+      let currentLang = initialLang;
+      const updateToggleLabel = () => {
+        menuToggle.setAttribute(
+          "aria-label",
+          (translations[currentLang] || translations[DEFAULT_LANG]).switchLanguageAria,
+        );
+      };
+
+      updateToggleLabel();
+      menuToggle.addEventListener("click", () => {
+        currentLang = currentLang === "pt" ? "en" : "pt";
+        switchLanguage(currentLang);
+        updateToggleLabel();
+      });
+      return;
+    }
 
     function closeLanguageMenu() {
       switcher.classList.remove("is-open");
@@ -444,25 +474,10 @@
     altOption.addEventListener("click", () => {
       const nextLang = altOption.getAttribute("data-lang");
       if (!SUPPORTED_LANGS.includes(nextLang)) return;
-      
-      // Adicionar classe de animação visual
-      switcher.classList.add("is-switching-language");
-      
-      localStorage.setItem(STORAGE_KEY, nextLang);
-      applyLanguage(nextLang);
+
+      switchLanguage(nextLang);
       updateLanguageMenu(nextLang);
       closeLanguageMenu();
-      
-      // Force a resize event shortly after language swap so components
-      // that measure text (like the nav active indicator) recalc widths.
-      setTimeout(() => {
-        window.dispatchEvent(new Event('resize'));
-      }, 80);
-
-      // Remover classe de animação após 450ms
-      setTimeout(() => {
-        switcher.classList.remove("is-switching-language");
-      }, 450);
     });
 
     document.addEventListener("click", (event) => {

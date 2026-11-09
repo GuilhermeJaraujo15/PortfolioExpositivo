@@ -11,18 +11,10 @@
 
 <body>
     <div class="language-switcher" role="group" aria-label="Seletor de idioma">
-        <div class="language-pill">
+        <button id="language-menu-toggle" class="language-pill" type="button" aria-label="Mudar idioma para inglês">
             <span id="language-current-flag" class="language-flag" aria-hidden="true"></span>
             <span id="language-current-label" class="language-label">Português</span>
-            <button id="language-menu-toggle" class="language-caret-btn" type="button" aria-label="Abrir seleção de idioma"
-                aria-expanded="false"></button>
-        </div>
-        <div id="language-dropdown" class="language-dropdown" role="menu" aria-label="Escolher idioma">
-            <button id="language-alt-option" class="language-option-item" type="button" role="menuitem">
-                <span id="language-alt-flag" class="language-flag" aria-hidden="true"></span>
-                <span id="language-alt-label">English</span>
-            </button>
-        </div>
+        </button>
     </div>
 
     <!-- Conteúdo principal com classe para animação -->
