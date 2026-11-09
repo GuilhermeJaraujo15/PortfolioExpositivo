@@ -1115,6 +1115,19 @@ h2,
 .cert-card--ticket .cert-link-text { color: #29241e; }
 .cert-card--ticket .cert-link-arrow { stroke: #29241e; }
 
+@media (max-width: 700px), (pointer: coarse) {
+  .hero .back-link {
+    top: max(1rem, env(safe-area-inset-top));
+    right: max(1rem, env(safe-area-inset-right));
+    max-width: calc(100% - 2rem);
+    min-height: 44px;
+    padding: .7rem .85rem;
+    gap: .5rem;
+    font-size: .72rem;
+    line-height: 1.35;
+  }
+}
+
 .cert-editorial-grid { gap: 1.8rem; }
 .cert-card--torn { transform: translateY(10px) rotate(-2deg); }
 .cert-card--sticky { transform: translateY(-10px) rotate(1.8deg); }

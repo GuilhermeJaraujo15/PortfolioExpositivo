@@ -20,7 +20,7 @@ const semesterProjects = [
     name: "Dashboards utilizando Business Intelligence",
     description: "Neste projeto, desenvolvi diversos dashboards com propósito de gerar insights para tomada de decisão no âmbito empresarial, utilizando do Power BI para análise de dados e visualização de informações advindas de diversas fontes, de maneira limpa e com foco profissional.",
     technologies: ["Power BI • Excel • Google Analytics • CSV"],
-    url: "",
+    url: "https://drive.google.com/file/d/1SAR4fGWIIRNRaIT6ARZWzK8KrZbSkSWl/view?usp=sharing",
     linkLabel: "Vídeo demonstrativo",
   },
   {
