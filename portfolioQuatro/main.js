@@ -209,15 +209,25 @@ document.querySelector(".footer-top")?.addEventListener("click", () => {
 });
 
 document.querySelectorAll(".cert-editorial-grid .cert-card").forEach((card) => {
-  card.addEventListener("click", () => {
-    if (!window.matchMedia("(pointer: coarse)").matches) return;
+  card.addEventListener("click", (event) => {
+    if (!window.matchMedia("(pointer: coarse)").matches || event.detail === 0) return;
 
     const grid = card.closest(".cert-editorial-grid");
-    grid.querySelectorAll(".cert-card.is-selected").forEach((selectedCard) => {
-      selectedCard.classList.remove("is-selected");
-    });
+    if (card.classList.contains("is-selected")) {
+      if (!card.getAttribute("href")) event.preventDefault();
+      return;
+    }
+
+    event.preventDefault();
+    clearCertificateSelection();
     card.classList.add("is-selected");
     grid.classList.add("has-selection");
+
+    const linkText = card.querySelector(".cert-link-text");
+    if (linkText) {
+      linkText.dataset.defaultText ??= linkText.textContent.trim();
+      linkText.textContent = "Toque novamente para ver";
+    }
   });
 });
 
@@ -226,6 +236,9 @@ function clearCertificateSelection() {
     grid.classList.remove("has-selection");
     grid.querySelectorAll(".cert-card.is-selected").forEach((card) => {
       card.classList.remove("is-selected");
+    });
+    grid.querySelectorAll(".cert-link-text[data-default-text]").forEach((linkText) => {
+      linkText.textContent = linkText.dataset.defaultText;
     });
   });
 }
