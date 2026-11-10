@@ -1,6 +1,8 @@
 # Portfólio do 4º semestre
 
 Página estática em HTML, CSS e JavaScript, sem dependências ou etapa de build.
+O controle ao lado do botão de retorno alterna instantaneamente entre português
+e inglês americano e mantém a preferência neste navegador.
 
 ## Prévia local
 

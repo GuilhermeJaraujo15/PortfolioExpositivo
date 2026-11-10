@@ -18,14 +18,27 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <script src="main.js" defer></script>
+    <script src="i18n4.js" defer></script>
   </head>
 
   <body>
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
     <header class="hero" id="inicio">
-      <a class="back-link" href="../introducao.html"
-        ><span aria-hidden="true">←</span> Voltar à introdução</a
-      >
+      <div class="hero-actions">
+        <a class="back-link" href="../introducao.html">
+          <span aria-hidden="true">←</span>
+          <span>Voltar à introdução</span>
+        </a>
+        <button
+          class="language-toggle"
+          id="language-toggle"
+          type="button"
+          aria-label="Mudar idioma para inglês"
+          title="English"
+        >
+          <span class="language-toggle-label" aria-hidden="true">EN</span>
+        </button>
+      </div>
       <div class="hero-inner">
         <div class="mark-scene" aria-label="Símbolo do Python" role="img">
           <div class="aura" aria-hidden="true"></div>
@@ -204,7 +217,7 @@
                     rel="noopener noreferrer"
                     class="cert-card cert-card--torn"
                     style="--rotation: -2.5deg; --index: 0"
-                    aria-label="Ver certificado Introduction to Data Science, Coursera (abre em nova aba)"
+                    aria-label="Ver certificado Python Essentials, Cisco Networking Academy (abre em nova aba)"
                   >
                     <div class="cert-card-inner">
                       <span class="cert-collage-mark" aria-hidden="true"
@@ -237,7 +250,7 @@
                     rel="noopener noreferrer"
                     class="cert-card cert-card--sticky"
                     style="--rotation: 1.5deg; --index: 1"
-                    aria-label="Ver certificado Python for Data Science, IBM (abre em nova aba)"
+                    aria-label="Power BI e Análise de Dados com IA, SENAI (em andamento)"
                   >
                     <div class="cert-card-inner">
                       <span class="cert-collage-mark" aria-hidden="true"
