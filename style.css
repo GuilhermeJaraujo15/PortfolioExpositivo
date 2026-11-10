@@ -289,44 +289,47 @@
    bottom: 30px;
    left: 30px;
    z-index: 2;
-   display: inline-flex;
-   width: 56px;
-   height: 56px;
+   display: inline-grid;
+   width: 44px;
+   height: 44px;
    align-items: center;
    justify-content: center;
-   gap: 2px;
-   border: 1px solid rgba(255, 255, 255, 0.55);
    border-radius: 50%;
-   background: rgba(255, 255, 255, 0.12);
-   color: white;
+   color: #fff;
    text-decoration: none;
-   backdrop-filter: blur(6px);
-   -webkit-backdrop-filter: blur(6px);
-   transition: background-color 0.2s ease, transform 0.2s ease;
- }
-
- .btn-curriculo:hover {
-   background: rgba(255, 255, 255, 0.24);
-   transform: translateY(-2px);
- }
-
- .btn-curriculo:active {
-   transform: scale(0.96);
  }
 
  .btn-curriculo:focus-visible {
-   outline: 2px solid white;
+   outline: 2px solid #fff;
    outline-offset: 3px;
  }
 
  .icone-download {
-   width: 22px;
-   height: 22px;
+   width: 28px;
+   height: 28px;
+   overflow: visible;
+ }
+
+ .download-contorno {
    fill: none;
-   stroke: currentColor;
+   stroke: #fff;
    stroke-linecap: round;
    stroke-linejoin: round;
    stroke-width: 1.8;
+ }
+
+ .download-scan {
+   animation: downloadScanner 2.4s ease-in-out infinite;
+ }
+
+ @keyframes downloadScanner {
+   from {
+     transform: translateX(0);
+   }
+
+   to {
+     transform: translateX(38px);
+   }
  }
 
  /* Animação de entrada */
@@ -523,7 +526,11 @@
 
   .btn-curriculo {
     animation: none;
-    transition: none;
+  }
+
+  .download-scan {
+    animation: none;
+    visibility: hidden;
   }
 
   .language-pill::before {
