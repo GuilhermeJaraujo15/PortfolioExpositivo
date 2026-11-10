@@ -297,6 +297,8 @@
    border-radius: 50%;
    color: #fff;
    text-decoration: none;
+   opacity: 0;
+   animation: fadeInUp 1s ease-out 2.7s forwards;
  }
 
  .btn-curriculo:focus-visible {
@@ -526,6 +528,7 @@
 
   .btn-curriculo {
     animation: none;
+    opacity: 1;
   }
 
   .download-scan {
