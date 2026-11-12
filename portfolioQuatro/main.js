@@ -163,6 +163,7 @@ const journey = document.querySelector(".journey");
 const track = document.querySelector("#track");
 const progress = document.querySelector(".journey-progress span");
 const wideFinePointer = window.matchMedia("(min-width: 1001px) and (min-height: 760px) and (pointer: fine)");
+const finePointer = window.matchMedia("(pointer: fine)");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let frame = 0;
 let travel = 0;
@@ -194,6 +195,33 @@ function configureTravel() {
     progress.style.removeProperty("transform");
   }
 }
+
+track.addEventListener("wheel", (event) => {
+  if (
+    !finePointer.matches ||
+    document.documentElement.classList.contains("js-horizontal") ||
+    event.deltaY === 0 ||
+    event.deltaX !== 0
+  ) {
+    return;
+  }
+
+  const maxScroll = track.scrollWidth - track.clientWidth;
+  const deltaMultiplier =
+    event.deltaMode === 1
+      ? 16
+      : event.deltaMode === 2
+        ? track.clientHeight
+        : 1;
+  const delta = event.deltaY * deltaMultiplier;
+  const canScroll =
+    delta > 0 ? track.scrollLeft < maxScroll : track.scrollLeft > 0;
+
+  if (!canScroll) return;
+
+  event.preventDefault();
+  track.scrollLeft += delta;
+}, { passive: false });
 
 window.addEventListener("scroll", scheduleTravel, { passive: true });
 window.addEventListener("resize", configureTravel, { passive: true });

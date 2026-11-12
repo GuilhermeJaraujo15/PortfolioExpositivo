@@ -23,6 +23,9 @@
         },
         advance: "Avançar",
         advanceAria: "Avançar para introdução",
+        resumeHref: "curriculo.pdf",
+        resumeFilename: "Curriculo-Guilherme-Jorge-de-Araujo.pdf",
+        resumeTitle: "Baixar currículo em PDF",
       },
       nav: {
         about: "Sobre Mim",
@@ -161,6 +164,9 @@
         },
         advance: "Continue",
         advanceAria: "Continue to introduction",
+        resumeHref: "curriculoEN.pdf",
+        resumeFilename: "Resume-Guilherme-Jorge-de-Araujo.pdf",
+        resumeTitle: "Download resume as PDF",
       },
       nav: {
         about: "About Me",
@@ -289,6 +295,8 @@
   const I18N_ATTR_BINDINGS = Object.freeze([
     { dataAttr: "data-i18n-aria", htmlAttr: "aria-label" },
     { dataAttr: "data-i18n-title", htmlAttr: "title" },
+    { dataAttr: "data-i18n-href", htmlAttr: "href" },
+    { dataAttr: "data-i18n-download", htmlAttr: "download" },
     { dataAttr: "data-i18n-placeholder", htmlAttr: "placeholder" },
     { dataAttr: "data-i18n-alt", htmlAttr: "alt" },
     { dataAttr: "data-i18n-aria-description", htmlAttr: "aria-description" },

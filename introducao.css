@@ -224,6 +224,22 @@ body > :not(.page-background) {
     outline: none;
 }
 
+.semestre-card--frontend {
+    --semester-background: url('./img/fundo1.png');
+}
+
+.semestre-card--javascript {
+    --semester-background: url('./img/fundo2.png');
+}
+
+.semestre-card--database {
+    --semester-background: url('./img/fundo3.png');
+}
+
+.semestre-card--python {
+    --semester-background: url('./img/fundo4.png');
+}
+
 /* -------------------- ENTRADA SEQUENCIAL DOS ÍCONES -------------------- */
 .semestre-card {
     opacity: 0; /* estado inicial antes da animação */
@@ -284,7 +300,7 @@ body > :not(.page-background) {
     position: relative;
     overflow: hidden;
     border: 2px solid rgba(255, 255, 255, 0.15);
-    background: rgba(255, 255, 255, 0.04);
+    background-color: rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     display: flex;
@@ -298,6 +314,21 @@ body > :not(.page-background) {
     z-index: 1;
 }
 
+.semestre-card__circle::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    background-image:
+        linear-gradient(rgba(5, 12, 24, 0.58), rgba(5, 12, 24, 0.58)),
+        var(--semester-background);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(7px);
+    transform: scale(1.08);
+    pointer-events: none;
+}
+
 /* Vídeo de fundo */
 .semestre-card__video {
     position: absolute;
@@ -309,7 +340,7 @@ body > :not(.page-background) {
         opacity 0.35s ease-in,
         filter 0.35s ease-in;
     filter: brightness(0.95) contrast(1.05);
-    z-index: 0;
+    z-index: 1;
     pointer-events: none;
 }
 
